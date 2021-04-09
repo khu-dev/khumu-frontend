@@ -20,9 +20,11 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "@src/*": [
-        "src/*"
-      ]
+      "@api/*": ["src/api/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@interfaces/*": ["src/interfaces/*"]
     }
   },
   "exclude": ["node_modules"],
