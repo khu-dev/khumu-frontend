@@ -1,9 +1,7 @@
+import { AppProps } from 'next/dist/next-server/lib/router/router';
+
 interface RouterType {
-  pathname: string
+  pathname: string;
 }
 
-export type AppType {
-  Component: React.FC;
-  pageProps: any;
-  router: RouterType
-}
+export interface AppType extends AppProps {}
