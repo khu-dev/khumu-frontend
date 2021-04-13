@@ -3,4 +3,4 @@
  * @description KHUMU api uris
  */
 
-export const BASE_URI = '';
+export const BASE_URI = 'https://www.naver.com';
