@@ -1,6 +1,6 @@
 import '@assets/css/app.css';
 import Header from '@components/header';
-import { OuterContainer } from '@components/utils/styled';
+import { OuterContainer } from '@components/utils/container.styled';
 import { AppType } from '@interfaces/app';
 
 const App = ({ Component, pageProps, router: { pathname } }: AppType) => {

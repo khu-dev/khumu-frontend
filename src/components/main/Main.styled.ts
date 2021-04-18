@@ -10,9 +10,9 @@ export const ContentContainer = styled.div`
   align-items: center;
 `;
 
-export const PeedContainer = styled.div`
+export const FeedContainer = styled.div`
   width: 100%;
-  height: 34vh;
+  height: 33vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

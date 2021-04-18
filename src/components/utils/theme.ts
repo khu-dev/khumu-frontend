@@ -5,12 +5,12 @@ export const theme = {
     white: '#fafafa',
   },
   padding: {
-    base: '4%',
-    width: 'calc(100vw - 8%)',
+    base: '14px',
+    width: 'calc(100vw - 28px)',
   },
   margin: {
-    base: '4%',
-    width: 'calc(100% - 8%)',
+    base: '14px',
+    width: 'calc(100% - 28px)',
   },
   borderRadius: '8px',
 };

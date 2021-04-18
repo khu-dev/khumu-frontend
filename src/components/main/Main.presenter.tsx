@@ -1,13 +1,11 @@
-import { ItemContainer } from '@components/utils/styled';
-import { theme } from '@components/utils/theme';
-import { ContentContainer, PeedContainer } from './Main.styled';
+import { ItemContainer } from '@components/utils/container.styled';
+import { ContentContainer } from './Main.styled';
+import Feed from './items/Feed';
 
 const MainPresenter = (props: any) => {
   return (
     <ContentContainer>
-      <PeedContainer>
-        <ItemContainer>ㅍㅣ드</ItemContainer>
-      </PeedContainer>
+      <Feed />
       <ItemContainer>공지사항</ItemContainer>
       <ItemContainer>동아리</ItemContainer>
       <ItemContainer>광고</ItemContainer>
