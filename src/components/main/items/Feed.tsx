@@ -4,14 +4,12 @@ import { theme } from '@components/utils/theme';
 import { TitleContainer, XLTitle } from '@components/utils/title.styled';
 import { FeedContainer } from '../Main.styled';
 
-const Peed = () => {
+const Feed = () => {
   const isMain = true;
   const [selected, setSelected] = useState('lecture');
 
-  const onTabClick = () => {
-    setSelected((prev: string) =>
-      prev === 'lecture' ? 'calender' : 'lecture',
-    );
+  const onTabClick = (e: React.MouseEvent<HTMLElement>) => {
+    setSelected(e.target.id);
   };
 
   return (
@@ -20,16 +18,17 @@ const Peed = () => {
         <XLTitle color={theme.color.white}>나의 피드</XLTitle>
       </TitleContainer>
       <ItemContainer
+        id="lecture"
         isMain={isMain}
         height="18vh"
         selected={selected}
         onClick={onTabClick}
       >
-        <span />
+        <span id="calender" />
         ㅍㅣ드
       </ItemContainer>
     </FeedContainer>
   );
 };
 
-export default Peed;
+export default Feed;

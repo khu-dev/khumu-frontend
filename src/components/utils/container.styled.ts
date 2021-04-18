@@ -12,6 +12,31 @@ export const OuterContainer = styled.div`
   align-items: center;
 `;
 
+const tab = (props: StyleType, type: string) => `
+  width: 90px;
+  height: 28px;
+  background-color: white;
+  content: '${type === 'lecture' ? '오늘의 강의' : '학사 일정'}';
+  font-size: 16px;
+  color: ${props.selected === type ? theme.color.main : 'white'};
+  text-align: center;
+  line-height: 32px;
+  position: absolute;
+  left: ${type === 'lecture' ? '14px' : '109px'};
+  top: -29px;
+  border-top-left-radius : ${theme.borderRadius};
+  border-top-right-radius : ${theme.borderRadius};
+  border: 1px solid white;
+  ${
+    props.selected !== type
+      ? `
+  border-bottom : none;
+  background-color : ${theme.color.main};
+`
+      : null
+  }
+`;
+
 export const ItemContainer = styled.div`
   width: ${theme.margin.width};
   height: ${(props: StyleType) => props.height || '25vh'};
@@ -24,46 +49,12 @@ export const ItemContainer = styled.div`
     props.isMain
       ? `
   &::before {
-    width: 80px;
-    height: 20px;
-    background-color: white;
-    content: ' ';
-    position: absolute;
-    left: 14px;
-    top: -21px;
-    border-top-left-radius : ${theme.borderRadius};
-    border-top-right-radius : ${theme.borderRadius};
-    border: 1px solid white;
-    ${
-      props.selected !== 'lecture'
-        ? `
-    border-bottom : none;
-    background-color : ${theme.color.main};
-  `
-        : null
-    }
+    ${tab(props, 'lecture')}
   }
 
   & > span {
     &::before {
-      width: 80px;
-      height: 20px;
-      background-color: white;
-      content: ' ';
-      position: absolute;
-      left: 99px;
-      top: -21px;
-      border-top-left-radius : ${theme.borderRadius};
-      border-top-right-radius : ${theme.borderRadius};
-      border : 1px solid white;
-      ${
-        props.selected !== 'calender'
-          ? `
-      border-bottom : none;
-      background-color : ${theme.color.main};
-    `
-          : null
-      }
+      ${tab(props, 'calender')}
   }
   `
       : null};

@@ -12,7 +12,9 @@ export const ContentContainer = styled.div`
 
 export const FeedContainer = styled.div`
   width: 100%;
-  height: 33vh;
+  min-height: 200px;
+  height: 32vh;
+  max-height: 380px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
