@@ -28,7 +28,7 @@ export const STitle = styled.h4`
 
 export const TitleContainer = styled.div`
   width: ${(props: StyleType) =>
-    props.isMain ? 'calc(100% - 48px)' : theme.margin.width};
+    props.isMain ? 'calc(100% - 64px)' : theme.margin.width};
   margin-top: 10px;
   display: flex;
   flex-direction: row;
