@@ -1,6 +1,6 @@
 import { ItemContainer } from '@components/utils/container.styled';
 import { ContentContainer } from './Main.styled';
-import Feed from './items/Feed';
+import Feed from './items/Feed.container';
 
 const MainPresenter = (props: any) => {
   return (
