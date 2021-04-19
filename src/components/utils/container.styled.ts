@@ -21,6 +21,7 @@ const tab = (props: StyleType, type: string) => `
   background-color: white;
   content: '${type === 'lecture' ? '오늘의 강의' : '학사 일정'}';
   font-size: 14px;
+  font-weight: 700;
   color: ${props.selected === type ? theme.color.main : 'white'};
   text-align: center;
   line-height: 28px;
@@ -69,7 +70,7 @@ export const ItemContainer = styled.div`
       right: 12px;
       color: white;
       font-size: 14px;
-      font-weight: 300;
+      font-weight: 500;
       content: '${
         '[ ' +
         moment(new Date()).format('M/DD') +

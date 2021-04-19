@@ -3,6 +3,8 @@ export const theme = {
     main: '#FF4D40',
     black: '#333',
     white: '#fafafa',
+    lightgray: '#f7f7f7',
+    gray: '#efefef',
   },
   padding: {
     base: '14px',

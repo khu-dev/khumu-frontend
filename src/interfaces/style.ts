@@ -10,6 +10,7 @@ type HeaderStyleType = {
 
 type TitleStyleType = {
   color?: string;
+  isLoading?: boolean;
 };
 
-export type StyleType = ItemStyleType | HeaderStyleType;
+export type StyleType = ItemStyleType | HeaderStyleType | TitleStyleType;
