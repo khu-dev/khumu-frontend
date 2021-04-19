@@ -6,7 +6,7 @@ export const theme = {
   },
   padding: {
     base: '14px',
-    width: 'calc(100vw - 28px)',
+    width: 'calc(100% - 28px)',
   },
   margin: {
     base: '14px',

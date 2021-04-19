@@ -3,4 +3,9 @@
   padding: 0;
   text-decoration: none;
   color: #333;
+  overscroll-behavior: none;
+}
+
+body {
+  position: relative;
 }
