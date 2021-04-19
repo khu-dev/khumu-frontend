@@ -1,6 +1,11 @@
+/**
+ * @description 피드의 오늘의 강의
+ */
+
 import React from 'react';
 import * as ts from '@components/utils/title.styled';
 import * as s from './items.styled';
+import { theme } from '@components/utils/theme';
 
 const isLoading = true;
 
@@ -8,15 +13,27 @@ export const Lecture = () => (
   <s.FeedContents>
     <s.LectureContainer>
       <s.LectureName>
-        <s.LectureCheckBox type="checkbox" />
-        <ts.LTitle isLoading={isLoading}>{null || ' '}</ts.LTitle>
+        <s.LectureCheckBox />
+        <ts.LTitle isLoading={isLoading} color={theme.color.main}>
+          {isLoading || '산업디자인사'}
+        </ts.LTitle>
       </s.LectureName>
-      <ts.MTitle isLoading={isLoading} style={styles.time}>
-        {null || ' '}
-      </ts.MTitle>
+      <ts.LTitle
+        isLoading={isLoading}
+        color={theme.color.darkgray}
+        style={styles.time}
+      >
+        {isLoading || '09:00 ~ 13:45'}
+      </ts.LTitle>
     </s.LectureContainer>
     <ts.MTitle isLoading={isLoading} style={styles.left}>
-      {isLoading ? ' ' : '수업종료까지 1시간 45분 남았습니다'}
+      {isLoading || (
+        <>
+          <span>수업종료까지</span>
+          <span style={styles.leftText}>&nbsp;1시간 45분&nbsp;</span>
+          <span>남았습니다</span>
+        </>
+      )}
     </ts.MTitle>
   </s.FeedContents>
 );
@@ -27,6 +44,10 @@ const styles = {
     marginLeft: '25px',
     fontSize: '14px',
     fontWeight: '400',
-    width: '180px',
+    width: 'calc(100% - 25px)',
+  },
+  leftText: {
+    fontWeight: '700',
+    color: theme.color.main,
   },
 };

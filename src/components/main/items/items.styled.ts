@@ -7,7 +7,7 @@ export const FeedContents = styled.div`
   width: ${theme.margin.width};
   height: 100%;
   margin: 20px 32px;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 export const LectureContainer = styled.div`
@@ -24,7 +24,9 @@ export const LectureName = styled.div`
   margin-bottom: 6px;
 `;
 
-export const LectureCheckBox = styled.input`
+export const LectureCheckBox = styled.input.attrs({
+  type: 'checkbox',
+})`
   width: 13px;
   height: 13px;
   margin-right: 12px;

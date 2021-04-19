@@ -14,7 +14,7 @@ export const FeedContainer = styled.div`
   width: 100%;
   min-height: 240px;
   height: 32vh;
-  max-height: 380px;
+  max-height: 310px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

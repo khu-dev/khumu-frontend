@@ -63,9 +63,9 @@ export const STitle = styled.h4`
 export const TitleContainer = styled.div`
   width: ${(props: StyleType) =>
     props.isMain ? 'calc(100% - 64px)' : theme.margin.width};
-  margin-top: 5%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  flex-grow: 1;
 `;
