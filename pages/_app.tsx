@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { OuterContainer } from '@components/utils/container.styled';
+import { OuterContainer } from '@components/utils/styles/container.styled';
 import Header from '@components/header';
 import { AppType } from '@interfaces/app';
 

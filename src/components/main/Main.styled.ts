@@ -1,4 +1,4 @@
-import { theme } from '@components/utils/theme';
+import { theme } from '@components/utils/styles/theme';
 import styled from 'styled-components';
 
 export const ContentContainer = styled.div`

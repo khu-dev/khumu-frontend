@@ -1,4 +1,4 @@
-import { ItemContainer } from '@components/utils/container.styled';
+import { ItemContainer } from '@components/utils/styles/container.styled';
 import { ContentContainer } from './Main.styled';
 import Feed from './items/Feed.container';
 

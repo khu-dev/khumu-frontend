@@ -4,9 +4,9 @@
  */
 
 import React from 'react';
-import { ItemContainer } from '@components/utils/container.styled';
-import { TitleContainer, XLTitle } from '@components/utils/title.styled';
-import { theme } from '@components/utils/theme';
+import { ItemContainer } from '@components/utils/styles/container.styled';
+import { TitleContainer, XLTitle } from '@components/utils/styles/title.styled';
+import { theme } from '@components/utils/styles/theme';
 import * as ms from '../Main.styled';
 
 import { FeedPropsType } from '@interfaces/components';

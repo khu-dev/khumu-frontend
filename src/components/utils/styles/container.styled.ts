@@ -1,7 +1,7 @@
 import { StyleType } from '@interfaces/style';
 import moment from 'moment';
 import styled from 'styled-components';
-import { convertDate } from './convert.date';
+import { convertDate } from '../convert.date';
 import { theme } from './theme';
 
 export const OuterContainer = styled.div`

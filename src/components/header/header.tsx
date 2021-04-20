@@ -1,4 +1,4 @@
-import { theme } from '@components/utils/theme';
+import { theme } from '@components/utils/styles/theme';
 import { HeaderType } from '@interfaces/app';
 import { HeaderContainer } from './header.styled';
 
