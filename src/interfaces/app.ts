@@ -4,4 +4,8 @@ interface RouterType {
   pathname: string;
 }
 
+export interface HeaderType {
+  pathname: string;
+}
+
 export interface AppType extends AppProps {}
