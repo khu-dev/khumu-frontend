@@ -54,6 +54,8 @@ export const ItemContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
+  opacity: ${(props: StyleType) => (!props.show ? 1 : 0)};
+
   ${(props: StyleType) =>
     props.isMain
       ? `

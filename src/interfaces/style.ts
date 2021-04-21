@@ -2,6 +2,7 @@ type ItemStyleType = {
   height?: string;
   backgroundColor?: string;
   selected?: string;
+  show?: boolean;
 };
 
 type HeaderStyleType = {

@@ -4,25 +4,24 @@
 
 import React from 'react';
 
-export const useScrollEvent = () => {
+export const useScrollEvent = (
+  element: React.MutableRefObject<HTMLElement>,
+) => {
   const [dimensions, setDimensions] = React.useState<ClientRect | null>(null);
-  const [init, setInit] = React.useState(true);
+  const [showed, setShowed] = React.useState(false);
 
-  const ref = React.useCallback((domNode: HTMLElement) => {
+  const ref = React.useCallback((domNode: HTMLElement | null) => {
     if (domNode) {
       setDimensions(domNode.getBoundingClientRect());
     }
   }, []);
 
-  const onScroll2 = () => {
-    console.log('zzzz');
-  };
-
   const onScroll = () => {
-    if (dimensions && init) {
+    if (dimensions && !showed) {
       if (Math.abs(window.innerHeight - dimensions.top) < window.scrollY) {
-        console.log(window.innerHeight - dimensions.top, '!!');
-        setInit(false);
+        element.current.className += ' show';
+
+        setShowed(true);
         window.removeEventListener('scroll', onScroll);
       }
     }
@@ -30,12 +29,7 @@ export const useScrollEvent = () => {
 
   React.useEffect(() => {
     window.addEventListener('scroll', onScroll);
-    window.addEventListener('scroll', onScroll2);
-
-    return () => window.removeEventListener('scroll', onScroll2);
   });
 
-  return {
-    ref,
-  };
+  return { showed, ref };
 };
