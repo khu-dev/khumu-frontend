@@ -12,9 +12,13 @@ const MainPresenter = (props: any) => {
   return (
     <ContentContainer>
       <Feed />
-      <ScrollAnimationItem>
-        <Div />
-      </ScrollAnimationItem>
+      {Array(5)
+        .fill(0)
+        .map((item, idx) => (
+          <ScrollAnimationItem key={item + idx}>
+            <Div />
+          </ScrollAnimationItem>
+        ))}
       <ItemContainer>공지사항</ItemContainer>
       <ItemContainer>동아리</ItemContainer>
       <ItemContainer>광고</ItemContainer>

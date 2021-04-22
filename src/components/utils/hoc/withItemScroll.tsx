@@ -4,34 +4,29 @@
  */
 
 import React from 'react';
-// import { useScrollEvent } from '@components/utils/hooks/useScrollEvent';
-import { ItemContainer } from '../styles/container.styled';
+import ReactDOM from 'react-dom';
+import { ScrollItemContainer } from '../styles/container.styled';
 
 interface props {
   children: React.ReactNode;
 }
 
 export const ScrollAnimationItem = ({ children }: props) => {
-  const [dimensions, setDimensions] = React.useState<HTMLElement | null>(null);
   const [showed, setShowed] = React.useState(false);
 
-  const ref = React.useCallback((domNode: HTMLElement | null) => {
-    if (domNode) {
-      setDimensions(domNode);
-    }
-  }, []);
-
-  // const ref = React.useRef(null);
+  const ref = React.useRef<HTMLElement>();
 
   const onScroll = () => {
-    if (dimensions && !showed && ref) {
-      const rect = dimensions.getBoundingClientRect();
-      console.log(rect, window.scrollY, innerHeight);
-      if (Math.abs(window.innerHeight - rect.top) < window.scrollY) {
-        dimensions.className += ' show';
+    if (!showed && ref) {
+      const element = ReactDOM.findDOMNode(ref.current) as HTMLElement;
 
-        setShowed(true);
-        window.removeEventListener('scroll', onScroll);
+      if (element) {
+        const rect = element.getBoundingClientRect() as ClientRect;
+
+        if (window.scrollY + window.innerHeight / 2 > rect.top) {
+          setShowed(true);
+          window.removeEventListener('scroll', onScroll);
+        }
       }
     }
   };
@@ -41,8 +36,8 @@ export const ScrollAnimationItem = ({ children }: props) => {
   });
 
   return (
-    <ItemContainer show={showed} ref={ref}>
+    <ScrollItemContainer show={!showed} ref={ref}>
       {children}
-    </ItemContainer>
+    </ScrollItemContainer>
   );
 };

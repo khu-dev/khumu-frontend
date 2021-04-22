@@ -1,8 +1,8 @@
-import { StyleType } from '@interfaces/style';
 import moment from 'moment';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { convertDate } from '../convert.date';
 import { theme } from './theme';
+import { StyleType } from '@interfaces/style';
 
 export const OuterContainer = styled.div`
   width: 100vw;
@@ -15,7 +15,7 @@ export const OuterContainer = styled.div`
   align-items: center;
 `;
 
-const tab = (props: StyleType, type: string) => `
+const tab = (props: StyleType, type: string) => css`
   width: 80px;
   height: 25px;
   background-color: white;
@@ -28,18 +28,34 @@ const tab = (props: StyleType, type: string) => `
   position: absolute;
   left: ${type === 'lecture' ? '12px' : '97px'};
   top: -26px;
-  border-top-left-radius : ${theme.borderRadius};
-  border-top-right-radius : ${theme.borderRadius};
+  border-top-left-radius: ${theme.borderRadius};
+  border-top-right-radius: ${theme.borderRadius};
   border: 1px solid white;
-  ${
-    props.selected !== type
-      ? `
+  ${props.selected !== type
+    ? `
   border-bottom : none;
   background-color : ${theme.color.main};
 `
-      : null
-  }
+    : null}
 `;
+
+const scrollAnimation = keyframes`
+from {
+  opacity: 0;
+  transform: translateY(120px);
+}
+to {
+  opacity: 1;
+  transform: none;
+}
+`;
+
+const contentDate =
+  '[ ' +
+  moment(new Date()).format('M/DD') +
+  ' ' +
+  convertDate[moment(new Date()).format('ddd')] +
+  ' ]';
 
 export const ItemContainer = styled.div`
   width: ${theme.margin.width};
@@ -54,11 +70,9 @@ export const ItemContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  opacity: ${(props: StyleType) => (!props.show ? 1 : 0)};
-
   ${(props: StyleType) =>
     props.isMain
-      ? `
+      ? css`
     & > #lecture {
       &::before {
         ${tab(props, 'lecture')}
@@ -73,21 +87,38 @@ export const ItemContainer = styled.div`
       color: white;
       font-size: 14px;
       font-weight: 500;
-      content: '${
-        '[ ' +
-        moment(new Date()).format('M/DD') +
-        ' ' +
-        convertDate[moment(new Date()).format('ddd')] +
-        ' ]'
-      }';
+      content: '${contentDate}';
     }
   }
 
   & > #calender {
     &::before {
       ${tab(props, 'calender')}
-  }
-  
-  `
+  }`
       : null};
+`;
+
+export const ScrollItemContainer = styled.div`
+  width: ${theme.margin.width};
+  min-height: ${(props: StyleType) => props.minHeight || null};
+  height: ${(props: StyleType) => props.height || '25vh'};
+  margin: ${theme.margin.base};
+  background-color: ${(props: StyleType) => props.backgroundColor || 'white'};
+  border-radius: ${theme.borderRadius};
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  ${(props: StyleType) =>
+    !props.show
+      ? css`
+          opacity: 1;
+
+          animation: ${scrollAnimation} 0.8s linear;
+        `
+      : css`
+          opacity: 0;
+        `};
 `;
