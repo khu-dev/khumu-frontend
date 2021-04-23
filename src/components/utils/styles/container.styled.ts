@@ -4,17 +4,6 @@ import { convertDate } from '../convert.date';
 import { theme } from './theme';
 import { StyleType } from '@interfaces/style';
 
-export const OuterContainer = styled.div`
-  width: 100vw;
-  height: 100%;
-  min-width: 305px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
 const tab = (props: StyleType, type: string) => css`
   width: 80px;
   height: 25px;
@@ -42,7 +31,7 @@ const tab = (props: StyleType, type: string) => css`
 const scrollAnimation = keyframes`
 from {
   opacity: 0;
-  transform: translateY(120px);
+  transform: translateY(80px);
 }
 to {
   opacity: 1;
@@ -56,6 +45,48 @@ const contentDate =
   ' ' +
   convertDate[moment(new Date()).format('ddd')] +
   ' ]';
+
+export const OuterContainer = styled.div`
+  width: 100vw;
+  height: 100%;
+  min-width: 305px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const ScrollItemContainer = styled.div`
+  width: ${theme.margin.width};
+  min-height: ${(props: StyleType) => props.minHeight || null};
+  height: ${(props: StyleType) => props.height || '25vh'};
+  margin: ${theme.margin.base};
+  background-color: ${(props: StyleType) => props.backgroundColor || 'white'};
+  border-radius: ${theme.borderRadius};
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  opacity: 0;
+
+  ${(props: StyleType) =>
+    !props.show
+      ? css`
+          opacity: 1;
+          animation: ${scrollAnimation} 0.8s linear;
+        `
+      : css``};
+
+  ${(props: StyleType) =>
+    props.init
+      ? css`
+          opacity: 1;
+          animation: ${scrollAnimation} 0.8s linear;
+        `
+      : css``};
+`;
 
 export const ItemContainer = styled.div`
   width: ${theme.margin.width};
@@ -95,30 +126,5 @@ export const ItemContainer = styled.div`
     &::before {
       ${tab(props, 'calender')}
   }`
-      : null};
-`;
-
-export const ScrollItemContainer = styled.div`
-  width: ${theme.margin.width};
-  min-height: ${(props: StyleType) => props.minHeight || null};
-  height: ${(props: StyleType) => props.height || '25vh'};
-  margin: ${theme.margin.base};
-  background-color: ${(props: StyleType) => props.backgroundColor || 'white'};
-  border-radius: ${theme.borderRadius};
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-
-  ${(props: StyleType) =>
-    !props.show
-      ? css`
-          opacity: 1;
-
-          animation: ${scrollAnimation} 0.8s linear;
-        `
-      : css`
-          opacity: 0;
-        `};
+      : ''};
 `;

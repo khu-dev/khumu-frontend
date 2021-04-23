@@ -6,15 +6,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ScrollItemContainer } from '../styles/container.styled';
+import { ScrollAnimationProps } from '@interfaces/components';
 
-interface props {
-  children: React.ReactNode;
-}
-
-export const ScrollAnimationItem = ({ children }: props) => {
+export const ScrollAnimationItem = ({
+  children,
+  init,
+}: ScrollAnimationProps) => {
   const [showed, setShowed] = React.useState(false);
-
+  const [_init, setInit] = React.useState(false);
   const ref = React.useRef<HTMLElement>();
+
+  React.useEffect(() => {
+    init?.isInit &&
+      setTimeout(() => {
+        setInit(true);
+      }, 450 * init.idx);
+  }, []);
 
   const onScroll = () => {
     if (!showed && ref) {
@@ -24,7 +31,7 @@ export const ScrollAnimationItem = ({ children }: props) => {
         const rect = element.getBoundingClientRect() as ClientRect;
 
         if (window.scrollY + window.innerHeight / 2 > rect.top) {
-          setShowed(true);
+          !init?.isInit && setShowed(true);
           window.removeEventListener('scroll', onScroll);
         }
       }
@@ -33,10 +40,12 @@ export const ScrollAnimationItem = ({ children }: props) => {
 
   React.useEffect(() => {
     window.addEventListener('scroll', onScroll);
+
+    return () => window.removeEventListener('scroll', onScroll);
   });
 
   return (
-    <ScrollItemContainer show={!showed} ref={ref}>
+    <ScrollItemContainer show={!showed} ref={ref} init={_init}>
       {children}
     </ScrollItemContainer>
   );

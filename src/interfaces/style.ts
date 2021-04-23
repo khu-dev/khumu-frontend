@@ -1,8 +1,11 @@
+import { InitProps } from './components';
+
 type ItemStyleType = {
   height?: string;
   backgroundColor?: string;
   selected?: string;
   show?: boolean;
+  init?: InitProps;
 };
 
 type HeaderStyleType = {

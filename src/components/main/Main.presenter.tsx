@@ -1,7 +1,7 @@
 import { ItemContainer } from '@components/utils/styles/container.styled';
 import { ContentContainer } from './Main.styled';
 import Feed from './items/Feed.container';
-import { ScrollAnimationItem } from '@components/utils/hoc/withItemScroll';
+import { ScrollAnimationItem } from '@components/utils/hoc/ScrollAnimationItem';
 
 const Div = () => <div>hihi;</div>;
 
@@ -15,7 +15,13 @@ const MainPresenter = (props: any) => {
       {Array(5)
         .fill(0)
         .map((item, idx) => (
-          <ScrollAnimationItem key={item + idx}>
+          <ScrollAnimationItem
+            key={item + idx}
+            init={{
+              isInit: idx < 2,
+              idx,
+            }}
+          >
             <Div />
           </ScrollAnimationItem>
         ))}
