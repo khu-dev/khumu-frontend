@@ -6,6 +6,8 @@ export interface InitProps {
 export interface ScrollAnimationProps {
   children: React.ReactNode;
   init?: InitProps;
+  height?: string;
+  isAdvertise?: boolean;
 }
 
 export interface FeedPropsType {

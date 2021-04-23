@@ -58,12 +58,13 @@ export const OuterContainer = styled.div`
 `;
 
 export const ScrollItemContainer = styled.div`
-  width: ${theme.margin.width};
+  width: ${(props: StyleType) =>
+    props.isAdvertise ? `100%` : theme.margin.width};
   min-height: ${(props: StyleType) => props.minHeight || null};
   height: ${(props: StyleType) => props.height || '25vh'};
-  margin: ${theme.margin.base};
+  margin: ${(props: StyleType) =>
+    props.isAdvertise ? `${theme.margin.base} 0%` : theme.margin.base};
   background-color: ${(props: StyleType) => props.backgroundColor || 'white'};
-  border-radius: ${theme.borderRadius};
   position: relative;
   display: flex;
   flex-direction: column;
@@ -72,15 +73,7 @@ export const ScrollItemContainer = styled.div`
   opacity: 0;
 
   ${(props: StyleType) =>
-    !props.show
-      ? css`
-          opacity: 1;
-          animation: ${scrollAnimation} 0.8s linear;
-        `
-      : css``};
-
-  ${(props: StyleType) =>
-    props.init
+    !props.show || props.init
       ? css`
           opacity: 1;
           animation: ${scrollAnimation} 0.8s linear;

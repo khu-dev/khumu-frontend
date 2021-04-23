@@ -6,6 +6,7 @@ type ItemStyleType = {
   selected?: string;
   show?: boolean;
   init?: InitProps;
+  isAdvertise?: boolean;
 };
 
 type HeaderStyleType = {

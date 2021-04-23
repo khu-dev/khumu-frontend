@@ -11,13 +11,18 @@ import { ScrollAnimationProps } from '@interfaces/components';
 export const ScrollAnimationItem = ({
   children,
   init,
+  height,
+  isAdvertise,
 }: ScrollAnimationProps) => {
   const [showed, setShowed] = React.useState(false);
   const [_init, setInit] = React.useState(false);
   const ref = React.useRef<HTMLElement>();
+  console.log(init);
 
   React.useEffect(() => {
-    init?.isInit &&
+    const element = ReactDOM.findDOMNode(ref.current) as HTMLElement;
+    const rect = element.getBoundingClientRect() as ClientRect;
+    (init?.isInit || window.scrollY + window.innerHeight / 2 > rect.top) &&
       setTimeout(() => {
         setInit(true);
       }, 450 * init.idx);
@@ -45,7 +50,13 @@ export const ScrollAnimationItem = ({
   });
 
   return (
-    <ScrollItemContainer show={!showed} ref={ref} init={_init}>
+    <ScrollItemContainer
+      show={!showed}
+      ref={ref}
+      init={_init}
+      height={height}
+      isAdvertise={isAdvertise}
+    >
       {children}
     </ScrollItemContainer>
   );
