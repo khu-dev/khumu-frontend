@@ -67,7 +67,7 @@ export const ScrollItemContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   opacity: 0;
 
