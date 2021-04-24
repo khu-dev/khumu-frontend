@@ -5,7 +5,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ScrollItemContainer } from '../../utils/styles/container.styled';
+import { ScrollItemContainer } from '@components/main/items/items.styled';
 import { ScrollAnimationProps } from '@interfaces/components';
 
 export const ScrollAnimationItem = ({
@@ -34,7 +34,7 @@ export const ScrollAnimationItem = ({
       if (element) {
         const rect = element.getBoundingClientRect() as ClientRect;
 
-        if (window.scrollY + window.innerHeight / 2 > rect.top) {
+        if (window.scrollY + window.innerHeight / 3 > rect.top) {
           !init?.isInit && setShowed(true);
           window.removeEventListener('scroll', onScroll);
         }

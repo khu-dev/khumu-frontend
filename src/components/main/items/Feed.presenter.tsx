@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { ItemContainer } from '@components/utils/styles/container.styled';
+import { ItemContainer } from '@components/main/items/items.styled';
 import { TitleContainer, XLTitle } from '@components/utils/styles/title.styled';
 import { theme } from '@components/utils/styles/theme';
 import * as ms from '../Main.styled';
