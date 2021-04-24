@@ -22,7 +22,7 @@ const FeedPresenter = ({
   <ms.FeedContainer>
     <TitleContainer {...{ isMain }}>
       <XLTitle color={theme.color.white}>나의 피드</XLTitle>
-      <BsCaretRightFill color="white" size={24} />
+      <BsCaretRightFill color={theme.color.white} size={24} />
     </TitleContainer>
     <ItemContainer {...{ isMain, selected, onClick }} height="140px">
       <span id="lecture" />

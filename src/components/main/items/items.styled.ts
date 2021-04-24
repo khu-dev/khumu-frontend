@@ -39,11 +39,11 @@ export const LectureCheckBox = styled.input.attrs({
 const tab = (props: StyleType, type: string) => css`
   width: 80px;
   height: 25px;
-  background-color: white;
+  background-color: ${theme.color.white};
   content: '${type === 'lecture' ? '오늘의 강의' : '학사 일정'}';
   font-size: 14px;
   font-weight: 700;
-  color: ${props.selected === type ? theme.color.main : 'white'};
+  color: ${props.selected === type ? theme.color.main : theme.color.white};
   text-align: center;
   line-height: 28px;
   position: absolute;
@@ -51,7 +51,7 @@ const tab = (props: StyleType, type: string) => css`
   top: -26px;
   border-top-left-radius: ${theme.borderRadius};
   border-top-right-radius: ${theme.borderRadius};
-  border: 1px solid white;
+  border: 1px solid ${theme.color.white};
   ${props.selected !== type
     ? `
   border-bottom : none;
@@ -85,7 +85,8 @@ export const ScrollItemContainer = styled.div`
   height: ${(props: StyleType) => props.height || '25vh'};
   margin: ${(props: StyleType) =>
     props.isAdvertise ? `${theme.margin.base} 0%` : theme.margin.base};
-  background-color: ${(props: StyleType) => props.backgroundColor || 'white'};
+  background-color: ${(props: StyleType) =>
+    props.backgroundColor || theme.color.white};
   position: relative;
   display: flex;
   flex-direction: column;
@@ -107,7 +108,8 @@ export const ItemContainer = styled.div`
   min-height: ${(props: StyleType) => props.minHeight || null};
   height: ${(props: StyleType) => props.height || '25vh'};
   margin: ${theme.margin.base};
-  background-color: ${(props: StyleType) => props.backgroundColor || 'white'};
+  background-color: ${(props: StyleType) =>
+    props.backgroundColor || theme.color.white};
   border-radius: ${theme.borderRadius};
   position: relative;
   display: flex;
@@ -129,7 +131,7 @@ export const ItemContainer = styled.div`
       position: absolute;
       top: -20px;
       right: 12px;
-      color: white;
+      color: ${theme.color.white};
       font-size: 14px;
       font-weight: 500;
       content: '${contentDate}';

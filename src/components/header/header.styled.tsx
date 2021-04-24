@@ -11,7 +11,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   padding: ${theme.padding.base};
   background-color: ${(props: StyleType) =>
-    props.isMain ? theme.color.main : 'white'};
+    props.isMain ? theme.color.main : theme.color.white};
   color: ${(props: StyleType) =>
     props.isMain ? theme.color.white : theme.color.black};
 `;
