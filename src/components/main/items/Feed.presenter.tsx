@@ -22,7 +22,12 @@ export const FeedPresenter = ({
     <TitleContainer isMain={isMain}>
       <XLTitle color={theme.color.white}>나의 피드</XLTitle>
     </TitleContainer>
-    <ItemContainer height="140px" selected={selected} onClick={onTabClick}>
+    <ItemContainer
+      isMain={isMain}
+      height="140px"
+      selected={selected}
+      onClick={onTabClick}
+    >
       <span id="lecture" />
       <span id="calender" />
       {selected === 'lecture' ? <Lecture /> : <Lecture />}
