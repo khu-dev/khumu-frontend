@@ -4,7 +4,7 @@
 
 ## Main Page
 
-<img src="https://user-images.githubusercontent.com/49581472/115949981-73c23080-a513-11eb-8714-381d3c8d4161.gif" width="100%" alt="main-page-gif" style="max-width:280px;">
+<img src="https://user-images.githubusercontent.com/49581472/115949981-73c23080-a513-11eb-8714-381d3c8d4161.gif" width="300px" alt="main-page-gif" >
 
 ## SSR vs Client Side Rendering
 
