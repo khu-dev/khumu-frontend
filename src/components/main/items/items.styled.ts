@@ -133,12 +133,16 @@ export const ItemContainer = styled.div`
       font-size: 14px;
       font-weight: 500;
       content: '${contentDate}';
+
+      @media only screen and (min-width:280px) {
+        opacity:0;
+      }
     }
   }
 
   & > #calender {
     &::before {
       ${tab(props, 'calender')}
-  }`
+    }`
       : ''};
 `;

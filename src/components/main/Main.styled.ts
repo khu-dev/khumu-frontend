@@ -9,13 +9,14 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const FeedContainer = styled.div`
   width: 100%;
-  min-height: 240px;
-  height: 32vh;
-  max-height: 310px;
+  min-height: 220px;
+  height: 30vh;
+  max-height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

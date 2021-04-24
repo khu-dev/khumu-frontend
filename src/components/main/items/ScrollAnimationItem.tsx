@@ -10,37 +10,37 @@ import { ScrollAnimationProps } from '@interfaces/components';
 
 export const ScrollAnimationItem = ({
   children,
-  init,
+  init: _init,
   height,
   isAdvertise,
 }: ScrollAnimationProps) => {
-  const [showed, setShowed] = React.useState(false);
-  const [_init, setInit] = React.useState(false);
+  const [show, setShow] = React.useState(false);
+  const [init, setInit] = React.useState(false);
   const ref = React.useRef<HTMLElement>();
 
-  React.useEffect(() => {
-    const element = ReactDOM.findDOMNode(ref.current) as HTMLElement;
-    const rect = element.getBoundingClientRect() as ClientRect;
-    (init?.isInit || window.scrollY + window.innerHeight / 2 > rect.top) &&
-      setTimeout(() => {
-        setInit(true);
-      }, 450 * init.idx);
-  }, []);
-
   const onScroll = () => {
-    if (!showed && ref) {
+    if (!show && ref) {
       const element = ReactDOM.findDOMNode(ref.current) as HTMLElement;
 
       if (element) {
         const rect = element.getBoundingClientRect() as ClientRect;
 
         if (window.scrollY + window.innerHeight / 3 > rect.top) {
-          !init?.isInit && setShowed(true);
+          !_init?.isInit && setShow(true);
           window.removeEventListener('scroll', onScroll);
         }
       }
     }
   };
+
+  React.useEffect(() => {
+    const element = ReactDOM.findDOMNode(ref.current) as HTMLElement;
+    const rect = element.getBoundingClientRect() as ClientRect;
+    (_init?.isInit || window.scrollY + window.innerHeight / 2 > rect.top) &&
+      setTimeout(() => {
+        setInit(true);
+      }, 450 * _init.idx);
+  }, []);
 
   React.useEffect(() => {
     window.addEventListener('scroll', onScroll);
@@ -49,13 +49,7 @@ export const ScrollAnimationItem = ({
   });
 
   return (
-    <ScrollItemContainer
-      show={showed}
-      ref={ref}
-      init={_init}
-      height={height}
-      isAdvertise={isAdvertise}
-    >
+    <ScrollItemContainer {...{ ref, isAdvertise, height, show, init }}>
       {children}
     </ScrollItemContainer>
   );

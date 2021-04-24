@@ -4,22 +4,20 @@
 
 import React, { useState } from 'react';
 
-import { FeedPresenter } from './Feed.presenter';
-
-const tabList = ['lecture', 'calender'];
+import FeedPresenter from './Feed.presenter';
 
 const FeedContainer = () => {
-  const isMain = true;
   const [selected, setSelected] = useState('lecture');
+
+  const isMain = true;
+  const tabList = ['lecture', 'calender'];
 
   const onTabClick = (e: React.MouseEvent<HTMLElement>) => {
     if (!tabList.includes(e.target.id)) return;
     setSelected(e.target.id);
   };
 
-  const presenterProps = { isMain, selected, onTabClick };
-
-  return <FeedPresenter {...presenterProps} />;
+  return <FeedPresenter {...{ isMain, selected, onTabClick }} />;
 };
 
 export default FeedContainer;

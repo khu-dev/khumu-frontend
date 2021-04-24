@@ -49,9 +49,7 @@ const MainContainer = () => {
     },
   ];
 
-  const props = { itemList };
-
-  return <MainPresenter {...props} />;
+  return <MainPresenter {...{ itemList }} />;
 };
 
 export default MainContainer;

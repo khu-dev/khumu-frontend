@@ -7,7 +7,7 @@ export const HeaderContainer = styled.div`
   height: 5vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: ${theme.padding.base};
   background-color: ${(props: StyleType) =>
