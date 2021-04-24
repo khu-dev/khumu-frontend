@@ -18,4 +18,8 @@ type TitleStyleType = {
   isLoading?: boolean;
 };
 
+type ContentStyleType = {
+  flexDirection?: string;
+};
+
 export type StyleType = ItemStyleType | HeaderStyleType | TitleStyleType;

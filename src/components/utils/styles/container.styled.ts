@@ -73,7 +73,7 @@ export const ScrollItemContainer = styled.div`
   opacity: 0;
 
   ${(props: StyleType) =>
-    !props.show || props.init
+    props.show || props.init
       ? css`
           opacity: 1;
           animation: ${scrollAnimation} 0.8s linear;

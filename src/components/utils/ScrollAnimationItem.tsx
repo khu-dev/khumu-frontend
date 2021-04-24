@@ -5,7 +5,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ScrollItemContainer } from '../styles/container.styled';
+import { ScrollItemContainer } from './styles/container.styled';
 import { ScrollAnimationProps } from '@interfaces/components';
 
 export const ScrollAnimationItem = ({
@@ -17,7 +17,6 @@ export const ScrollAnimationItem = ({
   const [showed, setShowed] = React.useState(false);
   const [_init, setInit] = React.useState(false);
   const ref = React.useRef<HTMLElement>();
-  console.log(init);
 
   React.useEffect(() => {
     const element = ReactDOM.findDOMNode(ref.current) as HTMLElement;
@@ -51,7 +50,7 @@ export const ScrollAnimationItem = ({
 
   return (
     <ScrollItemContainer
-      show={!showed}
+      show={showed}
       ref={ref}
       init={_init}
       height={height}

@@ -1,12 +1,12 @@
 import { apiBase } from '@api/api-base';
-import MainPresenter from '@components/main/Main.presenter';
+import Main from '@components/main';
 import { GetServerSideProps } from 'next';
 
-const MainContainer = (props: any) => {
-  return <MainPresenter />;
+const MainPage = (props: any) => {
+  return <Main />;
 };
 
-export default MainContainer;
+export default MainPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params;
