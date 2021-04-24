@@ -16,4 +16,7 @@ export const theme = {
     width: 'calc(100% - 28px)',
   },
   borderRadius: '8px',
+  icon: {
+    fontSize: 24,
+  },
 };

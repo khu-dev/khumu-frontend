@@ -14,16 +14,27 @@ import { FeedPropsType } from '@interfaces/components';
 
 import { Lecture } from './Lecture';
 
+interface FeedTitleProps {
+  isMain: boolean;
+}
+
+/**
+ * @description 메인 피드의 타이틀 컴포넌트
+ */
+const FeedTitle = React.memo(({ isMain }: FeedTitleProps) => (
+  <TitleContainer {...{ isMain }}>
+    <XLTitle color={theme.color.white}>나의 피드</XLTitle>
+    <BsCaretRightFill color={theme.color.white} size={theme.icon.fontSize} />
+  </TitleContainer>
+));
+
 const FeedPresenter = ({
   isMain,
   selected,
   onTabClick: onClick,
 }: FeedPropsType) => (
   <ms.FeedContainer>
-    <TitleContainer {...{ isMain }}>
-      <XLTitle color={theme.color.white}>나의 피드</XLTitle>
-      <BsCaretRightFill color={theme.color.white} size={24} />
-    </TitleContainer>
+    <FeedTitle {...{ isMain }} />
     <ItemContainer {...{ isMain, selected, onClick }} height="140px">
       <span id="lecture" />
       <span id="calender" />
