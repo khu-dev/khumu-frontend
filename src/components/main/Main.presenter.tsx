@@ -1,19 +1,49 @@
-import { ItemContainer } from '@components/utils/styles/container.styled';
-import { ContentContainer } from './Main.styled';
-import Feed from './items/Feed.container';
+/**
+ * @description Main화면 보여주는 Presenter
+ */
 
-const MainPresenter = (props: any) => {
-  return (
-    <ContentContainer>
-      <Feed />
-      <ItemContainer>공지사항</ItemContainer>
-      <ItemContainer>동아리</ItemContainer>
-      <ItemContainer>광고</ItemContainer>
-      <ItemContainer>실시간 인기 글</ItemContainer>
-      <ItemContainer>정보</ItemContainer>
-      <ItemContainer>바로가기</ItemContainer>
-    </ContentContainer>
-  );
-};
+import React from 'react';
+import * as ms from './Main.styled';
+import Feed from './items/Feed.container';
+import { ScrollAnimationItem } from '@components/main/items/ScrollAnimationItem';
+import { LTitle, TitleContainer } from '@components/utils/styles/title.styled';
+import { theme } from '@components/utils/styles/theme';
+
+const MainPresenter = ({ itemList }: any) => (
+  <ms.ContentContainer>
+    <Feed />
+    {itemList.map((item, idx) => (
+      <ScrollAnimationItem
+        key={item.title}
+        init={{
+          isInit: idx < 3,
+          idx,
+        }}
+        height={item.height}
+        isAdvertise={item.title === '광고'}
+      >
+        {item.title !== '광고' && (
+          <TitleContainer>
+            <LTitle color={theme.color.main}>{item.title}</LTitle>
+          </TitleContainer>
+        )}
+        <ms.Content flexDirection={item.flexDirection}>
+          {Array(item.numOfContents)
+            .fill(0)
+            .map((content, i) => (
+              <ms.ContentItem
+                key={item.title + i}
+                style={{
+                  borderRadius:
+                    item.title === '광고' ? '0px' : theme.borderRadius,
+                  ...(item.margin && { ...item.margin[i] }),
+                }}
+              ></ms.ContentItem>
+            ))}
+        </ms.Content>
+      </ScrollAnimationItem>
+    ))}
+  </ms.ContentContainer>
+);
 
 export default MainPresenter;

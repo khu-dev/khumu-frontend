@@ -1,1 +1,1 @@
-export { default } from './Main.presenter';
+export { default } from './Main.container';

@@ -4,6 +4,7 @@ import Header from '@components/header';
 import { AppType } from '@interfaces/app';
 
 import '@assets/css/app.css';
+import '@assets/css/scroll.css';
 
 const App = ({ Component, pageProps, router: { pathname } }: AppType) => {
   return (

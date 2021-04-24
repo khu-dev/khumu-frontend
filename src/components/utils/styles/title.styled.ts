@@ -61,11 +61,12 @@ export const STitle = styled.h4`
 `;
 
 export const TitleContainer = styled.div`
-  width: ${(props: StyleType) =>
-    props.isMain ? 'calc(100% - 64px)' : theme.margin.width};
+  width: ${(props: StyleType) => (props.isMain ? 'calc(100% - 64px)' : '100%')};
+  height: ${(props: StyleType) => (props.isMain ? '10%' : 'auto')};
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  align-items: ${(props: StyleType) =>
+    props.isMain ? 'flex-start' : 'center'};
   flex-grow: 1;
 `;

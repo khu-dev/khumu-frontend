@@ -1,7 +1,12 @@
+import { InitProps } from './components';
+
 type ItemStyleType = {
   height?: string;
   backgroundColor?: string;
   selected?: string;
+  show?: boolean;
+  init?: InitProps;
+  isAdvertise?: boolean;
 };
 
 type HeaderStyleType = {
@@ -11,6 +16,10 @@ type HeaderStyleType = {
 type TitleStyleType = {
   color?: string;
   isLoading?: boolean;
+};
+
+type ContentStyleType = {
+  flexDirection?: string;
 };
 
 export type StyleType = ItemStyleType | HeaderStyleType | TitleStyleType;
