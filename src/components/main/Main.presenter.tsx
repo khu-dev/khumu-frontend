@@ -46,7 +46,7 @@ const MainPresenter = ({ itemList }: any) => (
             .fill(0)
             .map((content, i) => (
               <ms.ContentItem
-                key={item.title + i}
+                key={item.title + i + content}
                 style={{
                   borderRadius:
                     item.title === '광고' ? '0px' : theme.borderRadius,
