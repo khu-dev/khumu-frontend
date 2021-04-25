@@ -7,6 +7,7 @@ type ItemStyleType = {
   show?: boolean;
   init?: InitProps;
   isAdvertise?: boolean;
+  minHeight?: string;
 };
 
 type HeaderStyleType = {
@@ -22,4 +23,10 @@ type ContentStyleType = {
   flexDirection?: string;
 };
 
-export type StyleType = ItemStyleType | HeaderStyleType | TitleStyleType;
+export interface StyleType
+  extends ItemStyleType,
+    HeaderStyleType,
+    TitleStyleType,
+    ContentStyleType {}
+
+// export type StyleType = ItemStyleType | HeaderStyleType | TitleStyleType;

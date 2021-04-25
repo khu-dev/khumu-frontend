@@ -9,10 +9,24 @@ import { ScrollAnimationItem } from '@components/main/items/ScrollAnimationItem'
 import { LTitle, TitleContainer } from '@components/utils/styles/title.styled';
 import { theme } from '@components/utils/styles/theme';
 
+interface MarginType {
+  [idx: string]: {
+    [key: string]: string;
+  };
+}
+
+interface ItemType {
+  title: string;
+  flexDirection?: string;
+  numOfContents: number;
+  height: string;
+  margin?: MarginType;
+}
+
 const MainPresenter = ({ itemList }: any) => (
   <ms.ContentContainer>
     <Feed />
-    {itemList.map((item, idx) => (
+    {itemList.map((item: ItemType, idx: number) => (
       <ScrollAnimationItem
         key={item.title}
         init={{

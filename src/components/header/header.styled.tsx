@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { theme } from '@components/utils/styles/theme';
 import { StyleType } from '@interfaces/style';
 import styled from 'styled-components';
