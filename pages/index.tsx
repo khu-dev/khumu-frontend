@@ -3,6 +3,8 @@ import Main from '@components/main';
 import { GetServerSideProps } from 'next';
 
 const MainPage = (props: any) => {
+  console.log(props);
+
   return <Main />;
 };
 
@@ -15,6 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       data,
+      id,
     },
   };
 };
