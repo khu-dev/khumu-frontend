@@ -1,23 +1,21 @@
 // import { apiBase } from '@api/api-base';
 import Main from '@components/main';
-import { GetServerSideProps } from 'next';
+// import { GetServerSideProps } from 'next';
 
-const MainPage = (props: any) => {
-  console.log(props);
-
+const MainPage = () => {
   return <Main />;
 };
 
 export default MainPage;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const id = context.params;
-  // const data = (await apiBase())?.data || null;
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const id = context.params;
+//   // const data = (await apiBase())?.data || null;
 
-  return {
-    props: {
-      // data,
-      id,
-    },
-  };
-};
+//   return {
+//     props: {
+//       // data,
+//       id,
+//     },
+//   };
+// };
