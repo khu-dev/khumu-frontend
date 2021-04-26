@@ -1,6 +1,6 @@
 import { InitProps } from './components';
 
-type ItemStyleType = {
+interface ItemStyleType {
   height?: string;
   backgroundColor?: string;
   selected?: string;
@@ -8,20 +8,20 @@ type ItemStyleType = {
   init?: InitProps;
   isAdvertise?: boolean;
   minHeight?: string;
-};
+}
 
-type HeaderStyleType = {
+interface HeaderStyleType {
   isMain?: boolean;
-};
+}
 
-type TitleStyleType = {
+interface TitleStyleType {
   color?: string;
   isLoading?: boolean;
-};
+}
 
-type ContentStyleType = {
+interface ContentStyleType {
   flexDirection?: string;
-};
+}
 
 export interface StyleType
   extends ItemStyleType,
