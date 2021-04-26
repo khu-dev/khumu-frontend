@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { OuterContainer } from '@components/utils/styles/container.styled';
-import Header from '@components/header';
+// import Header from '@components/header';
 import { AppType } from '@interfaces/app';
 
 import '@assets/css/app.css';
@@ -19,9 +19,6 @@ AppType) => {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Head>
-      <Header
-      // pathname={pathname}
-      />
       <OuterContainer>
         <Component {...pageProps} />
       </OuterContainer>
