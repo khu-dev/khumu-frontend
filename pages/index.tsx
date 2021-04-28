@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // const data = (await apiBase())?.data || null;
   console.log('loading ...');
-  function sleep(ms) {
+  function sleep(ms: number) {
     const wakeUpTime = Date.now() + ms;
     while (Date.now() < wakeUpTime) {}
   }
