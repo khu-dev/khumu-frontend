@@ -6,7 +6,7 @@
 import React from 'react';
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
 // import { HeaderType } from '@interfaces/app';
-import { HeaderContainer } from './header.styled';
+// import { HeaderContainer } from './header.styled';
 import { theme } from '@components/utils/styles/theme';
 
 const Header = () => {
