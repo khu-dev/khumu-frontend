@@ -2,13 +2,12 @@ import { Container } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
 
-import { OuterContainer } from '@components/utils/styles/container.styled';
 import { AppType } from '@interfaces/app';
 
 import '@assets/css/app.css';
 import '@assets/css/scroll.css';
 
-import Header from '@components/header';
+import Layout from '@components/layout';
 
 const App = ({ Component, pageProps }: AppType) => {
   return (
@@ -20,10 +19,9 @@ const App = ({ Component, pageProps }: AppType) => {
         />
       </Head>
       <div style={styles.container}>
-        <Header />
-        <OuterContainer>
+        <Layout>
           <Component {...pageProps} />
-        </OuterContainer>
+        </Layout>
       </div>
     </Container>
   );
