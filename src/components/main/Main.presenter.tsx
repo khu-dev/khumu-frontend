@@ -8,7 +8,6 @@ import Feed from './items/Feed.container';
 import { ScrollAnimationItem } from '@components/main/items/ScrollAnimationItem';
 import { LTitle, TitleContainer } from '@components/utils/styles/title.styled';
 import { theme } from '@components/utils/styles/theme';
-import Header from '@components/header';
 
 interface MarginType {
   [idx: string]: {
@@ -26,9 +25,6 @@ interface ItemType {
 
 const MainPresenter = ({ itemList }: any) => (
   <>
-    <Header
-    // pathname={pathname}
-    />
     <ms.ContentContainer>
       <Feed />
       {itemList.map((item: ItemType, idx: number) => (
