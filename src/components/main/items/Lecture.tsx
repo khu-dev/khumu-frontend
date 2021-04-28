@@ -38,7 +38,7 @@ export const Lecture = () => (
   </s.FeedContents>
 );
 
-const styles = {
+const styles: any = {
   time: { marginLeft: '25px', width: '140px' },
   left: {
     marginLeft: '25px',

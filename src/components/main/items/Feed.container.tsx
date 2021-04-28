@@ -13,8 +13,9 @@ const FeedContainer = () => {
   const tabList = ['lecture', 'calender'];
 
   const onTabClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (!tabList.includes(e.target.id)) return;
-    setSelected(e.target.id);
+    const target = e.target as HTMLElement;
+    if (!tabList.includes(target.id)) return;
+    setSelected(target.id);
   };
 
   return <FeedPresenter {...{ isMain, selected, onTabClick }} />;

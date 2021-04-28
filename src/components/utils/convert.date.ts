@@ -1,4 +1,8 @@
-export const convertDate = {
+interface ConvertDateType {
+  [key: string]: string;
+}
+
+export const convertDate: ConvertDateType = {
   Mon: '월요일',
   Tue: '화요일',
   Wed: '수요일',

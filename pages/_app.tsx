@@ -1,25 +1,27 @@
+import { Container } from 'next/app';
 import Head from 'next/head';
-import { OuterContainer } from '@components/utils/styles/container.styled';
-import Header from '@components/header';
+import React from 'react';
+
 import { AppType } from '@interfaces/app';
 
 import '@assets/css/app.css';
 import '@assets/css/scroll.css';
 
-const App = ({ Component, pageProps, router: { pathname } }: AppType) => {
+import Layout from '@components/layout';
+
+const App = ({ Component, pageProps }: AppType) => {
   return (
-    <>
+    <Container>
       <Head>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Head>
-      <OuterContainer>
-        <Header pathname={pathname} />
+      <Layout>
         <Component {...pageProps} />
-      </OuterContainer>
-    </>
+      </Layout>
+    </Container>
   );
 };
 

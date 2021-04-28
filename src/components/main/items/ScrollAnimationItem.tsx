@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 /**
  * @description scroll hooks 사용하여 새 컴포넌트 반환
  *              메인에 사용됨

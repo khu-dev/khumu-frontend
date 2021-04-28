@@ -1,20 +1,31 @@
-import { apiBase } from '@api/api-base';
+// import { apiBase } from '@api/api-base';
 import Main from '@components/main';
 import { GetServerSideProps } from 'next';
 
 const MainPage = (props: any) => {
+  console.log('main! ', props);
+
   return <Main />;
 };
 
 export default MainPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const id = context.params;
-  const data = (await apiBase())?.data || null;
+  console.log(context);
+
+  // const data = (await apiBase())?.data || null;
+  console.log('loading ...');
+  function sleep(ms: number) {
+    const wakeUpTime = Date.now() + ms;
+    while (Date.now() < wakeUpTime) {}
+  }
+  sleep(1000);
+  console.log('done!');
 
   return {
     props: {
-      data,
+      // data,
+      null: null,
     },
   };
 };
