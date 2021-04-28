@@ -12,7 +12,7 @@ const App = ({
 AppType) => {
   return (
     <>
-      <Header />
+      <Header {...pageProps} />
       <OuterContainer>
         <Component {...pageProps} />
       </OuterContainer>
