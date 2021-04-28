@@ -38,3 +38,9 @@ const Header = () =>
   };
 
 export default Header;
+
+export async function getStaticProps(ctx: any) {
+  console.log('header!', ctx);
+
+  return {};
+}
