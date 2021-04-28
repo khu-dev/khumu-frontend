@@ -18,20 +18,11 @@ const App = ({ Component, pageProps }: AppType) => {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Head>
-      <div style={styles.container}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </div>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Container>
   );
 };
 
 export default App;
-
-const styles = {
-  container: {
-    width: '100%',
-    height: '100%',
-  },
-};
