@@ -4,18 +4,25 @@
  */
 
 import React from 'react';
+import Link from 'next/link';
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
 // import { HeaderType } from '@interfaces/app';
 // import { HeaderContainer } from './header.styled';
 import { theme } from '@components/utils/styles/theme';
 
-const Header = () => {
+interface HeaderProps {
+  pathname: string;
+}
+
+const Header = ({ pathname }: HeaderProps) => {
   return (
-    <div style={styles.container}>
-      <AiOutlineQrcode
-        size={theme.icon.fontSize}
-        style={{ color: theme.color.white, marginRight: '12px' }}
-      />
+    <div style={styles[pathname]}>
+      <Link href={'/qrcode'}>
+        <AiOutlineQrcode
+          size={theme.icon.fontSize}
+          style={{ color: theme.color.white, marginRight: '12px' }}
+        />
+      </Link>
       <AiOutlineBell
         size={theme.icon.fontSize}
         style={{ color: theme.color.white }}
@@ -26,8 +33,8 @@ const Header = () => {
 
 export default Header;
 
-const styles = {
-  container: {
+const styles: any = {
+  '/': {
     width: theme.padding.width,
     height: '5vh',
     display: 'flex',
