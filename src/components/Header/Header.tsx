@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, SerializedStyles } from '@emotion/react';
+import { forwardRef, ReactNode } from 'react';
 
 /**
  * @description 어플리케이션의 헤더
@@ -19,17 +20,24 @@ interface HeaderStyle {
   [key: string]: SerializedStyles;
 }
 
-const HeaderContents: any = {
-  '/': (props: any) => <MainHeaderContent {...props} />,
-  '/qrcode': (props: any) => <MainHeaderContent {...props} />,
+const HeaderContents = (pathname: string) => {
+  switch (pathname) {
+    case '/':
+      return <MainHeaderContent />;
+    case '/qrcode':
+      return <MainHeaderContent />;
+    default:
+      return <MainHeaderContent />;
+  }
 };
 
-const Header = ({ pathname, ...rest }: HeaderProps) => {
-  return (
-    <div css={styles[pathname]}>
-      {HeaderContents[pathname](rest) as Function}
-    </div>
-  );
+// any = {
+//   '/': (props: any) => <MainHeaderContent {...props} />,
+//   '/qrcode': (props: any) => <MainHeaderContent {...props} />,
+// };
+
+const Header = ({ pathname }: HeaderProps) => {
+  return <div css={styles[pathname]}>{HeaderContents(pathname)}</div>;
 };
 
 export default Header;
