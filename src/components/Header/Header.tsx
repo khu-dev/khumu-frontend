@@ -25,7 +25,11 @@ const HeaderContents: any = {
 };
 
 const Header = ({ pathname, ...rest }: HeaderProps) => {
-  return <div css={styles[pathname]}>{HeaderContents[pathname](rest)}</div>;
+  return (
+    <div css={styles[pathname]}>
+      {HeaderContents[pathname](rest) as Function}
+    </div>
+  );
 };
 
 export default Header;
