@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
 
-import { theme } from '@components/utils/styles/theme';
+import { theme } from 'src/constants/theme';
 
 const MainHeaderContent = () => (
   <>

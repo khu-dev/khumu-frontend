@@ -5,7 +5,8 @@
 import React from 'react';
 import * as ts from '@components/utils/styles/title.styled';
 import * as s from './items.styled';
-import { theme } from '@components/utils/styles/theme';
+import { theme } from 'src/constants/theme';
+import Checkbox from '@components/Checkbox';
 
 const isLoading = true;
 
@@ -13,7 +14,7 @@ export const Lecture = () => (
   <s.FeedContents>
     <s.LectureContainer>
       <s.LectureName>
-        <s.LectureCheckBox />
+        <Checkbox />
         <ts.LTitle isLoading={isLoading} color={theme.color.main}>
           {isLoading || '산업디자인사'}
         </ts.LTitle>

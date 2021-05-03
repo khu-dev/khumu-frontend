@@ -1,8 +1,9 @@
 import moment from 'moment';
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import { StyleType } from '@interfaces/style';
-import { theme } from '@components/utils/styles/theme';
+import { theme } from 'src/constants/theme';
 import { convertDate } from '@components/utils/convert.date';
 
 export const FeedContents = styled.div`
@@ -26,14 +27,6 @@ export const LectureName = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 6px;
-`;
-
-export const LectureCheckBox = styled.input.attrs({
-  type: 'checkbox',
-})`
-  width: 13px;
-  height: 13px;
-  margin-right: 12px;
 `;
 
 const tab = (props: StyleType, type: string) => css`
