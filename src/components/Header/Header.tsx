@@ -1,14 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css, SerializedStyles } from '@emotion/react';
-import { forwardRef, ReactNode } from 'react';
 
 /**
  * @description 어플리케이션의 헤더
  *              path에 따라 커스텀된 헤더 반환
  */
 
-// import { HeaderType } from '@interfaces/app';
-// import { HeaderContainer } from './header.styled';
 import { theme } from 'src/constants/theme';
 import MainHeaderContent from './MainHeader';
 
@@ -30,11 +27,6 @@ const HeaderContents = (pathname: string) => {
       return <MainHeaderContent />;
   }
 };
-
-// any = {
-//   '/': (props: any) => <MainHeaderContent {...props} />,
-//   '/qrcode': (props: any) => <MainHeaderContent {...props} />,
-// };
 
 const Header = ({ pathname }: HeaderProps) => {
   return <div css={styles[pathname]}>{HeaderContents(pathname)}</div>;
