@@ -25,7 +25,8 @@
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@interfaces/*": ["src/interfaces/*"]
-    }
+    },
+    "types": ["@emotion/react/types/css-prop"]
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
