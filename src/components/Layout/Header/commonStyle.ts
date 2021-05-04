@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { theme } from 'src/constants/theme';
+import { theme } from '@constants/theme';
 
 export const commonStyle = css`
   width: ${theme.padding.width};

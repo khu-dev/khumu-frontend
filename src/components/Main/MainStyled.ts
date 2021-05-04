@@ -1,4 +1,4 @@
-import { theme } from 'src/constants/theme';
+import { theme } from '@constants/theme';
 import { StyleType } from '@interfaces/style';
 import styled from '@emotion/styled';
 

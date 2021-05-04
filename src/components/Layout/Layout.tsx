@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@components/Header';
+import Header from './Header';
 import { OuterContainer } from '@components/utils/styles/container.styled';
 import { useRouter } from 'next/dist/client/router';
 

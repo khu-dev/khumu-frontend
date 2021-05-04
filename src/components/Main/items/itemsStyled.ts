@@ -3,7 +3,7 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { StyleType } from '@interfaces/style';
-import { theme } from 'src/constants/theme';
+import { theme } from '@constants/theme';
 import { convertDate } from '@components/utils/convert.date';
 
 export const FeedContents = styled.div`

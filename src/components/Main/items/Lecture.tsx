@@ -2,16 +2,28 @@
  * @description 피드의 오늘의 강의
  */
 
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import * as ts from '@components/utils/styles/Title';
-import * as s from './items.styled';
-import { theme } from 'src/constants/theme';
+import * as s from './itemsStyled';
+import { theme } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
-
-const isLoading = true;
 
 interface LecturePropsType {
   isLoading: boolean;
+}
+
+function LectureDescription({ isLoading }: LecturePropsType) {
+  return (
+    <ts.MTitle isLoading={isLoading} style={styles.left}>
+      {isLoading || (
+        <>
+          <span>수업종료까지</span>
+          <span style={styles.leftText}>&nbsp;1시간 45분&nbsp;</span>
+          <span>남았습니다</span>
+        </>
+      )}
+    </ts.MTitle>
+  );
 }
 
 function LectureTitle({ isLoading }: LecturePropsType) {
@@ -34,37 +46,29 @@ function LectureTitle({ isLoading }: LecturePropsType) {
   );
 }
 
-function LectureDescription({ isLoading }: LecturePropsType) {
+export default function Lecture({ isLoading = true }: LecturePropsType) {
   return (
-    <ts.MTitle isLoading={isLoading} style={styles.left}>
-      {isLoading || (
-        <>
-          <span>수업종료까지</span>
-          <span style={styles.leftText}>&nbsp;1시간 45분&nbsp;</span>
-          <span>남았습니다</span>
-        </>
-      )}
-    </ts.MTitle>
+    <s.FeedContents>
+      <LectureTitle isLoading={isLoading} />
+      <LectureDescription isLoading={isLoading} />
+    </s.FeedContents>
   );
 }
 
-export const Lecture = () => (
-  <s.FeedContents>
-    <LectureTitle isLoading={isLoading} />
-    <LectureDescription isLoading={isLoading} />
-  </s.FeedContents>
-);
+interface StyleType {
+  [key: string]: CSSProperties;
+}
 
-const styles: any = {
+const styles: StyleType = {
   time: { marginLeft: '25px', width: '140px' },
   left: {
     marginLeft: '25px',
     fontSize: '14px',
-    fontWeight: '400',
+    fontWeight: 400,
     width: 'calc(100% - 25px)',
   },
   leftText: {
-    fontWeight: '700',
+    fontWeight: 700,
     color: theme.color.main,
   },
 };

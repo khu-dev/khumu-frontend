@@ -1,4 +1,4 @@
-import QRcode from '@components/qrcode';
+import QRcode from '@components/QRcode';
 
 const QRcodePage = () => {
   return <QRcode />;

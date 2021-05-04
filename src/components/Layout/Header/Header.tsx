@@ -7,7 +7,7 @@ import { CSSProperties } from 'react';
  *              path에 따라 커스텀된 헤더 반환
  */
 
-import { theme } from 'src/constants/theme';
+import { theme } from '@constants/theme';
 import { commonStyle } from './commonStyle';
 import MainHeaderContent from './MainHeader';
 

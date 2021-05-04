@@ -1,5 +1,5 @@
 import React from 'react';
-import MainPresenter from './Main.presenter';
+import MainPresenter from './MainPresenter';
 
 const MainContainer = () => {
   const itemList = [
@@ -22,6 +22,7 @@ const MainContainer = () => {
       title: '광고',
       numOfContents: 1,
       height: '100px',
+      isAdvertise: true,
     },
     {
       title: '실시간 인기글',

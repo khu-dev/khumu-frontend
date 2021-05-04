@@ -1,5 +1,5 @@
 // import { apiBase } from '@api/api-base';
-import Main from '@components/main';
+import Main from '@components/Main';
 import { GetServerSideProps } from 'next';
 
 const MainPage = () => {
@@ -8,9 +8,7 @@ const MainPage = () => {
 
 export default MainPage;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log(context);
-
+export const getServerSideProps: GetServerSideProps = async (/*context*/) => {
   // const data = (await apiBase())?.data || null;
   // console.log('loading ...');
   // function sleep(ms: number) {

@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 
-import FeedPresenter from './Feed.presenter';
+import FeedPresenter from './FeedPresenter';
 
 const FeedContainer = () => {
   const [selected, setSelected] = useState('lecture');
