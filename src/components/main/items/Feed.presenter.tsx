@@ -6,7 +6,7 @@
 import React from 'react';
 import { BsCaretRightFill } from 'react-icons/bs';
 import { ItemContainer } from '@components/main/items/items.styled';
-import { TitleContainer, XLTitle } from '@components/utils/styles/title.styled';
+import { TitleContainer, XLTitle } from '@components/utils/styles/Title';
 import { theme } from 'src/constants/theme';
 import * as ms from '../Main.styled';
 

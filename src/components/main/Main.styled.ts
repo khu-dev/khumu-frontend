@@ -1,6 +1,6 @@
 import { theme } from 'src/constants/theme';
 import { StyleType } from '@interfaces/style';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const ContentContainer = styled.div`
   width: 100%;

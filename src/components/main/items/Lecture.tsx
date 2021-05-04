@@ -3,15 +3,19 @@
  */
 
 import React from 'react';
-import * as ts from '@components/utils/styles/title.styled';
+import * as ts from '@components/utils/styles/Title';
 import * as s from './items.styled';
 import { theme } from 'src/constants/theme';
 import Checkbox from '@components/Checkbox';
 
 const isLoading = true;
 
-export const Lecture = () => (
-  <s.FeedContents>
+interface LecturePropsType {
+  isLoading: boolean;
+}
+
+function LectureTitle({ isLoading }: LecturePropsType) {
+  return (
     <s.LectureContainer>
       <s.LectureName>
         <Checkbox />
@@ -27,6 +31,11 @@ export const Lecture = () => (
         {isLoading || '09:00 ~ 13:45'}
       </ts.LTitle>
     </s.LectureContainer>
+  );
+}
+
+function LectureDescription({ isLoading }: LecturePropsType) {
+  return (
     <ts.MTitle isLoading={isLoading} style={styles.left}>
       {isLoading || (
         <>
@@ -36,6 +45,13 @@ export const Lecture = () => (
         </>
       )}
     </ts.MTitle>
+  );
+}
+
+export const Lecture = () => (
+  <s.FeedContents>
+    <LectureTitle isLoading={isLoading} />
+    <LectureDescription isLoading={isLoading} />
   </s.FeedContents>
 );
 

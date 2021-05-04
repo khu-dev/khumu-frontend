@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { forwardRef } from 'react';
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
 
 import { theme } from 'src/constants/theme';
 
-const MainHeaderContent = () => (
+const MainHeaderContent = forwardRef(() => (
   <>
     <Link href={'/qrcode'}>
       <AiOutlineQrcode
@@ -16,6 +17,6 @@ const MainHeaderContent = () => (
       style={{ color: theme.color.white }}
     />
   </>
-);
+));
 
 export default MainHeaderContent;

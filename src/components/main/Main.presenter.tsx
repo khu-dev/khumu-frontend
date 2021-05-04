@@ -6,7 +6,7 @@ import React from 'react';
 import * as ms from './Main.styled';
 import Feed from './items/Feed.container';
 import { ScrollAnimationItem } from '@components/main/items/ScrollAnimationItem';
-import { LTitle, TitleContainer } from '@components/utils/styles/title.styled';
+import { LTitle, TitleContainer } from '@components/utils/styles/Title';
 import { theme } from 'src/constants/theme';
 
 interface MarginType {

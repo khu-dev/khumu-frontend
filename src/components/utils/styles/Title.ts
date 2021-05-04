@@ -1,5 +1,6 @@
 import { StyleType } from '@interfaces/style';
-import styled, { keyframes, css } from 'styled-components';
+import { keyframes, css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { theme } from '../../../constants/theme';
 
 /**

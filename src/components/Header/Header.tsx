@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { css, SerializedStyles } from '@emotion/react';
+import { css } from '@emotion/react';
+import { CSSProperties } from 'react';
 
 /**
  * @description 어플리케이션의 헤더
@@ -7,17 +8,14 @@ import { css, SerializedStyles } from '@emotion/react';
  */
 
 import { theme } from 'src/constants/theme';
+import { commonStyle } from './commonStyle';
 import MainHeaderContent from './MainHeader';
 
 interface HeaderProps {
   pathname: string;
 }
 
-interface HeaderStyle {
-  [key: string]: SerializedStyles;
-}
-
-const HeaderContents = (pathname: string) => {
+function HeaderContents(pathname: string) {
   switch (pathname) {
     case '/':
       return <MainHeaderContent />;
@@ -26,24 +24,21 @@ const HeaderContents = (pathname: string) => {
     default:
       return <MainHeaderContent />;
   }
-};
+}
 
-const Header = ({ pathname }: HeaderProps) => {
-  return <div css={styles[pathname]}>{HeaderContents(pathname)}</div>;
-};
-
-export default Header;
-
-const styles: HeaderStyle = {
-  '/': css`
-    width: ${theme.padding.width};
-    height: 5vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding: ${theme.padding.base};
-    background-color: ${theme.color.main};
-    color: ${theme.color.white};
-  `,
-};
+export default function Header({ pathname }: HeaderProps) {
+  return (
+    <div
+      style={
+        css`
+          ${commonStyle};
+          justify-content: flex-end;
+          background-color: ${theme.color.main};
+          color: ${theme.color.white};
+        ` as CSSProperties
+      }
+    >
+      {HeaderContents(pathname)}
+    </div>
+  );
+}
