@@ -7,12 +7,14 @@ import * as ms from './MainStyled';
 import { ScrollAnimationItem } from '@components/Main/items/ScrollAnimationItem';
 import { LTitle, TitleContainer } from '@components/utils/styles/Title';
 import { theme } from '@constants/theme';
+import { SerializedStyles } from '@emotion/utils';
 
 interface ScrollContentsPropsType {
   item: {
     title: string;
     numOfContents: number;
     flexDirection?: string;
+    commonStyle?: SerializedStyles;
     height: string;
     margin?: {
       [key: string]: {

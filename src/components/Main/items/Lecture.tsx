@@ -7,6 +7,7 @@ import * as ts from '@components/utils/styles/Title';
 import * as s from './itemsStyled';
 import { theme } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
+import { css } from '@emotion/react';
 
 interface LecturePropsType {
   isLoading: boolean;
@@ -14,11 +15,26 @@ interface LecturePropsType {
 
 function LectureDescription({ isLoading }: LecturePropsType) {
   return (
-    <ts.MTitle isLoading={isLoading} style={styles.left}>
+    <ts.MTitle
+      isLoading={isLoading}
+      css={css`
+        margin-left: 25px;
+        font-size: 14px;
+        font-weight: 40;
+        width: calc(100% - 25px);
+      `}
+    >
       {isLoading || (
         <>
           <span>수업종료까지</span>
-          <span style={styles.leftText}>&nbsp;1시간 45분&nbsp;</span>
+          <span
+            css={css`
+              font-weight: 700;
+              color: ${theme.color.main};
+            `}
+          >
+            &nbsp;1시간 45분&nbsp;
+          </span>
           <span>남았습니다</span>
         </>
       )}
@@ -38,7 +54,10 @@ function LectureTitle({ isLoading }: LecturePropsType) {
       <ts.LTitle
         isLoading={isLoading}
         color={theme.color.darkgray}
-        style={styles.time}
+        css={css`
+          margin-left: 25px;
+          width: 140px;
+        `}
       >
         {isLoading || '09:00 ~ 13:45'}
       </ts.LTitle>
@@ -54,21 +73,3 @@ export default function Lecture({ isLoading = true }: LecturePropsType) {
     </s.FeedContents>
   );
 }
-
-interface StyleType {
-  [key: string]: CSSProperties;
-}
-
-const styles: StyleType = {
-  time: { marginLeft: '25px', width: '140px' },
-  left: {
-    marginLeft: '25px',
-    fontSize: '14px',
-    fontWeight: 400,
-    width: 'calc(100% - 25px)',
-  },
-  leftText: {
-    fontWeight: 700,
-    color: theme.color.main,
-  },
-};

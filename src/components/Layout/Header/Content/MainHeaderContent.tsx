@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
+import { css } from '@emotion/react';
 
 import { theme } from '@constants/theme';
 import LinkIcon from '../LinkIcon';
@@ -10,13 +11,18 @@ export default function MainHeaderContent(): JSX.Element {
       <LinkIcon pathname={'/qrcode'}>
         <AiOutlineQrcode
           size={theme.icon.fontSize}
-          style={{ color: theme.color.white, marginRight: '12px' }}
+          css={css`
+            color: ${theme.color.white};
+            margin-right: 12px;
+          `}
         />
       </LinkIcon>
       <LinkIcon pathname={'/notice'}>
         <AiOutlineBell
           size={theme.icon.fontSize}
-          style={{ color: theme.color.white }}
+          css={css`
+            color: ${theme.color.white};
+          `}
         />
       </LinkIcon>
     </>
