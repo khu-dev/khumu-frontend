@@ -2,7 +2,7 @@
  * @description 피드의 오늘의 강의
  */
 
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import * as ts from '@components/utils/styles/Title';
 import * as s from './itemsStyled';
 import { theme } from '@constants/theme';

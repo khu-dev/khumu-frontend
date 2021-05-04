@@ -6,17 +6,15 @@ interface LinkIconProps {
   children: JSX.Element;
 }
 
-export default function LinkIcon({
-  pathname,
-  children,
-  ...rest
-}: LinkIconProps) {
-  const Icon: any = React.forwardRef<React.ReactNode>((props, _) => (
-    <>{props.children}</>
+export default function LinkIcon({ pathname, children }: LinkIconProps) {
+  const Icon: any = React.forwardRef<HTMLAnchorElement>((props, ref) => (
+    <a ref={ref} {...props}>
+      {props.children}
+    </a>
   ));
 
   return (
-    <Link href={pathname} {...rest}>
+    <Link href={pathname} passHref>
       <Icon>{children}</Icon>
     </Link>
   );
