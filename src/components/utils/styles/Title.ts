@@ -1,6 +1,7 @@
 import { StyleType } from '@interfaces/style';
-import styled, { keyframes, css } from 'styled-components';
-import { theme } from './theme';
+import { keyframes, css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { theme } from '../../../constants/theme';
 
 /**
  * @description 타이틀 로딩시 깜빡거리는 애니메이션

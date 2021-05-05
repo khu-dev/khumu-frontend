@@ -7,7 +7,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ScrollItemContainer } from '@components/main/items/items.styled';
+import { ScrollItemContainer } from '@components/Main/items/itemsStyled';
 import { ScrollAnimationProps } from '@interfaces/components';
 
 export const ScrollAnimationItem = ({

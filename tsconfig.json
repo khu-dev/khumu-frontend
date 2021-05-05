@@ -24,8 +24,10 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
+      "@constants/*": ["src/constants/*"],
       "@interfaces/*": ["src/interfaces/*"]
-    }
+    },
+    "types": ["@emotion/react/types/css-prop"]
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
