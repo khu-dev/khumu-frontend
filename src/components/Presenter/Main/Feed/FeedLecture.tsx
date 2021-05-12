@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import * as ts from '@components/utils/styles/Title';
+import { STitle } from '@components/utils/styles/Title';
 import * as s from '../items/itemsStyled';
 import { theme } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
@@ -15,7 +15,8 @@ interface LecturePropsType {
 
 function LectureDescription({ isLoading }: LecturePropsType) {
   return (
-    <ts.MTitle
+    <STitle
+      size={theme.title.M}
       isLoading={isLoading}
       css={css`
         margin-left: 25px;
@@ -38,7 +39,7 @@ function LectureDescription({ isLoading }: LecturePropsType) {
           <span>남았습니다</span>
         </>
       )}
-    </ts.MTitle>
+    </STitle>
   );
 }
 
@@ -47,20 +48,27 @@ function LectureTitle({ isLoading }: LecturePropsType) {
     <s.LectureContainer>
       <s.LectureName>
         <Checkbox />
-        <ts.LTitle isLoading={isLoading} color={theme.color.main}>
+        <STitle
+          size={theme.title.L}
+          isLoading={isLoading}
+          css={css`
+            color: ${theme.color.main};
+          `}
+        >
           {isLoading || '산업디자인사'}
-        </ts.LTitle>
+        </STitle>
       </s.LectureName>
-      <ts.LTitle
+      <STitle
+        size={theme.title.L}
         isLoading={isLoading}
-        color={theme.color.darkgray}
         css={css`
           margin-left: 25px;
           width: 140px;
+          color: ${theme.color.darkgray};
         `}
       >
         {isLoading || '09:00 ~ 13:45'}
-      </ts.LTitle>
+      </STitle>
     </s.LectureContainer>
   );
 }

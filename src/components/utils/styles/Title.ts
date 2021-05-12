@@ -29,39 +29,20 @@ const loading_title = (minHeight: string) => css`
   animation: ${loading_keyframes} 1.3s infinite;
 `;
 
-export const XLTitle = styled.h1`
-  font-size: 22px;
-  font-weight: 700;
-  color: ${(props: StyleType) => props.color || theme.color.black};
+interface TitleType {
+  size: number;
+  weight?: number;
+  isLoading?: boolean;
+}
 
-  ${(props: StyleType) => (props.isLoading ? loading_title('22px') : null)}
+export const STitle = styled.h1<TitleType>`
+  font-size: ${({ size }) => `${size}px`};
+  font-weight: ${({ weight }) => `${weight || 600}`};
+
+  ${({ isLoading, size }) => isLoading && loading_title(`${size}px`)}
 `;
 
-export const LTitle = styled.h2`
-  font-size: 18px;
-  font-weight: 600;
-  color: ${(props: StyleType) => props.color || theme.color.black};
-
-  ${(props: StyleType) => (props.isLoading ? loading_title('18px') : null)}
-`;
-
-export const MTitle = styled.h3`
-  font-size: 15px;
-  font-weight: 600;
-  color: ${(props: StyleType) => props.color || theme.color.black};
-
-  ${(props: StyleType) => (props.isLoading ? loading_title('15px') : null)}
-`;
-
-export const STitle = styled.h4`
-  font-size: 13px;
-  font-weight: 600;
-  color: ${(props: StyleType) => props.color || theme.color.black};
-
-  ${(props: StyleType) => (props.isLoading ? loading_title('13px') : null)}
-`;
-
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.div<StyleType>`
   width: ${(props: StyleType) => (props.isMain ? 'calc(100% - 64px)' : '100%')};
   height: ${(props: StyleType) => (props.isMain ? '10%' : 'auto')};
   display: flex;

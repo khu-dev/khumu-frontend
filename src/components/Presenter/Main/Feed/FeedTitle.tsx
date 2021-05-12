@@ -1,12 +1,20 @@
 import { BsCaretRightFill } from 'react-icons/bs';
 
-import { TitleContainer, XLTitle } from '@components/utils/styles/Title';
+import { TitleContainer, STitle } from '@components/utils/styles/Title';
 import { theme } from '@constants/theme';
+import { css } from '@emotion/react';
 
 export default function FeedTitle({ title }: { title: string }) {
   return (
     <TitleContainer isMain>
-      <XLTitle color={theme.color.white}>{title}</XLTitle>
+      <STitle
+        size={theme.title.XL}
+        css={css`
+          color: ${theme.color.white};
+        `}
+      >
+        {title}
+      </STitle>
       <BsCaretRightFill color={theme.color.white} size={theme.icon.fontSize} />
     </TitleContainer>
   );
