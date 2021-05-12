@@ -4,7 +4,7 @@
 
 import React from 'react';
 import * as ms from './MainStyled';
-import { ScrollAnimationItem } from '@components/Main/items/ScrollAnimationItem';
+import { ScrollAnimationItem } from '@components/Presenter/Main/items/ScrollAnimationItem';
 import { LTitle, TitleContainer } from '@components/utils/styles/Title';
 import { theme } from '@constants/theme';
 import { SerializedStyles } from '@emotion/utils';

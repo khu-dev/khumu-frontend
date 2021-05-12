@@ -1,3 +1,7 @@
+/**
+ * @description 아이콘 클릭시 링크를 통해 route
+ */
+
 import Link from 'next/link';
 import React from 'react';
 

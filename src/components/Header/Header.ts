@@ -1,7 +1,11 @@
-import { css } from '@emotion/react';
+/**
+ * @description 일반적인 헤더의 스타일
+ */
+
+import styled from '@emotion/styled';
 import { theme } from '@constants/theme';
 
-export const commonStyle = css`
+export const Header = styled.div`
   width: ${theme.padding.width};
   height: 5vh;
   display: flex;
