@@ -3,65 +3,30 @@
  */
 
 import React, { useState } from 'react';
-import { BsCaretRightFill } from 'react-icons/bs';
+
+import { TabType } from './type';
 
 import * as ms from '../MainStyled';
-import { TitleContainer, XLTitle } from '@components/utils/styles/Title';
-import { ItemContainer } from '@components/Presenter/Main/items/itemsStyled';
-import { theme } from '@constants/theme';
 
-import Lecture from '../items/Lecture';
-
-type TabType = 'lecture' | 'calender';
-
-function FeedContent({ selected }: { selected: TabType }) {
-  return (
-    <>
-      <span id="lecture" />
-      <span id="calender" />
-      {selected === 'lecture' ? (
-        <Lecture isLoading={true} />
-      ) : (
-        <Lecture isLoading={true} />
-      )}
-      <span id="date" />
-      <span />
-    </>
-  );
-}
-
-function FeedTitle() {
-  return (
-    <TitleContainer isMain>
-      <XLTitle color={theme.color.white}>나의 피드</XLTitle>
-      <BsCaretRightFill color={theme.color.white} size={theme.icon.fontSize} />
-    </TitleContainer>
-  );
-}
+import FeedTitle from './FeedTitle';
+import FeedTab from './FeedTab';
+import FeedContent from './FeedContent';
 
 export default function Feed() {
   const [currentTab, setCurrentTab] = useState<TabType>('lecture');
 
-  const onTabClick = (e: React.MouseEvent<HTMLElement>) => {
+  const handleTab = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
     const { id: nextState } = target;
 
     setCurrentTab(nextState as TabType);
   };
 
-  const isMain = true;
-
   return (
     <ms.FeedContainer>
-      <FeedTitle />
-      <ItemContainer
-        isMain={isMain}
-        selected={currentTab}
-        onClick={onTabClick}
-        height="140px"
-      >
-        <FeedContent selected={currentTab} />
-      </ItemContainer>
+      <FeedTitle title={'나의 피드'} />
+      <FeedTab feedList={['오늘의 강의', '학사 일정']} handleTab={handleTab} />
+      <FeedContent currentTab={currentTab} />
     </ms.FeedContainer>
   );
 }

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import * as ts from '@components/utils/styles/Title';
-import * as s from './itemsStyled';
+import * as s from '../items/itemsStyled';
 import { theme } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
 import { css } from '@emotion/react';
@@ -65,7 +65,7 @@ function LectureTitle({ isLoading }: LecturePropsType) {
   );
 }
 
-export default function Lecture({ isLoading = true }: LecturePropsType) {
+export default function FeedLecture({ isLoading = true }: LecturePropsType) {
   return (
     <s.FeedContents>
       <LectureTitle isLoading={isLoading} />
