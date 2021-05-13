@@ -3,8 +3,8 @@
  */
 
 import React from 'react';
+import Feed from './Feed';
 import * as ms from './MainStyled';
-import Feed from './items/FeedContainer';
 import ScrollContents from './ScrollContents';
 
 interface MarginType {

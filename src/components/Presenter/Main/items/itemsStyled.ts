@@ -96,13 +96,12 @@ export const ScrollItemContainer = styled.div`
       : css``};
 `;
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled.div<StyleType>`
   width: ${theme.margin.width};
-  min-height: ${(props: StyleType) => props.minHeight || null};
-  height: ${(props: StyleType) => props.height || '25vh'};
+  min-height: ${(props) => props.minHeight || null};
+  height: ${(props) => props.height || '25vh'};
   margin: ${theme.margin.base};
-  background-color: ${(props: StyleType) =>
-    props.backgroundColor || theme.color.white};
+  background-color: ${(props) => props.backgroundColor || theme.color.white};
   border-radius: ${theme.borderRadius};
   position: relative;
   display: flex;
@@ -110,7 +109,7 @@ export const ItemContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  ${(props: StyleType) =>
+  ${(props) =>
     props.isMain
       ? css`
     & > #lecture {

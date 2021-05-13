@@ -19,4 +19,10 @@ export const theme = {
   icon: {
     fontSize: 24,
   },
+  title: {
+    XL: 22,
+    L: 18,
+    M: 15,
+    S: 13,
+  },
 };

@@ -1,9 +1,11 @@
 // import { apiBase } from '@api/api-base';
-import Main from '@components/Main';
 import { GetServerSideProps } from 'next';
 
+import MainPresenter from '@components/Presenter/Main';
+import { mainItemList } from '@constants/mainItemList';
+
 const MainPage = () => {
-  return <Main />;
+  return <MainPresenter itemList={mainItemList} />;
 };
 
 export default MainPage;

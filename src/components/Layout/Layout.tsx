@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../Header';
 import { OuterContainer } from '@components/utils/styles/container.styled';
 import { useRouter } from 'next/dist/client/router';
 
@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
   const { pathname } = useRouter();
   return (
     <>
-      <Header {...{ pathname }} />
+      <Header pathname={pathname} />
       <OuterContainer>{children}</OuterContainer>
     </>
   );
