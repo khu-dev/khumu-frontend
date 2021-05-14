@@ -3,11 +3,12 @@
  */
 
 import React from 'react';
-import { STitle } from '@components/utils/styles/Title';
+import { STitle } from '@components/Title/Title';
 import * as s from '../items/itemsStyled';
 import { theme } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 interface LecturePropsType {
   isLoading: boolean;
@@ -45,8 +46,22 @@ function LectureDescription({ isLoading }: LecturePropsType) {
 
 function LectureTitle({ isLoading }: LecturePropsType) {
   return (
-    <s.LectureContainer>
-      <s.LectureName>
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+      `}
+    >
+      <div
+        css={css`
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          margin-bottom: 6px;
+        `}
+      >
         <Checkbox />
         <STitle
           size={theme.title.L}
@@ -57,7 +72,7 @@ function LectureTitle({ isLoading }: LecturePropsType) {
         >
           {isLoading || '산업디자인사'}
         </STitle>
-      </s.LectureName>
+      </div>
       <STitle
         size={theme.title.L}
         isLoading={isLoading}
@@ -69,15 +84,24 @@ function LectureTitle({ isLoading }: LecturePropsType) {
       >
         {isLoading || '09:00 ~ 13:45'}
       </STitle>
-    </s.LectureContainer>
+    </div>
   );
 }
 
 export default function FeedLecture({ isLoading = true }: LecturePropsType) {
   return (
-    <s.FeedContents>
+    <FeedContent>
       <LectureTitle isLoading={isLoading} />
       <LectureDescription isLoading={isLoading} />
-    </s.FeedContents>
+    </FeedContent>
   );
 }
+
+const FeedContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: ${theme.margin.width};
+  height: 100%;
+  margin: 20px 32px;
+  justify-content: space-evenly;
+`;

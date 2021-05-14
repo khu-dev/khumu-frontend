@@ -5,10 +5,11 @@
 import React from 'react';
 import * as ms from './MainStyled';
 import { ScrollAnimationItem } from '@components/Presenter/Main/items/ScrollAnimationItem';
-import { STitle, TitleContainer } from '@components/utils/styles/Title';
+import { STitle, TitleContainer } from '@components/Title/Title';
 import { theme } from '@constants/theme';
 import { SerializedStyles } from '@emotion/utils';
 import { css } from '@emotion/react';
+import ScrollAnimation from 'react-scroll-fade-animation';
 
 interface ScrollContentsPropsType {
   item: {
@@ -50,14 +51,7 @@ export default function ScrollContents({
   idx,
 }: ScrollContentsPropsType) {
   return (
-    <ScrollAnimationItem
-      init={{
-        isInit: idx < 3,
-        idx,
-      }}
-      height={rest.height}
-      isAdvertise={isAdvertise}
-    >
+    <ScrollAnimation path={'top'}>
       <ContentTitle title={title} isAdvertise={isAdvertise} />
       <ms.Content flexDirection={rest.flexDirection}>
         {Array(rest.numOfContents)
@@ -72,6 +66,6 @@ export default function ScrollContents({
             ></ms.ContentItem>
           ))}
       </ms.Content>
-    </ScrollAnimationItem>
+    </ScrollAnimation>
   );
 }

@@ -1,6 +1,6 @@
 import { BsCaretRightFill } from 'react-icons/bs';
 
-import { TitleContainer, STitle } from '@components/utils/styles/Title';
+import { TitleContainer, STitle } from '@components/Title/Title';
 import { theme } from '@constants/theme';
 import { css } from '@emotion/react';
 

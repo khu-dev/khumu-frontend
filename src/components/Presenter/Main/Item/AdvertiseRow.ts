@@ -1,15 +1,14 @@
 import { theme } from '@constants/theme';
 import styled from '@emotion/styled';
 
-export const Row = styled.div`
+export const AdvertiseRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  width: ${theme.margin.width};
+  width: 100%;
   height: 25vh;
-  margin: ${theme.margin.base};
+  margin: ${theme.margin.base} 0;
 
-  border: 1px solid ${theme.color.main};
-  border-radius: ${theme.borderRadius};
+  background-color: ${theme.color.main};
 `;
