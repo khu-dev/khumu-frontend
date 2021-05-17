@@ -1,0 +1,67 @@
+@keyframes skeleton_keyframes {
+  0% {
+    background-color: #eaeaea;
+  }
+  50% {
+    background-color: #f7f7f7;
+  }
+  100% {
+    background-color: #eaeaea;
+  }
+}
+
+/**
+ * common style
+ **/
+.skeleton {
+  background-color: #eaeaea;
+  border-radius: 3px;
+  animation: loading_keyfram 1.3s infinite;
+}
+
+/**
+ * title style
+ **/
+.skeleton-title-01 {
+  width: 70px;
+  height: 30px;
+
+  margin-bottom: 18px;
+}
+
+.skeleton-title-02 {
+  width: 90px;
+  height: 26px;
+
+  margin-bottom: 14px;
+}
+
+.skeleton-title-03 {
+  width: 120px;
+  height: 22px;
+
+  margin-bottom: 11px;
+}
+
+/**
+ * description style
+ **/
+.skeleton-description-01 {
+  width: 90%;
+  height: 21px;
+
+  margin-bottom: 11px;
+}
+
+.skeleton-description-02 {
+  width: 90%;
+  height: 16px;
+
+  margin-bottom: 10px;
+}
+
+/**
+ * img style
+ **/
+.skeleton-image {
+}
