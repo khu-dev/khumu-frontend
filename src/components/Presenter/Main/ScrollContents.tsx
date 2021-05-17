@@ -4,8 +4,7 @@
 
 import React from 'react';
 import * as ms from './MainStyled';
-import { ScrollAnimationItem } from '@components/Presenter/Main/items/ScrollAnimationItem';
-import { STitle, TitleContainer } from '@components/Title/Title';
+import { STitle } from '@components/Title/Title';
 import { theme } from '@constants/theme';
 import { SerializedStyles } from '@emotion/utils';
 import { css } from '@emotion/react';
@@ -28,12 +27,9 @@ interface ScrollContentsPropsType {
   idx: number;
 }
 
-function ContentTitle(props: {
-  isAdvertise: boolean | undefined;
-  title: string;
-}) {
+function ContentTitle(props: { isAdvertise: boolean | undefined; title: string }) {
   return props.isAdvertise ? null : (
-    <TitleContainer>
+    <div>
       <STitle
         size={theme.title.L}
         css={css`
@@ -42,7 +38,7 @@ function ContentTitle(props: {
       >
         {props.title}
       </STitle>
-    </TitleContainer>
+    </div>
   );
 }
 

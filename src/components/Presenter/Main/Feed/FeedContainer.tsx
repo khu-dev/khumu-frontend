@@ -9,8 +9,6 @@ import { TabType } from './type';
 import FeedTitle from './FeedTitle';
 import FeedTab from './FeedTab';
 import FeedContent from './FeedContent';
-import styled from '@emotion/styled';
-import { theme } from '@constants/theme';
 
 export default function Feed() {
   const [currentTab, setCurrentTab] = useState<TabType>('lecture');
@@ -23,22 +21,10 @@ export default function Feed() {
   };
 
   return (
-    <FeedContainer>
+    <div className={'main-feed-container'}>
       <FeedTitle title={'나의 피드'} />
       <FeedTab feedList={['오늘의 강의', '학사 일정']} handleTab={handleTab} />
       <FeedContent currentTab={currentTab} />
-    </FeedContainer>
+    </div>
   );
 }
-
-const FeedContainer = styled.div`
-  width: 100%;
-  min-height: 220px;
-  height: 30vh;
-  max-height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: ${theme.color.main};
-`;

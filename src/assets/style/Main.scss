@@ -1,0 +1,15 @@
+@import './App.scss';
+
+.main-feed-container {
+  width: 100%;
+  min-height: 220px;
+  height: 30vh;
+  max-height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: $color-main;
+}

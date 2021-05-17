@@ -20,7 +20,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
-    "react-scroll-fade-animation": "^0.5.3"
+    "react-scroll-fade-animation": "^0.5.3",
+    "sass": "^1.32.13"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

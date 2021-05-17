@@ -3,8 +3,11 @@ import React from 'react';
 
 import { AppType } from '@interfaces/app';
 
-import '@assets/css/app.css';
-import '@assets/css/scroll.css';
+import '@assets/style/App.scss';
+import '@assets/style/Main.scss';
+import '@assets/style/Skeleton.scss';
+
+import '@assets/style/Header.scss';
 
 import Layout from '@components/Layout';
 

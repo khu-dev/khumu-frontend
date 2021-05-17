@@ -9,35 +9,30 @@ import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
 import { css } from '@emotion/react';
 
 import { theme } from '@constants/theme';
-import { Header } from '../Header';
 import LinkIcon from '../Link';
 
 export default function MainHeaderContent(): JSX.Element {
+  const csses = useStyles();
   return (
-    <Header
-      css={css`
-        justify-content: flex-end;
-        background-color: ${theme.color.main};
-        color: ${theme.color.white};
-      `}
-    >
+    <div className={'header header-main'}>
       <LinkIcon pathname={'/qrcode'}>
-        <AiOutlineQrcode
-          size={theme.icon.fontSize}
-          css={css`
-            color: ${theme.color.white};
-            margin-right: 12px;
-          `}
-        />
+        <AiOutlineQrcode size={theme.icon.fontSize} css={csses.qrcode} />
       </LinkIcon>
       <LinkIcon pathname={'/notice'}>
-        <AiOutlineBell
-          size={theme.icon.fontSize}
-          css={css`
-            color: ${theme.color.white};
-          `}
-        />
+        <AiOutlineBell size={theme.icon.fontSize} css={csses.bell} />
       </LinkIcon>
-    </Header>
+    </div>
   );
+}
+
+function useStyles() {
+  return {
+    qrcode: css`
+      color: ${theme.color.white};
+      margin-right: 12px;
+    `,
+    bell: css`
+      color: ${theme.color.white};
+    `,
+  };
 }
