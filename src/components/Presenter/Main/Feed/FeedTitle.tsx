@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 
 export default function FeedTitle({ title }: { title: string }) {
   return (
-    <div>
+    <div className={'main-feed-title-container'}>
       <STitle
         size={theme.title.XL}
         css={css`

@@ -14,7 +14,10 @@ export default function FeedLecture({ isLoading = true }: LectureProps) {
   const styles = useStyles();
 
   return (
-    <div css={styles.container}>
+    <div
+      // css={styles.container}
+      className={'main-feed-content'}
+    >
       <LectureName name={'산업디자인사'} time={'09:00 ~ 13:45'} isLoading={isLoading} />
       <LectureDescription
         description={['수업종료까지', ' 1시간 45분 ', '남았습니다']}
@@ -29,10 +32,12 @@ function useStyles() {
     container: css`
       display: flex;
       flex-direction: column;
-      width: ${theme.margin.width};
+      width: ${theme.padding.width};
       height: 100%;
-      margin: 20px 32px;
+      padding: 0px 32px;
       justify-content: space-evenly;
+      position: relative;
+      z-index: 2;
     `,
   };
 }
