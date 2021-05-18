@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const OuterContainer = styled.div`
   width: 100vw;
   height: 100%;
-  min-width: 280px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

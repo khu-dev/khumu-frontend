@@ -3,13 +3,9 @@
  *              path에 따라 커스텀된 헤더 반환
  */
 
-import MainHeader from './Content/MainHeader';
+import MainHeader from './Main/MainHeader';
 
-interface HeaderProps {
-  pathname: string;
-}
-
-export default function HeaderContainer({ pathname }: HeaderProps) {
+export default function HeaderContainer() {
   switch (pathname) {
     case '/':
       return <MainHeader />;

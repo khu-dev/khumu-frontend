@@ -32,7 +32,7 @@ export default function FeedTab({ feedList, handleTab, currentTab }: FeedTabProp
           </div>
         ))}
       </div>
-      <div>
+      <div className={'feed-tab-date'}>
         [ {formatMonthAndDay} {formatDate} ]
       </div>
     </div>

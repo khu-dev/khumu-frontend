@@ -1,14 +1,19 @@
-@import './App.scss';
+@import './shared.scss';
 
 .header {
   width: $padding-width;
-  height: 5vh;
+  height: $header-height;
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
 
-  padding: $padding-base;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+
+  padding: 0px $padding-base;
 
   background-color: $color-white;
   color: $color-black;

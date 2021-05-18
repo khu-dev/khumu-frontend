@@ -11,7 +11,7 @@ import { css } from '@emotion/react';
 import { theme } from '@constants/theme';
 import LinkIcon from '../Link';
 
-export default function MainHeaderContent(): JSX.Element {
+export default function MainHeader(): JSX.Element {
   const csses = useStyles();
   return (
     <div className={'header header-main'}>

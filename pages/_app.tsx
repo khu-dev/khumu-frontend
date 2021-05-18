@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
+import styled from '@emotion/styled';
 
 import { AppType } from '@interfaces/app';
 
@@ -9,9 +10,9 @@ import '@assets/style/Skeleton.scss';
 
 import '@assets/style/Header.scss';
 
-import Layout from '@components/Layout';
+import MainHeader from '@components/Header/Main';
 
-const App = ({ Component, pageProps }: AppType) => {
+export default function App({ Component, pageProps }: AppType) {
   return (
     <>
       <Head>
@@ -20,11 +21,10 @@ const App = ({ Component, pageProps }: AppType) => {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Head>
-      <Layout>
+      <MainHeader />
+      <div className={'app-outer-container'}>
         <Component {...pageProps} />
-      </Layout>
+      </div>
     </>
   );
-};
-
-export default App;
+}
