@@ -1,12 +1,14 @@
+@import './shared.scss';
+
 @keyframes skeleton_keyframes {
   0% {
-    background-color: #eaeaea;
+    background-color: $color-gray;
   }
   50% {
-    background-color: #f7f7f7;
+    background-color: $color-darkgray;
   }
   100% {
-    background-color: #eaeaea;
+    background-color: $color-gray;
   }
 }
 
@@ -16,7 +18,7 @@
 .skeleton {
   background-color: #eaeaea;
   border-radius: 3px;
-  animation: loading_keyfram 1.3s infinite;
+  animation: skeleton_keyframes 2.3s infinite;
 }
 
 /**
@@ -47,14 +49,14 @@
  * description style
  **/
 .skeleton-description-01 {
-  width: 90%;
+  width: 100%;
   height: 21px;
 
   margin-bottom: 11px;
 }
 
 .skeleton-description-02 {
-  width: 90%;
+  width: 100%;
   height: 16px;
 
   margin-bottom: 10px;
@@ -64,4 +66,24 @@
  * img style
  **/
 .skeleton-image {
+}
+
+// container
+
+.skeleton-middle-container {
+  width: 90%;
+  height: 80%;
+}
+
+.main-skeleton-container {
+  width: 100%;
+  height: 100%;
+
+  background-color: $color-lightgray;
+  border: 1px solid $color-lightgray;
+  border-radius: $box-border-radius;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

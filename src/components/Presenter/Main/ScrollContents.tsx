@@ -2,30 +2,12 @@
  * @description Main화면 보여주는 Presenter
  */
 
-import React from 'react';
-import * as ms from './MainStyled';
+import React, { useEffect, useState } from 'react';
 import { STitle } from '@components/Title/Title';
 import { theme } from '@constants/theme';
-import { SerializedStyles } from '@emotion/utils';
 import { css } from '@emotion/react';
-import ScrollAnimation from 'react-scroll-fade-animation';
-
-interface ScrollContentsPropsType {
-  item: {
-    title: string;
-    numOfContents: number;
-    flexDirection?: string;
-    commonStyle?: SerializedStyles;
-    height: string;
-    margin?: {
-      [key: string]: {
-        [key: string]: string;
-      };
-    };
-    isAdvertise?: boolean;
-  };
-  idx: number;
-}
+import SkeletonContainer from '@components/Skeleton';
+import SkeletonMainItem from '@components/Skeleton/Main/Item';
 
 function ContentTitle(props: { isAdvertise: boolean | undefined; title: string }) {
   return props.isAdvertise ? null : (
@@ -45,23 +27,18 @@ function ContentTitle(props: { isAdvertise: boolean | undefined; title: string }
 export default function ScrollContents({
   item: { isAdvertise, title, ...rest },
   idx,
-}: ScrollContentsPropsType) {
+}: any) {
   return (
-    <ScrollAnimation path={'top'}>
-      <ContentTitle title={title} isAdvertise={isAdvertise} />
-      <ms.Content flexDirection={rest.flexDirection}>
-        {Array(rest.numOfContents)
-          .fill(0)
-          .map((_, i) => (
-            <ms.ContentItem
-              key={i}
-              style={{
-                borderRadius: isAdvertise ? '0px' : theme.borderRadius,
-                ...(rest.margin && { ...rest.margin[i] }),
-              }}
-            ></ms.ContentItem>
-          ))}
-      </ms.Content>
-    </ScrollAnimation>
+    <div className={'main-item-container'}>
+      <SkeletonContainer
+        isLoading={true}
+        render={(props: any) => (
+          <div className={'main-item-content'} {...props}>
+            hi
+          </div>
+        )}
+        Skeleton={SkeletonMainItem}
+      />
+    </div>
   );
 }

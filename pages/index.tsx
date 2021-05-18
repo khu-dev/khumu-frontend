@@ -1,14 +1,22 @@
 // import { apiBase } from '@api/api-base';
+import React from 'react';
 import { GetServerSideProps } from 'next';
 
-import MainPresenter from '@components/Presenter/Main';
 import { mainItemList } from '@constants/mainItemList';
 
-const MainPage = () => {
-  return <MainPresenter itemList={mainItemList} />;
-};
+import Feed from '@components/Presenter/Main/Feed';
+import ScrollContents from '@components/Presenter/Main/ScrollContents';
 
-export default MainPage;
+export default function MainPage() {
+  return (
+    <>
+      <Feed />
+      {mainItemList.map((item: any, idx: number) => (
+        <ScrollContents key={item.title} item={item} idx={idx} />
+      ))}
+    </>
+  );
+}
 
 export const getServerSideProps: GetServerSideProps = async (/*context*/) => {
   // const data = (await apiBase())?.data || null;

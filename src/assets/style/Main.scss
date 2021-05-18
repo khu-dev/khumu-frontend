@@ -1,4 +1,4 @@
-@import './App.scss';
+@import './shared.scss';
 
 .main-feed-container {
   width: 100%;
@@ -108,5 +108,20 @@
     justify-content: space-evenly;
     z-index: 2;
     background-color: $color-white;
+  }
+}
+
+.main-item-container {
+  width: $padding-width;
+  height: 200px;
+
+  padding: $padding-base;
+
+  .main-item-content {
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid $color-main;
+    border-radius: $box-border-radius;
   }
 }
