@@ -9,10 +9,11 @@ import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
 import { css } from '@emotion/react';
 
 import { theme } from '@constants/theme';
-import LinkIcon from '../Link';
+import LinkIcon from '@components/Link';
 
 export default function MainHeader(): JSX.Element {
   const csses = useStyles();
+
   return (
     <div className={'header header-main'}>
       <LinkIcon pathname={'/qrcode'}>

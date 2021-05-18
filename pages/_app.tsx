@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import styled from '@emotion/styled';
-
-import { AppType } from '@interfaces/app';
+import { AppProps } from 'next/dist/next-server/lib/router/router';
 
 import '@assets/style/App.scss';
 import '@assets/style/Main.scss';
@@ -12,7 +10,7 @@ import '@assets/style/Header.scss';
 
 import MainHeader from '@components/Header/Main';
 
-export default function App({ Component, pageProps }: AppType) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>

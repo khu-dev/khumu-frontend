@@ -7,7 +7,7 @@ import { STitle } from '@components/Title/Title';
 import { theme } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
 import { css } from '@emotion/react';
-import { LectureProps } from './interface';
+import { LectureProps } from './type';
 
 interface LectureNameProps extends LectureProps {
   name: string;

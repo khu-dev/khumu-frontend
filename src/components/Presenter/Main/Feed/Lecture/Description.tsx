@@ -6,7 +6,7 @@ import React from 'react';
 import { STitle } from '@components/Title/Title';
 import { theme } from '@constants/theme';
 import { css } from '@emotion/react';
-import { LectureProps } from './interface';
+import { LectureProps } from './type';
 
 interface LectureDescriptionProps extends LectureProps {
   description: string[];

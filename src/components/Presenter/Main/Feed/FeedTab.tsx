@@ -1,11 +1,6 @@
 import moment from 'moment';
 import { convertDate } from '@components/utils/convert.date';
-import { TabType } from './type';
-
-interface feedListState {
-  title: string;
-  id: TabType;
-}
+import { feedListState, TabType } from './type';
 
 interface FeedTabProps {
   feedList: Array<feedListState>;

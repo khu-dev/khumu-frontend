@@ -1,31 +1,40 @@
-import FeedLecture from './FeedLecture';
-import { TabType } from './type';
-import FeedTab from './FeedTab';
 import { useState } from 'react';
 
-export default function FeedContent() {
+import { feedListState, TabType } from './type';
+import { LectureProps } from './Lecture/type';
+
+import FeedTab from './FeedTab';
+import LectureName from './Lecture/Name';
+import LectureDescription from './Lecture/Description';
+
+interface FeedContentProps {
+  feedList: Array<feedListState>;
+}
+
+function FeedLecture({ isLoading = true }: LectureProps) {
+  return (
+    <div className={'main-feed-content'}>
+      <LectureName name={'산업디자인사'} time={'09:00 ~ 13:45'} isLoading={isLoading} />
+      <LectureDescription
+        description={['수업종료까지', ' 1시간 45분 ', '남았습니다']}
+        isLoading={isLoading}
+      />
+    </div>
+  );
+}
+
+export default function FeedContent({ feedList }: FeedContentProps) {
   const [currentTab, setCurrentTab] = useState<TabType>('lecture');
 
-  const handleTab = (e: React.MouseEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
-    const { id: nextState } = target;
+  const handleTab = ({ target }: React.MouseEvent<HTMLElement>) => {
+    const { id: nextState } = target as HTMLElement;
 
     setCurrentTab(nextState as TabType);
   };
 
   return (
     <div className={'main-feed-content-container'}>
-      <FeedTab
-        feedList={[
-          {
-            title: '오늘의 강의',
-            id: 'lecture',
-          },
-          { title: '학사 일정', id: 'calender' },
-        ]}
-        handleTab={handleTab}
-        currentTab={currentTab}
-      />
+      <FeedTab feedList={feedList} handleTab={handleTab} currentTab={currentTab} />
       {currentTab === 'lecture' ? (
         <FeedLecture isLoading={true} />
       ) : (
