@@ -1,14 +1,36 @@
 // import { apiBase } from '@api/api-base';
+import React from 'react';
 import { GetServerSideProps } from 'next';
 
-import MainPresenter from '@components/Presenter/Main';
 import { mainItemList } from '@constants/mainItemList';
 
-const MainPage = () => {
-  return <MainPresenter itemList={mainItemList} />;
-};
+import Feed from '@views/Main/Feed';
+import Skeleton from '@components/Skeleton';
+import SkeletonMainItem from '@components/Skeleton/Main/Item';
 
-export default MainPage;
+export default function MainPage() {
+  return (
+    <>
+      <Feed />
+      <Skeleton
+        isLoading={true}
+        repeat={6}
+        Skeleton={SkeletonMainItem}
+        render={(props: any) => (
+          <>
+            {mainItemList.map((_, idx: number) => (
+              <div className={'main-item-container'} key={idx}>
+                <div className={'main-item-content'} {...props}>
+                  hi
+                </div>
+              </div>
+            ))}
+          </>
+        )}
+      />
+    </>
+  );
+}
 
 export const getServerSideProps: GetServerSideProps = async (/*context*/) => {
   // const data = (await apiBase())?.data || null;

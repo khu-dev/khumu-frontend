@@ -1,14 +1,16 @@
 import Head from 'next/head';
 import React from 'react';
+import { AppProps } from 'next/dist/next-server/lib/router/router';
 
-import { AppType } from '@interfaces/app';
+import '@assets/style/App.scss';
+import '@assets/style/Main.scss';
+import '@assets/style/Skeleton.scss';
 
-import '@assets/css/app.css';
-import '@assets/css/scroll.css';
+import '@assets/style/Header.scss';
 
-import Layout from '@components/Layout';
+import MainHeader from '@components/Header/Main';
 
-const App = ({ Component, pageProps }: AppType) => {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -17,11 +19,10 @@ const App = ({ Component, pageProps }: AppType) => {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
       </Head>
-      <Layout>
+      <MainHeader />
+      <div className={'app-outer-container'}>
         <Component {...pageProps} />
-      </Layout>
+      </div>
     </>
   );
-};
-
-export default App;
+}

@@ -20,12 +20,13 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
+      "@assets/*": ["assets/*"],
       "@api/*": ["src/api/*"],
-      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@constants/*": ["src/constants/*"],
-      "@interfaces/*": ["src/interfaces/*"]
+      "@interfaces/*": ["src/interfaces/*"],
+      "@views/*": ["src/views/*"]
     },
     "types": ["@emotion/react/types/css-prop"]
   },
