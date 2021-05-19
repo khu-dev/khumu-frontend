@@ -5,14 +5,16 @@ interface RepeatSkeletonProps {
   Skeleton: () => JSX.Element;
 }
 
-export default function RepeatSkeleton({ repeat, Skeleton }: RepeatSkeletonProps) {
+export default function RepeatSkeleton({
+  repeat,
+  Skeleton,
+}: RepeatSkeletonProps) {
+  const repeatArray = Array(repeat).fill(null);
   return (
     <>
-      {Array(repeat)
-        .fill(null)
-        .map((_, idx: number) => (
-          <Skeleton key={idx} />
-        ))}
+      {repeatArray.map((_, idx: number) => (
+        <Skeleton key={idx} />
+      ))}
     </>
   );
 }

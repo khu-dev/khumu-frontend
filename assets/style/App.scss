@@ -7,15 +7,18 @@
 }
 
 html,
-body,
-#__next {
+#root {
   width: 100%;
   height: 100%;
 }
 
+body {
+  height: $header-except-height;
+}
+
 .app-outer-container {
   width: 100%;
-  min-height: calc(100% - 64px); // header height
+  min-height: $header-except-height; // header height
 
   margin-top: $header-height;
 

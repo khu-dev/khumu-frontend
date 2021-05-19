@@ -6,13 +6,14 @@ import React from 'react';
 import { CustomTitle } from '@components/Title';
 import { theme } from '@constants/theme';
 import { css } from '@emotion/react';
-import { LectureProps } from './type';
 
 interface LectureDescriptionProps {
   description: string[];
 }
 
-export default function LectureDescription({ description }: LectureDescriptionProps) {
+export default function LectureDescription({
+  description,
+}: LectureDescriptionProps) {
   return (
     <CustomTitle
       size={theme.title.M}

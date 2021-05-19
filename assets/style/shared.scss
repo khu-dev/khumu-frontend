@@ -3,8 +3,8 @@ $color-main: #ff4d40;
 $color-black: #333;
 $color-white: #fff;
 $color-lightgray3: #fafafa;
-$color-lightgray2: #eaeaea;
-$color-lightgray1: #dadada;
+$color-lightgray2: #ededed;
+$color-lightgray1: #dfdfdf;
 
 $padding-base: 14px;
 $padding-width: calc(100% - 28px);
@@ -18,3 +18,4 @@ $icon-font-size: 24px;
 // ----------------------------------
 
 $header-height: 64px;
+$header-except-height: calc(100vh - 64px);
