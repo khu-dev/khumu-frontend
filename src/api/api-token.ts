@@ -7,6 +7,6 @@ interface TokenParams {
 }
 
 export const fetchToken = (data: TokenParams) =>
-  axios.get(BASE_URI + '/token', {
-    data,
+  axios.post(BASE_URI + '/token', {
+    ...data,
   });
