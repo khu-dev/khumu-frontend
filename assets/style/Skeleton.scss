@@ -1,0 +1,94 @@
+@import './shared.scss';
+
+@keyframes skeleton_keyframes {
+  0% {
+    background-color: $color-gray;
+  }
+  50% {
+    background-color: $color-darkgray;
+  }
+  100% {
+    background-color: $color-gray;
+  }
+}
+
+/**
+ * common style
+ **/
+.skeleton {
+  background-color: #eaeaea;
+  border-radius: 3px;
+  animation: skeleton_keyframes 2.3s infinite;
+}
+
+/**
+ * title style
+ **/
+.skeleton-title-01 {
+  width: 70px;
+  height: 30px;
+
+  margin: 24px;
+  margin-left: $margin-base;
+}
+
+.skeleton-title-02 {
+  width: 90px;
+  height: 26px;
+
+  margin: 20px;
+  margin-left: $margin-base;
+}
+
+.skeleton-title-03 {
+  width: 120px;
+  height: 22px;
+
+  margin: 18px;
+  margin-left: $margin-base;
+}
+
+/**
+ * description style
+ **/
+.skeleton-description-01 {
+  width: $margin-width;
+  height: 21px;
+
+  margin: $margin-base;
+}
+
+.skeleton-description-02 {
+  width: $margin-width;
+  height: 16px;
+
+  margin: $margin-base;
+}
+
+/**
+ * img style
+ **/
+.skeleton-image {
+}
+
+// container
+
+.main-skeleton-container {
+  width: $padding-width;
+  height: 154px;
+
+  padding: $padding-base;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skeleton-middle-container {
+  width: 100%;
+  height: 100%;
+
+  background-color: $color-lightgray;
+  border: 1px solid $color-lightgray;
+  border-radius: $box-border-radius;
+}
