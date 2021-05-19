@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function SkeletonMainItem() {
   return (
     <div className={'main-skeleton-container'}>

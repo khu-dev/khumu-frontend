@@ -2,13 +2,13 @@
 
 @keyframes skeleton_keyframes {
   0% {
-    background-color: $color-gray;
+    background-color: $color-lightgray2;
   }
   50% {
-    background-color: $color-darkgray;
+    background-color: $color-lightgray1;
   }
   100% {
-    background-color: $color-gray;
+    background-color: $color-lightgray2;
   }
 }
 
@@ -18,7 +18,7 @@
 .skeleton {
   background-color: #eaeaea;
   border-radius: 3px;
-  animation: skeleton_keyframes 2.3s infinite;
+  animation: skeleton_keyframes 1.8s infinite;
 }
 
 /**
@@ -36,7 +36,6 @@
   width: 90px;
   height: 26px;
 
-  margin: 20px;
   margin-left: $margin-base;
 }
 
@@ -44,7 +43,6 @@
   width: 120px;
   height: 22px;
 
-  margin: 18px;
   margin-left: $margin-base;
 }
 
@@ -53,16 +51,16 @@
  **/
 .skeleton-description-01 {
   width: $margin-width;
-  height: 21px;
+  height: 23px;
 
-  margin: $margin-base;
+  margin-left: $margin-base;
 }
 
 .skeleton-description-02 {
   width: $margin-width;
-  height: 16px;
+  height: 19px;
 
-  margin: $margin-base;
+  margin-left: $margin-base;
 }
 
 /**
@@ -75,7 +73,7 @@
 
 .main-skeleton-container {
   width: $padding-width;
-  height: 154px;
+  height: 142px;
 
   padding: $padding-base;
 
@@ -88,7 +86,11 @@
   width: 100%;
   height: 100%;
 
-  background-color: $color-lightgray;
-  border: 1px solid $color-lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  background-color: $color-lightgray3;
+  border: 1px solid $color-lightgray3;
   border-radius: $box-border-radius;
 }

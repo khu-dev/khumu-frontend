@@ -2,6 +2,7 @@
 
 .main-feed-container {
   width: 100%;
+  min-height: 200px;
   height: 30vh;
   max-height: 220px;
 
@@ -106,7 +107,7 @@
     height: 100%;
     margin: 0px 32px;
     justify-content: space-evenly;
-    z-index: 2;
+    // z-index: 1;
     background-color: $color-white;
   }
 }

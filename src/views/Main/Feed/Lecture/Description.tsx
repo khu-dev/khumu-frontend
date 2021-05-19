@@ -3,21 +3,18 @@
  */
 
 import React from 'react';
-import { STitle } from '@components/Title/Title';
+import { CustomTitle } from '@components/Title';
 import { theme } from '@constants/theme';
 import { css } from '@emotion/react';
 import { LectureProps } from './type';
 
-interface LectureDescriptionProps extends LectureProps {
+interface LectureDescriptionProps {
   description: string[];
 }
 
-export default function LectureDescription({
-  description,
-  isLoading,
-}: LectureDescriptionProps) {
+export default function LectureDescription({ description }: LectureDescriptionProps) {
   return (
-    <STitle
+    <CustomTitle
       size={theme.title.M}
       css={css`
         margin-left: 25px;
@@ -26,20 +23,16 @@ export default function LectureDescription({
         width: calc(100% - 25px);
       `}
     >
-      {isLoading || (
-        <>
-          <span>수업종료까지</span>
-          <span
-            css={css`
-              font-weight: 700;
-              color: ${theme.color.main};
-            `}
-          >
-            &nbsp;1시간 45분&nbsp;
-          </span>
-          <span>남았습니다</span>
-        </>
-      )}
-    </STitle>
+      <span>{description[0]}</span>
+      <span
+        css={css`
+          font-weight: 700;
+          color: ${theme.color.main};
+        `}
+      >
+        &nbsp;{description[1]}&nbsp;
+      </span>
+      <span>{description[2]}</span>
+    </CustomTitle>
   );
 }

@@ -1,25 +1,25 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { feedListState, TabType } from './type';
-import { LectureProps } from './Lecture/type';
 
 import FeedTab from './FeedTab';
 import LectureName from './Lecture/Name';
 import LectureDescription from './Lecture/Description';
+import Skeleton from '@components/Skeleton';
+import SkeletonMainFeed from '@components/Skeleton/Main/Feed';
 
 interface FeedContentProps {
   feedList: Array<feedListState>;
 }
 
-function FeedLecture({ isLoading = true }: LectureProps) {
+function FeedLecture() {
   return (
-    <div className={'main-feed-content'}>
-      <LectureName name={'산업디자인사'} time={'09:00 ~ 13:45'} isLoading={isLoading} />
+    <>
+      <LectureName name={'산업디자인사'} time={'09:00 ~ 13:45'} />
       <LectureDescription
         description={['수업종료까지', ' 1시간 45분 ', '남았습니다']}
-        isLoading={isLoading}
       />
-    </div>
+    </>
   );
 }
 
@@ -34,12 +34,22 @@ export default function FeedContent({ feedList }: FeedContentProps) {
 
   return (
     <div className={'main-feed-content-container'}>
-      <FeedTab feedList={feedList} handleTab={handleTab} currentTab={currentTab} />
-      {currentTab === 'lecture' ? (
-        <FeedLecture isLoading={true} />
-      ) : (
-        <FeedLecture isLoading={true} />
-      )}
+      <FeedTab
+        feedList={feedList}
+        handleTab={handleTab}
+        currentTab={currentTab}
+      />
+      <div className={'main-feed-content'}>
+        {currentTab === 'lecture' ? (
+          <Skeleton
+            isLoading={true}
+            render={() => <FeedLecture />}
+            Skeleton={SkeletonMainFeed}
+          />
+        ) : (
+          <FeedLecture />
+        )}
+      </div>
     </div>
   );
 }

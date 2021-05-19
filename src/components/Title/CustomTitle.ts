@@ -5,7 +5,7 @@ interface TitleType {
   weight?: number;
 }
 
-export const STitle = styled.h1<TitleType>`
+export const CustomTitle = styled.h1<TitleType>`
   font-size: ${({ size }) => `${size}px`};
   font-weight: ${({ weight }) => `${weight || 600}`};
 `;

@@ -3,7 +3,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { STitle } from '@components/Title/Title';
+import { CustomTitle } from '@components/Title';
 import { theme } from '@constants/theme';
 import { css } from '@emotion/react';
 import SkeletonContainer from '@components/Skeleton';
@@ -12,14 +12,14 @@ import SkeletonMainItem from '@components/Skeleton/Main/Item';
 function ContentTitle(props: { isAdvertise: boolean | undefined; title: string }) {
   return props.isAdvertise ? null : (
     <div>
-      <STitle
+      <CustomTitle
         size={theme.title.L}
         css={css`
           color: ${theme.color.main};
         `}
       >
         {props.title}
-      </STitle>
+      </CustomTitle>
     </div>
   );
 }

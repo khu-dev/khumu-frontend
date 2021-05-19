@@ -3,35 +3,30 @@
  */
 
 import React from 'react';
-import { STitle } from '@components/Title/Title';
+import { CustomTitle, mainStyle } from '@components/Title';
 import { theme } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
 import { css } from '@emotion/react';
-import { LectureProps } from './type';
 
-interface LectureNameProps extends LectureProps {
+interface LectureNameProps {
   name: string;
   time: string;
 }
 
-export default function LectureName({ isLoading, name, time }: LectureNameProps) {
+export default function LectureName({ name, time }: LectureNameProps) {
   const styles = useStyles();
+
   return (
     <div css={styles.titleConatiner}>
       <div css={styles.name}>
         <Checkbox />
-        <STitle
-          size={theme.title.L}
-          css={css`
-            color: ${theme.color.main};
-          `}
-        >
-          {isLoading || name}
-        </STitle>
+        <CustomTitle size={theme.title.L} css={mainStyle}>
+          {name}
+        </CustomTitle>
       </div>
-      <STitle size={theme.title.L} css={styles.time}>
-        {isLoading || time}
-      </STitle>
+      <CustomTitle size={theme.title.L} css={styles.time}>
+        {time}
+      </CustomTitle>
     </div>
   );
 }
@@ -41,7 +36,6 @@ function useStyles() {
     titleConatiner: css`
       display: flex;
       flex-direction: column;
-      margin-bottom: 12px;
     `,
     name: css`
       width: 100%;
