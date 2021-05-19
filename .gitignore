@@ -2,12 +2,14 @@
 
 # dependencies
 package-lock.json
+yarn.lock
 /node_modules
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+key.ts
 
 # next.js
 /.next/
