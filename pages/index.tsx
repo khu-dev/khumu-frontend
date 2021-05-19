@@ -4,16 +4,27 @@ import { GetServerSideProps } from 'next';
 
 import { mainItemList } from '@constants/mainItemList';
 
-import Feed from '@components/Presenter/Main/Feed';
-import ScrollContents from '@components/Presenter/Main/ScrollContents';
+import Feed from '@views/Main/Feed';
+import Skeleton from '@components/Skeleton';
+import SkeletonMainItem from '@components/Skeleton/Main/Item';
+import RepeatSkeleton from '@components/Skeleton/RepeatSkeleton';
 
 export default function MainPage() {
   return (
     <>
       <Feed />
-      {mainItemList.map((item: any, idx: number) => (
-        <ScrollContents key={item.title} item={item} idx={idx} />
-      ))}
+      <Skeleton
+        isLoading={true}
+        repeat={4}
+        Skeleton={SkeletonMainItem}
+        render={(props: any) => (
+          <div className={'main-item-container'}>
+            <div className={'main-item-content'} {...props}>
+              hi
+            </div>
+          </div>
+        )}
+      />
     </>
   );
 }

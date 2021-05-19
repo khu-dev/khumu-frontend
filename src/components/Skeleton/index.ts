@@ -1,1 +1,1 @@
-export { default } from './SkeletonContainer';
+export { default } from './Skeleton';
