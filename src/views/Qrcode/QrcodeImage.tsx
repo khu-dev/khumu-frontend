@@ -2,15 +2,15 @@ import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
 import { color } from '@constants/theme';
-import { exampleData } from '@constants/data';
+// import { exampleData } from '@constants/data';
 import QRCode from 'qrcode';
 
-export default function QrcodeImage() {
+export default function QrcodeImage({ qrcode }: { qrcode: string }) {
   const canvasRef = useRef(null);
   const csses = useStyles();
 
   useEffect(() => {
-    QRCode.toCanvas(canvasRef.current, exampleData, (error) => {
+    QRCode.toCanvas(canvasRef.current, qrcode, (error) => {
       if (error) console.error(error);
     });
   }, []);

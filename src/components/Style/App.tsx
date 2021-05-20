@@ -1,3 +1,4 @@
+import { header } from '@constants/theme';
 import React from 'react';
 
 export default function AppStyleTag() {
@@ -16,14 +17,14 @@ export default function AppStyleTag() {
       }
 
       body {
-        height: $header-except-height;
+        height: ${header.exceptHeight};
       }
 
       .app-outer-container {
         width: 100%;
-        min-height: $header-except-height; // header height
+        min-height: ${header.exceptHeight}; // header height: ;
 
-        margin-top: $header-height;
+        margin-top: ${header.height};
 
         display: flex;
         flex-direction: column;

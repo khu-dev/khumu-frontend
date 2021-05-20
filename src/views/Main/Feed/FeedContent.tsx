@@ -7,7 +7,6 @@ import LectureName from './Lecture/Name';
 import LectureDescription from './Lecture/Description';
 import Skeleton from '@components/Skeleton';
 import SkeletonMainFeed from '@components/Skeleton/Main/Feed';
-import { box, color } from '@constants/theme';
 
 interface FeedContentProps {
   feedList: Array<feedListState>;

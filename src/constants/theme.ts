@@ -27,3 +27,8 @@ export const title = {
   M: 15,
   S: 13,
 };
+
+export const header = {
+  height: '64px',
+  exceptHeight: 'calc(100vh - 64px)',
+};
