@@ -3,7 +3,6 @@ import React from 'react';
 import moment from 'moment';
 import { convertDate } from '@components/utils/functions';
 import { feedListState, TabType } from './type';
-import { box, color } from '@constants/theme';
 
 interface FeedTabProps {
   feedList: Array<feedListState>;
