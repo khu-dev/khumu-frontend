@@ -5,7 +5,8 @@ import QrcodeHeader from '@components/Header/Qrcode';
 import { GetServerSideProps } from 'next';
 import { fetchToken } from '@api/api-token';
 import { fetchQRCode } from '@api/api-qrcode';
-import { ID, PW } from '@config/key';
+import { ID, PW } from '@config/_key';
+// import { ID, PW } from '@config/key';
 
 interface QRCodePageProps {
   qr_code_str: string;
