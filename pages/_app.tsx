@@ -4,7 +4,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router';
 
 import '@assets/style/App.scss';
 import '@assets/style/Main.scss';
-import '@assets/style/Skeleton.scss';
+import SkeletonStyleTag from '@components/Skeleton/shared';
 
 import '@assets/style/Header.scss';
 
@@ -18,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
+        <SkeletonStyleTag />
       </Head>
       <MainHeader />
       <div className={'app-outer-container'}>

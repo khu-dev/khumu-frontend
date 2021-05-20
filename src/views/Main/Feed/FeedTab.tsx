@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { convertDate } from '@components/utils/convert.date';
+import { convertDate } from '@components/utils/functions';
 import { feedListState, TabType } from './type';
 
 interface FeedTabProps {
@@ -8,7 +8,11 @@ interface FeedTabProps {
   currentTab: TabType;
 }
 
-export default function FeedTab({ feedList, handleTab, currentTab }: FeedTabProps) {
+export default function FeedTab({
+  feedList,
+  handleTab,
+  currentTab,
+}: FeedTabProps) {
   const now = Date.now();
   const formatMonthAndDay = moment(now).format('M/DD');
   const formatDate = convertDate[moment(now).format('ddd')];
@@ -19,7 +23,9 @@ export default function FeedTab({ feedList, handleTab, currentTab }: FeedTabProp
         {feedList.map(({ title, id }: feedListState) => (
           <div
             key={title}
-            className={'feed-tab ' + (currentTab === id ? 'feed-tab-active' : '')}
+            className={
+              'feed-tab ' + (currentTab === id ? 'feed-tab-active' : '')
+            }
             id={id}
             onClick={handleTab}
           >

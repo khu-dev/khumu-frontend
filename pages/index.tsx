@@ -1,6 +1,6 @@
 // import { apiBase } from '@api/api-base';
 import React from 'react';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 
 import { mainItemList } from '@constants/mainItemList';
 
@@ -8,9 +8,12 @@ import Feed from '@views/Main/Feed';
 import Skeleton from '@components/Skeleton';
 import SkeletonMainItem from '@components/Skeleton/Main/Item';
 
-export default function MainPage() {
+export default function MainPage({ props }: any) {
+  console.log(props);
+
   return (
     <>
+      <div style={{ fontSize: 30 }}>hi</div>
       <Feed />
       <Skeleton
         isLoading={true}
@@ -32,7 +35,7 @@ export default function MainPage() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (/*context*/) => {
+export const getStaticProps: GetStaticProps = async (/*context*/) => {
   // const data = (await apiBase())?.data || null;
   // console.log('loading ...');
   // function sleep(ms: number) {

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
-import { theme } from '@constants/theme';
+import { color } from '@constants/theme';
 import { exampleData } from '@constants/data';
 import QRCode from 'qrcode';
 
@@ -30,7 +30,7 @@ const useStyles = () => ({
     width: 230px;
     height: 230px;
     border-radius: 20px;
-    background-color: ${theme.color.white};
+    background-color: ${color.white};
     overflow: hidden;
   `,
   canvas: css`

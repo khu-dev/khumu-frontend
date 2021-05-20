@@ -1,4 +1,4 @@
-import { theme } from '@constants/theme';
+import { color } from '@constants/theme';
 import { css } from '@emotion/react';
 import { useState } from 'react';
 
@@ -30,9 +30,9 @@ const useStyles = () => ({
     align-items: center;
     flex: 1;
     width: 100%;
-    background-color: ${theme.color.main};
+    background-color: ${color.main};
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
-    color: ${theme.color.white};
+    color: ${color.white};
   `,
 });

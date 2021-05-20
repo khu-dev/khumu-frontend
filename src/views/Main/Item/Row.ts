@@ -1,4 +1,4 @@
-import { theme } from '@constants/theme';
+import { box, color } from '@constants/theme';
 import styled from '@emotion/styled';
 
 export const Row = styled.div`
@@ -6,10 +6,10 @@ export const Row = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  width: ${theme.margin.width};
+  width: ${box.marginWidth};
   height: 25vh;
-  margin: ${theme.margin.base};
+  margin: ${box.margin};
 
-  border: 1px solid ${theme.color.main};
-  border-radius: ${theme.borderRadius};
+  border: 1px solid ${color.main};
+  border-radius: ${box.borderRadius};
 `;

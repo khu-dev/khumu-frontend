@@ -15,13 +15,13 @@ interface QRCodePageProps {
 }
 
 export default function QRCodePage({
-  qr_code_str: qrcode,
+  qr_code_str,
   ...profile
 }: QRCodePageProps) {
   return (
     <>
       <QrcodeHeader title={'모바일 이용증'} />
-      <Qrcode qrcode={qrcode} profile={profile} />
+      <Qrcode qrcode={qr_code_str} profile={profile} />
     </>
   );
 }

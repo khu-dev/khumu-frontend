@@ -8,7 +8,7 @@ import React from 'react';
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
 import { css } from '@emotion/react';
 
-import { theme } from '@constants/theme';
+import { color, font } from '@constants/theme';
 import LinkIcon from '@components/Link';
 
 export default function MainHeader(): JSX.Element {
@@ -17,10 +17,10 @@ export default function MainHeader(): JSX.Element {
   return (
     <div className={'header header-main'}>
       <LinkIcon pathname={'/qrcode'}>
-        <AiOutlineQrcode size={theme.icon.fontSize} css={csses.qrcode} />
+        <AiOutlineQrcode size={font.iconSize} css={csses.qrcode} />
       </LinkIcon>
       <LinkIcon pathname={'/notice'}>
-        <AiOutlineBell size={theme.icon.fontSize} css={csses.bell} />
+        <AiOutlineBell size={font.iconSize} css={csses.bell} />
       </LinkIcon>
     </div>
   );
@@ -29,11 +29,11 @@ export default function MainHeader(): JSX.Element {
 function useStyles() {
   return {
     qrcode: css`
-      color: ${theme.color.white};
+      color: ${color.white};
       margin-right: 12px;
     `,
     bell: css`
-      color: ${theme.color.white};
+      color: ${color.white};
     `,
   };
 }
