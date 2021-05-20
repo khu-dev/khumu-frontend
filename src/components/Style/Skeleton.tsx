@@ -87,6 +87,17 @@ export default function SkeletonStyleTag() {
         background-position: 0 0;
         animation: shine 1.4s infinite;
       }
+
+      .main-skeleton-container {
+        width: ${box.paddingWidth};
+        height: 142px;
+
+        padding: ${box.padding};
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     `}</style>
   );
 }

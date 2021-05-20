@@ -1,7 +1,7 @@
 import React from 'react';
 
 import moment from 'moment';
-import { convertDate } from '@components/utils/functions';
+import { convertDate } from 'src/utils/functions';
 import { feedListState, TabType } from './type';
 
 interface FeedTabProps {

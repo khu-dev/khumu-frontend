@@ -12,13 +12,19 @@
   }
 }
 
+@keyframes shine {
+  to {
+    background-position: 130% 0, /* move highlight to right */ 0 0;
+  }
+}
+
 /**
  * common style
  **/
 .skeleton {
   background-color: #eaeaea;
   border-radius: 3px;
-  animation: skeleton_keyframes 1.8s infinite;
+  animation: skeleton_keyframes 2.5s infinite;
 }
 
 /**
@@ -28,7 +34,6 @@
   width: 70px;
   height: 30px;
 
-  margin: 24px;
   margin-left: $margin-base;
 }
 
@@ -51,14 +56,14 @@
  **/
 .skeleton-description-01 {
   width: $margin-width;
-  height: 21px;
+  height: 17px;
 
   margin-left: $margin-base;
 }
 
 .skeleton-description-02 {
   width: $margin-width;
-  height: 18px;
+  height: 14px;
 
   margin-left: $margin-base;
 }
@@ -70,6 +75,20 @@
 // }
 
 // container
+
+.skeleton-container {
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      hsla(0, 0%, 100%, 0.5) 50%,
+      rgba(255, 255, 255, 0) 70%
+    )
+    $color-lightgray3;
+  background-repeat: repeat-y;
+  background-size: 80px 500px;
+  background-position: 0 0;
+  animation: shine 1.4s infinite;
+}
 
 .main-skeleton-container {
   width: $padding-width;
@@ -90,7 +109,5 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  background-color: $color-lightgray3;
-  border: 1px solid $color-lightgray3;
   border-radius: $box-border-radius;
 }
