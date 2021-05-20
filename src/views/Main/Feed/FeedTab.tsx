@@ -1,6 +1,9 @@
+import React from 'react';
+
 import moment from 'moment';
 import { convertDate } from '@components/utils/functions';
 import { feedListState, TabType } from './type';
+import { box, color } from '@constants/theme';
 
 interface FeedTabProps {
   feedList: Array<feedListState>;
@@ -18,24 +21,27 @@ export default function FeedTab({
   const formatDate = convertDate[moment(now).format('ddd')];
 
   return (
-    <div className={'main-feed-tab-menu'}>
-      <div className={'feed-tab-container'}>
-        {feedList.map(({ title, id }: feedListState) => (
-          <div
-            key={title}
-            className={
-              'feed-tab ' + (currentTab === id ? 'feed-tab-active' : '')
-            }
-            id={id}
-            onClick={handleTab}
-          >
-            {title}
-          </div>
-        ))}
+    <>
+      {/* <StyleTag /> */}
+      <div className={'main-feed-tab-menu'}>
+        <div className={'feed-tab-container'}>
+          {feedList.map(({ title, id }: feedListState) => (
+            <div
+              key={title}
+              className={
+                'feed-tab ' + (currentTab === id ? 'feed-tab-active' : '')
+              }
+              id={id}
+              onClick={handleTab}
+            >
+              {title}
+            </div>
+          ))}
+        </div>
+        <div className={'feed-tab-date'}>
+          [ {formatMonthAndDay} {formatDate} ]
+        </div>
       </div>
-      <div className={'feed-tab-date'}>
-        [ {formatMonthAndDay} {formatDate} ]
-      </div>
-    </div>
+    </>
   );
 }

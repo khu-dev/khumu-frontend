@@ -7,6 +7,7 @@ import LectureName from './Lecture/Name';
 import LectureDescription from './Lecture/Description';
 import Skeleton from '@components/Skeleton';
 import SkeletonMainFeed from '@components/Skeleton/Main/Feed';
+import { box, color } from '@constants/theme';
 
 interface FeedContentProps {
   feedList: Array<feedListState>;
@@ -33,23 +34,25 @@ export default function FeedContent({ feedList }: FeedContentProps) {
   };
 
   return (
-    <div className={'main-feed-content-container'}>
-      <FeedTab
-        feedList={feedList}
-        handleTab={handleTab}
-        currentTab={currentTab}
-      />
-      <div className={'main-feed-content'}>
-        {currentTab === 'lecture' ? (
-          <Skeleton
-            isLoading={true}
-            render={() => <FeedLecture />}
-            Skeleton={SkeletonMainFeed}
-          />
-        ) : (
-          <FeedLecture />
-        )}
+    <>
+      <div className={'main-feed-content-container'}>
+        <FeedTab
+          feedList={feedList}
+          handleTab={handleTab}
+          currentTab={currentTab}
+        />
+        <div className={'main-feed-content'}>
+          {currentTab === 'lecture' ? (
+            <Skeleton
+              isLoading={true}
+              render={() => <FeedLecture />}
+              Skeleton={SkeletonMainFeed}
+            />
+          ) : (
+            <FeedLecture />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

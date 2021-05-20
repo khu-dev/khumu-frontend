@@ -1,6 +1,6 @@
 // import { apiBase } from '@api/api-base';
 import React from 'react';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 
 import { mainItemList } from '@constants/mainItemList';
 
@@ -13,7 +13,6 @@ export default function MainPage({ props }: any) {
 
   return (
     <>
-      <div style={{ fontSize: 30 }}>hi</div>
       <Feed />
       <Skeleton
         isLoading={true}

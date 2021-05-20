@@ -25,7 +25,7 @@ export default function SkeletonStyleTag() {
       .skeleton {
         background-color: #eaeaea;
         border-radius: 3px;
-        animation: skeleton_keyframes 1.8s infinite;
+        animation: skeleton_keyframes 2.5s infinite;
       }
 
       .skeleton-title-01 {
