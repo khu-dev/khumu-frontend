@@ -26,6 +26,12 @@
   color: $color-white;
 }
 
-.header-qrcode {
+.header-align-center {
   justify-content: center;
+}
+
+.header-mypage {
+  background-color: #e4e4e4;
+  justify-content: flex-start;
+  padding-left: 42px;
 }

@@ -12,11 +12,11 @@ import { color } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import { Title02 } from '@components/Title';
 
-export default function QrcodeHeader({ title }: { title: string }) {
+export default function MyPageHeader({ title }: { title: string }) {
   const csses = useStyles();
 
   return (
-    <div className={'header header-align-center'}>
+    <div className={'header header-align-center header-mypage'}>
       <LinkIcon pathname={'/'}>
         <IoChevronBackOutline css={csses.icon} />
       </LinkIcon>
