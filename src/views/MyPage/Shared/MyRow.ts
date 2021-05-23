@@ -1,3 +1,4 @@
+import { color } from '@constants/theme';
 import styled from '@emotion/styled';
 
 export const MyRow = styled.div`
@@ -5,5 +6,6 @@ export const MyRow = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 6px 0;
+  margin-top: 18px;
+  color: ${color.white};
 `;

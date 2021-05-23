@@ -1,7 +1,7 @@
 export { default as MyProfile } from './Profile';
-export { default as MyLog } from './MyPageLog';
-export { default as MyAccount } from './MyPageAccount';
-export { default as MySetFeed } from './MyPageSetFeed';
-export { default as MyGuide } from './MyPageGuide';
-export { default as MySetApp } from './MyPageSetApp';
-export { default as MyEtc } from './MyPageEtc';
+export { default as MyLog } from './Log/MyPageLog';
+export { default as MyAccount } from './Account';
+export { default as MySetFeed } from './SetFeed';
+export { default as MyGuide } from './Guide';
+export { default as MySetApp } from './SetApp';
+export { default as MyEtc } from './Etc';

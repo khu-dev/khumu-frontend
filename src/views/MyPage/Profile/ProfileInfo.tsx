@@ -9,7 +9,7 @@ const InfoContainer = styled.div`
   margin-left: ${box.margin};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
 
   & > div {

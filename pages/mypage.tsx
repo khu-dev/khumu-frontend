@@ -1,14 +1,7 @@
 import React from 'react';
 
 import CommonHeader from '@components/Header/Common';
-
-import MyPageProfile from '@views/MyPage/Profile';
-import MyPageLog from '@views/MyPage/MyPageLog';
-import MyPageAccount from '@views/MyPage/MyPageAccount';
-import MyPageSetFeed from '@views/MyPage/MyPageSetFeed';
-import MyPageGuide from '@views/MyPage/MyPageGuide';
-import MyPageSetApp from '@views/MyPage/MyPageSetApp';
-import MyPageEtc from '@views/MyPage/MyPageEtc';
+import * as Page from '@views/MyPage';
 
 export default function MyPagePage() {
   return (
@@ -21,13 +14,13 @@ export default function MyPagePage() {
         color={'#6C6C6C'}
       />
       <div className={'mypage-container'}>
-        <MyPageProfile />
-        <MyPageLog />
-        <MyPageAccount />
-        <MyPageSetFeed />
-        <MyPageGuide />
-        <MyPageSetApp />
-        <MyPageEtc />
+        <Page.MyProfile />
+        <Page.MyLog />
+        <Page.MyAccount />
+        <Page.MySetFeed />
+        <Page.MyGuide />
+        <Page.MySetApp />
+        <Page.MyEtc />
       </div>
     </>
   );
