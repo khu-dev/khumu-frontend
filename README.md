@@ -8,14 +8,6 @@
 
 - with Cloud Front for Production
 
-## Main Page
-
-<img src="https://user-images.githubusercontent.com/49581472/118813183-daa3f100-b8e9-11eb-9805-5704e7cdeea2.gif" width="300px" alt="main-page-gif" >
-
-## QR Code Page
-
-<img src="https://user-images.githubusercontent.com/49581472/118813253-eb546700-b8e9-11eb-90d4-8a124dbfc827.png" width="300px" alt="qr-code-page-img" >
-
 ## SSR vs Client Side Rendering
 
 |         구분          |     SSR     |     CSR     |
