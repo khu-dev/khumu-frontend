@@ -8,6 +8,18 @@
 
 - with Cloud Front for Production
 
+## Pages
+
+<img src="https://user-images.githubusercontent.com/49581472/119507201-97de8f00-bda9-11eb-8ea2-12381aaa99c6.gif" width="300px">
+
+BASE URL : [https://khumu-frontend.vercel.app/](https://khumu-frontend.vercel.app/)
+
+| Page Name |   URL   |
+| :-------: | :-----: |
+|   MAIN    |    /    |
+|  QRCODE   | /qrcode |
+|  MY PAGE  | /mypage |
+
 ## SSR vs Client Side Rendering
 
 |         구분          |     SSR     |     CSR     |
