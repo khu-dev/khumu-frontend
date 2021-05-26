@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { CustomTitle, mainStyle } from '@components/Title';
-import { theme } from '@constants/theme';
+import { title, color } from '@constants/theme';
 import Checkbox from '@components/Checkbox';
 import { css } from '@emotion/react';
 
@@ -20,11 +20,11 @@ export default function LectureName({ name, time }: LectureNameProps) {
     <div css={styles.titleConatiner}>
       <div css={styles.name}>
         <Checkbox />
-        <CustomTitle size={theme.title.L} css={mainStyle}>
+        <CustomTitle size={title.L} css={mainStyle}>
           {name}
         </CustomTitle>
       </div>
-      <CustomTitle size={theme.title.L} css={styles.time}>
+      <CustomTitle size={title.L} css={styles.time}>
         {time}
       </CustomTitle>
     </div>
@@ -47,7 +47,7 @@ function useStyles() {
     time: css`
       margin-left: 25px;
       width: 140px;
-      color: ${theme.color.darkgray};
+      color: ${color.gray4};
     `,
   };
 }

@@ -23,6 +23,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .main-feed-title {
+    font-size: 24px;
+    color: $color-white;
+    font-weight: 600;
+  }
 }
 
 .main-feed-content-container {
@@ -76,7 +82,7 @@
         background-color: $color-main;
         color: $color-white;
         border: 1px solid $color-white;
-        transition: all 0.3s;
+        transition: background-color 0.3s;
 
         border-top-left-radius: $box-border-radius;
         border-top-right-radius: $box-border-radius;
@@ -87,7 +93,7 @@
           color: $color-main;
           border: 1px solid $color-main;
           border-bottom: none;
-          transition: all 0.3s;
+          transition: background-color 0.3s;
         }
       }
     }

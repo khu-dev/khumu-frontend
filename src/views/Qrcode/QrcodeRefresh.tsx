@@ -1,4 +1,4 @@
-import { theme } from '@constants/theme';
+import { color } from '@constants/theme';
 import { css } from '@emotion/react';
 import { IoRefreshOutline } from 'react-icons/io5';
 
@@ -19,8 +19,8 @@ const useStyles = () => ({
     width: 90px;
     height: 52px;
     border-radius: 26px;
-    background-color: ${theme.color.white};
-    color: ${theme.color.main};
+    background-color: ${color.white};
+    color: ${color.main};
   `,
   refreshIcon: css`
     transform: rotate(180deg);

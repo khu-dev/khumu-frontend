@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { CustomTitle } from '@components/Title';
-import { theme } from '@constants/theme';
+import { title, color } from '@constants/theme';
 import { css } from '@emotion/react';
 
 interface LectureDescriptionProps {
@@ -16,7 +16,7 @@ export default function LectureDescription({
 }: LectureDescriptionProps) {
   return (
     <CustomTitle
-      size={theme.title.M}
+      size={title.M}
       css={css`
         margin-left: 25px;
         font-size: 14px;
@@ -28,7 +28,7 @@ export default function LectureDescription({
       <span
         css={css`
           font-weight: 700;
-          color: ${theme.color.main};
+          color: ${color.main};
         `}
       >
         &nbsp;{description[1]}&nbsp;

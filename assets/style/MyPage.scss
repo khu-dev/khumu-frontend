@@ -1,0 +1,10 @@
+@import './shared.scss';
+
+.mypage-container {
+  width: $padding-width;
+  flex-grow: 1;
+
+  padding: $padding-base;
+
+  background-color: #e4e4e4;
+}

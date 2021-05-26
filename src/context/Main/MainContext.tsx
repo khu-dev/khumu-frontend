@@ -1,4 +1,4 @@
-import { FeedValueProps } from '@components/context/Main/type';
+import { FeedValueProps } from 'src/context/Main/type';
 import { createContext, useContext } from 'react';
 
 const initialValue = {

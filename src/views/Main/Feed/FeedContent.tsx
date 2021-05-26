@@ -33,23 +33,25 @@ export default function FeedContent({ feedList }: FeedContentProps) {
   };
 
   return (
-    <div className={'main-feed-content-container'}>
-      <FeedTab
-        feedList={feedList}
-        handleTab={handleTab}
-        currentTab={currentTab}
-      />
-      <div className={'main-feed-content'}>
-        {currentTab === 'lecture' ? (
-          <Skeleton
-            isLoading={true}
-            render={() => <FeedLecture />}
-            Skeleton={SkeletonMainFeed}
-          />
-        ) : (
-          <FeedLecture />
-        )}
+    <>
+      <div className={'main-feed-content-container'}>
+        <FeedTab
+          feedList={feedList}
+          handleTab={handleTab}
+          currentTab={currentTab}
+        />
+        <div className={'main-feed-content'}>
+          {currentTab === 'lecture' ? (
+            <Skeleton
+              isLoading={true}
+              render={() => <FeedLecture />}
+              Skeleton={SkeletonMainFeed}
+            />
+          ) : (
+            <FeedLecture />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -4,17 +4,21 @@
 
 ### Deployed
 
-- with [Netlify for Test](https://khumu-frontend.netlify.app/)
+- with [Vercel for Test](https://khumu-frontend.vercel.app/)
 
 - with Cloud Front for Production
 
-## Main Page
+## Pages
 
-<img src="https://user-images.githubusercontent.com/49581472/118813183-daa3f100-b8e9-11eb-9805-5704e7cdeea2.gif" width="300px" alt="main-page-gif" >
+<img src="https://user-images.githubusercontent.com/49581472/119507201-97de8f00-bda9-11eb-8ea2-12381aaa99c6.gif" width="300px">
 
-## QR Code Page
+BASE URL : [https://khumu-frontend.vercel.app/](https://khumu-frontend.vercel.app/)
 
-<img src="https://user-images.githubusercontent.com/49581472/118813253-eb546700-b8e9-11eb-90d4-8a124dbfc827.png" width="300px" alt="qr-code-page-img" >
+| Page Name |                         URL                         |
+| :-------: | :-------------------------------------------------: |
+|   MAIN    |       [/](https://khumu-frontend.vercel.app/)       |
+|  QRCODE   | [/qrcode](https://khumu-frontend.vercel.app/qrcode) |
+|  MY PAGE  | [/mypage](https://khumu-frontend.vercel.app/mypage) |
 
 ## SSR vs Client Side Rendering
 

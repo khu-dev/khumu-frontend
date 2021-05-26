@@ -1,9 +1,25 @@
-import { theme } from '@constants/theme';
+import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
-export default function QrcodeImage() {
+import { color } from '@constants/theme';
+// import { exampleData } from '@constants/data';
+import QRCode from 'qrcode';
+
+export default function QrcodeImage({ qrcode }: { qrcode: string }) {
+  const canvasRef = useRef(null);
   const csses = useStyles();
-  return <div css={csses.qrcode}>qrcode</div>;
+
+  useEffect(() => {
+    QRCode.toCanvas(canvasRef.current, qrcode, (error) => {
+      if (error) console.error(error);
+    });
+  }, []);
+
+  return (
+    <div css={csses.qrcode}>
+      <canvas css={csses.canvas} ref={canvasRef} />
+    </div>
+  );
 }
 
 const useStyles = () => ({
@@ -14,6 +30,12 @@ const useStyles = () => ({
     width: 230px;
     height: 230px;
     border-radius: 20px;
-    background-color: ${theme.color.white};
+    background-color: ${color.white};
+    overflow: hidden;
+  `,
+  canvas: css`
+    width: 100%;
+    height: 100%;
+    transform: scale(1.8);
   `,
 });

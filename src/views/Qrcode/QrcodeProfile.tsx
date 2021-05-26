@@ -15,13 +15,21 @@ function ProfileRow({ title, description }: ProfileRowProps) {
   );
 }
 
-export default function QrcodeProfile() {
+export default function QrcodeProfile({
+  profile: { name, student_number, department },
+}: {
+  profile: {
+    name: string;
+    student_number: string;
+    department: string;
+  };
+}) {
   const csses = useStyles();
   return (
     <div css={csses.profile}>
-      <ProfileRow title={'이름'} description={'가나다'} />
-      <ProfileRow title={'학번'} description={'2020123193'} />
-      <ProfileRow title={'학과'} description={'라마바사아자차'} />
+      <ProfileRow title={'이름'} description={name} />
+      <ProfileRow title={'학번'} description={student_number} />
+      <ProfileRow title={'학과'} description={department} />
     </div>
   );
 }

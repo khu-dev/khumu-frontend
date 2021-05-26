@@ -8,7 +8,7 @@ import React from 'react';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { css } from '@emotion/react';
 
-import { theme } from '@constants/theme';
+import { color } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import { Title02 } from '@components/Title';
 
@@ -16,7 +16,7 @@ export default function QrcodeHeader({ title }: { title: string }) {
   const csses = useStyles();
 
   return (
-    <div className={'header header-qrcode'}>
+    <div className={'header header-align-center'}>
       <LinkIcon pathname={'/'}>
         <IoChevronBackOutline css={csses.icon} />
       </LinkIcon>
@@ -32,11 +32,11 @@ function useStyles() {
       left: 16px;
       top: 50%;
       transform: translateY(-50%);
-      color: ${theme.color.darkgray};
+      color: ${color.gray4};
       font-size: 28px;
     `,
     title: css`
-      color: ${theme.color.main};
+      color: ${color.main};
     `,
   };
 }
