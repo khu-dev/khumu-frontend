@@ -108,12 +108,11 @@ export default function MainStyleTag() {
         width: 80px;
         height: 100%;
 
-        margin-right: 2px;
-        padding: 0 4px;
+        margin-right: 3px;
+        padding: 0 10px;
 
         background-color: ${color.main};
         color: ${color.white};
-        font-size: 15px;
 
         border: 1px solid ${color.white};
 

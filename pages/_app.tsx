@@ -1,17 +1,13 @@
-import '@assets/style/App.scss';
-import '@assets/style/Main.scss';
-import '@assets/style/MyPage.scss';
+import 'assets/style/index.scss';
 
-import '@assets/style/Header.scss';
-import '@assets/style/Skeleton.scss';
-
-import Head from 'next/head';
 import React from 'react';
+import Head from 'next/head';
 import { AppProps } from 'next/dist/next-server/lib/router/router';
 
 import StyleTag from '@components/Style';
 
 import MainHeader from '@components/Header/Main';
+import Loading from '@components/Loading';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <StyleTag />
       </Head>
+      <Loading />
       <MainHeader />
       <div className={'app-outer-container'}>
         <Component {...pageProps} />

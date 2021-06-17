@@ -14,7 +14,11 @@ export default function MyPagePage() {
         color={'#6C6C6C'}
       />
       <div className={'mypage-container'}>
-        <Page.MyProfile />
+        <Page.MyProfile
+          name={'가나다'}
+          department={'가나다라다공학과'}
+          studentNumber={'2021102938'}
+        />
         <Page.MyLog />
         <Page.MyAccount />
         <Page.MySetFeed />

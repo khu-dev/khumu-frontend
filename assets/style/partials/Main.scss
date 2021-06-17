@@ -82,6 +82,10 @@
         background-color: $color-main;
         color: $color-white;
         border: 1px solid $color-white;
+
+        -webkit-transition: background-color 0.3s;
+        -moz-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
         transition: background-color 0.3s;
 
         border-top-left-radius: $box-border-radius;

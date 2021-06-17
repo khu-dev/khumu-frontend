@@ -7,7 +7,7 @@ import ReleaseButton from './ProfileReleaseButton';
 
 const sample = 'https://avatars.githubusercontent.com/u/77267603?v=4';
 
-export default function MyPageProfile() {
+export default function MyPageProfile({ name, department, studentNumber }) {
   const handleRelease = () => {
     alert('해제!');
   };
@@ -20,11 +20,7 @@ export default function MyPageProfile() {
       `}
     >
       <Image src={sample} />
-      <Info
-        name={'가나다'}
-        department={'가다라다공학과'}
-        studentNumber={'2012239823'}
-      />
+      <Info name={name} department={department} studentNumber={studentNumber} />
       <ReleaseButton title={'연동 해제'} handleRelease={handleRelease} />
     </MyBox>
   );
