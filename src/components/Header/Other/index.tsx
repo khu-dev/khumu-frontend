@@ -12,7 +12,11 @@ import { color } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import { Title02 } from '@components/Title';
 
-export default function OtherHeader({ align, color, pathname, title }) {
+export default function OtherHeader({
+  // align, color,
+  pathname,
+  title,
+}) {
   const csses = useStyles();
 
   return (
