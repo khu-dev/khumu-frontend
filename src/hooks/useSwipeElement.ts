@@ -8,7 +8,7 @@ const isMouseEvent = (e) => {
  * @param threshold 왼쪽으로 해당 값보다 더 움직이면 이벤트 발생
  * @returns
  */
-export const useSwipeElement = ({ threshold = 80, callback }) => {
+export const useSwipeElement = ({ threshold = 80, callback, prefix = 72 }) => {
   const [isMoving, setMoving] = React.useState(false);
   const [position, setPosition] = React.useState({
     start: 0,
@@ -28,6 +28,10 @@ export const useSwipeElement = ({ threshold = 80, callback }) => {
   const handleTouchMove = (e) => {
     const isMouse = isMouseEvent(e);
 
+    if (position.start - position.end > prefix) {
+      setMoving(false);
+    }
+
     isMoving &&
       setPosition({
         ...position,
@@ -42,12 +46,10 @@ export const useSwipeElement = ({ threshold = 80, callback }) => {
     if (gap > threshold) {
       callback();
     } else {
-      setTimeout(() => {
-        setPosition({
-          start: 0,
-          end: 0,
-        });
-      }, 500);
+      setPosition({
+        start: 0,
+        end: 0,
+      });
     }
   };
 
