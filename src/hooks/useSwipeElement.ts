@@ -1,5 +1,9 @@
 import React from 'react';
 
+const isMouseEvent = (e) => {
+  return e.type.includes('mouse');
+};
+
 /**
  * @param threshold 왼쪽으로 해당 값보다 더 움직이면 이벤트 발생
  * @returns
@@ -12,18 +16,23 @@ export const useSwipeElement = ({ threshold = 80, callback }) => {
   });
 
   const handleTouchStart = (e) => {
+    const isMouse = isMouseEvent(e);
+
     setMoving(true);
     setPosition({
-      start: e.targetTouches[0].clientX,
-      end: e.targetTouches[0].clientX,
+      start: isMouse ? e.clientX : e.targetTouches[0].clientX,
+      end: isMouse ? e.clientX : e.targetTouches[0].clientX,
     });
   };
 
   const handleTouchMove = (e) => {
-    setPosition({
-      ...position,
-      end: e.targetTouches[0].clientX,
-    });
+    const isMouse = isMouseEvent(e);
+
+    isMoving &&
+      setPosition({
+        ...position,
+        end: isMouse ? e.clientX : e.targetTouches[0].clientX,
+      });
   };
 
   const handleTouchEnd = () => {

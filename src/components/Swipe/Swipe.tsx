@@ -14,10 +14,15 @@ export default function Swipe({ children, ...rest }) {
     handler: { handleTouchStart, handleTouchMove, handleTouchEnd, isEvent },
   } = useSwipeElement({ threshold, callback: () => console.log('event!') });
 
+  console.log(gap);
+
   return (
     <div
+      onMouseDown={handleTouchStart}
       onTouchStart={handleTouchStart}
+      onMouseMove={handleTouchMove}
       onTouchMove={handleTouchMove}
+      onMouseUp={handleTouchEnd}
       onTouchEnd={handleTouchEnd}
       css={css`
         width: 100%;
