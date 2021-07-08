@@ -2,9 +2,9 @@
 
 .main-feed-container {
   width: 100%;
-  min-height: 200px;
-  height: 30vh;
-  max-height: 220px;
+  min-height: 230px;
+  height: 33vh;
+  max-height: 250px;
 
   display: flex;
   flex-direction: column;
@@ -82,6 +82,10 @@
         background-color: $color-main;
         color: $color-white;
         border: 1px solid $color-white;
+
+        -webkit-transition: background-color 0.3s;
+        -moz-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
         transition: background-color 0.3s;
 
         border-top-left-radius: $box-border-radius;

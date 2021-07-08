@@ -1,35 +1,29 @@
-// import { apiBase } from '@api/api-base';
+/**
+ * @description 제작된 페이지 목록
+ */
 import React from 'react';
 import { GetStaticProps } from 'next';
 
-import { mainItemList } from '@constants/mainItemList';
+import Link from 'next/link';
 
-import Feed from '@views/Main/Feed';
-import Skeleton from '@components/Skeleton';
-import SkeletonMainItem from '@components/Skeleton/Main/Item';
-
-export default function MainPage({ props }: any) {
-  console.log(props);
+export default function MainPage() {
+  const navList = [
+    { title: '메인', path: '/main' },
+    { title: 'QR코드', path: '/qrcode' },
+    { title: '마이페이지', path: '/mypage' },
+    { title: '알림', path: '/notifications' },
+  ];
 
   return (
     <>
-      <Feed />
-      <Skeleton
-        isLoading={true}
-        repeat={6}
-        Skeleton={SkeletonMainItem}
-        render={(props: any) => (
-          <>
-            {mainItemList.map((_, idx: number) => (
-              <div className={'main-item-container'} key={idx}>
-                <div className={'main-item-content'} {...props}>
-                  hi
-                </div>
-              </div>
-            ))}
-          </>
-        )}
-      />
+      <h1 style={{ margin: 18 }}>작성된 페이지 목록</h1>
+      <ul>
+        {navList.map(({ title, path }) => (
+          <li style={{ margin: 12 }} key={title}>
+            <Link href={path}>{`${title} ${path}`}</Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
