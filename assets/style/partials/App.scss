@@ -7,13 +7,20 @@
 }
 
 html,
-#root {
-  width: 100%;
-  height: 100%;
+body {
+  position: fixed;
+  overflow: hidden;
 }
 
 body {
-  height: $header-except-height;
+  height: 100vh;
+
+  & > #__next {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+  }
 }
 
 .app-outer-container {
