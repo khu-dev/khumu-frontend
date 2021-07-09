@@ -10,23 +10,23 @@ html,
 body {
   width: 100vw;
   height: 100vh;
-  left: 0;
-  top: 0;
-  position: fixed;
-  overflow: hidden;
+  // left: 0;
+  // top: 0;
+  // position: fixed;
+  // overflow: hidden;
 }
 
-body {
-  height: 100vh;
+// body {
+//   height: 100vh;
 
-  & > #__next {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
-  }
-}
+//   & > #__next {
+//     width: 100vw;
+//     height: 100vh;
+//     overflow-x: hidden;
+//     overflow-y: scroll;
+//     -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+//   }
+// }
 
 .app-outer-container {
   width: 100%;

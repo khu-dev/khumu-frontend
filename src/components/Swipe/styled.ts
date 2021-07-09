@@ -46,14 +46,14 @@ export const SwipeContainer = styled.div<{
   ${({ isDelete }) =>
     isDelete
       ? css`
+          overflow: hidden;
           transform: translate(-130%);
           height: 0;
-          transition: all 0.3s;
+          transition: transform 0.5s 0.2s, height 0.3s;
         `
       : ``}
 
   & > span {
-    content: '삭제';
     width: 72px;
     height: ${elementHeight};
     line-height: ${elementHeight};
