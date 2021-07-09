@@ -12,11 +12,11 @@ import { color } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import { Title02 } from '@components/Title';
 
-export default function MyPageHeader({ title }: { title: string }) {
+export default function NotificationsHeader({ title }: { title: string }) {
   const csses = useStyles();
 
   return (
-    <div className={'header header-mypage'}>
+    <div className={'header header-notifications'}>
       <LinkIcon pathname={'/'}>
         <IoChevronBackOutline css={csses.icon} />
       </LinkIcon>
