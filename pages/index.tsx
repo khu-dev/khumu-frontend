@@ -6,8 +6,6 @@ import { GetStaticProps } from 'next';
 
 import Link from 'next/link';
 
-var Android: any;
-
 export default function MainPage() {
   const navList = [
     { title: '메인', path: '/main' },
@@ -32,11 +30,8 @@ export default function MainPage() {
           type={'button'}
           value={'showAndroidToast'}
           onClick={() => {
-            // if (Android) {
-            Android.showToast('안드 프론트 통신!');
-            // } else {
-            // alert('Android 객체가 undefined 값을 가집니다.');
-            // }
+            //@ts-ignore
+            window?.Android?.showToast('안드 프론트 통신!');
           }}
         />
       </div>
