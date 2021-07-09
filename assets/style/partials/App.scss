@@ -16,17 +16,17 @@ body {
   // overflow: hidden;
 }
 
-// body {
-//   height: 100vh;
+body {
+  height: $header-except-height;
 
-//   & > #__next {
-//     width: 100vw;
-//     height: 100vh;
-//     overflow-x: hidden;
-//     overflow-y: scroll;
-//     -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
-//   }
-// }
+  //   & > #__next {
+  //     width: 100vw;
+  //     height: 100vh;
+  //     overflow-x: hidden;
+  //     overflow-y: scroll;
+  //     -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+  //   }
+}
 
 .app-outer-container {
   width: 100%;

@@ -32,11 +32,11 @@ export default function MainPage() {
           type={'button'}
           value={'showAndroidToast'}
           onClick={() => {
-            if (Android) {
-              Android.showToast('안드 프론트 통신!');
-            } else {
-              alert('Android 객체가 undefined 값을 가집니다.');
-            }
+            // if (Android) {
+            Android.showToast('안드 프론트 통신!');
+            // } else {
+            // alert('Android 객체가 undefined 값을 가집니다.');
+            // }
           }}
         />
       </div>

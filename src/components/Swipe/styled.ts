@@ -48,8 +48,7 @@ export const SwipeContainer = styled.div<{
       ? css`
           overflow: hidden;
           transform: translate(-130%);
-          height: 0;
-          transition: transform 0.5s 0.2s, height 0.3s;
+          transition: transform 0.5s;
         `
       : ``}
 
