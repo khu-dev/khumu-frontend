@@ -29,6 +29,7 @@ const useStyles = () => ({
     justify-content: space-evenly;
     align-items: center;
     flex: 1;
+    height: 100%;
     width: 100%;
     background-color: ${color.main};
     border-top-left-radius: 32px;
