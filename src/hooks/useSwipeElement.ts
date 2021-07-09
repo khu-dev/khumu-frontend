@@ -4,11 +4,21 @@ const isMouseEvent = (e) => {
   return e.type.includes('mouse');
 };
 
+interface SwipeElementProps {
+  threshold?: number;
+  callback?: Function;
+  prefix?: number;
+}
+
 /**
  * @param threshold 왼쪽으로 해당 값보다 더 움직이면 이벤트 발생
  * @returns
  */
-export const useSwipeElement = ({ threshold = 80, callback, prefix = 72 }) => {
+export const useSwipeElement = ({
+  threshold = 80,
+  callback,
+  prefix = 72,
+}: SwipeElementProps) => {
   const [isMoving, setMoving] = React.useState(false);
   const [position, setPosition] = React.useState({
     start: 0,

@@ -7,7 +7,7 @@ import Swipe from '@components/Swipe';
 export default function NotificationsPage() {
   return (
     <>
-      <Swipe>hi</Swipe>
+      <Swipe handleDelete={() => console.log('delete')}>hi</Swipe>
     </>
   );
 }

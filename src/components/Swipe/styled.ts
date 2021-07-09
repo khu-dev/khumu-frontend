@@ -6,6 +6,7 @@ const elementHeight = '64px';
 
 export const SwipeContainer = styled.div<{
   isMoving: boolean;
+  isDelete: boolean;
   isEvent: boolean;
   gap: number;
 }>`
@@ -42,7 +43,16 @@ export const SwipeContainer = styled.div<{
           transform: translateX(0);
         `}
 
-  &::after {
+  ${({ isDelete }) =>
+    isDelete
+      ? css`
+          transform: translate(-130%);
+          height: 0;
+          transition: all 0.3s;
+        `
+      : ``}
+
+  & > span {
     content: '삭제';
     width: 72px;
     height: ${elementHeight};
