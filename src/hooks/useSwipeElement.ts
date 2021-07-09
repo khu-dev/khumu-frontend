@@ -43,7 +43,7 @@ export const useSwipeElement = ({ threshold = 80, callback, prefix = 72 }) => {
     const gap = position.start - position.end;
     setMoving(false);
 
-    if (gap > threshold) {
+    if (gap >= threshold) {
       callback();
     } else {
       setPosition({
@@ -54,7 +54,7 @@ export const useSwipeElement = ({ threshold = 80, callback, prefix = 72 }) => {
   };
 
   const isEvent = () => {
-    return position.start - position.end > threshold;
+    return position.start - position.end > threshold / 2;
   };
 
   return {

@@ -25,6 +25,11 @@ export const SwipeContainer = styled.div<{
             ? css`
                 transition: all 0.4s;
               `
+            : gap >= 36 && !isMoving
+            ? css`
+                transform: translate(-72px);
+                transition: all 0.4s;
+              `
             : ``}
         `
       : isEvent
