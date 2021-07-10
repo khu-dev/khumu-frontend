@@ -20,6 +20,7 @@ export const useSwipeElement = ({
   prefix = 72,
 }: SwipeElementProps) => {
   const [isMoving, setMoving] = React.useState(false);
+  const [isEvent, setEvent] = React.useState(false);
   const [position, setPosition] = React.useState({
     start: 0,
     end: 0,
@@ -27,7 +28,7 @@ export const useSwipeElement = ({
 
   const handleTouchStart = (e) => {
     const isMouse = isMouseEvent(e);
-
+    setEvent(false);
     setMoving(true);
     setPosition({
       start: isMouse ? e.clientX : e.targetTouches[0].clientX,
@@ -37,10 +38,6 @@ export const useSwipeElement = ({
 
   const handleTouchMove = (e) => {
     const isMouse = isMouseEvent(e);
-
-    if (position.start - position.end > prefix) {
-      setMoving(false);
-    }
 
     isMoving &&
       setPosition({
@@ -54,6 +51,7 @@ export const useSwipeElement = ({
     setMoving(false);
 
     if (gap >= threshold) {
+      setEvent(true);
       callback();
     } else {
       setPosition({
@@ -63,15 +61,21 @@ export const useSwipeElement = ({
     }
   };
 
-  const isEvent = () => {
-    return position.start - position.end > threshold / 2;
-  };
+  // const isEvent = () => {
+  //   return position.start - position.end > threshold / 2;
+  // };
 
   return {
     startPoint: position.start,
     endPoint: position.end,
     gap: position.start - position.end,
     isMoving,
-    handler: { handleTouchStart, handleTouchMove, handleTouchEnd, isEvent },
+    isEvent,
+    handler: {
+      handleTouchStart,
+      handleTouchMove,
+      handleTouchEnd,
+      // isEvent
+    },
   };
 };

@@ -3,44 +3,46 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 const elementHeight = '64px';
+let innerWidth;
+if (typeof window !== 'undefined') {
+  // detect window screen width function
+  innerWidth = window.innerWidth;
+  console.log(innerWidth);
+}
 
-export const SwipeContainer = styled.div<{
+export const Swiper = styled.div<{
   isMoving: boolean;
   isDelete: boolean;
   isEvent: boolean;
   gap: number;
 }>`
-  position: relative;
-  width: 100%;
+  min-width: ${innerWidth ? `${innerWidth}px` : `100vw`};
   height: ${elementHeight};
 
-  display: flex;
-  align-items: center;
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
+  background-color: ${color.white};
 
   ${({ isMoving, isEvent, gap }) =>
-    isMoving || gap <= 72
+    isMoving
       ? css`
           transform: translate(-${gap}px);
           ${gap <= 0
             ? css`
-                transition: all 0.4s;
-              `
-            : gap >= 36 && !isMoving
-            ? css`
-                transform: translate(-72px);
-                transition: all 0.4s;
+                transform: none;
+                transition: all 0.5s;
               `
             : ``}
         `
       : isEvent
       ? css`
-          transition: all 0.3s;
           transform: translateX(-72px);
+          transition: all 0.5s;
         `
       : css`
-          transition: all 0.4s;
           transform: translateX(0);
+          transition: all 0.5s;
         `}
 
   ${({ isDelete }) =>
@@ -48,20 +50,53 @@ export const SwipeContainer = styled.div<{
       ? css`
           overflow: hidden;
           transform: translate(-130%);
-          transition: transform 0.5s;
+          transition: transform 0.8s;
         `
-      : ``}
+      : css``}
+`;
 
-  & > span {
-    width: 72px;
-    height: ${elementHeight};
-    line-height: ${elementHeight};
-    background-color: ${color.main};
-    color: ${color.white};
-    text-align: center;
+export const DeleteButton = styled.span<{
+  isMoving: boolean;
+  isDelete: boolean;
+  isEvent: boolean;
+  gap: number;
+}>`
+  height: ${elementHeight};
+  line-height: ${elementHeight};
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: ${color.main};
+  color: ${color.white};
+  text-align: center;
 
-    position: absolute;
-    right: -72px;
-    top: 0;
-  }
+  ${({ isMoving, isEvent, gap }) => {
+    console.log('hi', isMoving, isEvent, gap);
+
+    return isMoving
+      ? gap > 0
+        ? css`
+            transform: none;
+            width: ${gap}px;
+          `
+        : !isEvent
+        ? css`
+            transform: translateX(72px);
+            width: 72px;
+            transition: all 0.5s;
+          `
+        : css``
+      : isEvent
+      ? css`
+          transform: none;
+          width: 72px;
+          transition: all 0.5s;
+        `
+      : css`
+          transform: translateX(72px);
+          width: 72px;
+          transition: all 0.5s;
+        `;
+  }};
 `;

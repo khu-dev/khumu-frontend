@@ -25,7 +25,11 @@ export default function AppStyleTag() {
         min-height: ${header.exceptHeight}; // header height: ;
 
         margin-top: ${header.height};
-        background-color: black;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
       }
     `}</style>
   );
