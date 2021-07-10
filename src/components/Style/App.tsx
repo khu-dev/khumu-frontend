@@ -11,7 +11,7 @@ export default function AppStyleTag() {
       }
 
       html,
-      #root {
+      #__next {
         width: 100%;
         height: 100%;
       }
@@ -25,11 +25,6 @@ export default function AppStyleTag() {
         min-height: ${header.exceptHeight}; // header height: ;
 
         margin-top: ${header.height};
-
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
       }
     `}</style>
   );
