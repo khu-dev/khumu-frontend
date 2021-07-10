@@ -17,8 +17,8 @@ interface SwipeElementProps {
 export const useSwipeElement = ({
   threshold = 80,
   callback,
-  prefix = 72,
-}: SwipeElementProps) => {
+}: // prefix = 72,
+SwipeElementProps) => {
   const [isMoving, setMoving] = React.useState(false);
   const [isEvent, setEvent] = React.useState(false);
   const [position, setPosition] = React.useState({
