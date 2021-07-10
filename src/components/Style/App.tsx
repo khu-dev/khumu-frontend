@@ -25,6 +25,7 @@ export default function AppStyleTag() {
         min-height: ${header.exceptHeight}; // header height: ;
 
         margin-top: ${header.height};
+        background-color: black;
       }
     `}</style>
   );
