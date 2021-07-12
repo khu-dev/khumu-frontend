@@ -12,28 +12,25 @@ const threshold = 24;
 
 export default function Swipe({ children, handleDelete, ...rest }) {
   const {
-    gap,
-    isMoving,
     isEvent,
+    isMoving,
     handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
   } = useSwipeElement({ threshold, callback: () => console.log('event!') });
   const [isDelete, setDelete] = useState(false);
+
+  console.log(isDelete);
 
   return (
     <div
       css={css`
         position: relative;
+        height: 64px;
         background-color: ${color.main};
       `}
     >
       <Swiper
-        onClick={() => {
-          console.log(isMoving, isEvent, gap);
-        }}
-        isMoving={isMoving}
         isDelete={isDelete}
         isEvent={isEvent}
-        gap={gap}
         onMouseDown={handleTouchStart}
         onTouchStart={handleTouchStart}
         onMouseMove={handleTouchMove}
@@ -48,11 +45,7 @@ export default function Swipe({ children, handleDelete, ...rest }) {
         isMoving={isMoving}
         isDelete={isDelete}
         isEvent={isEvent}
-        gap={gap}
-        onClick={() => {
-          setDelete(true);
-          handleDelete();
-        }}
+        onClick={() => setDelete(true)}
       >
         {'삭제'}
       </DeleteButton>

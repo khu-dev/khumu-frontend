@@ -36,15 +36,18 @@ SwipeElementProps) => {
     });
   };
 
-  const handleTouchMove = (e) => {
-    const isMouse = isMouseEvent(e);
+  const handleTouchMove = React.useCallback(
+    (e) => {
+      const isMouse = isMouseEvent(e);
 
-    isMoving &&
-      setPosition({
-        ...position,
-        end: isMouse ? e.clientX : e.targetTouches[0].clientX,
-      });
-  };
+      isMoving &&
+        setPosition({
+          ...position,
+          end: isMouse ? e.clientX : e.targetTouches[0].clientX,
+        });
+    },
+    [isMoving],
+  );
 
   const handleTouchEnd = () => {
     const gap = position.start - position.end;
