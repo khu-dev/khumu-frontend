@@ -1,4 +1,5 @@
 import { BASE_URI } from '@config/baseURI';
+import { accesskey } from '@config/key';
 import axios from 'axios';
 
 interface SelectParams {
@@ -16,7 +17,9 @@ interface DeleteParams {
 export const fetchNotifications = {
   select: ({ userId }: SelectParams) =>
     axios.get(`${BASE_URI}/notifications?recipient=${userId}`, {
-      headers: { 'Access-Control-Allow-Origin': '*' },
+      headers: {
+        Authorization: `Bearer ${accesskey}`,
+      },
     }),
   read: ({ docId }: ReadParams) =>
     axios.patch(`${BASE_URI}/notifications/${docId}/read`),

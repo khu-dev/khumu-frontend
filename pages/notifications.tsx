@@ -5,8 +5,32 @@ import React from 'react';
 import Swipe from '@components/Swipe';
 import CommonHeader from '@components/Header/Common';
 import { color } from '@constants/theme';
+import { fetchNotifications } from '@api/api-notifications';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Notifications from '@views/Notifications';
+
+const userId = 'wonk138';
 
 export default function NotificationsPage() {
+  const [list, setList] = useState([]);
+
+  const fetchList = async () => {
+    const {
+      data: { data },
+    } = await fetchNotifications.select({
+      userId,
+    });
+
+    if (data.length > 0) {
+      setList(data);
+    }
+  };
+
+  useEffect(() => {
+    fetchList();
+  }, []);
+
   return (
     <>
       <CommonHeader
@@ -15,7 +39,7 @@ export default function NotificationsPage() {
         className={'header-notifications'}
         color={color.main}
       />
-      <Swipe handleDelete={() => console.log('delete')}>hi</Swipe>
+      <Notifications list={list} />
     </>
   );
 }

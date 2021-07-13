@@ -27,8 +27,8 @@ export const Swiper = styled.div<{
   background-color: ${color.white};
   z-index: 2;
 
-  ${({ isEvent }) => {
-    return isEvent
+  ${({ isEvent }) =>
+    isEvent
       ? css`
           transform: translateX(-72px);
           transition: all 0.5s;
@@ -36,8 +36,7 @@ export const Swiper = styled.div<{
       : css`
           transform: translateX(0);
           transition: all 0.5s;
-        `;
-  }}
+        `}
 
   ${({ isDelete }) =>
     isDelete
