@@ -1,13 +1,10 @@
 /**
  * @description 제작된 페이지 목록
  */
-import React from 'react';
-import Swipe from '@components/Swipe';
+import React, { useState, useEffect } from 'react';
 import CommonHeader from '@components/Header/Common';
 import { color } from '@constants/theme';
 import { fetchNotifications } from '@api/api-notifications';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import Notifications from '@views/Notifications';
 
 const userId = 'wonk138';
