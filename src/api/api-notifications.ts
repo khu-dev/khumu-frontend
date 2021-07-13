@@ -6,21 +6,22 @@ interface SelectParams {
 }
 
 interface ReadParams {
-  id: 'all' | number;
+  docId: 'all' | number;
 }
 
 interface DeleteParams {
-  id: number;
+  docId: number;
 }
 
-export const API_NOTIFICATIONS_SELECT = ({ userId }: SelectParams) =>
-  axios.get(`${BASE_URI}/notifications?recipient=${userId}`);
-
-export const API_NOTIFICATIONS_READ = ({ id }: ReadParams) =>
-  axios.patch(`${BASE_URI}/notifications/${id}/read`);
-
-export const API_NOTIFICATIONS_UNREAD = ({ id }: ReadParams) =>
-  axios.patch(`${BASE_URI}/notifications/${id}/unread`);
-
-export const API_NOTIFICATIONS_DELETE = ({ id }: DeleteParams) =>
-  axios.delete(`${BASE_URI}/notifications/${id}`);
+export const fetchNotifications = {
+  select: ({ userId }: SelectParams) =>
+    axios.get(`${BASE_URI}/notifications?recipient=${userId}`, {
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    }),
+  read: ({ docId }: ReadParams) =>
+    axios.patch(`${BASE_URI}/notifications/${docId}/read`),
+  unread: ({ docId }: ReadParams) =>
+    axios.patch(`${BASE_URI}/notifications/${docId}/unread`),
+  delete: ({ docId }: DeleteParams) =>
+    axios.delete(`${BASE_URI}/notifications/${docId}`),
+};
