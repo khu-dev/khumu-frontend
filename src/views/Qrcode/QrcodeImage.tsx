@@ -15,7 +15,12 @@ export default function QrcodeImage({ qrcode }: { qrcode: string }) {
       });
   }, [qrcode]);
 
-  if (!qrcode) return <Container css={emptyQRcodeStyle} />;
+  if (!qrcode)
+    return (
+      <Container>
+        <Empty />
+      </Container>
+    );
 
   return (
     <Container>
@@ -41,6 +46,9 @@ const Canvas = styled.canvas`
   transform: scale(1.8);
 `;
 
-const emptyQRcodeStyle = css`
+const Empty = styled.div`
   background-color: ${color.gray5};
+  width: 190px;
+  height: 190px;
+  border-radius: 20px;
 `;

@@ -6,9 +6,7 @@ export default function MainStyleTag() {
     <style jsx>{`
       .main-feed-container {
         width: 100%;
-        min-height: 200px;
-        height: 30vh;
-        max-height: 220px;
+        height: 250px;
 
         display: flex;
         flex-direction: column;

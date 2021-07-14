@@ -6,13 +6,20 @@ import CommonHeader from '@components/Header/Common';
 import { color } from '@constants/theme';
 import { fetchNotifications } from '@api/api-notifications';
 import Notifications from '@views/Notifications';
+import Skeleton from '@components/Skeleton';
+import { useToken } from 'src/context/Token';
+import SkeletonNotifications from '@components/Skeleton/Notifications';
 
 const userId = 'wonk138';
 
 export default function NotificationsPage() {
+  const { token } = useToken();
+  const [isLoading, setLoading] = useState(true);
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
+    if (!isLoading) setLoading(true);
+
     const {
       data: { data },
     } = await fetchNotifications.select({
@@ -21,12 +28,15 @@ export default function NotificationsPage() {
 
     if (data.length > 0) {
       setList(data);
+      setLoading(false);
     }
   };
 
+  console.log(list);
+
   useEffect(() => {
-    fetchList();
-  }, []);
+    token && fetchList();
+  }, [token]);
 
   return (
     <>
@@ -36,7 +46,12 @@ export default function NotificationsPage() {
         className={'header-notifications'}
         color={color.main}
       />
-      <Notifications list={list} />
+      <Skeleton
+        isLoading={isLoading}
+        repeat={10}
+        Skeleton={SkeletonNotifications}
+        render={(props) => <Notifications list={list} {...props} />}
+      />
     </>
   );
 }
