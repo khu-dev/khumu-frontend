@@ -18,7 +18,14 @@ const Notifications = ({ list }) => {
   return (
     <>
       {list.map(
-        ({ kind, created_at, id, is_read, recipient, reference, title, content }) => (
+        ({
+          kind,
+          created_at,
+          is_read,
+          // recipient, reference,id,
+          title,
+          content,
+        }) => (
           <Swipe handleDelete={handleDelete}>
             <NotiItem>
               <NotiItem.Icon isRead={is_read} />
