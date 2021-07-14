@@ -17,19 +17,21 @@ const Notifications = ({ list }) => {
 
   return (
     <>
-      {list.map((notiItem) => (
-        <Swipe handleDelete={handleDelete}>
-          <NotiItem>
-            <NotiItem.Icon />
-            <NotiItem.Contents>
-              <NotiItem.Title title={notiItem.title} />
-              <NotiItem.Kind kind={notiItem.kind} />
-              <NotiItem.Content content={notiItem.content} />;
-            </NotiItem.Contents>
-            <NotiItem.Date date={notiItem.date} />
-          </NotiItem>
-        </Swipe>
-      ))}
+      {list.map(
+        ({ kind, created_at, id, is_read, recipient, reference, title, content }) => (
+          <Swipe handleDelete={handleDelete}>
+            <NotiItem>
+              <NotiItem.Icon isRead={is_read} />
+              <NotiItem.Contents>
+                <NotiItem.Title title={title} />
+                <NotiItem.Kind kind={kind} />
+                <NotiItem.Content content={content} />
+              </NotiItem.Contents>
+              <NotiItem.Day day={created_at} />
+            </NotiItem>
+          </Swipe>
+        ),
+      )}
     </>
   );
 };

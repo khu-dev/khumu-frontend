@@ -2,19 +2,13 @@ import { color } from '@constants/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const elementHeight = '64px';
-let innerWidth;
-if (typeof window !== 'undefined') {
-  // detect window screen width function
-  innerWidth = window.innerWidth;
-  console.log(innerWidth);
-}
+const elementHeight = '72px';
 
 export const Swiper = styled.div<{
   isDelete: boolean;
   isEvent: boolean;
 }>`
-  min-width: ${innerWidth ? `${innerWidth}px` : `100vw`};
+  width: 100vw;
   height: ${elementHeight};
 
   position: absolute;

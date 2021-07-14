@@ -24,8 +24,10 @@ export default function Swipe({ children, handleDelete, ...rest }) {
     <div
       css={css`
         position: relative;
-        height: 64px;
+        width: 100vw;
+        height: 72px;
         background-color: ${color.main};
+        border-bottom: 1px solid ${color.gray6};
       `}
     >
       <Swiper
