@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import QRCode from 'qrcode';
 
 import { color } from '@constants/theme';
