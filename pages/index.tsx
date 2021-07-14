@@ -14,7 +14,7 @@ export default function MainPage() {
     { title: '알림', path: '/notifications' },
   ];
 
-  const [tokens, setTokens] = useState('');
+  const [tokens, setTokens] = useState(['', '']);
 
   return (
     <>
@@ -35,10 +35,10 @@ export default function MainPage() {
             //@ts-ignore
             window?.Android?.showToast('안드 프론트 통신!');
             //@ts-ignore
-            setTokens(window?.Android?.getToken() || window?.Android?.getToken);
+            setTokens([window?.Android?.getToken(), window?.Android?.getToken]);
           }}
         />
-        <div>토큰 : {tokens || '불러오지 못함'}</div>
+        <div>토큰 : {`${tokens[0]} ${tokens[1]}` || '불러오지 못함'}</div>
       </div>
     </>
   );
