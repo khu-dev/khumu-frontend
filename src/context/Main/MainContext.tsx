@@ -13,4 +13,4 @@ const initialValue = {
 
 export const MainContext = createContext(initialValue);
 
-export const useMain = useContext(MainContext);
+export const useMain = () => useContext(MainContext);

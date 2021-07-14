@@ -5,4 +5,5 @@ export interface QRCodeDataProps {
     student_number: string;
     department: string;
   };
+  handleRefresh(): void;
 }

@@ -1,9 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { BASE_URI } from '@config/baseURI';
 
-import { accesskey } from '@config/_key';
-// import { accesskey } from '@config/key';
-
 type Board =
   | 'following'
   | 'my'
@@ -13,24 +10,18 @@ type Board =
   | 'hot'
   | '';
 
-type FetchArticleList = (
-  token: string,
-  board: Board,
-  size: number,
-  page: number,
-) => Promise<AxiosResponse<any>>;
-
-export const fetchArticleList: FetchArticleList = (
-  token = accesskey,
+type FetchArticleList = ({
   board,
   size,
   page,
-) =>
-  axios.get(BASE_URI + `/articles?board=${board}&size=${size}&page=${page}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+}: {
+  board: Board;
+  size: number;
+  page: number;
+}) => Promise<AxiosResponse<any>>;
 
-export const fetchArticleByNumber = (number: number) =>
-  axios.get(BASE_URI + `articles/${number}`);
+export const fetchArticleList: FetchArticleList = ({ board, size, page }) =>
+  axios.get(BASE_URI + `/articles?board=${board}&size=${size}&page=${page}`);
+
+export const fetchArticleByNumber = ({ id }: { id: number }) =>
+  axios.get(BASE_URI + `articles/${id}`);

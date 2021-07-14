@@ -1,8 +1,7 @@
 /**
  * @description 제작된 페이지 목록
  */
-import React, { useState } from 'react';
-import { GetStaticProps } from 'next';
+import React from 'react';
 
 import Link from 'next/link';
 
@@ -13,8 +12,6 @@ export default function MainPage() {
     { title: '마이페이지', path: '/mypage' },
     { title: '알림', path: '/notifications' },
   ];
-
-  const [tokens, setTokens] = useState(['', '']);
 
   return (
     <>
@@ -34,30 +31,9 @@ export default function MainPage() {
           onClick={() => {
             //@ts-ignore
             window?.Android?.showToast('안드 프론트 통신!');
-            //@ts-ignore
-            setTokens([window?.Android?.getToken(), window?.Android?.getToken]);
           }}
         />
-        <div>토큰 : {`${tokens[0]} ${tokens[1]}` || '불러오지 못함'}</div>
       </div>
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps = async (/*context*/) => {
-  // const data = (await apiBase())?.data || null;
-  // console.log('loading ...');
-  // function sleep(ms: number) {
-  //   const wakeUpTime = Date.now() + ms;
-  //   while (Date.now() < wakeUpTime) {}
-  // }
-  // sleep(1000);
-  // console.log('done!');
-
-  return {
-    props: {
-      // data,
-      null: null,
-    },
-  };
-};

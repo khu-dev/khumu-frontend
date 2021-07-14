@@ -1,10 +1,9 @@
 import { createContext, useContext } from 'react';
 
 export const initialValue = {
-  token: '',
-  setToken: (token) => console.log(token),
+  token: null,
 };
 
 export const TokenContext = createContext(initialValue);
 
-export const useToken = useContext(TokenContext);
+export const useToken = () => useContext(TokenContext);
