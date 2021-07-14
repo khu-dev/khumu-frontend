@@ -1,5 +1,5 @@
 import { BASE_URI } from '@config/baseURI';
-import { accesskey } from '@config/key';
+import { accesskey } from '@config/_key';
 import axios from 'axios';
 
 interface SelectParams {
