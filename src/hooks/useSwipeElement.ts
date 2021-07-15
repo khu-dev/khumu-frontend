@@ -22,8 +22,10 @@ SwipeElementProps) => {
   const [isMoving, setMoving] = React.useState(false);
   const [isEvent, setEvent] = React.useState(false);
   const [position, setPosition] = React.useState({
-    start: 0,
-    end: 0,
+    startX: 0,
+    startY: 0,
+    endX: 0,
+    endY: 0,
   });
 
   const handleTouchStart = (e) => {
@@ -31,8 +33,10 @@ SwipeElementProps) => {
     setEvent(false);
     setMoving(true);
     setPosition({
-      start: isMouse ? e.clientX : e.targetTouches[0].clientX,
-      end: isMouse ? e.clientX : e.targetTouches[0].clientX,
+      startX: isMouse ? e.clientX : e.targetTouches[0].clientX,
+      startY: isMouse ? e.clientY : e.targetTouches[0].clientY,
+      endX: isMouse ? e.clientX : e.targetTouches[0].clientX,
+      endY: isMouse ? e.clientY : e.targetTouches[0].clientY,
     });
   };
 
@@ -43,23 +47,27 @@ SwipeElementProps) => {
       isMoving &&
         setPosition({
           ...position,
-          end: isMouse ? e.clientX : e.targetTouches[0].clientX,
+          endX: isMouse ? e.clientX : e.targetTouches[0].clientX,
+          endY: isMouse ? e.clientY : e.targetTouches[0].clientY,
         });
     },
     [isMoving],
   );
 
   const handleTouchEnd = () => {
-    const gap = position.start - position.end;
+    const gapX = position.startX - position.endX;
+    const gapY = Math.abs(position.startY - position.endY);
     setMoving(false);
 
-    if (gap >= threshold) {
+    if (gapX >= threshold && gapY <= threshold) {
       setEvent(true);
       callback?.();
     } else {
       setPosition({
-        start: 0,
-        end: 0,
+        startX: 0,
+        startY: 0,
+        endX: 0,
+        endY: 0,
       });
     }
   };
@@ -69,9 +77,9 @@ SwipeElementProps) => {
   // };
 
   return {
-    startPoint: position.start,
-    endPoint: position.end,
-    gap: position.start - position.end,
+    startPoint: position.startX,
+    endPoint: position.endX,
+    gap: position.startX - position.endX,
     isMoving,
     isEvent,
     handler: {

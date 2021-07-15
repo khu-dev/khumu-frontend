@@ -4,7 +4,7 @@ import Swipe from '@components/Swipe';
 import { NotiItem } from './NotiItem';
 import { AndroidToast } from 'src/utils/android';
 
-const Notifications = ({ item }) => {
+const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
   const [isRead, setRead] = useState(item.is_read);
 
   const handleDelete = async (notiId) => {
@@ -26,6 +26,8 @@ const Notifications = ({ item }) => {
       setRead(true);
       console.log('read noti', data);
     }
+
+    // 특정 것 읽고 이동 ?
   };
 
   return (
@@ -34,7 +36,7 @@ const Notifications = ({ item }) => {
       handleClick={() => handleRead(item.id)}
       handleDelete={() => handleDelete(item.id)}
     >
-      <NotiItem>
+      <NotiItem index={index} fetchIndex={fetchIndex} infiniteFetch={infiniteFetch}>
         <NotiItem.Icon isRead={isRead} />
         <NotiItem.Contents>
           <NotiItem.Title title={item.title} />

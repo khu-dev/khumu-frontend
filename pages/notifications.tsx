@@ -12,10 +12,17 @@ import SkeletonNotifications from '@components/Skeleton/Notifications';
 
 const userId = 'wonk138';
 
+let windowHeight;
+const elementHeight = 72;
+if (process.browser) {
+  windowHeight = window.innerHeight * 1.5;
+}
+
 export default function NotificationsPage() {
   const { token } = useToken();
   const [isLoading, setLoading] = useState(true);
   const [list, setList] = useState([]);
+  const [length, setLength] = useState(Math.floor(windowHeight / elementHeight));
 
   const fetchList = async () => {
     if (!isLoading) setLoading(true);
@@ -30,6 +37,10 @@ export default function NotificationsPage() {
       setList(data);
       setLoading(false);
     }
+  };
+
+  const infiniteFetch = () => {
+    setLength((prev) => prev + length);
   };
 
   useEffect(() => {
@@ -50,8 +61,15 @@ export default function NotificationsPage() {
         Skeleton={SkeletonNotifications}
         render={(props) => (
           <>
-            {list?.map((item) => (
-              <Notifications key={item.id} item={item} {...props} />
+            {list?.slice(0, length).map((item, index) => (
+              <Notifications
+                key={item.id}
+                item={item}
+                index={index}
+                fetchIndex={length}
+                infiniteFetch={infiniteFetch}
+                {...props}
+              />
             ))}
           </>
         )}

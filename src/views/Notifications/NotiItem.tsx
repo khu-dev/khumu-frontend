@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntersect } from 'src/hooks/userIntersect';
 import { calculateDayDiff } from 'src/utils/day';
 import { Icons } from './Icons';
 import * as s from './styled';
@@ -21,7 +22,15 @@ const Day = ({ day }) => (
 
 const Contents = ({ children }) => <s.NotiContent>{children}</s.NotiContent>;
 
-const NotiItem = ({ children }) => <s.NotiContainer>{children}</s.NotiContainer>;
+const NotiItem = ({ index, children, fetchIndex, infiniteFetch }) => {
+  const { ref } = useIntersect({ callback: infiniteFetch });
+
+  return index === fetchIndex - 3 ? (
+    <s.NotiContainer ref={ref}>{children}</s.NotiContainer>
+  ) : (
+    <s.NotiContainer>{children}</s.NotiContainer>
+  );
+};
 
 NotiItem.Icon = Icon;
 NotiItem.Title = Title;
