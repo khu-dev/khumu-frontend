@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fetchNotifications } from '@api/api-notifications';
 import Swipe from '@components/Swipe';
 import { NotiItem } from './NotiItem';
 
-const Notifications = ({ list }) => {
-  const handleDelete = async (docId) => {
+const Notifications = ({ item }) => {
+  const [isRead, setRead] = useState(item.is_read);
+
+  const handleDelete = async (notiId) => {
     const { data } = await fetchNotifications.delete({
-      docId,
+      notiId,
     });
 
     if (data) {
@@ -15,31 +17,28 @@ const Notifications = ({ list }) => {
     }
   };
 
+  const handleRead = async (notiId: number | 'all' = 'all') => {
+    const { data } = await fetchNotifications.read({ notiId });
+    if (!isRead) setRead(true);
+    console.log('read noti', data);
+  };
+
   return (
-    <>
-      {list.map(
-        ({
-          kind,
-          created_at,
-          is_read,
-          // recipient, reference,id,
-          title,
-          content,
-        }) => (
-          <Swipe handleDelete={handleDelete}>
-            <NotiItem>
-              <NotiItem.Icon isRead={is_read} />
-              <NotiItem.Contents>
-                <NotiItem.Title title={title} />
-                <NotiItem.Kind kind={kind} />
-                <NotiItem.Content content={content} />
-              </NotiItem.Contents>
-              <NotiItem.Day day={created_at} />
-            </NotiItem>
-          </Swipe>
-        ),
-      )}
-    </>
+    <Swipe
+      key={item.id}
+      handleClick={() => handleRead(item.id)}
+      handleDelete={() => handleDelete(item.id)}
+    >
+      <NotiItem>
+        <NotiItem.Icon isRead={isRead} />
+        <NotiItem.Contents>
+          <NotiItem.Title title={item.title} />
+          <NotiItem.Kind kind={item.kind} />
+          <NotiItem.Content content={item.content} />
+        </NotiItem.Contents>
+        <NotiItem.Day day={item.created_at} />
+      </NotiItem>
+    </Swipe>
   );
 };
 

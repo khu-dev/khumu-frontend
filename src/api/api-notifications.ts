@@ -6,20 +6,20 @@ interface SelectParams {
 }
 
 interface ReadParams {
-  docId: 'all' | number;
+  notiId: 'all' | number;
 }
 
 interface DeleteParams {
-  docId: number;
+  notiId: number;
 }
 
 export const fetchNotifications = {
   select: ({ userId }: SelectParams) =>
     axios.get(`${BASE_URI}/notifications?recipient=${userId}`),
-  read: ({ docId }: ReadParams) =>
-    axios.patch(`${BASE_URI}/notifications/${docId}/read`),
-  unread: ({ docId }: ReadParams) =>
-    axios.patch(`${BASE_URI}/notifications/${docId}/unread`),
-  delete: ({ docId }: DeleteParams) =>
-    axios.delete(`${BASE_URI}/notifications/${docId}`),
+  read: ({ notiId }: ReadParams) =>
+    axios.patch(`${BASE_URI}/notifications/${notiId}/read`),
+  unread: ({ notiId }: ReadParams) =>
+    axios.patch(`${BASE_URI}/notifications/${notiId}/unread`),
+  delete: ({ notiId }: DeleteParams) =>
+    axios.delete(`${BASE_URI}/notifications/${notiId}`),
 };

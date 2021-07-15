@@ -32,8 +32,6 @@ export default function NotificationsPage() {
     }
   };
 
-  console.log(list);
-
   useEffect(() => {
     token && fetchList();
   }, [token]);
@@ -50,7 +48,13 @@ export default function NotificationsPage() {
         isLoading={isLoading}
         repeat={10}
         Skeleton={SkeletonNotifications}
-        render={(props) => <Notifications list={list} {...props} />}
+        render={(props) => (
+          <>
+            {list?.map((item) => (
+              <Notifications key={item.id} item={item} {...props} />
+            ))}
+          </>
+        )}
       />
     </>
   );

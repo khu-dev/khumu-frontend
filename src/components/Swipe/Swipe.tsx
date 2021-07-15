@@ -8,38 +8,43 @@ import { useState } from 'react';
 import { useSwipeElement } from 'src/hooks/useSwipeElement';
 import { DeleteButton, Swiper } from './styled';
 
-const threshold = 60;
+const threshold = 48;
 
-export default function Swipe({ children, handleDelete, ...rest }) {
+export default function Swipe({ children, handleClick, handleDelete, ...rest }) {
   const {
     isEvent,
     isMoving,
     handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
-  } = useSwipeElement({ threshold, callback: () => console.log('event!') });
+  } = useSwipeElement({ threshold });
   const [isDelete, setDelete] = useState(false);
-
-  console.log(isDelete);
 
   return (
     <div
       css={css`
         position: relative;
         width: 100vw;
-        height: 72px;
+        height: ${isDelete ? '0px' : '72px'};
         background-color: ${color.main};
         border-bottom: 1px solid ${color.gray6};
+        transition: height 0.5s 0.5s;
       `}
+      {...rest}
     >
       <Swiper
         isDelete={isDelete}
         isEvent={isEvent}
+        onClick={(e) => {
+          if (!isEvent) {
+            handleClick(e);
+            console.log('hi', isEvent);
+          }
+        }}
         onMouseDown={handleTouchStart}
         onTouchStart={handleTouchStart}
         onMouseMove={handleTouchMove}
         onTouchMove={handleTouchMove}
         onMouseUp={handleTouchEnd}
         onTouchEnd={handleTouchEnd}
-        {...rest}
       >
         {children}
       </Swiper>
@@ -47,7 +52,10 @@ export default function Swipe({ children, handleDelete, ...rest }) {
         isMoving={isMoving}
         isDelete={isDelete}
         isEvent={isEvent}
-        onClick={() => setDelete(true)}
+        onClick={() => {
+          handleDelete();
+          setDelete(true);
+        }}
       >
         {'삭제'}
       </DeleteButton>

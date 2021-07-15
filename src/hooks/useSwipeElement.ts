@@ -55,7 +55,7 @@ SwipeElementProps) => {
 
     if (gap >= threshold) {
       setEvent(true);
-      callback();
+      callback?.();
     } else {
       setPosition({
         start: 0,

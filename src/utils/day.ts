@@ -1,20 +1,12 @@
 import dayjs from 'dayjs';
 
-export const getDiff = ({ day1, day2, type }) => {
-  console.log(
-    type,
-    Math.abs(
-      dayjs(dayjs(day1).format('YYYY-MM-DD')).diff(
-        dayjs(day2).format('YYYY-MM-DD'),
-        type,
-      ),
+export const getDiff = ({ day1, day2, type }) =>
+  Math.abs(
+    dayjs(dayjs(day1).format('YYYY-MM-DD')).diff(
+      dayjs(day2).format('YYYY-MM-DD'),
+      type,
     ),
   );
-
-  return Math.abs(
-    dayjs(dayjs(day1).format('YYYY-MM-DD')).diff(dayjs(day2).format('YYYY-MM-DD'), type),
-  );
-};
 
 export const calculateDayDiff = ({ day1, day2 }) => {
   let result = '';
