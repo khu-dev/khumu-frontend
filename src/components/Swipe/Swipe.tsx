@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useSwipeElement } from 'src/hooks/useSwipeElement';
 import { DeleteButton, Swiper } from './styled';
 
-const threshold = 24;
+const threshold = 60;
 
 export default function Swipe({ children, handleDelete, ...rest }) {
   const {
