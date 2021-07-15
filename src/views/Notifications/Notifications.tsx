@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { fetchNotifications } from '@api/api-notifications';
 import Swipe from '@components/Swipe';
 import { NotiItem } from './NotiItem';
+import { AndroidToast } from 'src/utils/android';
 
 const Notifications = ({ item }) => {
   const [isRead, setRead] = useState(item.is_read);
@@ -15,12 +16,16 @@ const Notifications = ({ item }) => {
       // fail
       alert(data?.message);
     }
+
+    AndroidToast('삭제되었습니다');
   };
 
   const handleRead = async (notiId: number | 'all' = 'all') => {
-    const { data } = await fetchNotifications.read({ notiId });
-    if (!isRead) setRead(true);
-    console.log('read noti', data);
+    if (!isRead) {
+      const { data } = await fetchNotifications.read({ notiId });
+      setRead(true);
+      console.log('read noti', data);
+    }
   };
 
   return (
@@ -34,7 +39,7 @@ const Notifications = ({ item }) => {
         <NotiItem.Contents>
           <NotiItem.Title title={item.title} />
           <NotiItem.Kind kind={item.kind} />
-          <NotiItem.Content content={item.content} />
+          <NotiItem.Description content={item.content} />
         </NotiItem.Contents>
         <NotiItem.Day day={item.created_at} />
       </NotiItem>

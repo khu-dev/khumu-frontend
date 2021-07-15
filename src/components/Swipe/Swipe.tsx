@@ -33,12 +33,7 @@ export default function Swipe({ children, handleClick, handleDelete, ...rest }) 
       <Swiper
         isDelete={isDelete}
         isEvent={isEvent}
-        onClick={(e) => {
-          if (!isEvent) {
-            handleClick(e);
-            console.log('hi', isEvent);
-          }
-        }}
+        onClick={handleClick}
         onMouseDown={handleTouchStart}
         onTouchStart={handleTouchStart}
         onMouseMove={handleTouchMove}
