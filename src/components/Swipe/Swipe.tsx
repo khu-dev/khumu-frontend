@@ -24,7 +24,7 @@ export default function Swipe({ children, handleClick, handleDelete, ...rest }) 
         position: relative;
         width: 100vw;
         height: ${isDelete ? '0px' : '72px'};
-        background-color: ${color.main};
+        background-color: ${isDelete ? color.main : color.white};
         transition: height 0.5s 0.5s;
       `}
       {...rest}
