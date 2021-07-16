@@ -16,6 +16,8 @@ export const box = {
   marginWidth: 'calc(100% - 28px)',
 
   borderRadius: '8px',
+  borderRadius02: '4px',
+  borderRadius03: '2px',
 };
 
 export const font = {

@@ -1,6 +1,4 @@
-// import { apiBase } from '@api/api-base';
 import React from 'react';
-import { GetStaticProps } from 'next';
 
 import { mainItemList } from '@constants/mainItemList';
 
@@ -31,21 +29,3 @@ export default function MainPage() {
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps = async (/*context*/) => {
-  // const data = (await apiBase())?.data || null;
-  // console.log('loading ...');
-  // function sleep(ms: number) {
-  //   const wakeUpTime = Date.now() + ms;
-  //   while (Date.now() < wakeUpTime) {}
-  // }
-  // sleep(1000);
-  // console.log('done!');
-
-  return {
-    props: {
-      // data,
-      null: null,
-    },
-  };
-};

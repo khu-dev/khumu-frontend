@@ -10,15 +10,7 @@ export default function Feed() {
   return (
     <div className={'main-feed-container'}>
       <FeedInput />
-      <FeedContent
-        feedList={[
-          {
-            title: '오늘의 강의',
-            id: 'lecture',
-          },
-          { title: '학사 일정', id: 'calender' },
-        ]}
-      />
+      <FeedContent tab={{ title: '학사 일정', id: 'calender' }} />
     </div>
   );
 }

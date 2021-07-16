@@ -3,51 +3,35 @@
  */
 
 import React from 'react';
-import { CustomTitle, mainStyle } from '@components/Title';
+import { CustomTitle } from '@components/Title';
 import { title, color } from '@constants/theme';
-import Checkbox from '@components/Checkbox';
 import { css } from '@emotion/react';
+import { IoTimeOutline } from 'react-icons/io5';
+import styled from '@emotion/styled';
 
 interface LectureNameProps {
   name: string;
-  time: string;
 }
 
-export default function LectureName({ name, time }: LectureNameProps) {
-  const styles = useStyles();
+const LectureName = ({ name }: LectureNameProps) => (
+  <Name>
+    <IoTimeOutline css={iconStyle} />
+    <CustomTitle size={title.L}>{name}</CustomTitle>
+  </Name>
+);
 
-  return (
-    <div css={styles.titleConatiner}>
-      <div css={styles.name}>
-        <Checkbox />
-        <CustomTitle size={title.L} css={mainStyle}>
-          {name}
-        </CustomTitle>
-      </div>
-      <CustomTitle size={title.L} css={styles.time}>
-        {time}
-      </CustomTitle>
-    </div>
-  );
-}
+export default LectureName;
 
-function useStyles() {
-  return {
-    titleConatiner: css`
-      display: flex;
-      flex-direction: column;
-    `,
-    name: css`
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-bottom: 6px;
-    `,
-    time: css`
-      margin-left: 25px;
-      width: 140px;
-      color: ${color.gray4};
-    `,
-  };
-}
+const Name = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 8px;
+`;
+
+const iconStyle = css`
+  font-size: 17px;
+  color: ${color.main};
+  margin-right: 7px;
+`;

@@ -24,12 +24,13 @@ export const OuterContainer = styled.div<ContainerProps>`
 `;
 
 export const SearchLabel = styled.div<ContainerProps>`
-  height: 60px;
-  width: calc(100% - 72px);
+  height: 48px;
+  width: calc(100% - 48px);
   margin: 14px auto;
-  padding: 0 22px;
+  margin-top: 4px;
+  padding: 0 10px;
   background-color: ${color.white};
-  border-radius: ${box.borderRadius};
+  border-radius: ${box.borderRadius02};
 
   ${({ focus }) =>
     focus &&
@@ -47,16 +48,17 @@ export const SearchForm = styled.div`
 
 export const DecorationSpan = styled.span`
   width: 4px;
-  height: 28px;
+  height: 22px;
   background-color: ${color.gray5};
 `;
 
 export const TextArea = styled.input`
+  flex-grow: 1;
   width: 70%;
   height: 40px;
-  padding: 0 12px;
+  padding: 0 8px;
   margin-left: 4px;
-  font-size: 18px;
+  font-size: 15px;
   border: none;
   border-radius: ${box.borderRadius};
   &:focus {
@@ -65,4 +67,14 @@ export const TextArea = styled.input`
   &::placeholder {
     color: ${color.gray5};
   }
+`;
+
+export const SubmitButton = styled.button`
+  width: 71px;
+  height: 33px;
+  font-size: 16px;
+  color: ${color.white};
+  border: none;
+  border-radius: ${box.borderRadius02};
+  background-color: ${color.main};
 `;
