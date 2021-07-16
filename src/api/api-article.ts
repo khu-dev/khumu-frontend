@@ -1,14 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { BASE_URI } from '@config/baseURI';
 
-type Board =
-  | 'following'
-  | 'my'
-  | 'bookmarked'
-  | 'like'
-  | 'commented'
-  | 'hot'
-  | '';
+type Board = 'following' | 'my' | 'bookmarked' | 'like' | 'commented' | 'hot' | '';
 
 type FetchArticleList = ({
   board,
@@ -24,4 +17,4 @@ export const fetchArticleList: FetchArticleList = ({ board, size, page }) =>
   axios.get(BASE_URI + `/articles?board=${board}&size=${size}&page=${page}`);
 
 export const fetchArticleByNumber = ({ id }: { id: number }) =>
-  axios.get(BASE_URI + `articles/${id}`);
+  axios.get(BASE_URI + `/articles/${id}`);

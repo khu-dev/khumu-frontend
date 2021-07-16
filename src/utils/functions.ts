@@ -1,13 +1,25 @@
-interface ConvertDateType {
-  [key: string]: string;
-}
-
-export const convertDate: ConvertDateType = {
-  Mon: '월요일',
-  Tue: '화요일',
-  Wed: '수요일',
-  Thu: '목요일',
-  Fri: '금요일',
-  Sat: '토요일',
-  Sun: '일요일',
+export const wrapPromise = (promise) => {
+  let status = 'pending';
+  let result;
+  let suspender = promise.then(
+    (r) => {
+      status = 'success';
+      result = r;
+    },
+    (e) => {
+      status = 'error';
+      result = e;
+    },
+  );
+  return {
+    read() {
+      if (status === 'pending') {
+        throw suspender;
+      } else if (status === 'error') {
+        throw result;
+      } else if (status === 'success') {
+        return result;
+      }
+    },
+  };
 };

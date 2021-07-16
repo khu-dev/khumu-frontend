@@ -6,11 +6,11 @@
 import FeedContent from './FeedContent';
 import FeedInput from './SearchArea';
 
-export default function Feed() {
-  return (
-    <div className={'main-feed-container'}>
-      <FeedInput />
-      <FeedContent tab={{ title: '학사 일정', id: 'calender' }} />
-    </div>
-  );
-}
+const Feed = ({ schedule }) => (
+  <div className={'main-feed-container'}>
+    <FeedInput />
+    <FeedContent tab={{ title: '학사 일정' }} schedule={schedule} />
+  </div>
+);
+
+export default Feed;

@@ -1,5 +1,15 @@
 import dayjs from 'dayjs';
 
+export const convertDate = {
+  Mon: '월',
+  Tue: '화',
+  Wed: '수',
+  Thu: '목',
+  Fri: '금',
+  Sat: '토',
+  Sun: '일',
+};
+
 export const getDiff = ({ day1, day2, type }) =>
   Math.abs(
     dayjs(dayjs(day1).format('YYYY-MM-DD')).diff(
@@ -27,4 +37,11 @@ export const calculateDayDiff = ({ day1, day2 }) => {
   if (minuteDiff >= 0) return minuteDiff > 0 ? `${minuteDiff}분 전` : `방금 전`;
 
   return result;
+};
+
+export const formatMonthDayDate = (day) => {
+  const MonthDay = dayjs(day).format('M월 DD일');
+  const Date = convertDate[dayjs(day).format('ddd')];
+
+  return `${MonthDay}(${Date})`;
 };

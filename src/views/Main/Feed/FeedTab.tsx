@@ -3,12 +3,12 @@ import dayjs from 'dayjs';
 import styled from '@emotion/styled';
 
 import { box, color } from '@constants/theme';
-import { convertDate } from 'src/utils/functions';
+import { convertDate } from 'src/utils/day';
 
 export default function FeedTab({ tab }) {
   const now = Date.now();
   const formatMonthAndDay = dayjs(now).format('M/DD');
-  const formatDate = convertDate[dayjs(now).format('ddd')];
+  const formatDate = convertDate[dayjs(now).format('ddd')] + '요일';
 
   return (
     <Container>

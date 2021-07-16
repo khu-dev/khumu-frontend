@@ -31,7 +31,7 @@ const Name = styled.div`
 `;
 
 const iconStyle = css`
-  font-size: 17px;
+  font-size: 24px;
   color: ${color.main};
   margin-right: 7px;
 `;
