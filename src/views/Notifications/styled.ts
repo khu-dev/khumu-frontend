@@ -4,10 +4,11 @@ import styled from '@emotion/styled';
 
 export const NotiContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 71.5px;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
+  border-bottom: 1px solid ${color.gray6};
 `;
 
 export const NotiIcon = styled.div`
