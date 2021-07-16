@@ -4,6 +4,7 @@
 import React from 'react';
 
 import Link from 'next/link';
+import { AndroidToast } from 'src/utils/android';
 
 export default function MainPage() {
   const navList = [
@@ -29,8 +30,7 @@ export default function MainPage() {
           type={'button'}
           value={'showAndroidToast'}
           onClick={() => {
-            //@ts-ignore
-            window?.Android?.showToast('안드 프론트 통신!');
+            AndroidToast('안드 프론트 통신!');
           }}
         />
       </div>

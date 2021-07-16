@@ -10,8 +10,6 @@ import Skeleton from '@components/Skeleton';
 import { useToken } from 'src/context/Token';
 import SkeletonNotifications from '@components/Skeleton/Notifications';
 
-const userId = 'wonk138';
-
 let windowHeight;
 const elementHeight = 72;
 if (process.browser) {
@@ -29,9 +27,7 @@ export default function NotificationsPage() {
 
     const {
       data: { data },
-    } = await fetchNotifications.select({
-      userId,
-    });
+    } = await fetchNotifications.select();
 
     if (data.length > 0) {
       setList(data);

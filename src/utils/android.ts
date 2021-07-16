@@ -1,4 +1,8 @@
+//@ts-nocheck
+
 export const AndroidToast = (text) => {
-  //@ts-ignore
-  window?.Android?.showToast(text) || alert(text);
+  const Android = window?.Android;
+
+  if (Android) Android?.showToast(text);
+  else alert(text);
 };
