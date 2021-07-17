@@ -6,7 +6,8 @@ interface TitleType {
 }
 
 export const CustomTitle = styled.h1<TitleType>`
-  height: ${({ size }) => size}px;
+  height: ${({ size }) => size + 7}px;
+  line-height: ${({ size }) => size + 7}px;
   font-size: ${({ size }) => `${size}px`};
   font-weight: ${({ weight }) => `${weight || 600}`};
   text-overflow: ellipsis;

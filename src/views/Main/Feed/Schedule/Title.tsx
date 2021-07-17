@@ -25,7 +25,7 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 `;
 
 const Icon = styled.div`
