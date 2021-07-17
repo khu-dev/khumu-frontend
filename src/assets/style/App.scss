@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-#__next {
+body {
   padding-right: 17px;
 }
 
@@ -34,4 +34,8 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

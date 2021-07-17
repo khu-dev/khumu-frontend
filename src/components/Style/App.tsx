@@ -39,6 +39,10 @@ export default function AppStyleTag() {
         justify-content: flex-start;
         align-items: stretch;
       }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
     `}</style>
   );
 }
