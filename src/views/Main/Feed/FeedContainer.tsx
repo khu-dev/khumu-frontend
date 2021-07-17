@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 // import FeedTitle from './FeedTitle';
 import { fetchSchedule } from '@api/api-schedules';
-import { FeedInputProvider } from '@context/Feed/Input/FeedInputProvider';
+import FeedInputProvider from '@context/Feed/Input';
 import FeedContent from './FeedContent';
 import FeedInput from './FeedInput';
 
