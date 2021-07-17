@@ -1,9 +1,13 @@
-import { box, color } from '@constants/theme';
 import styled from '@emotion/styled';
+import { box, color } from '@constants/theme';
 
-export const LectureLink = ({ title, handleClick }) => (
-  <Button onClick={handleClick}>{title}</Button>
-);
+const ScheduleShortCut = ({ title }) => {
+  const handleShortCut = () => {};
+
+  return <Button onClick={handleShortCut}>{title}</Button>;
+};
+
+export default ScheduleShortCut;
 
 const Button = styled.button`
   width: 52px;

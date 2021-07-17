@@ -1,25 +1,20 @@
 import FeedTab from './FeedTab';
-import LectureName from './Lecture/Name';
-import LectureDescription from './Lecture/Description';
-import { LectureLink } from './Lecture/Link';
-import { formatMonthDayDate } from 'src/utils/day';
+import ScheduleTitle from './Schedule/Title';
+import ScheduleDate from './Schedule/Date';
+import ScheduleShortCut from './Schedule/ShortCut';
 
-const FeedContent = ({ tab, schedule }) => {
-  const handleShortCut = () => {};
+const Schedule = ({ children }) => (
+  <div className={'main-feed-content'}>{children}</div>
+);
 
-  const startDate = formatMonthDayDate(schedule.starts_at);
-  const endDate = formatMonthDayDate(schedule.starts_at);
+const FeedContent = ({ children }) => (
+  <div className={'main-feed-content-container'}>{children}</div>
+);
 
-  return (
-    <div className={'main-feed-content-container'}>
-      <FeedTab tab={tab} />
-      <div className={'main-feed-content'}>
-        <LectureName name={schedule.title} />
-        <LectureDescription description={`${startDate} ~ ${endDate}까지`} />
-        <LectureLink title={'바로가기'} handleClick={handleShortCut} />
-      </div>
-    </div>
-  );
-};
+FeedContent.Tab = FeedTab;
+FeedContent.Schedule = Schedule;
+FeedContent.Title = ScheduleTitle;
+FeedContent.Date = ScheduleDate;
+FeedContent.Link = ScheduleShortCut;
 
 export default FeedContent;
