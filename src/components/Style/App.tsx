@@ -11,21 +11,16 @@ export default function AppStyleTag() {
         overscroll-behavior: none;
       }
 
-      html,
-      body,
       #__next {
-        width: 100%;
-        height: 100%;
-        position: relative;
+        height: auto;
       }
 
       html,
       body {
+        width: 100%;
+        height: 100vh;
+        position: relative;
         overflow-x: hidden;
-      }
-
-      #__next {
-        padding-right: 17px;
       }
 
       .app-outer-container {

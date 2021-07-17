@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 import { box, color } from '@constants/theme';
+import { AndroidToast } from '@utils/android';
 
 const ScheduleShortCut = ({ title }) => {
-  const handleShortCut = () => {};
+  const handleShortCut = () => {
+    AndroidToast('이동');
+  };
 
   return <Button onClick={handleShortCut}>{title}</Button>;
 };
