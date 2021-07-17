@@ -8,20 +8,24 @@ export default function AppStyleTag() {
         margin: 0;
         padding: 0;
         text-decoration: none;
+        overscroll-behavior: none;
       }
 
       html,
       body,
       #__next {
         width: 100%;
-        height: 100vh;
+        height: 100%;
         position: relative;
-        overflow: scroll;
+      }
+
+      html,
+      body {
         overflow-x: hidden;
       }
 
       #__next {
-        overflow-y: scroll;
+        padding-right: 17px;
       }
 
       .app-outer-container {
@@ -34,22 +38,6 @@ export default function AppStyleTag() {
         flex-direction: column;
         justify-content: flex-start;
         align-items: stretch;
-
-        overflow-y: scroll;
-
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        &::-webkit-scrollbar {
-          display: none;
-        }
-
-        /* Hide scrollbar for IE, Edge and Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-
-      ::-webkit-scrollbar {
-        width: 0; /* Remove scrollbar space */
-        background: transparent; /* Optional: just make scrollbar invisible */
       }
     `}</style>
   );
