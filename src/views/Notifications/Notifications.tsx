@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { css } from '@emotion/react';
+
 import { fetchNotifications } from '@api/api-notifications';
+import { color } from '@constants/theme';
 import Swipe from '@components/Swipe';
+import { AndroidToast } from '@utils/android';
 import { NotiItem } from './NotiItem';
-import { AndroidToast } from 'src/utils/android';
 
 const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
   const [isRead, setRead] = useState(item.is_read);
@@ -26,8 +30,6 @@ const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
       setRead(true);
       console.log('read noti', data);
     }
-
-    // 특정 것 읽고 이동 ?
   };
 
   return (
@@ -36,15 +38,30 @@ const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
       handleClick={() => handleRead(item.id)}
       handleDelete={() => handleDelete(item.id)}
     >
-      <NotiItem index={index} fetchIndex={fetchIndex} infiniteFetch={infiniteFetch}>
-        <NotiItem.Icon isRead={isRead} />
-        <NotiItem.Contents>
-          <NotiItem.Title title={item.title} />
-          <NotiItem.Kind kind={item.kind} />
-          <NotiItem.Description content={item.content} />
-        </NotiItem.Contents>
-        <NotiItem.Day day={item.created_at} />
-      </NotiItem>
+      <Link href={{ pathname: `/${item.reference}` }} passHref>
+        <a
+          target={'_blank'}
+          rel={'noreferrer'}
+          css={css`
+            width: 100%;
+            color: ${color.black};
+          `}
+        >
+          <NotiItem
+            index={index}
+            fetchIndex={fetchIndex}
+            infiniteFetch={infiniteFetch}
+          >
+            <NotiItem.Icon isRead={isRead} />
+            <NotiItem.Contents>
+              <NotiItem.Title title={item.title} />
+              <NotiItem.Kind kind={item.kind} />
+              <NotiItem.Description content={item.content} />
+            </NotiItem.Contents>
+            <NotiItem.Day day={item.created_at} />
+          </NotiItem>
+        </a>
+      </Link>
     </Swipe>
   );
 };
