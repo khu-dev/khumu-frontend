@@ -1,1 +1,0 @@
-## KHUMU images
