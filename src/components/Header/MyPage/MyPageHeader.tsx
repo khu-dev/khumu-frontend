@@ -16,7 +16,7 @@ export default function MyPageHeader({ title }: { title: string }) {
   const csses = useStyles();
 
   return (
-    <div className={'header header-align-center header-mypage'}>
+    <div className={'header header-mypage'}>
       <LinkIcon pathname={'/'}>
         <IoChevronBackOutline css={csses.icon} />
       </LinkIcon>

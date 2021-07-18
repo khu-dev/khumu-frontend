@@ -2,52 +2,70 @@ import { color } from '@constants/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const elementHeight = '64px';
+const elementHeight = '72px';
 
-export const SwipeContainer = styled.div<{
-  isMoving: boolean;
+export const Swiper = styled.div<{
+  isDelete: boolean;
   isEvent: boolean;
-  gap: number;
 }>`
-  position: relative;
-  width: 100%;
+  width: 100vw;
   height: ${elementHeight};
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  ${({ isMoving, isEvent, gap }) =>
-    isMoving || gap <= 72
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${color.white};
+  z-index: 2;
+
+  ${({ isEvent }) =>
+    isEvent
       ? css`
-          transform: translate(-${gap}px);
-          ${gap <= 0
-            ? css`
-                transition: all 0.4s;
-              `
-            : ``}
-        `
-      : isEvent
-      ? css`
-          transition: all 0.3s;
           transform: translateX(-72px);
+          transition: all 0.5s;
         `
       : css`
-          transition: all 0.4s;
           transform: translateX(0);
+          transition: all 0.5s;
         `}
 
-  &::after {
-    content: '삭제';
-    width: 72px;
-    height: ${elementHeight};
-    line-height: ${elementHeight};
-    background-color: ${color.main};
-    color: ${color.white};
-    text-align: center;
+  ${({ isDelete }) =>
+    isDelete
+      ? css`
+          overflow: hidden;
+          transform: translate(-130%);
+          transition: transform 0.8s;
+        `
+      : css``}
+`;
 
-    position: absolute;
-    right: -72px;
-    top: 0;
-  }
+export const DeleteButton = styled.span<{
+  isDelete?: boolean;
+  isEvent: boolean;
+  isMoving: boolean;
+}>`
+  width: 72px;
+  height: ${elementHeight};
+  line-height: ${elementHeight};
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: ${color.main};
+  color: ${color.white};
+  text-align: center;
+
+  ${({ isDelete }) =>
+    isDelete
+      ? css`
+          overflow: hidden;
+          width: 100vw;
+          transform: translateX(-100%);
+          transition: width 0.8s, transform 0.4s;
+        `
+      : css``}
 `;

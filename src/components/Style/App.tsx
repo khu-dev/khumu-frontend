@@ -8,16 +8,19 @@ export default function AppStyleTag() {
         margin: 0;
         padding: 0;
         text-decoration: none;
+        overscroll-behavior: none;
+      }
+
+      #__next {
+        height: auto;
       }
 
       html,
-      #root {
-        width: 100%;
-        height: 100%;
-      }
-
       body {
-        height: ${header.exceptHeight};
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        overflow-x: hidden;
       }
 
       .app-outer-container {
@@ -29,7 +32,11 @@ export default function AppStyleTag() {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
+        align-items: stretch;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
       }
     `}</style>
   );

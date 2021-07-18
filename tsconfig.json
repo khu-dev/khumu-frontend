@@ -24,7 +24,9 @@
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@constants/*": ["src/constants/*"],
-      "@interfaces/*": ["src/interfaces/*"],
+      "@context/*": ["src/context/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"],
       "@views/*": ["src/views/*"]
     },
     "types": ["@emotion/react/types/css-prop"]

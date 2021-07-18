@@ -1,38 +1,35 @@
-// import { useState } from 'react';
 import { color } from '@constants/theme';
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import QrcodeImage from './QrcodeImage';
 import QrcodeProfile from './QrcodeProfile';
 import QrcodeRefresh from './QrcodeRefresh';
 import { QRCodeDataProps } from './type';
 
-export default function Qrcode({ qrcode, profile }: QRCodeDataProps) {
-  // const [QRCode, setQRCode] = useState(qrcode);
+const Qrcode = ({ qrcode, profile, handleRefresh }: QRCodeDataProps) => (
+  <Container>
+    <QrcodeImage qrcode={qrcode} />
+    <QrcodeRefresh handleRefresh={handleRefresh} />
+    <QrcodeProfile>
+      <QrcodeProfile.Row title={'이름'} description={profile.name} />
+      <QrcodeProfile.Row title={'학번'} description={profile.student_number} />
+      <QrcodeProfile.Row title={'학과'} description={profile.department} />
+    </QrcodeProfile>
+  </Container>
+);
 
-  // const handleRefresh = () => {};
+export default Qrcode;
 
-  const csses = useStyles();
-  return (
-    <div css={csses.container}>
-      <QrcodeImage qrcode={qrcode} />
-      <QrcodeRefresh />
-      <QrcodeProfile profile={profile} />
-    </div>
-  );
-}
-
-const useStyles = () => ({
-  container: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    flex: 1;
-    width: 100%;
-    background-color: ${color.main};
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-    color: ${color.white};
-  `,
-});
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  height: calc(100vh - 64px);
+  width: 100%;
+  background-color: ${color.main};
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  color: ${color.white};
+`;

@@ -1,33 +1,58 @@
 /**
  * @description 제작된 페이지 목록
  */
+import { color } from '@constants/theme';
+import { css } from '@emotion/react';
 import React from 'react';
+import { useState } from 'react';
 import { useSwipeElement } from 'src/hooks/useSwipeElement';
-import { SwipeContainer } from './styled';
+import { DeleteButton, Swiper } from './styled';
 
-const threshold = 24;
+const threshold = 48;
 
-export default function Swipe({ children, ...rest }) {
+export default function Swipe({ children, handleClick, handleDelete, ...rest }) {
   const {
-    gap,
+    isEvent,
     isMoving,
-    handler: { handleTouchStart, handleTouchMove, handleTouchEnd, isEvent },
-  } = useSwipeElement({ threshold, callback: () => console.log('event!') });
+    handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
+  } = useSwipeElement({ threshold });
+  const [isDelete, setDelete] = useState(false);
 
   return (
-    <SwipeContainer
-      isMoving={isMoving}
-      isEvent={isEvent()}
-      gap={gap}
-      onMouseDown={handleTouchStart}
-      onTouchStart={handleTouchStart}
-      onMouseMove={handleTouchMove}
-      onTouchMove={handleTouchMove}
-      onMouseUp={handleTouchEnd}
-      onTouchEnd={handleTouchEnd}
+    <div
+      css={css`
+        position: relative;
+        width: 100vw;
+        height: ${isDelete ? '0px' : '72px'};
+        background-color: ${isDelete ? color.main : color.white};
+        transition: height 0.5s 0.5s;
+      `}
       {...rest}
     >
-      {children}
-    </SwipeContainer>
+      <Swiper
+        isDelete={isDelete}
+        isEvent={isEvent}
+        onClick={handleClick}
+        onMouseDown={handleTouchStart}
+        onTouchStart={handleTouchStart}
+        onMouseMove={handleTouchMove}
+        onTouchMove={handleTouchMove}
+        onMouseUp={handleTouchEnd}
+        onTouchEnd={handleTouchEnd}
+      >
+        {children}
+      </Swiper>
+      <DeleteButton
+        isMoving={isMoving}
+        isDelete={isDelete}
+        isEvent={isEvent}
+        onClick={() => {
+          handleDelete();
+          setDelete(true);
+        }}
+      >
+        {'삭제'}
+      </DeleteButton>
+    </div>
   );
 }

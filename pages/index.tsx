@@ -2,9 +2,9 @@
  * @description 제작된 페이지 목록
  */
 import React from 'react';
-import { GetStaticProps } from 'next';
 
 import Link from 'next/link';
+import { AndroidToast } from 'src/utils/android';
 
 export default function MainPage() {
   const navList = [
@@ -24,24 +24,16 @@ export default function MainPage() {
           </li>
         ))}
       </ul>
+      <div>
+        <h4>** 안드로이드 웹뷰 통신 예제용 **</h4>
+        <input
+          type={'button'}
+          value={'showAndroidToast'}
+          onClick={() => {
+            AndroidToast('안드 프론트 통신!');
+          }}
+        />
+      </div>
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps = async (/*context*/) => {
-  // const data = (await apiBase())?.data || null;
-  // console.log('loading ...');
-  // function sleep(ms: number) {
-  //   const wakeUpTime = Date.now() + ms;
-  //   while (Date.now() < wakeUpTime) {}
-  // }
-  // sleep(1000);
-  // console.log('done!');
-
-  return {
-    props: {
-      // data,
-      null: null,
-    },
-  };
-};

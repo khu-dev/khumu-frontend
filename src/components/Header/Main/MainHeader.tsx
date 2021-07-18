@@ -19,7 +19,7 @@ export default function MainHeader(): JSX.Element {
       <LinkIcon pathname={'/qrcode'}>
         <AiOutlineQrcode size={font.iconSize} css={csses.qrcode} />
       </LinkIcon>
-      <LinkIcon pathname={'/notice'}>
+      <LinkIcon pathname={'/notifications'}>
         <AiOutlineBell size={font.iconSize} css={csses.bell} />
       </LinkIcon>
     </div>

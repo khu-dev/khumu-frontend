@@ -1,57 +1,20 @@
-import React, { useState } from 'react';
-
-import { feedListState, TabType } from './type';
-
 import FeedTab from './FeedTab';
-import LectureName from './Lecture/Name';
-import LectureDescription from './Lecture/Description';
-import Skeleton from '@components/Skeleton';
-import SkeletonMainFeed from '@components/Skeleton/Main/Feed';
+import ScheduleTitle from './Schedule/Title';
+import ScheduleDate from './Schedule/Date';
+import ScheduleShortCut from './Schedule/ShortCut';
 
-interface FeedContentProps {
-  feedList: Array<feedListState>;
-}
+const Schedule = ({ children }) => (
+  <div className={'main-feed-content'}>{children}</div>
+);
 
-function FeedLecture() {
-  return (
-    <>
-      <LectureName name={'산업디자인사'} time={'09:00 ~ 13:45'} />
-      <LectureDescription
-        description={['수업종료까지', ' 1시간 45분 ', '남았습니다']}
-      />
-    </>
-  );
-}
+const FeedContent = ({ children }) => (
+  <div className={'main-feed-content-container'}>{children}</div>
+);
 
-export default function FeedContent({ feedList }: FeedContentProps) {
-  const [currentTab, setCurrentTab] = useState<TabType>('lecture');
+FeedContent.Tab = FeedTab;
+FeedContent.Schedule = Schedule;
+FeedContent.Title = ScheduleTitle;
+FeedContent.Date = ScheduleDate;
+FeedContent.Link = ScheduleShortCut;
 
-  const handleTab = ({ target }: React.MouseEvent<HTMLElement>) => {
-    const { id: nextState } = target as HTMLElement;
-
-    setCurrentTab(nextState as TabType);
-  };
-
-  return (
-    <>
-      <div className={'main-feed-content-container'}>
-        <FeedTab
-          feedList={feedList}
-          handleTab={handleTab}
-          currentTab={currentTab}
-        />
-        <div className={'main-feed-content'}>
-          {currentTab === 'lecture' ? (
-            <Skeleton
-              isLoading={true}
-              render={() => <FeedLecture />}
-              Skeleton={SkeletonMainFeed}
-            />
-          ) : (
-            <FeedLecture />
-          )}
-        </div>
-      </div>
-    </>
-  );
-}
+export default FeedContent;

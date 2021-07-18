@@ -6,9 +6,7 @@ export default function MainStyleTag() {
     <style jsx>{`
       .main-feed-container {
         width: 100%;
-        min-height: 200px;
-        height: 30vh;
-        max-height: 220px;
+        height: 240px;
 
         display: flex;
         flex-direction: column;
@@ -45,7 +43,7 @@ export default function MainStyleTag() {
         margin: ${box.margin};
 
         width: ${box.marginWidth};
-        height: 110px;
+        height: 90px;
 
         border-radius: ${box.borderRadius};
 
@@ -59,7 +57,7 @@ export default function MainStyleTag() {
         width: ${box.marginWidth};
         height: 100%;
         margin: 0px 32px;
-        justify-content: space-evenly;
+        justify-content: center;
         background-color: ${color.white};
       }
 
@@ -76,72 +74,6 @@ export default function MainStyleTag() {
 
         border: 1px solid ${color.main};
         border-radius: ${box.borderRadius};
-      }
-
-      .main-feed-tab-menu {
-        position: absolute;
-        top: -32px;
-
-        padding: 0px 24px;
-
-        width: ${box.paddingWidth};
-        height: 33px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: ${color.white};
-      }
-
-      .feed-tab-container {
-        display: flex;
-        align-items: center;
-
-        height: 100%;
-      }
-
-      .feed-tab {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        width: 80px;
-        height: 100%;
-
-        margin-right: 3px;
-        padding: 0 10px;
-
-        background-color: ${color.main};
-        color: ${color.white};
-
-        border: 1px solid ${color.white};
-
-        -webkit-transition: background-color 0.3s;
-        -moz-transition: background-color 0.3s;
-        -o-transition: background-color 0.3s;
-        transition: background-color 0.3s;
-
-        border-top-left-radius: ${box.borderRadius};
-        border-top-right-radius: ${box.borderRadius};
-        border-bottom: none;
-      }
-
-      .feed-tab-active {
-        background-color: ${color.white};
-        color: ${color.main};
-        border: 1px solid ${color.main};
-        border-bottom: none;
-
-        -webkit-transition: background-color 0.3s;
-        -moz-transition: background-color 0.3s;
-        -o-transition: background-color 0.3s;
-        transition: background-color 0.3s;
-      }
-
-      .feed-tab-date {
-        @media screen and (max-width: 365px) {
-          display: none;
-        }
       }
     `}</style>
   );

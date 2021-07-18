@@ -8,22 +8,25 @@ import StyleTag from '@components/Style';
 
 import MainHeader from '@components/Header/Main';
 import Loading from '@components/Loading';
+import TokenProvider from 'src/context/Token';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-        <StyleTag />
-      </Head>
-      <Loading />
-      <MainHeader />
-      <div className={'app-outer-container'}>
+const App = ({ Component, pageProps }: AppProps) => (
+  <>
+    <Head>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      />
+      <StyleTag />
+    </Head>
+    <Loading />
+    <MainHeader />
+    <div className={'app-outer-container'}>
+      <TokenProvider>
         <Component {...pageProps} />
-      </div>
-    </>
-  );
-}
+      </TokenProvider>
+    </div>
+  </>
+);
+
+export default App;
