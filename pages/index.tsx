@@ -12,6 +12,7 @@ export default function MainPage() {
     { title: 'QR코드', path: '/qrcode' },
     { title: '마이페이지', path: '/mypage' },
     { title: '알림', path: '/notifications' },
+    { title: '동아리', path: '/circles' },
   ];
 
   return (
