@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { css } from '@emotion/react';
 import { IMG_URI } from '@config/baseURI';
-import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
+import ClubCard from './ClubCard';
+import ClubPaging from './ClubPaging';
 import * as s from './styled';
 
 const Circles = ({ clubs }) => {
@@ -18,39 +18,26 @@ const Circles = ({ clubs }) => {
   };
 
   const currentClub = clubs[current];
-  console.log(currentClub);
 
   return (
     <>
       <s.Tag>전체</s.Tag>
-      <s.Card>
-        <s.Image url={`${IMG_URI}/${currentClub.images[0]}`} />
-        <s.Content>
-          <s.Tag
-            css={css`
-              margin: 0;
-            `}
-          >
-            연행
-          </s.Tag>
-          <s.NameWrapper>
-            <s.Name>{currentClub.name}</s.Name>
-            <s.Summary>{'태그'}</s.Summary>
-          </s.NameWrapper>
-          <s.P>{currentClub.description}</s.P>
-        </s.Content>
-      </s.Card>
-      <s.Paging>
-        <IoChevronBackOutline
-          onClick={handleIndex.minus}
-          css={current === 0 ? s.disabledStyle : s.enabledStyle}
+      <ClubCard>
+        <ClubCard.Image url={`${IMG_URI}/${currentClub?.images[0]}`} />
+        <ClubCard.Content>
+          <ClubCard.Tag tag={'연행'} />
+          <ClubCard.Name name={currentClub?.name} summary={'태그'} />
+          <ClubCard.Description description={currentClub?.description} />
+        </ClubCard.Content>
+      </ClubCard>
+      <ClubPaging>
+        <ClubPaging.Minus handleClick={handleIndex.minus} isEnable={current > 0} />
+        <ClubPaging.Current page={`${current + 1} / ${clubLength}`} />
+        <ClubPaging.Plus
+          handleClick={handleIndex.plus}
+          isEnable={current < clubLength}
         />
-        <span>{`${current + 1} / ${clubLength}`}</span>
-        <IoChevronForwardOutline
-          onClick={handleIndex.plus}
-          css={current === clubLength ? s.disabledStyle : s.enabledStyle}
-        />
-      </s.Paging>
+      </ClubPaging>
     </>
   );
 };

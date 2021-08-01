@@ -34,6 +34,7 @@ export const Card = styled.div`
 
 export const Image = styled.div<{ url: string }>`
   flex: 1;
+  background-color: ${color.gray4};
   background-image: url(${({ url }) => url});
   background-size: cover;
   background-position: center;
