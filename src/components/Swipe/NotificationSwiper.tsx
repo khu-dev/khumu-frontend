@@ -8,7 +8,10 @@ import { useState } from 'react';
 import { useSwipeElement } from 'src/hooks/useSwipeElement';
 import { DeleteButton, Swiper } from './styled';
 
-const threshold = 48;
+const threshold = {
+  x: 48,
+  y: 48,
+};
 const reset = 'right';
 
 export default function NotificationSwiper({

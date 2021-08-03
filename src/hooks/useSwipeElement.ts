@@ -5,7 +5,10 @@ const isMouseEvent = (e) => {
 };
 
 interface SwipeElementProps {
-  threshold?: number;
+  threshold?: {
+    x?: number;
+    y?: number;
+  };
   callback?: {
     left?: Function;
     right?: Function;
@@ -15,7 +18,7 @@ interface SwipeElementProps {
 }
 
 export const useSwipeElement = ({
-  threshold = 80,
+  threshold = { x: 80, y: 80 },
   callback,
   reset,
 }: // prefix = 72,
@@ -69,10 +72,10 @@ SwipeElementProps) => {
     const gapY = Math.abs(position.startY - position.endY);
     setMoving(false);
 
-    if (gapX >= threshold && gapY <= threshold) {
+    if (gapX >= threshold.x && gapY <= threshold.y) {
       callback?.left?.();
       reset === 'left' ? resetPosition() : setEvent(true);
-    } else if (gapX <= -threshold && gapY <= threshold) {
+    } else if (gapX <= -threshold.x && gapY <= threshold.y) {
       callback?.right?.();
       reset === 'right' ? resetPosition() : setEvent(true);
     } else {

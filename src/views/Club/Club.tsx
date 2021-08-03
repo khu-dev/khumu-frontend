@@ -5,7 +5,10 @@ import ClubCard from './ClubCard';
 import ClubPaging from './ClubPaging';
 import * as s from './styled';
 
-const threshold = 32;
+const threshold = {
+  x: 32,
+  y: 120,
+};
 
 const Circles = ({ clubs }) => {
   const clubLength = clubs.length;
