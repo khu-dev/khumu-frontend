@@ -33,7 +33,6 @@ const Icon = styled.div`
 const Content = styled.div`
   display: inline-block;
   flex-grow: 1;
-  max-width: 320px;
   height: ${box.marginWidth};
   margin: ${box.margin};
   margin-left: 0;
