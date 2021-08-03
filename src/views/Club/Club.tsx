@@ -10,7 +10,7 @@ const threshold = {
   y: 120,
 };
 
-const Circles = ({ clubs }) => {
+const Club = ({ clubs }) => {
   const clubLength = clubs.length;
   const [current, setCurrent] = useState(0);
   const currentClub = clubs[current];
@@ -64,4 +64,4 @@ const Circles = ({ clubs }) => {
   );
 };
 
-export default Circles;
+export default Club;

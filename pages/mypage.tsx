@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import CommonHeader from '@components/Header/Common';
 import * as Page from '@views/MyPage';
+import { fetchUsers } from '@api/api-users';
+import { useToken } from '@context/Token';
 
 export default function MyPagePage() {
+  const { token } = useToken();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log('start');
+
+      const result = await fetchUsers.select();
+
+      console.log(result);
+    };
+
+    token && fetchData();
+  }, [token]);
+
   return (
     <>
-      <StyleTag />
       <CommonHeader
         title={'마이 페이지'}
         pathname={'/'}
@@ -29,14 +44,3 @@ export default function MyPagePage() {
     </>
   );
 }
-
-const StyleTag = () => (
-  <style jsx>{`
-    width: $padding-width;
-    flex-grow: 1;
-
-    padding: $padding-base;
-
-    background-color: #e4e4e4;
-  `}</style>
-);
