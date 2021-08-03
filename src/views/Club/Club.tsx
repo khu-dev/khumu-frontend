@@ -1,28 +1,47 @@
 import React, { useState } from 'react';
 import { IMG_URI } from '@config/baseURI';
+import { useSwipeElement } from '@hooks/useSwipeElement';
 import ClubCard from './ClubCard';
 import ClubPaging from './ClubPaging';
 import * as s from './styled';
 
+const threshold = 32;
+
 const Circles = ({ clubs }) => {
   const clubLength = clubs.length;
   const [current, setCurrent] = useState(0);
+  const currentClub = clubs[current];
 
   const handleIndex = {
     minus: () => {
       current > 0 && setCurrent((prev) => (prev - 1) % clubLength);
     },
     plus: () => {
-      current < clubLength && setCurrent((prev) => (prev + 1) % clubLength);
+      current < clubLength - 1 && setCurrent((prev) => (prev + 1) % clubLength);
     },
   };
 
-  const currentClub = clubs[current];
+  const {
+    handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
+  } = useSwipeElement({
+    threshold,
+    callback: {
+      left: handleIndex.plus,
+      right: handleIndex.minus,
+    },
+  });
 
   return (
     <>
       <s.Tag>전체</s.Tag>
-      <ClubCard>
+      <ClubCard
+        onMouseDown={handleTouchStart}
+        onTouchStart={handleTouchStart}
+        onMouseMove={handleTouchMove}
+        onTouchMove={handleTouchMove}
+        onMouseUp={handleTouchEnd}
+        onTouchEnd={handleTouchEnd}
+      >
         <ClubCard.Image url={`${IMG_URI}/${currentClub?.images[0]}`} />
         <ClubCard.Content>
           <ClubCard.Tag tag={'연행'} />

@@ -24,7 +24,7 @@ const Name = ({ name, summary }) => (
 
 const Description = ({ description }) => <s.P>{description}</s.P>;
 
-const ClubCard = ({ children }) => <s.Card>{children}</s.Card>;
+const ClubCard = ({ children, ...rest }) => <s.Card {...rest}>{children}</s.Card>;
 
 ClubCard.Image = Image;
 ClubCard.Content = Content;

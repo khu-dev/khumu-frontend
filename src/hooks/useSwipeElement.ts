@@ -7,8 +7,8 @@ const isMouseEvent = (e) => {
 interface SwipeElementProps {
   threshold?: number;
   callback?: {
-    left: Function;
-    right: Function;
+    left?: Function;
+    right?: Function;
   };
   prefix?: number;
   reset?: 'left' | 'right';
