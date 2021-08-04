@@ -1,24 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import CommonHeader from '@components/Header/Common';
 import * as Page from '@views/MyPage';
-import { fetchUsers } from '@api/api-users';
-import { useToken } from '@context/Token';
+import { useUser } from '@context/User';
 
 export default function MyPagePage() {
-  const { token } = useToken();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      console.log('start');
-
-      const result = await fetchUsers.select();
-
-      console.log(result);
-    };
-
-    token && fetchData();
-  }, [token]);
+  const { username, department, student_number } = useUser();
 
   return (
     <>
@@ -30,9 +17,9 @@ export default function MyPagePage() {
       />
       <div className={'mypage-container'}>
         <Page.MyProfile
-          name={'가나다'}
-          department={'가나다라다공학과'}
-          studentNumber={'2021102938'}
+          name={username}
+          department={department}
+          studentNumber={student_number}
         />
         <Page.MyLog />
         <Page.MyAccount />

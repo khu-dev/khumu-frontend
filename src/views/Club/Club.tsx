@@ -7,7 +7,7 @@ import * as s from './styled';
 
 const threshold = {
   x: 32,
-  y: 120,
+  y: 1000,
 };
 
 const Club = ({ clubs }) => {

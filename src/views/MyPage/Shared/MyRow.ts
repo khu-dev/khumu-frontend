@@ -8,4 +8,5 @@ export const MyRow = styled.div`
   align-items: center;
   margin-top: 18px;
   color: ${color.white};
+  font-size: 16px;
 `;
