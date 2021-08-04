@@ -8,7 +8,9 @@ import StyleTag from '@components/Style';
 
 import MainHeader from '@components/Header/Main';
 import Loading from '@components/Loading';
-import TokenProvider from 'src/context/Token';
+
+import TokenProvider from '@context/Token';
+import UserProvider from '@context/User';
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
@@ -23,7 +25,9 @@ const App = ({ Component, pageProps }: AppProps) => (
     <MainHeader />
     <div className={'app-outer-container'}>
       <TokenProvider>
-        <Component {...pageProps} />
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
       </TokenProvider>
     </div>
   </>

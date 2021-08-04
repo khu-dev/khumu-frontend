@@ -2,11 +2,13 @@ import React from 'react';
 
 import CommonHeader from '@components/Header/Common';
 import * as Page from '@views/MyPage';
+import { useUser } from '@context/User';
 
 export default function MyPagePage() {
+  const { username, department, student_number } = useUser();
+
   return (
     <>
-      <StyleTag />
       <CommonHeader
         title={'마이 페이지'}
         pathname={'/'}
@@ -15,9 +17,9 @@ export default function MyPagePage() {
       />
       <div className={'mypage-container'}>
         <Page.MyProfile
-          name={'가나다'}
-          department={'가나다라다공학과'}
-          studentNumber={'2021102938'}
+          name={username}
+          department={department}
+          studentNumber={student_number}
         />
         <Page.MyLog />
         <Page.MyAccount />
@@ -29,14 +31,3 @@ export default function MyPagePage() {
     </>
   );
 }
-
-const StyleTag = () => (
-  <style jsx>{`
-    width: $padding-width;
-    flex-grow: 1;
-
-    padding: $padding-base;
-
-    background-color: #e4e4e4;
-  `}</style>
-);

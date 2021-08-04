@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 
 import { fetchNotifications } from '@api/api-notifications';
 import { color } from '@constants/theme';
-import Swipe from '@components/Swipe';
+import NotificationSwiper from '@components/Swipe';
 import { AndroidToast } from '@utils/android';
 import { NotiItem } from './NotiItem';
 
@@ -33,7 +33,7 @@ const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
   };
 
   return (
-    <Swipe
+    <NotificationSwiper
       key={item.id}
       handleClick={() => handleRead(item.id)}
       handleDelete={() => handleDelete(item.id)}
@@ -62,7 +62,7 @@ const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
           </NotiItem>
         </a>
       </Link>
-    </Swipe>
+    </NotificationSwiper>
   );
 };
 

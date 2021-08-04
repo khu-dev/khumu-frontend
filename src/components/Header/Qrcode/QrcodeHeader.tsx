@@ -1,9 +1,3 @@
-/**
- * @description main일 때의 헤더 내용물
- *                1) QRcode 링크
- *                2) 알림 링크
- */
-
 import React from 'react';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { css } from '@emotion/react';

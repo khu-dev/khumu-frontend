@@ -6,6 +6,8 @@ export const color = {
   gray5: '#e5e5e5',
   gray4: '#d2d2d2',
   gray3: '#c0c0c0',
+  gray2: '#999',
+  gray1: '#7f7f7f',
 };
 
 export const box = {

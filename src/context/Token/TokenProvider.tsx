@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { accesskey } from '@config/_key';
 import { TokenContext } from './TokenContext';

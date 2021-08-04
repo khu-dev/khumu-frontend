@@ -6,7 +6,11 @@ export default function MyPageGuide() {
   return (
     <MyBox>
       <MyTitle title={'이용 안내'} />
-      <MyRow>
+      <MyRow
+        css={css`
+          margin-top: 0;
+        `}
+      >
         <MyRow>{'앱 버전'}</MyRow>
         <MyRow
           css={css`

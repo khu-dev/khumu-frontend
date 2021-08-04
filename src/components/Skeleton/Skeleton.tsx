@@ -8,11 +8,12 @@ interface SkeletonContainerProps {
   repeat?: number;
 }
 
-export default function SkeletonContainer({
+const SkeletonContainer = ({
   isLoading,
   render,
   Skeleton,
   repeat = 1,
-}: SkeletonContainerProps) {
-  return isLoading ? <RepeatSkeleton repeat={repeat} Skeleton={Skeleton} /> : render();
-}
+}: SkeletonContainerProps) =>
+  isLoading ? <RepeatSkeleton repeat={repeat} Skeleton={Skeleton} /> : render();
+
+export default SkeletonContainer;

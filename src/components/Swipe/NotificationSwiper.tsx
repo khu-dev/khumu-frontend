@@ -8,14 +8,23 @@ import { useState } from 'react';
 import { useSwipeElement } from 'src/hooks/useSwipeElement';
 import { DeleteButton, Swiper } from './styled';
 
-const threshold = 48;
+const threshold = {
+  x: 48,
+  y: 48,
+};
+const reset = 'right';
 
-export default function Swipe({ children, handleClick, handleDelete, ...rest }) {
+export default function NotificationSwiper({
+  children,
+  handleClick,
+  handleDelete,
+  ...rest
+}) {
   const {
     isEvent,
     isMoving,
     handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
-  } = useSwipeElement({ threshold });
+  } = useSwipeElement({ threshold, reset });
   const [isDelete, setDelete] = useState(false);
 
   return (

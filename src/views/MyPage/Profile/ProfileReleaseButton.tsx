@@ -3,22 +3,22 @@ import { color } from '@constants/theme';
 
 const Button = styled.button`
   width: 76px;
-  height: 28px;
+  height: 23px;
   align-self: flex-end;
   border-radius: 20px;
   border: none;
-  background-color: #00a08a;
-  font-size: 14px;
+  background-color: ${color.white};
+  font-size: 10px;
   font-weight: 400;
-  color: ${color.white};
+  color: #4d4d4d;
 `;
 
-export default function ReleaseButton({
+const ReleaseButton = ({
   title,
   handleRelease,
 }: {
   title: string;
   handleRelease: () => void;
-}) {
-  return <Button onClick={handleRelease}>{title}</Button>;
-}
+}) => <Button onClick={handleRelease}>{title}</Button>;
+
+export default ReleaseButton;

@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
-import { box } from '@constants/theme';
+import { box, color } from '@constants/theme';
 
 const sample = 'https://avatars.githubusercontent.com/u/77267603?v=4';
 
 const Image = styled.img`
-  width: 18vw;
-  height: 18vw;
+  width: 67.5px;
+  height: 67.5px;
   border-radius: ${box.borderRadius};
+  background-color: ${color.gray5};
 `;
 
 export default function ProfileImage({ src }: { src: string }) {

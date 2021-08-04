@@ -1,1 +1,1 @@
-export { default } from './Swipe';
+export { default } from './NotificationSwiper';
