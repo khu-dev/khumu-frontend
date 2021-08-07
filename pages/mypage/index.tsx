@@ -7,7 +7,9 @@ import styled from '@emotion/styled';
 import { box } from '@constants/theme';
 
 export default function MyPagePage() {
-  const { username, department, student_number } = useUser();
+  const {
+    info: { nickname, department, student_number },
+  } = useUser();
 
   return (
     <>
@@ -19,7 +21,7 @@ export default function MyPagePage() {
       />
       <Container>
         <Page.MyProfile
-          name={username}
+          name={nickname || '닉네임'}
           department={department}
           studentNumber={student_number}
         />

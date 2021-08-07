@@ -5,11 +5,15 @@ import CommonHeader from '@components/Header/Common';
 import Edit from '@views/MyPage/Edit';
 import { fetchUsers } from '@api/api-users';
 import { fetchDepartments } from '@api/api-departments';
+import { AndroidToast } from '@utils/android';
 
 export default function MyEditPage() {
-  const { username, department } = useUser();
+  const {
+    info: { username, department, nickname },
+    setUser,
+  } = useUser();
   const [state, setState] = useState({
-    nickname: username,
+    nickname: nickname || '',
     department,
   });
   const [departments, setDepartments] = useState([{ name: '', id: '' }]);
@@ -30,7 +34,7 @@ export default function MyEditPage() {
 
   useEffect(() => {
     setState({
-      nickname: username,
+      nickname: nickname || '',
       department,
     });
   }, [username, department]);
@@ -45,8 +49,25 @@ export default function MyEditPage() {
   };
 
   const handleSubmit = async () => {
-    const result = await fetchUsers.patch(state);
-    console.log(result);
+    let result = null;
+
+    try {
+      result = await fetchUsers.patch(state);
+    } catch (e) {
+      console.error(e);
+    }
+
+    switch (result.status) {
+      case 200:
+        setUser(state);
+        AndroidToast('변경되었습니다');
+        break;
+      case 400:
+        AndroidToast('존재하는 닉네임입니다');
+        break;
+      default:
+        AndroidToast('정보 변경을 실패하였습니다');
+    }
   };
 
   return (

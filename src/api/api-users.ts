@@ -9,5 +9,5 @@ interface PatchParams {
 
 export const fetchUsers = {
   select: () => axios.get(`${BASE_URI}/users/me`),
-  patch: (data: PatchParams) => axios.patch(`${BASE_URI}/users/jinsu`, data),
+  patch: (data: PatchParams) => axios.patch(`${BASE_URI}/users/me`, data),
 };
