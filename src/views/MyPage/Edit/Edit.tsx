@@ -17,13 +17,13 @@ const Nickname = ({ nickname, onChange }) => (
   </s.Form>
 );
 
-const Department = ({ department, onChange }) => (
+const Department = ({ current, onChange, departments }) => (
   <s.Form>
     <s.FormTitle>학과</s.FormTitle>
-    <s.Select value={department} onChange={onChange} name={'department'}>
-      <option>하이</option>
-      <option>바이</option>
-      <option>하이</option>
+    <s.Select value={current} onChange={onChange} name={'department'}>
+      {departments.map(({ name, id }) => (
+        <option key={id}>{name}</option>
+      ))}
     </s.Select>
   </s.Form>
 );
