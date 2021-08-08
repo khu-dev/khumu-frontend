@@ -31,6 +31,8 @@ export const useFetchURL = ({ method = 'get', url, option }: UseFetchURL) => {
     let error = false;
 
     try {
+      console.log(method);
+
       result = await axios.get(url, option);
     } catch (err) {
       error = true;
