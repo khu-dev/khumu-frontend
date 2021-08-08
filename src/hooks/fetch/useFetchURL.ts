@@ -31,7 +31,7 @@ export const useFetchURL = ({ method = 'get', url, option }: UseFetchURL) => {
     let error = false;
 
     try {
-      result = await axios[method](url, option);
+      result = await axios.get(url, option);
     } catch (err) {
       error = true;
     } finally {
