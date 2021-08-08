@@ -1,22 +1,6 @@
 import { box, color } from '@constants/theme';
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  width: ${box.marginWidth};
-  margin: ${box.margin};
-`;
-
-export const Title = styled.p`
-  color: ${color.main};
-  font-weight: 600;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 8px;
-`;
-
 export const Clubs = styled.div`
   display: flex;
   justify-content: space-evenly;

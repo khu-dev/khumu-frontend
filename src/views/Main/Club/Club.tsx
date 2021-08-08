@@ -1,10 +1,9 @@
-import { BsPlayFill } from 'react-icons/bs';
-
 import { fetchClubs } from '@api/api-clubs';
 import { IMG_URI } from '@config/baseURI';
 import { useFetchAxios } from '@hooks/fetch';
 import { getRandomNumber } from '@utils/functions';
 
+import * as cs from '../common.styled';
 import * as s from './styled';
 
 const Club = () => {
@@ -18,11 +17,8 @@ const Club = () => {
   const pickedClub = pickedNum.map((num) => list[num]);
 
   return (
-    <s.Container>
-      <s.Title>
-        동아리
-        <BsPlayFill size={18} />
-      </s.Title>
+    <cs.MainSection>
+      <cs.Title title={'동아리'} />
       <s.Clubs>
         {pickedClub.map((club) => (
           <s.ClubItem key={club?.name} url={`${IMG_URI}/${club?.images?.[0]}`}>
@@ -30,7 +26,7 @@ const Club = () => {
           </s.ClubItem>
         ))}
       </s.Clubs>
-    </s.Container>
+    </cs.MainSection>
   );
 };
 
