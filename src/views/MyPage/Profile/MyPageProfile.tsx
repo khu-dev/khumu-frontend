@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { AndroidToast } from '@utils/android';
 import { MyBox } from '../Shared';
 
 import Image from './ProfileImage';

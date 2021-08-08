@@ -34,8 +34,6 @@ export default function UserProvider({ children }) {
     }));
   };
 
-  console.log('userinfo', user);
-
   return (
     <UserContext.Provider
       value={{

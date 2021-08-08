@@ -1,6 +1,6 @@
 import React from 'react';
-import { useIntersect } from 'src/hooks/userIntersect';
-import { calculateDayDiff } from 'src/utils/day';
+import { useIntersect } from '@hooks/userIntersect';
+import { calculateDayDiff } from '@utils/day';
 import { Icons } from './Icons';
 import * as s from './styled';
 

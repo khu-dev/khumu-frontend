@@ -4,7 +4,7 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { AndroidToast } from 'src/utils/android';
+import { AndroidToast } from '@utils/android';
 
 export default function MainPage() {
   const navList = [

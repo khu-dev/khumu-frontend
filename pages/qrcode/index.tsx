@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Qrcode from '@views/Qrcode';
 import QrcodeHeader from '@components/Header/Qrcode';
 import { fetchQRCode } from '@api/api-qrcode';
-import { useToken } from 'src/context/Token';
+import { useToken } from '@context/Token';
 
 const initialState = {
   qrcode: '',
@@ -41,7 +41,11 @@ export default function QRCodePage() {
   return (
     <>
       <QrcodeHeader title={'모바일 이용증'} />
-      <Qrcode qrcode={info.qrcode} profile={info.profile} handleRefresh={fetchData} />
+      <Qrcode
+        qrcode={info.qrcode}
+        profile={info.profile}
+        handleRefresh={fetchData}
+      />
     </>
   );
 }

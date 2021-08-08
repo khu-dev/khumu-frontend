@@ -1,4 +1,4 @@
-import { wrapPromise } from 'src/utils/functions';
+import { wrapPromise } from '@utils/functions';
 import { fetchArticlesHot } from './api-article';
 
 export const fetchMain = () => {

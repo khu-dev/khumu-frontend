@@ -1,5 +1,5 @@
 import { FeedInputContext } from './FeedInputContext';
-import { useSearchAreaFocus } from 'src/hooks/Main/useSearchAreaFocus';
+import { useSearchAreaFocus } from '@hooks/Main/useSearchAreaFocus';
 
 const FeedInputProvider = ({ children }) => {
   const { focus, ...handler } = useSearchAreaFocus();
