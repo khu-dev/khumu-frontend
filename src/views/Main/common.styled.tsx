@@ -21,7 +21,6 @@ const STitle = styled.p`
 export const Title = ({ title }) => (
   <STitle>
     {title}
-
     <BsPlayFill size={18} />
   </STitle>
 );

@@ -1,11 +1,12 @@
-import { fetchArticles } from '@api/api-article';
-import { useFetchAxios } from '@hooks/fetch';
-import { HotArticle } from '@interface/response-hot';
-import { calculateDayDiff } from '@utils/day';
-import dayjs from 'dayjs';
 import Link from 'next/link';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { MdComment } from 'react-icons/md';
+
+import { fetchArticles } from '@api/api-article';
+import LinkIcon from '@components/Link';
+import { useFetchAxios } from '@hooks/fetch';
+import { HotArticle } from '@interface/response-hot';
+import { calculateDayDiff } from '@utils/day';
 
 import * as cs from '../common.styled';
 import * as s from './styled';
@@ -21,7 +22,9 @@ const Hot = () => {
 
   return (
     <cs.MainSection>
-      <cs.Title title={'실시간 인기 글'} />
+      <LinkIcon pathname={`/articles?board=hot`}>
+        <cs.Title title={'실시간 인기 글'} />
+      </LinkIcon>
       {hots.slice(0, 3).map((hot, idx) => (
         <Link key={hot?.id || idx} href={`/articles/${hot?.id}`}>
           <s.HotItem>
