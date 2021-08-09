@@ -26,6 +26,7 @@
       "@constants/*": ["src/constants/*"],
       "@context/*": ["src/context/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@interface/*": ["src/interface/*"],
       "@utils/*": ["src/utils/*"],
       "@views/*": ["src/views/*"]
     },

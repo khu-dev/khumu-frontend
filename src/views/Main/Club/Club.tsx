@@ -20,8 +20,11 @@ const Club = () => {
     <cs.MainSection>
       <cs.Title title={'동아리'} />
       <s.Clubs>
-        {pickedClub.map((club) => (
-          <s.ClubItem key={club?.name} url={`${IMG_URI}/${club?.images?.[0]}`}>
+        {pickedClub.map((club, idx) => (
+          <s.ClubItem
+            key={club?.name || idx}
+            url={`${IMG_URI}/${club?.images?.[0]}`}
+          >
             <s.Name>{club?.name}</s.Name>
           </s.ClubItem>
         ))}

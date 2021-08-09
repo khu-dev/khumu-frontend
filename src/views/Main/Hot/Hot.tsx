@@ -1,5 +1,10 @@
 import { fetchArticles } from '@api/api-article';
 import { useFetchAxios } from '@hooks/fetch';
+import { HotArticle } from '@interface/response-hot';
+import { calculateDayDiff } from '@utils/day';
+import dayjs from 'dayjs';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { MdComment } from 'react-icons/md';
 
 import * as cs from '../common.styled';
 import * as s from './styled';
@@ -9,17 +14,32 @@ const Hot = () => {
     func: fetchArticles.hot,
   });
 
-  const list: Array<any> = result?.data?.data?.data || Array(3).fill(null);
-  console.log(list);
+  const hots: Array<HotArticle> = result?.data?.data?.data || Array(3).fill(null);
+  const now = new Date();
+  const year = now.getFullYear();
 
   return (
     <cs.MainSection>
       <cs.Title title={'실시간 인기 글'} />
-      {list.map((_, idx) => (
-        <s.HotItem key={idx}>
-          <s.Author></s.Author>
-          <s.Title></s.Title>
-          <s.Content></s.Content>
+      {hots.slice(0, 3).map((hot, idx) => (
+        <s.HotItem key={hot?.id || idx}>
+          <s.Author>{hot?.author?.nickname}</s.Author>
+          <s.TimeAgo>
+            {calculateDayDiff({ day1: now, day2: year + hot?.created_at })}
+          </s.TimeAgo>
+          <s.Title>{hot?.title}</s.Title>
+          <s.Content>{hot?.content}</s.Content>
+          <s.BoardName>{hot?.board_display_name}</s.BoardName>
+          <s.Summary>
+            <s.SummaryItem>
+              <AiOutlineHeart css={s.iconStyle} />
+              {hot?.like_article_count}
+            </s.SummaryItem>
+            <s.SummaryItem>
+              <MdComment css={s.iconStyle} />
+              {hot?.comment_count}
+            </s.SummaryItem>
+          </s.Summary>
         </s.HotItem>
       ))}
     </cs.MainSection>
