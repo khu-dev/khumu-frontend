@@ -4,18 +4,18 @@ import Qrcode from '@views/Qrcode';
 import QrcodeHeader from '@components/Header/Qrcode';
 import { fetchQRCode } from '@api/api-qrcode';
 import { useToken } from '@context/Token';
+import { useUser } from '@context/User';
 
 const initialState = {
   qrcode: '',
-  profile: {
-    name: '',
-    student_number: '',
-    department: '',
-  },
+  name: '',
 };
 
 export default function QRCodePage() {
   const { token } = useToken();
+  const {
+    info: { student_number, department },
+  } = useUser();
   const [info, setInfo] = useState(initialState);
 
   const fetchData = async () => {
@@ -24,12 +24,12 @@ export default function QRCodePage() {
 
     if (data) {
       const {
-        data: { qr_code_str, ...profile },
+        data: { qr_code_str, name },
       } = data;
 
       setInfo({
-        qrcode: data.data.qr_code_str,
-        profile,
+        qrcode: qr_code_str,
+        name,
       });
     }
   };
@@ -43,7 +43,11 @@ export default function QRCodePage() {
       <QrcodeHeader title={'모바일 이용증'} />
       <Qrcode
         qrcode={info.qrcode}
-        profile={info.profile}
+        profile={{
+          name: info.name || '-',
+          student_number,
+          department,
+        }}
         handleRefresh={fetchData}
       />
     </>
