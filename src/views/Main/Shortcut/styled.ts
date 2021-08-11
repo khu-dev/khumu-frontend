@@ -19,4 +19,5 @@ export const ShortcutItem = styled.div`
   align-items: center;
   font-size: 12px;
   text-align: center;
+  color: ${color.black};
 `;
