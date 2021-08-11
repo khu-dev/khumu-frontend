@@ -18,7 +18,7 @@ const Club = () => {
 
   return (
     <cs.MainSection>
-      <cs.Title title={'동아리'} />
+      <cs.IconTitle title={'동아리'} />
       <s.Clubs>
         {pickedClub.map((club, idx) => (
           <s.ClubItem

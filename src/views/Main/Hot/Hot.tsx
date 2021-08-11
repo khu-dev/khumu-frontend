@@ -23,7 +23,7 @@ const Hot = () => {
   return (
     <cs.MainSection>
       <LinkIcon pathname={`/articles?board=hot`}>
-        <cs.Title title={'실시간 인기 글'} />
+        <cs.IconTitle title={'실시간 인기 글'} />
       </LinkIcon>
       {hots.slice(0, 3).map((hot, idx) => (
         <Link key={hot?.id || idx} href={`/articles/${hot?.id}`}>

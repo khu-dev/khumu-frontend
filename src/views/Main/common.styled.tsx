@@ -7,20 +7,20 @@ export const MainSection = styled.div`
   margin: ${box.margin};
 `;
 
-const STitle = styled.p`
+export const MainTitle = styled.p<{ hasIcon?: boolean }>`
   color: ${color.main};
   font-weight: 600;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ hasIcon }) => (hasIcon ? 'space-between' : 'flex-start')};
   align-items: center;
 
   margin-bottom: 8px;
 `;
 
-export const Title = ({ title }) => (
-  <STitle>
+export const IconTitle = ({ title }) => (
+  <MainTitle hasIcon>
     {title}
     <BsPlayFill size={18} />
-  </STitle>
+  </MainTitle>
 );
