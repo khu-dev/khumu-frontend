@@ -7,7 +7,7 @@ import { color } from '@constants/theme';
 import { fetchNotifications } from '@api/api-notifications';
 import Notifications from '@views/Notifications';
 import Skeleton from '@components/Skeleton';
-import { useToken } from 'src/context/Token';
+import { useToken } from '@context/Token';
 import SkeletonNotifications from '@components/Skeleton/Notifications';
 
 let windowHeight;

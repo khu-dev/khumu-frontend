@@ -4,13 +4,14 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { AndroidToast } from 'src/utils/android';
+import { AndroidToast } from '@utils/android';
 
 export default function MainPage() {
   const navList = [
     { title: '메인', path: '/main' },
     { title: 'QR코드', path: '/qrcode' },
     { title: '마이페이지', path: '/mypage' },
+    { title: '마이페이지/정보수정', path: '/mypage/edit' },
     { title: '알림', path: '/notifications' },
     { title: '동아리', path: '/club' },
   ];

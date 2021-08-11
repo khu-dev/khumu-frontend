@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import styled from '@emotion/styled';
 
 import { box, color } from '@constants/theme';
-import { convertDate } from 'src/utils/day';
+import { convertDate } from '@utils/day';
 
 export default function FeedTab({ tab }) {
   const now = Date.now();

@@ -23,3 +23,18 @@ export const wrapPromise = (promise) => {
     },
   };
 };
+
+export const getRandomNumber = (min: number, max: number, count: number) => {
+  let picks = [];
+
+  for (let i = 0; i < count; i++) {
+    let picked = Math.ceil(Math.random() * (max - min) + min);
+
+    const exist = picks.find((num) => num === picked);
+    if (exist) picked < max ? picked++ : picked--;
+
+    picks.push(picked);
+  }
+
+  return picks;
+};

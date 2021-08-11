@@ -5,7 +5,7 @@ import { color } from '@constants/theme';
 import { css } from '@emotion/react';
 import React from 'react';
 import { useState } from 'react';
-import { useSwipeElement } from 'src/hooks/useSwipeElement';
+import { useSwipeElement } from '@hooks/useSwipeElement';
 import { DeleteButton, Swiper } from './styled';
 
 const threshold = {

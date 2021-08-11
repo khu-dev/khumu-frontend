@@ -12,12 +12,36 @@ export default function UserProvider({ children }) {
       const result = await fetchUsers.select();
 
       if (result.status === 200) {
-        setUser(result.data.data);
+        setUser((prev) => ({
+          ...prev,
+          info: {
+            ...result.data.data,
+          },
+        }));
       }
     };
 
     token && fetchData();
   }, [token]);
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  const updateUserInfo = (info) => {
+    setUser((prev) => ({
+      ...prev,
+      info: {
+        ...prev.info,
+        ...info,
+      },
+    }));
+  };
+
+  return (
+    <UserContext.Provider
+      value={{
+        ...user,
+        setUser: updateUserInfo,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { css } from '@emotion/react';
 
-import { useFeedInput } from 'src/context/Feed/Input';
+import { useFeedInput } from '@context/Feed/Input';
 import { color } from '@constants/theme';
 import { Title03 } from '@components/Title';
 import * as s from './SearchArea.styled';
