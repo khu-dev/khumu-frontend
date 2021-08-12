@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 import { fetchClubs } from '@api/api-clubs';
-import ClubHeader from '@components/Header/Club';
-import Club from '@views/Club';
+import ClubsHeader from '@components/Header/Clubs';
+import Clubs from '@views/Clubs';
 
-const CirclesPage = () => {
+const ClubsPage = () => {
   const [clubs, setClubs] = useState([]);
 
   useEffect(() => {
@@ -21,10 +21,10 @@ const CirclesPage = () => {
 
   return (
     <>
-      <ClubHeader title={'동아리'} />
-      <Club clubs={clubs} />
+      <ClubsHeader title={'동아리'} />
+      <Clubs clubs={clubs} />
     </>
   );
 };
 
-export default CirclesPage;
+export default ClubsPage;

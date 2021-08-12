@@ -18,10 +18,10 @@ const Plus = ({ handleClick, isEnable }) => (
   />
 );
 
-const ClubPaging = ({ children }) => <s.Paging>{children}</s.Paging>;
+const ClubsPaging = ({ children }) => <s.Paging>{children}</s.Paging>;
 
-ClubPaging.Minus = Minus;
-ClubPaging.Current = Current;
-ClubPaging.Plus = Plus;
+ClubsPaging.Minus = Minus;
+ClubsPaging.Current = Current;
+ClubsPaging.Plus = Plus;
 
-export default ClubPaging;
+export default ClubsPaging;

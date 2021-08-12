@@ -13,7 +13,7 @@ export default function MainPage() {
     { title: '마이페이지', path: '/mypage' },
     { title: '마이페이지/정보수정', path: '/mypage/edit' },
     { title: '알림', path: '/notifications' },
-    { title: '동아리', path: '/club' },
+    { title: '동아리', path: '/clubs' },
   ];
 
   return (
