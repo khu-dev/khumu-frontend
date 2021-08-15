@@ -1,1 +1,1 @@
-export { default } from './MyPageLog';
+export { default } from './Log';

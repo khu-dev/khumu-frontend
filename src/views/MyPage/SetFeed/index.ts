@@ -1,1 +1,1 @@
-export { default } from './MyPageSetFeed';
+export { default } from './Feed';
