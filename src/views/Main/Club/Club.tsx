@@ -18,7 +18,7 @@ const Club = () => {
 
   return (
     <cs.MainSection>
-      <cs.IconTitle title={'동아리'} />
+      <cs.IconTitle pathname={`/clubs`} title={'동아리'} />
       <s.Clubs>
         {pickedClub.map((club, idx) => (
           <s.ClubItem
