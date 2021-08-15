@@ -7,13 +7,14 @@ import ReleaseButton from './ProfileReleaseButton';
 
 const sample = 'https://avatars.githubusercontent.com/u/77267603?v=4';
 
-const MyPageProfile = ({ name, department, studentNumber }) => (
+const Profile = ({ name, department, studentNumber }) => (
   <MyBox
     css={css`
       display: flex;
       justify-content: space-between;
       align-items: center;
     `}
+    isProfile
   >
     <Image src={sample} />
     <Info name={name} department={department} studentNumber={studentNumber} />
@@ -21,4 +22,4 @@ const MyPageProfile = ({ name, department, studentNumber }) => (
   </MyBox>
 );
 
-export default MyPageProfile;
+export default Profile;

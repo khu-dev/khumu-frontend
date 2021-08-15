@@ -25,11 +25,9 @@ export default function MyPagePage() {
           department={department}
           studentNumber={student_number}
         />
-        <Page.MyLog />
-        <Page.MyAccount />
-        <Page.MySetFeed />
+        <Page.MyCommunity />
+        <Page.MyStudy />
         <Page.MyGuide />
-        <Page.MySetApp />
         <Page.MyEtc />
       </Container>
     </>
