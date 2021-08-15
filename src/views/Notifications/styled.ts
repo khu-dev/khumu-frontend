@@ -2,6 +2,12 @@ import { box, color } from '@constants/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
+const textOverflowHiddenStyle = css`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
 export const NotiContainer = styled.div`
   width: 100%;
   height: 71.5px;
@@ -38,25 +44,37 @@ export const NotiContent = styled.div`
 `;
 
 export const NotiTitle = styled.h2`
+  height: 17px;
   font-size: 14px;
   font-weight: 500;
   margin: 0;
+
+  ${textOverflowHiddenStyle};
 `;
 
 export const NotiKind = styled.p`
+  height: 16px;
   font-size: 13px;
   color: ${color.gray4};
+
+  ${textOverflowHiddenStyle};
 `;
 
 export const NotiDescription = styled.p`
+  height: 16px;
   font-size: 13px;
   font-weight: 200;
+
+  ${textOverflowHiddenStyle};
 `;
 
 export const NotiDay = styled.span`
-  position: absolute;
-  right: ${box.margin};
-  bottom: 4px;
-  font-size: 11px;
+  margin-right: ${box.margin};
+  margin-bottom: 4px;
+  font-size: 9px;
   color: ${color.gray3};
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 `;

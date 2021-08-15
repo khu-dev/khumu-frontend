@@ -10,7 +10,7 @@ const threshold = {
   y: 1000,
 };
 
-const Club = ({ clubs }) => {
+const Clubs = ({ clubs }) => {
   const clubLength = clubs.length;
   const [current, setCurrent] = useState(0);
   const currentClub = clubs[current];
@@ -64,4 +64,4 @@ const Club = ({ clubs }) => {
   );
 };
 
-export default Club;
+export default Clubs;
