@@ -10,7 +10,7 @@ const textOverflowHiddenStyle = css`
 `;
 
 export const HotItem = styled.div`
-  height: 60px;
+  height: 66px;
   width: 100%;
   padding: 6px 0;
   border-top-left-radius: 30px;
@@ -42,21 +42,21 @@ export const TimeAgo = styled.span`
 `;
 
 export const Title = styled.h3`
-  height: 13px;
+  height: 18px;
   margin: 0;
   margin-left: ${contentMarginLeft};
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 400;
 
   ${textOverflowHiddenStyle};
 `;
 
 export const Content = styled.p`
-  height: 11px;
+  height: 16px;
   width: calc(100% - 88px);
   margin: 0;
   margin-left: ${contentMarginLeft};
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 300;
 
   ${textOverflowHiddenStyle};
