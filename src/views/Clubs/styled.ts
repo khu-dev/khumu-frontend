@@ -16,11 +16,22 @@ export const Tag = styled.div`
   background-color: ${color.main};
 `;
 
-export const Card = styled.div`
+export const ClubsCard = styled.div`
   flex-grow: 1;
   margin: 0 auto;
+  width: 100vw;
+  position: relative;
+`;
+
+export const Card = styled.div<{
+  gap: number;
+  idx: number;
+  isMoving?: boolean;
+  isEvent?: boolean;
+}>`
   min-width: 260px;
-  width: calc(100% - 64px);
+  width: calc(100vw - 64px);
+  height: 100%;
   box-shadow: -1px 1px 12px -4px rgba(0, 0, 0, 0.3);
   border: 1px solid ${color.main};
   border-radius: 24px;
@@ -30,6 +41,12 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+
+  ${({ idx }) => css`
+    position: absolute;
+    top: 0;
+    left: calc((100vw - 48px) * ${idx} + 32px);
+  `}
 `;
 
 export const Image = styled.div<{ url: string }>`

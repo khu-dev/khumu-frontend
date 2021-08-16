@@ -6,14 +6,14 @@ import ClubsPaging from './ClubsPaging';
 import * as s from './styled';
 
 const threshold = {
-  x: 32,
+  x: 0,
   y: 1000,
 };
 
 const Clubs = ({ clubs }) => {
   const clubLength = clubs.length;
   const [current, setCurrent] = useState(0);
-  const currentClub = clubs[current];
+  const currentClub = [clubs[current - 1], clubs[current], clubs[current + 1]];
 
   const handleIndex = {
     minus: () => {
@@ -25,6 +25,9 @@ const Clubs = ({ clubs }) => {
   };
 
   const {
+    gap,
+    isMoving,
+    isEvent,
     handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
   } = useSwipeElement({
     threshold,
@@ -34,30 +37,44 @@ const Clubs = ({ clubs }) => {
     },
   });
 
+  console.log(currentClub, isMoving, isEvent);
+
   return (
     <>
       <s.Tag>전체</s.Tag>
-      <ClubsCard
-        onMouseDown={handleTouchStart}
-        onTouchStart={handleTouchStart}
-        onMouseMove={handleTouchMove}
-        onTouchMove={handleTouchMove}
-        onMouseUp={handleTouchEnd}
-        onTouchEnd={handleTouchEnd}
-      >
-        <ClubsCard.Image url={`${IMG_URI}/${currentClub?.images[0]}`} />
-        <ClubsCard.Content>
-          <ClubsCard.Tag tag={'연행'} />
-          <ClubsCard.Name name={currentClub?.name} summary={'태그'} />
-          <ClubsCard.Description description={currentClub?.description} />
-        </ClubsCard.Content>
-      </ClubsCard>
+      <s.ClubsCard>
+        {currentClub.map(
+          (club, idx) =>
+            club && (
+              <ClubsCard
+                key={club?.name + idx}
+                onMouseDown={handleTouchStart}
+                onTouchStart={handleTouchStart}
+                onMouseMove={handleTouchMove}
+                onTouchMove={handleTouchMove}
+                onMouseUp={handleTouchEnd}
+                onTouchEnd={handleTouchEnd}
+                gap={gap}
+                isMoving={isMoving}
+                isEvent={isEvent}
+                idx={idx - 1}
+              >
+                <ClubsCard.Image url={`${IMG_URI}/${club?.images[0]}`} />
+                <ClubsCard.Content>
+                  <ClubsCard.Tag tag={'연행'} />
+                  <ClubsCard.Name name={club?.name} summary={'태그'} />
+                  <ClubsCard.Description description={club?.description} />
+                </ClubsCard.Content>
+              </ClubsCard>
+            ),
+        )}
+      </s.ClubsCard>
       <ClubsPaging>
         <ClubsPaging.Minus handleClick={handleIndex.minus} isEnable={current > 0} />
         <ClubsPaging.Current page={`${current + 1} / ${clubLength}`} />
         <ClubsPaging.Plus
           handleClick={handleIndex.plus}
-          isEnable={current < clubLength}
+          isEnable={current < clubLength - 1}
         />
       </ClubsPaging>
     </>
