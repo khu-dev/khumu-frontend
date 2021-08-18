@@ -6,13 +6,16 @@ import Clubs from '@views/Clubs';
 
 const ClubsPage = () => {
   const [clubs, setClubs] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetchClubs.select();
+      const clubResult = await fetchClubs.select();
+      const categoriesResult = await fetchClubs.categories();
 
-      if (result.status === 200) {
-        setClubs(result.data.data);
+      if (clubResult.status === 200) {
+        setClubs(clubResult.data.data);
+        setCategories(categoriesResult.data.data);
       }
     };
 
@@ -22,7 +25,7 @@ const ClubsPage = () => {
   return (
     <>
       <ClubsHeader title={'동아리'} />
-      <Clubs clubs={clubs} />
+      <Clubs categories={categories} clubs={clubs} />
     </>
   );
 };

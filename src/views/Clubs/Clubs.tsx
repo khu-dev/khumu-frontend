@@ -10,7 +10,7 @@ const threshold = {
   y: 1000,
 };
 
-const Clubs = ({ clubs }) => {
+const Clubs = ({ categories, clubs }) => {
   const clubLength = clubs.length;
   const [current, setCurrent] = useState(0);
   const currentClub = [clubs[current - 1], clubs[current], clubs[current + 1]];
@@ -37,7 +37,7 @@ const Clubs = ({ clubs }) => {
     },
   });
 
-  console.log(currentClub, isMoving, isEvent);
+  console.log(categories);
 
   return (
     <>
