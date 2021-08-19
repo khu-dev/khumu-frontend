@@ -1,5 +1,6 @@
-import { box, color } from '@constants/theme';
 import styled from '@emotion/styled';
+import { box, color } from '@constants/theme';
+import Link from 'next/link';
 
 export const MyButtonContainer = styled.div`
   display: flex;
@@ -20,3 +21,9 @@ export const MyButton = styled.div<{ isSingle?: boolean }>`
   border-radius: ${box.borderRadius};
   margin-bottom: ${({ isSingle }) => (isSingle ? box.margin : 0)};
 `;
+
+export const LinkButton = ({ pathname, children }) => (
+  <Link href={pathname}>
+    <MyButton>{children}</MyButton>
+  </Link>
+);

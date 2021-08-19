@@ -1,6 +1,6 @@
 import { color } from '@constants/theme';
 import { css } from '@emotion/react';
-import { MyBox, MyRow, MyTitle } from '../Shared';
+import { MyBox, MyRow, MyTitle, LinkRow } from '../Shared';
 
 const Guide = () => (
   <MyBox>
@@ -23,7 +23,7 @@ const Guide = () => (
       </MyRow>
     </MyRow>
     <MyRow>{'문의하기'}</MyRow>
-    <MyRow>{'공지사항'}</MyRow>
+    <LinkRow pathname={'/announcements'}>{'공지사항'}</LinkRow>
     <MyRow>{'서비스 이용약관'}</MyRow>
     <MyRow>{'개인정보 처리방침'}</MyRow>
     <MyRow>{'오픈소스 라이선스'}</MyRow>
