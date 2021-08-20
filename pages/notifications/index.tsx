@@ -5,10 +5,10 @@ import React, { useState, useEffect } from 'react';
 import CommonHeader from '@components/Header/Common';
 import { color } from '@constants/theme';
 import { fetchNotifications } from '@api/api-notifications';
-import Notifications from '@views/Notifications';
 import Skeleton from '@components/Skeleton';
 import { useToken } from '@context/Token';
 import SkeletonNotifications from '@components/Skeleton/Notifications';
+import Notifications, { Empty } from '@views/Notifications';
 
 let windowHeight;
 const elementHeight = 72;
@@ -57,16 +57,22 @@ export default function NotificationsPage() {
         Skeleton={SkeletonNotifications}
         render={(props) => (
           <>
-            {list?.slice(0, length).map((item, index) => (
-              <Notifications
-                key={item.id}
-                item={item}
-                index={index}
-                fetchIndex={length}
-                infiniteFetch={infiniteFetch}
-                {...props}
-              />
-            ))}
+            {list.length > 0 ? (
+              list
+                ?.slice(0, length)
+                .map((item, index) => (
+                  <Notifications
+                    key={item.id}
+                    item={item}
+                    index={index}
+                    fetchIndex={length}
+                    infiniteFetch={infiniteFetch}
+                    {...props}
+                  />
+                ))
+            ) : (
+              <Empty text={'현재 알림이 없습니다.'} />
+            )}
           </>
         )}
       />
