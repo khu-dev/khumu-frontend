@@ -4,6 +4,7 @@ import CommonHeader from '@components/Header/Common';
 import SetNoti from '@views/MyPage/Setting';
 import { fetchNotifications } from '@api/api-notifications';
 import { NotificationsOptions } from '@interface/response-notifications';
+import { AndroidToast } from '@utils/android';
 
 const MySetNotiPage = () => {
   const router = useRouter();
@@ -28,6 +29,15 @@ const MySetNotiPage = () => {
     fetchData();
   }, []);
 
+  const updateSetting = async (id, status, setActive) => {
+    const result = await fetchNotifications.update({ id, status: !status });
+
+    console.log(result);
+
+    AndroidToast('푸시알림 설정 수정');
+    setActive(!status);
+  };
+
   return (
     <>
       <CommonHeader
@@ -47,6 +57,7 @@ const MySetNotiPage = () => {
           { subject: '학교 소식 알림', key: 'khumu_notification' },
         ]}
         data={data}
+        updateSetting={updateSetting}
       />
     </>
   );
