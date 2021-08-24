@@ -17,4 +17,5 @@ export const fetchNotifications = {
     axios.patch(`${BASE_URI}/notifications/${notiId}/unread`),
   delete: ({ notiId }: DeleteParams) =>
     axios.delete(`${BASE_URI}/notifications/${notiId}`),
+  options: () => axios.get(`${BASE_URI}/push/options/jinsu`),
 };
