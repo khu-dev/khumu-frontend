@@ -15,7 +15,8 @@ import { Title02 } from '@components/Title';
 
 interface CommonHeaderProps {
   title: string;
-  pathname: string;
+  pathname?: string;
+  handleRouter?: React.MouseEventHandler<SVGElement>;
   className?: string;
   Icon?: IconType; // default is back button icon
   backgroundColor?: string;
@@ -25,6 +26,7 @@ interface CommonHeaderProps {
 export default function CommonHeader({
   title,
   pathname,
+  handleRouter,
   className = '',
   Icon = IoChevronBackOutline,
   color = theme.main,
@@ -33,9 +35,13 @@ export default function CommonHeader({
 
   return (
     <div className={`header header-align-center ${className}`}>
-      <LinkIcon pathname={pathname}>
-        <Icon css={csses.icon} style={{ color }} />
-      </LinkIcon>
+      {pathname ? (
+        <LinkIcon pathname={pathname}>
+          <Icon css={csses.icon} style={{ color }} />
+        </LinkIcon>
+      ) : (
+        <Icon css={csses.icon} style={{ color }} onClick={handleRouter} />
+      )}
       <Title02 css={csses.title} style={{ color }}>
         {title}
       </Title02>
