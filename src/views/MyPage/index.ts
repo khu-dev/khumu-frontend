@@ -1,5 +1,7 @@
 export { default as MyProfile } from './Profile';
-export { default as MyLog } from './Log/MyPageLog';
+export { default as MyCommunity } from './Community';
+export { default as MyStudy } from './Study';
+export { default as MyLog } from './Log';
 export { default as MyAccount } from './Account';
 export { default as MySetFeed } from './SetFeed';
 export { default as MyGuide } from './Guide';

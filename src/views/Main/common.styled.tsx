@@ -1,3 +1,4 @@
+import LinkIcon from '@components/Link';
 import { box, color } from '@constants/theme';
 import styled from '@emotion/styled';
 import { BsPlayFill } from 'react-icons/bs';
@@ -18,9 +19,11 @@ export const MainTitle = styled.p<{ hasIcon?: boolean }>`
   margin-bottom: 8px;
 `;
 
-export const IconTitle = ({ title }) => (
-  <MainTitle hasIcon>
-    {title}
-    <BsPlayFill size={18} />
-  </MainTitle>
+export const IconTitle = ({ title, pathname }) => (
+  <LinkIcon pathname={pathname}>
+    <MainTitle hasIcon>
+      {title}
+      <BsPlayFill size={18} />
+    </MainTitle>
+  </LinkIcon>
 );

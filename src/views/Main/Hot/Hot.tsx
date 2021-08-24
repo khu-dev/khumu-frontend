@@ -3,7 +3,6 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { MdComment } from 'react-icons/md';
 
 import { fetchArticles } from '@api/api-article';
-import LinkIcon from '@components/Link';
 import { useFetchAxios } from '@hooks/fetch';
 import { HotArticle } from '@interface/response-hot';
 import { calculateDayDiff } from '@utils/day';
@@ -22,9 +21,7 @@ const Hot = () => {
 
   return (
     <cs.MainSection>
-      <LinkIcon pathname={`/articles?board=hot`}>
-        <cs.IconTitle title={'실시간 인기 글'} />
-      </LinkIcon>
+      <cs.IconTitle pathname={`/articles?board=hot`} title={'실시간 인기 글'} />
       {hots.slice(0, 3).map((hot, idx) => (
         <Link key={hot?.id || idx} href={`/articles/${hot?.id}`}>
           <s.HotItem>

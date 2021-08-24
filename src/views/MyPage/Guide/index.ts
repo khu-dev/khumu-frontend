@@ -1,1 +1,1 @@
-export { default } from './MyPageGuide';
+export { default } from './Guide';

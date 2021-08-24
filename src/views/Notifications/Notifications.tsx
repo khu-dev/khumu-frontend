@@ -7,8 +7,9 @@ import { color } from '@constants/theme';
 import NotificationSwiper from '@components/Swipe';
 import { AndroidToast } from '@utils/android';
 import { NotiItem } from './NotiItem';
+import { Empty } from './Empty';
 
-const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
+const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
   const [isRead, setRead] = useState(item.is_read);
 
   const handleDelete = async (notiId) => {
@@ -34,7 +35,6 @@ const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
 
   return (
     <NotificationSwiper
-      key={item.id}
       handleClick={() => handleRead(item.id)}
       handleDelete={() => handleDelete(item.id)}
     >
@@ -65,5 +65,24 @@ const Notifications = ({ item, index, fetchIndex, infiniteFetch }) => {
     </NotificationSwiper>
   );
 };
+
+const Notifications = ({
+  notifications,
+  ...rest
+}: {
+  notifications: any[];
+  fetchIndex: number;
+  infiniteFetch: void;
+}) => (
+  <>
+    {notifications.length > 0 ? (
+      notifications.map((item, index) => (
+        <Notification key={item.id} item={item} index={index} {...rest} />
+      ))
+    ) : (
+      <Empty text={'현재 알림이 없습니다.'} />
+    )}
+  </>
+);
 
 export default Notifications;

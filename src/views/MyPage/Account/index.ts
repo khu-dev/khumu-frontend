@@ -1,1 +1,1 @@
-export { default } from './MyPageAccount';
+export { default } from './Account';

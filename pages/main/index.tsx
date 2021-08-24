@@ -39,9 +39,9 @@ const MainPage = () => {
     <>
       <Feed />
       <Notice />
-      <Club />
-      <Advertise />
       <Hot />
+      <Advertise />
+      <Club />
       <Shortcut />
     </>
   );

@@ -24,12 +24,16 @@ const Name = ({ name, summary }) => (
 
 const Description = ({ description }) => <s.P>{description}</s.P>;
 
-const ClubCard = ({ children, ...rest }) => <s.Card {...rest}>{children}</s.Card>;
+const ClubsCard = ({ children, gap, idx, ...rest }) => (
+  <s.Card gap={gap} idx={idx} {...rest}>
+    {children}
+  </s.Card>
+);
 
-ClubCard.Image = Image;
-ClubCard.Content = Content;
-ClubCard.Tag = Tag;
-ClubCard.Name = Name;
-ClubCard.Description = Description;
+ClubsCard.Image = Image;
+ClubsCard.Content = Content;
+ClubsCard.Tag = Tag;
+ClubsCard.Name = Name;
+ClubsCard.Description = Description;
 
-export default ClubCard;
+export default ClubsCard;

@@ -6,7 +6,7 @@ import { color } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import { Title02 } from '@components/Title';
 
-const ClubHeader = ({ title }: { title: string }) => (
+const ClubsHeader = ({ title }: { title: string }) => (
   <div className={'header header-align-center'}>
     <LinkIcon pathname={'/'}>
       <IoChevronBackOutline css={iconStyle} />
@@ -15,7 +15,7 @@ const ClubHeader = ({ title }: { title: string }) => (
   </div>
 );
 
-export default ClubHeader;
+export default ClubsHeader;
 
 const iconStyle = css`
   position: absolute;

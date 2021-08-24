@@ -1,1 +1,1 @@
-export { default } from './MyPageSetApp';
+export { default } from './SetApp';
