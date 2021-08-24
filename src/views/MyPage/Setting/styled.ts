@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { box, color } from '@constants/theme';
 
 export const Container = styled.div`
