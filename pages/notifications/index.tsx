@@ -8,7 +8,7 @@ import { fetchNotifications } from '@api/api-notifications';
 import Skeleton from '@components/Skeleton';
 import { useToken } from '@context/Token';
 import SkeletonNotifications from '@components/Skeleton/Notifications';
-import Notifications, { Empty } from '@views/Notifications';
+import Notifications, { Setting } from '@views/Notifications';
 
 let windowHeight;
 const elementHeight = 72;
@@ -22,24 +22,24 @@ export default function NotificationsPage() {
   const [list, setList] = useState([]);
   const [length, setLength] = useState(Math.floor(windowHeight / elementHeight));
 
-  const fetchList = async () => {
-    if (!isLoading) setLoading(true);
-
-    const {
-      data: { data },
-    } = await fetchNotifications.select();
-
-    if (data.length > 0) {
-      setList(data);
-      setLoading(false);
-    }
-  };
-
   const infiniteFetch = () => {
     setLength((prev) => prev + length);
   };
 
   useEffect(() => {
+    const fetchList = async () => {
+      if (!isLoading) setLoading(true);
+
+      const {
+        data: { data },
+      } = await fetchNotifications.select();
+
+      if (data.length > 0) {
+        setList(data);
+        setLoading(false);
+      }
+    };
+
     token && fetchList();
   }, [token]);
 
@@ -51,29 +51,18 @@ export default function NotificationsPage() {
         className={'header-notifications'}
         color={color.main}
       />
+      <Setting />
       <Skeleton
         isLoading={isLoading}
         repeat={10}
         Skeleton={SkeletonNotifications}
         render={(props) => (
-          <>
-            {list.length > 0 ? (
-              list
-                ?.slice(0, length)
-                .map((item, index) => (
-                  <Notifications
-                    key={item.id}
-                    item={item}
-                    index={index}
-                    fetchIndex={length}
-                    infiniteFetch={infiniteFetch}
-                    {...props}
-                  />
-                ))
-            ) : (
-              <Empty text={'현재 알림이 없습니다.'} />
-            )}
-          </>
+          <Notifications
+            notifications={list?.slice(0, length)}
+            fetchIndex={length}
+            infiniteFetch={infiniteFetch}
+            {...props}
+          />
         )}
       />
     </>
