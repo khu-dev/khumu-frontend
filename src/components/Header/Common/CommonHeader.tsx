@@ -15,6 +15,7 @@ import { Title02 } from '@components/Title';
 
 interface CommonHeaderProps {
   title: string;
+  hasIcon?: boolean;
   pathname?: string;
   handleRouter?: React.MouseEventHandler<SVGElement>;
   className?: string;
@@ -25,6 +26,7 @@ interface CommonHeaderProps {
 
 export default function CommonHeader({
   title,
+  hasIcon = true,
   pathname,
   handleRouter,
   className = '',
@@ -34,14 +36,19 @@ export default function CommonHeader({
   const csses = useStyles();
 
   return (
-    <div className={`header header-align-center ${className}`}>
-      {pathname ? (
-        <LinkIcon pathname={pathname}>
-          <Icon css={csses.icon} style={{ color }} />
-        </LinkIcon>
-      ) : (
-        <Icon css={csses.icon} style={{ color }} onClick={handleRouter} />
-      )}
+    <div
+      className={`header header-align-center ${className} ${
+        hasIcon ? '' : 'header-no-icon'
+      }`}
+    >
+      {hasIcon &&
+        (pathname ? (
+          <LinkIcon pathname={pathname}>
+            <Icon css={csses.icon} style={{ color }} />
+          </LinkIcon>
+        ) : (
+          <Icon css={csses.icon} style={{ color }} onClick={handleRouter} />
+        ))}
       <Title02 css={csses.title} style={{ color }}>
         {title}
       </Title02>

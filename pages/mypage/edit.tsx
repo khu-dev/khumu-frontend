@@ -6,12 +6,14 @@ import Edit from '@views/MyPage/Edit';
 import { fetchUsers } from '@api/api-users';
 import { fetchDepartments } from '@api/api-departments';
 import { AndroidToast } from '@utils/android';
+import { useRouter } from 'next/router';
 
 export default function MyEditPage() {
   const {
-    info: { username, department, nickname },
+    info: { username, department, nickname, student_number },
     setUser,
   } = useUser();
+  const router = useRouter();
   const [state, setState] = useState({
     nickname: nickname || '',
     department,
@@ -38,6 +40,10 @@ export default function MyEditPage() {
       department,
     });
   }, [username, department]);
+
+  const goBack = () => {
+    router.back();
+  };
 
   const handleChange = (e) => {
     const target = e.target;
@@ -74,13 +80,14 @@ export default function MyEditPage() {
     <>
       <CommonHeader
         title={'나의 정보 변경'}
-        pathname={'/mypage'}
+        handleRouter={goBack}
         className={'header-mypage-edit'}
         color={'#6C6C6C'}
       />
       <Edit>
         <Edit.Image />
         <Edit.Nickname nickname={state.nickname} onChange={handleChange} />
+        <Edit.StudentNumber studentNumber={student_number} />
         <Edit.Department
           current={state.department}
           departments={departments}

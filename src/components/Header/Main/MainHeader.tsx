@@ -10,30 +10,47 @@ import { css } from '@emotion/react';
 
 import { color, font } from '@constants/theme';
 import LinkIcon from '@components/Link';
+import styled from '@emotion/styled';
 
-export default function MainHeader(): JSX.Element {
-  const csses = useStyles();
+export default function MainHeader({ unreads }): JSX.Element {
+  const unreadsLength = unreads.length;
 
   return (
     <div className={'header header-main'}>
       <LinkIcon pathname={'/qrcode'}>
-        <AiOutlineQrcode size={font.iconSize} css={csses.qrcode} />
+        <AiOutlineQrcode
+          size={font.iconSize}
+          css={css`
+            color: ${color.white};
+            margin-right: 12px;
+          `}
+        />
       </LinkIcon>
-      <LinkIcon pathname={'/notifications'}>
-        <AiOutlineBell size={font.iconSize} css={csses.bell} />
+      <LinkIcon pathname={'/notifications'} style={{ position: 'relative' }}>
+        {unreadsLength > 0 && <Unreads>{unreads.length}</Unreads>}
+        <AiOutlineBell
+          size={font.iconSize}
+          css={css`
+            color: ${color.white};
+          `}
+        />
       </LinkIcon>
     </div>
   );
 }
 
-function useStyles() {
-  return {
-    qrcode: css`
-      color: ${color.white};
-      margin-right: 12px;
-    `,
-    bell: css`
-      color: ${color.white};
-    `,
-  };
-}
+const Unreads = styled.span`
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  color: ${color.main};
+  font-size: 7px;
+  background-color: ${color.white};
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.8);
+`;

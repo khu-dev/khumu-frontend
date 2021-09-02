@@ -9,6 +9,7 @@ import Skeleton from '@components/Skeleton';
 import { useToken } from '@context/Token';
 import SkeletonNotifications from '@components/Skeleton/Notifications';
 import Notifications, { Setting } from '@views/Notifications';
+import { useRouter } from 'next/router';
 
 let windowHeight;
 const elementHeight = 72;
@@ -17,6 +18,7 @@ if (process.browser) {
 }
 
 export default function NotificationsPage() {
+  const router = useRouter();
   const { token } = useToken();
   const [isLoading, setLoading] = useState(true);
   const [list, setList] = useState([]);
@@ -43,11 +45,15 @@ export default function NotificationsPage() {
     token && fetchList();
   }, [token]);
 
+  const goBack = () => {
+    router.back();
+  };
+
   return (
     <>
       <CommonHeader
         title={'알림'}
-        pathname={'/'}
+        handleRouter={goBack}
         className={'header-notifications'}
         color={color.main}
       />
