@@ -15,9 +15,9 @@ export default function MyPagePage() {
     <>
       <CommonHeader
         title={'마이 페이지'}
-        pathname={'/'}
         className={'header-mypage'}
         color={'#6C6C6C'}
+        noIcon
       />
       <Container>
         <Page.MyProfile
@@ -26,7 +26,7 @@ export default function MyPagePage() {
           studentNumber={student_number}
         />
         <Page.MyCommunity />
-        <Page.MyStudy />
+        {/* <Page.MyStudy /> */}
         <Page.MyGuide />
         <Page.MyEtc />
       </Container>
