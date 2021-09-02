@@ -20,14 +20,17 @@ const Club = () => {
     <cs.MainSection>
       <cs.IconTitle pathname={`/clubs`} title={'동아리'} />
       <s.Clubs>
-        {pickedClub.map((club, idx) => (
-          <s.ClubItem
-            key={club?.name || idx}
-            url={`${IMG_URI}/${club?.images?.[0]}`}
-          >
-            <s.Name>{club?.name}</s.Name>
-          </s.ClubItem>
-        ))}
+        {pickedClub.map(
+          (club, idx) =>
+            idx < 3 && (
+              <s.ClubItem
+                key={club?.name || idx}
+                url={`${IMG_URI}/${club?.images?.[0]}`}
+              >
+                <s.Name>{club?.name}</s.Name>
+              </s.ClubItem>
+            ),
+        )}
       </s.Clubs>
     </cs.MainSection>
   );
