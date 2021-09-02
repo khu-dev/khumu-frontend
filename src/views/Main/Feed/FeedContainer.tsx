@@ -19,15 +19,15 @@ const initialSchedule = {
 const Feed = () => {
   const [schedule, setSchedule] = useState(initialSchedule);
 
-  const fetchData = async () => {
-    const { data } = await fetchSchedule();
-
-    if (data) {
-      setSchedule(data[0]);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await fetchSchedule();
+
+      if (data) {
+        setSchedule(data[0]);
+      }
+    };
+
     fetchData();
   }, []);
 

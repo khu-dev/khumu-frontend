@@ -6,7 +6,6 @@ import { AppProps } from 'next/dist/next-server/lib/router/router';
 
 import StyleTag from '@components/Style';
 
-import MainHeader from '@components/Header/Main';
 import Loading from '@components/Loading';
 
 import TokenProvider from '@context/Token';
@@ -22,7 +21,6 @@ const App = ({ Component, pageProps }: AppProps) => (
       <StyleTag />
     </Head>
     <Loading />
-    <MainHeader />
     <div className={'app-outer-container'}>
       <TokenProvider>
         <UserProvider>
