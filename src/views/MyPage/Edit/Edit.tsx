@@ -17,6 +17,13 @@ const Nickname = ({ nickname, onChange }) => (
   </s.Form>
 );
 
+const StudentNumber = ({ studentNumber }) => (
+  <s.Form>
+    <s.FormTitle>학번</s.FormTitle>
+    <s.Input placeholder={studentNumber} name={'studentNumber'} disabled />
+  </s.Form>
+);
+
 const Department = ({ current, onChange, departments }) => (
   <s.Form>
     <s.FormTitle>학과</s.FormTitle>
@@ -34,6 +41,7 @@ const Edit = ({ children }) => <s.Container>{children}</s.Container>;
 
 Edit.Image = Image;
 Edit.Nickname = Nickname;
+Edit.StudentNumber = StudentNumber;
 Edit.Department = Department;
 Edit.Button = Button;
 

@@ -9,7 +9,7 @@ import { AndroidToast } from '@utils/android';
 
 export default function MyEditPage() {
   const {
-    info: { username, department, nickname },
+    info: { username, department, nickname, student_number },
     setUser,
   } = useUser();
   const [state, setState] = useState({
@@ -81,6 +81,7 @@ export default function MyEditPage() {
       <Edit>
         <Edit.Image />
         <Edit.Nickname nickname={state.nickname} onChange={handleChange} />
+        <Edit.StudentNumber studentNumber={student_number} />
         <Edit.Department
           current={state.department}
           departments={departments}
