@@ -13,6 +13,8 @@ import LinkIcon from '@components/Link';
 import styled from '@emotion/styled';
 
 export default function MainHeader({ unreads }): JSX.Element {
+  const unreadsLength = unreads.length;
+
   return (
     <div className={'header header-main'}>
       <LinkIcon pathname={'/qrcode'}>
@@ -25,7 +27,7 @@ export default function MainHeader({ unreads }): JSX.Element {
         />
       </LinkIcon>
       <LinkIcon pathname={'/notifications'} style={{ position: 'relative' }}>
-        <Unreads>{unreads.length}</Unreads>
+        {unreadsLength > 0 && <Unreads>{unreads.length}</Unreads>}
         <AiOutlineBell
           size={font.iconSize}
           css={css`

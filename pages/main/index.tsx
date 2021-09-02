@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Skeleton from '@components/Skeleton';
-import SkeletonMainItem from '@components/Skeleton/Main/Item';
+// import Skeleton from '@components/Skeleton';
+// import SkeletonMainItem from '@components/Skeleton/Main/Item';
 import MainHeader from '@components/Header/Main';
 import Feed from '@views/Main/Feed';
 import Hot from '@views/Main/Hot';
@@ -40,7 +40,7 @@ const MainPage = () => {
     <>
       <MainHeader unreads={unreads} />
       <Feed />
-      <Skeleton
+      {/* <Skeleton
         isLoading={isLoading}
         repeat={6}
         Skeleton={SkeletonMainItem}
@@ -53,7 +53,13 @@ const MainPage = () => {
             <Shortcut />
           </>
         )}
-      />
+      /> */}
+
+      <Notice />
+      <Hot />
+      <Advertise />
+      <Club />
+      <Shortcut />
     </>
   );
 };
