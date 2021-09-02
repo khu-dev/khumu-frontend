@@ -15,7 +15,7 @@ import { Title02 } from '@components/Title';
 
 interface CommonHeaderProps {
   title: string;
-  noIcon?: boolean;
+  hasIcon?: boolean;
   pathname?: string;
   handleRouter?: React.MouseEventHandler<SVGElement>;
   className?: string;
@@ -26,7 +26,7 @@ interface CommonHeaderProps {
 
 export default function CommonHeader({
   title,
-  noIcon,
+  hasIcon = true,
   pathname,
   handleRouter,
   className = '',
@@ -38,10 +38,10 @@ export default function CommonHeader({
   return (
     <div
       className={`header header-align-center ${className} ${
-        noIcon ? 'header-no-icon' : ''
+        hasIcon ? '' : 'header-no-icon'
       }`}
     >
-      {!noIcon &&
+      {hasIcon &&
         (pathname ? (
           <LinkIcon pathname={pathname}>
             <Icon css={csses.icon} style={{ color }} />

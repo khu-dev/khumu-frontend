@@ -17,7 +17,7 @@ export default function MyPagePage() {
         title={'마이 페이지'}
         className={'header-mypage'}
         color={'#6C6C6C'}
-        noIcon
+        hasIcon={false}
       />
       <Container>
         <Page.MyProfile

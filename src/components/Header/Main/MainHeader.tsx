@@ -24,7 +24,7 @@ export default function MainHeader({ unreads }): JSX.Element {
           `}
         />
       </LinkIcon>
-      <LinkIcon pathname={'/notifications'}>
+      <LinkIcon pathname={'/notifications'} style={{ position: 'relative' }}>
         <Unreads>{unreads.length}</Unreads>
         <AiOutlineBell
           size={font.iconSize}

@@ -5,14 +5,9 @@
 import Link from 'next/link';
 import React from 'react';
 
-interface LinkIconProps {
-  pathname: string;
-  children: JSX.Element | JSX.Element[];
-}
-
-export default function LinkIcon({ pathname, children }: LinkIconProps) {
+export default function LinkIcon({ pathname, children, ...rest }) {
   const Icon: any = React.forwardRef<HTMLAnchorElement>((props, ref) => (
-    <a ref={ref} {...props} style={{ position: 'relative' }}>
+    <a ref={ref} {...rest} {...props}>
       {props.children}
     </a>
   ));
