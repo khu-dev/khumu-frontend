@@ -8,7 +8,7 @@ import { CustomTitle } from '@components/Title';
 import { title as titleStyle, color } from '@constants/theme';
 import { formatMonthDayDate } from '@utils/day';
 
-const ScheduleDate = ({ isValid, start, end }) => {
+const ScheduleDate = ({ isValid, isMore, start, end }) => {
   const startDate = formatMonthDayDate(start);
   const endDate = formatMonthDayDate(end);
 
@@ -21,6 +21,11 @@ const ScheduleDate = ({ isValid, start, end }) => {
         font-weight: 600;
         width: calc(100% - 25px);
         color: ${color.main};
+
+        ${isMore &&
+        css`
+          margin-bottom: 9px;
+        `}
       `}
     >
       {isValid ? `${startDate} ~ ${endDate}까지` : ''}
