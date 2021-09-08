@@ -3,12 +3,14 @@ import ScheduleTitle from './Schedule/Title';
 import ScheduleDate from './Schedule/Date';
 import ScheduleShortCut from './Schedule/ShortCut';
 
-const Schedule = ({ children }) => (
-  <div className={'main-feed-content'}>{children}</div>
+const Schedule = ({ children, isMore }) => (
+  <div className={'main-feed-content ' + (isMore ? 'more' : '')}>{children}</div>
 );
 
-const FeedContent = ({ children }) => (
-  <div className={'main-feed-content-container'}>{children}</div>
+const FeedContent = ({ children, isMore }) => (
+  <div className={'main-feed-content-container ' + (isMore ? 'more' : '')}>
+    {children}
+  </div>
 );
 
 FeedContent.Tab = FeedTab;
