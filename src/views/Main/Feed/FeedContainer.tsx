@@ -45,7 +45,7 @@ const Feed = () => {
       <FeedInputProvider>
         <FeedInput>
           <FeedInput.Title title={'쿠뮤에게 말해줘'} />
-          <FeedInput.TextArea placeholder={'불편한 사항을 말해줘'} />
+          <FeedInput.TextArea placeholder={'자유로운 피드백 부탁드립니다'} />
         </FeedInput>
       </FeedInputProvider>
       <FeedContent isMore={isMore}>
