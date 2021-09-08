@@ -37,7 +37,6 @@ const Feed = () => {
   const handleMore = () => {
     setMore((prev) => !prev);
   };
-
   const scheduleList = schedules.slice(0, isMore ? 3 : 1);
 
   return (
