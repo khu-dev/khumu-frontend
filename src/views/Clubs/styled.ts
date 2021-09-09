@@ -1,11 +1,13 @@
-import { color } from '@constants/theme';
+import { box, color } from '@constants/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export const Tag = styled.div`
-  width: 53px;
+const tagStyle = css`
+  width: auto;
+  max-width: 60px;
   height: 29px;
   border-radius: 15px;
+  padding: 1px 15px;
   margin: 4px auto;
   margin-bottom: 8px;
   text-align: center;
@@ -14,6 +16,46 @@ export const Tag = styled.div`
   font-weight: 500;
   color: ${color.white};
   background-color: ${color.main};
+  position: relative;
+`;
+
+export const Tag = styled.div`
+  ${tagStyle};
+`;
+
+export const Filters = styled.div`
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: auto;
+  text-align: center;
+  padding: 12px;
+  background-color: ${color.gray4};
+
+  z-index: 999;
+
+  border: 1px solid ${color.main};
+  border-radius: ${box.borderRadius};
+`;
+
+export const FilterItem = styled.div<{ isActive: boolean }>`
+  ${tagStyle};
+  display: inline-block;
+  margin: 4px;
+  border: 1px solid ${color.gray2};
+
+  ${({ isActive }) =>
+    isActive
+      ? css`
+          background-color: ${color.main};
+          color: ${color.white};
+        `
+      : css`
+          background-color: ${color.white};
+          color: ${color.gray1};
+        `}
 `;
 
 export const ClubsCard = styled.div`

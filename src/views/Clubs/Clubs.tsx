@@ -3,6 +3,8 @@ import { IMG_URI } from '@config/baseURI';
 import { useSwipeElement } from '@hooks/useSwipeElement';
 import ClubsCard from './ClubsCard';
 import ClubsPaging from './ClubsPaging';
+import Categories from './Categories';
+
 import * as s from './styled';
 
 const threshold = {
@@ -11,9 +13,20 @@ const threshold = {
 };
 
 const Clubs = ({ categories, clubs }) => {
-  const clubLength = clubs.length;
+  const [category, setCategory] = useState('전체');
+  const filteredClubs = clubs.filter((club) => {
+    if (category === '전체') return true;
+
+    return club.categories === category;
+  });
+
   const [current, setCurrent] = useState(0);
-  const currentClub = [clubs[current - 1], clubs[current], clubs[current + 1]];
+  const clubLength = filteredClubs.length;
+  const currentClub = [
+    filteredClubs[current - 1],
+    filteredClubs[current],
+    filteredClubs[current + 1],
+  ];
 
   const handleIndex = {
     minus: () => {
@@ -22,6 +35,10 @@ const Clubs = ({ categories, clubs }) => {
     plus: () => {
       current < clubLength - 1 && setCurrent((prev) => (prev + 1) % clubLength);
     },
+  };
+
+  const handleCategory = (selected) => {
+    setCategory(selected);
   };
 
   const {
@@ -37,11 +54,13 @@ const Clubs = ({ categories, clubs }) => {
     },
   });
 
-  console.log(categories);
-
   return (
     <>
-      <s.Tag>전체</s.Tag>
+      <Categories
+        categories={['전체', ...categories]}
+        category={category}
+        handleCategory={handleCategory}
+      />
       <s.ClubsCard>
         {currentClub.map(
           (club, idx) =>
