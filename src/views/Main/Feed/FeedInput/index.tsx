@@ -42,11 +42,13 @@ const TextArea = ({ placeholder }) => {
           onFocus={() => handler.handleFocus()}
         />
       </s.SearchForm>
-      <label htmlFor={'main-search-input'}>
-        <s.SubmitButton onClick={() => handler.handleFocus()}>
-          {'전송'}
-        </s.SubmitButton>
-      </label>
+      {focus && (
+        <label htmlFor={'main-search-input'}>
+          <s.SubmitButton onClick={() => handler.handleFocus()}>
+            {'전송'}
+          </s.SubmitButton>
+        </label>
+      )}
     </s.SearchLabel>
   );
 };

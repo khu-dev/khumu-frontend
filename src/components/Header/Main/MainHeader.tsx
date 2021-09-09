@@ -11,12 +11,21 @@ import { css } from '@emotion/react';
 import { color, font } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import styled from '@emotion/styled';
+import { Title02 } from '@components/Title';
 
-export default function MainHeader({ unreads }): JSX.Element {
+export default function MainHeader({ title, unreads }): JSX.Element {
   const unreadsLength = unreads.length;
 
   return (
     <div className={'header header-main'}>
+      <Title02
+        css={css`
+          position: absolute;
+          left: 0;
+        `}
+      >
+        {title}
+      </Title02>
       <LinkIcon pathname={'/qrcode'}>
         <AiOutlineQrcode
           size={font.iconSize}

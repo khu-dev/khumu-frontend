@@ -38,7 +38,7 @@ const MainPage = () => {
 
   return (
     <>
-      <MainHeader unreads={unreads} />
+      <MainHeader title={'경희대 KHUMU'} unreads={unreads} />
       <Feed />
       {/* <Skeleton
         isLoading={isLoading}
