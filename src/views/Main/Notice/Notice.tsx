@@ -10,7 +10,7 @@ const initialState = [
 ];
 
 const Notice = () => {
-  const [notices, _] = useState<NoticeType[]>(initialState);
+  const [notices] = useState<NoticeType[]>(initialState);
 
   return (
     <cs.MainSection>
