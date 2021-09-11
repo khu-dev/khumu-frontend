@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { fetchClubs } from '@api/api-clubs';
 import { IMG_URI } from '@config/baseURI';
 import { useFetchAxios } from '@hooks/fetch';
-import { Club as ClubType } from '@interface/club';
+import { Club as ClubType } from '@interface/Club';
 import { getRandomNumber } from '@utils/functions';
 
 import * as cs from '../common.styled';

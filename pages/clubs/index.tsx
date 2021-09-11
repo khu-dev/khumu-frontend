@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { fetchClubs } from '@api/api-clubs';
-import { Club } from '@interface/club';
+import { Club } from '@interface/Club';
 import ClubsHeader from '@components/Header/Clubs';
 import Clubs from '@views/Clubs';
 

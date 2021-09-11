@@ -7,7 +7,7 @@ import Categories from './Categories';
 
 import * as s from './styled';
 import { useRouter } from 'next/router';
-import { Club } from '@interface/club';
+import { Club } from '@interface/Club';
 
 const threshold = {
   x: 0,
