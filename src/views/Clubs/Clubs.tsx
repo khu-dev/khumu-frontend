@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IMG_URI } from '@config/baseURI';
 import { useSwipeElement } from '@hooks/useSwipeElement';
 import ClubsCard from './ClubsCard';
@@ -6,6 +6,8 @@ import ClubsPaging from './ClubsPaging';
 import Categories from './Categories';
 
 import * as s from './styled';
+import { useRouter } from 'next/router';
+import { Club } from '@interface/club';
 
 const threshold = {
   x: 0,
@@ -13,8 +15,11 @@ const threshold = {
 };
 
 const Clubs = ({ categories, clubs }) => {
+  const {
+    query: { currentId },
+  } = useRouter();
   const [category, setCategory] = useState('전체');
-  const filteredClubs = clubs.filter((club) => {
+  const filteredClubs: Club[] = clubs.filter((club) => {
     if (category === '전체') return true;
 
     return club.categories === category;
@@ -22,11 +27,15 @@ const Clubs = ({ categories, clubs }) => {
 
   const [current, setCurrent] = useState(0);
   const clubLength = filteredClubs.length;
-  const currentClub = [
-    filteredClubs[current - 1],
-    filteredClubs[current],
-    filteredClubs[current + 1],
-  ];
+
+  useEffect(() => {
+    if (!currentId || filteredClubs.length === 0) return;
+
+    const currentClubIndex = clubs.findIndex(
+      (club) => club.id === Number(currentId),
+    );
+    setCurrent(currentClubIndex > 0 ? currentClubIndex : 0);
+  }, [currentId, filteredClubs]);
 
   const handleIndex = {
     minus: () => {
@@ -53,6 +62,12 @@ const Clubs = ({ categories, clubs }) => {
       right: handleIndex.minus,
     },
   });
+
+  const currentClub = [
+    filteredClubs[current - 1],
+    filteredClubs[current],
+    filteredClubs[current + 1],
+  ];
 
   return (
     <>

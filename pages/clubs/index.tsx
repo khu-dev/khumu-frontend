@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 import { fetchClubs } from '@api/api-clubs';
+import { Club } from '@interface/club';
 import ClubsHeader from '@components/Header/Clubs';
 import Clubs from '@views/Clubs';
 
+const initialClub: Club = {
+  categories: '',
+  description: '',
+  email: '',
+  facebook: '',
+  homepage: '',
+  id: 0,
+  images: [''],
+  instagram: '',
+  like_count: 0,
+  liked: false,
+  name: '',
+  phone: '',
+  recommended: false,
+  summary: '',
+};
+
 const ClubsPage = () => {
-  const [clubs, setClubs] = useState([]);
+  const [clubs, setClubs] = useState<Club[]>([initialClub]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
