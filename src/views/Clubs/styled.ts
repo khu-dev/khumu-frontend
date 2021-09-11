@@ -58,6 +58,14 @@ export const FilterItem = styled.div<{ isActive: boolean }>`
         `}
 `;
 
+export const Nothing = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: ${color.gray4};
+`;
+
 export const ClubsCard = styled.div`
   flex-grow: 1;
   margin: 0 auto;

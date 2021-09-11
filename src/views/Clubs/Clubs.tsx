@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IMG_URI } from '@config/baseURI';
 import { useSwipeElement } from '@hooks/useSwipeElement';
 import ClubsCard from './ClubsCard';
@@ -18,6 +18,7 @@ const Clubs = ({ categories, clubs }) => {
   const {
     query: { currentId },
   } = useRouter();
+  const initRef = useRef(true);
   const [category, setCategory] = useState('전체');
   const filteredClubs: Club[] = clubs.filter((club) => {
     if (category === '전체') return true;
@@ -29,13 +30,14 @@ const Clubs = ({ categories, clubs }) => {
   const clubLength = filteredClubs.length;
 
   useEffect(() => {
-    if (!currentId || filteredClubs.length === 0) return;
+    if (!currentId || clubs.length === 0 || !initRef.current) return;
 
     const currentClubIndex = clubs.findIndex(
       (club) => club.id === Number(currentId),
     );
     setCurrent(currentClubIndex > 0 ? currentClubIndex : 0);
-  }, [currentId, filteredClubs]);
+    currentClubIndex !== -1 && (initRef.current = false);
+  }, [currentId, clubs]);
 
   const handleIndex = {
     minus: () => {
@@ -48,6 +50,7 @@ const Clubs = ({ categories, clubs }) => {
 
   const handleCategory = (selected) => {
     setCategory(selected);
+    setCurrent(0);
   };
 
   const {
@@ -77,30 +80,34 @@ const Clubs = ({ categories, clubs }) => {
         handleCategory={handleCategory}
       />
       <s.ClubsCard>
-        {currentClub.map(
-          (club, idx) =>
-            club && (
-              <ClubsCard
-                key={club?.name + idx}
-                onMouseDown={handleTouchStart}
-                onTouchStart={handleTouchStart}
-                onMouseMove={handleTouchMove}
-                onTouchMove={handleTouchMove}
-                onMouseUp={handleTouchEnd}
-                onTouchEnd={handleTouchEnd}
-                gap={gap}
-                isMoving={isMoving}
-                isEvent={isEvent}
-                idx={idx - 1}
-              >
-                <ClubsCard.Image url={`${IMG_URI}/${club?.images[0]}`} />
-                <ClubsCard.Content>
-                  <ClubsCard.Tag tag={'연행'} />
-                  <ClubsCard.Name name={club?.name} summary={'태그'} />
-                  <ClubsCard.Description description={club?.description} />
-                </ClubsCard.Content>
-              </ClubsCard>
-            ),
+        {filteredClubs.length > 0 ? (
+          currentClub.map(
+            (club, idx) =>
+              club && (
+                <ClubsCard
+                  key={club?.name + idx}
+                  onMouseDown={handleTouchStart}
+                  onTouchStart={handleTouchStart}
+                  onMouseMove={handleTouchMove}
+                  onTouchMove={handleTouchMove}
+                  onMouseUp={handleTouchEnd}
+                  onTouchEnd={handleTouchEnd}
+                  gap={gap}
+                  isMoving={isMoving}
+                  isEvent={isEvent}
+                  idx={idx - 1}
+                >
+                  <ClubsCard.Image url={`${IMG_URI}/${club?.images[0]}`} />
+                  <ClubsCard.Content>
+                    <ClubsCard.Tag tag={'연행'} />
+                    <ClubsCard.Name name={club?.name} summary={'태그'} />
+                    <ClubsCard.Description description={club?.description} />
+                  </ClubsCard.Content>
+                </ClubsCard>
+              ),
+          )
+        ) : (
+          <s.Nothing>동아리가 존재하지 않습니다</s.Nothing>
         )}
       </s.ClubsCard>
       <ClubsPaging>
