@@ -28,7 +28,7 @@ export default function MainPage() {
         ))}
       </ul>
       <div>
-        <h4>Easter EGG</h4>
+        <h4>Easter EGG!</h4>
         <input
           type={'button'}
           value={'showAndroidToast'}
