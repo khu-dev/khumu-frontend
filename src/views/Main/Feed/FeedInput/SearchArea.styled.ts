@@ -86,7 +86,10 @@ interface FButtonProps {
   type: FeedbackButton;
 }
 
-export const FButton = styled.button<FButtonProps>`
+export const FButton = styled.a<FButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: ${box.marginWidth};
   height: 33px;
   margin: ${box.margin};
