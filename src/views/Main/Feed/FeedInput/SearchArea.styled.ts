@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { box, color } from '@constants/theme';
 import { css } from '@emotion/react';
+import { FeedbackButton } from 'src/enum/FeedbackButton';
 
 interface ContainerProps {
   focus: boolean;
@@ -36,6 +37,8 @@ export const SearchLabel = styled.div<ContainerProps>`
     focus &&
     css`
       border: 1px solid ${color.main};
+      margin-top: ${box.margin};
+      height: auto;
     `}
 `;
 
@@ -52,7 +55,7 @@ export const DecorationSpan = styled.span`
   background-color: ${color.gray5};
 `;
 
-export const TextArea = styled.input`
+const inputStyle = css`
   flex-grow: 1;
   width: 70%;
   height: 40px;
@@ -69,12 +72,34 @@ export const TextArea = styled.input`
   }
 `;
 
-export const SubmitButton = styled.button`
-  width: 71px;
+export const TextInput = styled.input`
+  ${inputStyle};
+`;
+
+export const TextArea = styled.textarea`
+  ${inputStyle};
+  padding: 8px;
+  height: 300px;
+`;
+
+interface FButtonProps {
+  type: FeedbackButton;
+}
+
+export const FButton = styled.a<FButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${box.marginWidth};
   height: 33px;
+  margin: ${box.margin};
+  margin-top: 0;
   font-size: 16px;
-  color: ${color.white};
-  border: none;
+  color: ${({ type }) =>
+    type === FeedbackButton.SUBMIT ? color.white : color.main};
+  border: ${({ type }) =>
+    type === FeedbackButton.SUBMIT ? 'none' : `1px solid ${color.main}`};
   border-radius: ${box.borderRadius02};
-  background-color: ${color.main};
+  background-color: ${({ type }) =>
+    type === FeedbackButton.SUBMIT ? color.main : color.white};
 `;
