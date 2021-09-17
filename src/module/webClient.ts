@@ -21,7 +21,7 @@ webClient.interceptors.response.use(
   async (error) => {
     if (error.response?.status === 401 && error.config?.url !== '/logout') {
       AndroidToast('로그인 페이지로 이동합니다');
-      window.location.href = '/logout';
+      _window.location.href = '/logout';
     }
 
     return Promise.reject(error);
