@@ -28,7 +28,7 @@ export const NoticeThumbnail = styled.div`
 export const NoticeBody = styled.div`
   display: inline-block;
   flex-grow: 1;
-  height: 48px;
+  height: 40px;
   border: 1px solid ${color.main};
   border-radius: ${box.borderRadius};
   border-top-left-radius: 0;
@@ -42,10 +42,12 @@ export const NoticeBody = styled.div`
 
 export const Title = styled.h3`
   font-weight: 600;
+  font-size: 16px;
 `;
 
 export const Content = styled.p`
   font-weight: 400;
+  font-size: 13px;
   width: calc(100% - 32px);
   ${textOverflowHiddenStyle};
 `;

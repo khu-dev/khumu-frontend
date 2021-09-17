@@ -7,7 +7,7 @@ import Feed from '@views/Main/Feed';
 import Hot from '@views/Main/Hot';
 import Club from '@views/Main/Club';
 import Notice from '@views/Main/Notice';
-import Advertise from '@views/Main/Advertise';
+// import Advertise from '@views/Main/Advertise';
 import Shortcut from '@views/Main/Shortcut';
 import { useToken } from '@context/Token';
 import { fetchNotifications } from '@api/api-notifications';
@@ -57,7 +57,7 @@ const MainPage = () => {
 
       <Notice />
       <Hot />
-      <Advertise />
+      {/* <Advertise /> */}
       <Club />
       <Shortcut />
     </>
