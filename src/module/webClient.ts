@@ -37,6 +37,7 @@ webClient.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (
+      getToken() &&
       error.response?.status === 401 &&
       !_window.location.href.includes('logout')
     ) {

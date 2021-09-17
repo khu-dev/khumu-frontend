@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // import Skeleton from '@components/Skeleton';
 // import SkeletonMainItem from '@components/Skeleton/Main/Item';
@@ -10,23 +10,36 @@ import Notice from '@views/Main/Notice';
 // import Advertise from '@views/Main/Advertise';
 import Shortcut from '@views/Main/Shortcut';
 import { fetchNotifications } from '@api/api-notifications';
-import { Notification } from '@interface/Notification';
 import { fetchSchedule } from '@api/api-schedules';
-import { Schedule } from '@interface/Schedule';
 import { webClient } from 'src/module';
+import { useToken } from '@context/Token';
+import { Notification } from '@interface/Notification';
+import { Schedule } from '@interface/Schedule';
 
-interface Results {
-  notifications: Notification[];
-  schedules: Schedule[];
-}
+const MainPage = () => {
+  const { token } = useToken();
+  const [data, setData] = useState<{
+    notifications: Notification[];
+    schedules: Schedule[];
+  }>({ notifications: [], schedules: [] });
 
-interface Props {
-  data: Results;
-  tkn: any;
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await Promise.all([
+        fetchNotifications.select(),
+        fetchSchedule.select(),
+      ]);
 
-const MainPage = ({ data: { notifications, schedules }, tkn }: Props) => {
-  console.log('token :', tkn);
+      setData({
+        notifications: res[0].data?.data,
+        schedules: res[1].data,
+      });
+    };
+
+    token && fetchData();
+  }, [token]);
+
+  const { notifications, schedules } = data;
 
   return (
     <>
