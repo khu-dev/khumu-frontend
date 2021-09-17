@@ -22,7 +22,7 @@ if (process.browser && typeof window !== undefined) {
       console.log(error.response);
       console.log('url :', error.config?.url);
 
-      if (error.response?.status === 401 && error.config?.url !== '/users/me') {
+      if (error.response?.status === 401 && _window.location.href !== '/logout') {
         AndroidToast('로그인 페이지로 이동합니다');
         _window.location.href = '/logout';
       }

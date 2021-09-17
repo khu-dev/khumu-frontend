@@ -11,7 +11,7 @@ import { Notification } from '@interface/Notification';
 
 let windowHeight;
 const elementHeight = 72;
-if (process.browser) {
+if (process.browser && typeof window !== undefined) {
   windowHeight = window.innerHeight * 1.5;
 }
 
