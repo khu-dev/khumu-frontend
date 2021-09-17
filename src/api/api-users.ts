@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
 interface PatchParams {
   nickname?: string;
@@ -8,6 +7,6 @@ interface PatchParams {
 }
 
 export const fetchUsers = {
-  select: () => axios.get(`${BASE_URI}/users/me`),
-  patch: (data: PatchParams) => axios.patch(`${BASE_URI}/users/me`, data),
+  select: () => webClient.get(`/users/me`),
+  patch: (data: PatchParams) => webClient.patch(`/users/me`, data),
 };

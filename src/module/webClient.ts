@@ -14,7 +14,6 @@ const webClient = axios.create({
   baseURL: BASE_URI,
 });
 
-webClient.defaults.headers['Access-Control-Allow-Origin'] = '*';
 webClient.defaults.headers['Authorization'] = `Bearer ${token}`;
 
 webClient.interceptors.response.use(
