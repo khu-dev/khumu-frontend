@@ -53,10 +53,8 @@ const TextArea = ({ placeholder }) => {
           <s.FButton
             type={FeedbackButton.SUBMIT}
             onClick={() => {
-              if (contentRef.current.value.length < 20) {
-                AndroidToast('20자 이상 적어주세요');
-                return;
-              }
+              if (contentRef.current.value.length === 0)
+                return AndroidToast('내용을 적어주세요');
               handler.handleSubmit(contentRef.current.value);
             }}
           >
