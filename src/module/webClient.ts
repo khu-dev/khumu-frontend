@@ -18,7 +18,7 @@ if (process.browser && typeof window !== undefined) {
   webClient.interceptors.response.use(
     (response) => response,
     async (error) => {
-      console.log(error);
+      console.log(error, error.config?.url);
 
       if (error.response?.status === 401 && error.config?.url !== '/logout') {
         AndroidToast('로그인 페이지로 이동합니다');
