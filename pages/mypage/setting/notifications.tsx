@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import CommonHeader from '@components/Header/Common';
 import SetNoti from '@views/MyPage/Setting';
 import { fetchNotifications } from '@api/api-notifications';
-import { NotificationsOptions } from '@interface/response-notifications';
+import { NotificationOptions } from '@interface/Notification';
 import { AndroidToast } from '@utils/android';
 
 const MySetNotiPage = () => {
   const router = useRouter();
   const [data, setData] = useState<{
-    [key: string]: NotificationsOptions;
+    [key: string]: NotificationOptions;
   }>({});
 
   const goBack = () => {

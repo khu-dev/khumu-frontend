@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // import Skeleton from '@components/Skeleton';
 // import SkeletonMainItem from '@components/Skeleton/Main/Item';
@@ -9,38 +9,25 @@ import Club from '@views/Main/Club';
 import Notice from '@views/Main/Notice';
 // import Advertise from '@views/Main/Advertise';
 import Shortcut from '@views/Main/Shortcut';
-import { useToken } from '@context/Token';
 import { fetchNotifications } from '@api/api-notifications';
+import { Notification } from '@interface/Notification';
+import { fetchSchedule } from '@api/api-schedules';
+import { Schedule } from '@interface/Schedule';
 
-const MainPage = () => {
-  const { token } = useToken();
-  const [list, setList] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+interface Results {
+  notifications: Notification[];
+  schedules: Schedule[];
+}
 
-  React.useEffect(() => {
-    const fetchList = async () => {
-      if (!isLoading) setLoading(true);
+interface Props {
+  data: Results;
+}
 
-      const {
-        data: { data },
-      } = await fetchNotifications.select();
-      console.log(data, '!!');
-
-      if (data.length > 0) {
-        setList(data);
-        setLoading(false);
-      }
-    };
-
-    token && fetchList();
-  }, [token]);
-
-  const unreads = list.filter((item) => !item.is_read);
-
+const MainPage = ({ data: { notifications, schedules } }: Props) => {
   return (
     <>
-      <MainHeader title={'경희대 KHUMU'} unreads={unreads} />
-      <Feed />
+      <MainHeader title={'경희대 KHUMU'} notifications={notifications} />
+      <Feed schedules={schedules} />
       {/* <Skeleton
         isLoading={isLoading}
         repeat={6}
@@ -55,7 +42,6 @@ const MainPage = () => {
           </>
         )}
       /> */}
-
       <Notice />
       <Hot />
       {/* <Advertise /> */}
@@ -66,3 +52,19 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+export const getServerSideProps = async () => {
+  const res = await Promise.all([
+    fetchNotifications.select(),
+    fetchSchedule.select(),
+  ]);
+
+  return {
+    props: {
+      data: {
+        notifications: res[0].data?.data || [],
+        schedules: res[1].data || [],
+      },
+    },
+  };
+};
