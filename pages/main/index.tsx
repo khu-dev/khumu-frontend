@@ -13,6 +13,7 @@ import { fetchNotifications } from '@api/api-notifications';
 import { Notification } from '@interface/Notification';
 import { fetchSchedule } from '@api/api-schedules';
 import { Schedule } from '@interface/Schedule';
+import { webClient } from 'src/module';
 
 interface Results {
   notifications: Notification[];
@@ -21,9 +22,12 @@ interface Results {
 
 interface Props {
   data: Results;
+  tkn: any;
 }
 
-const MainPage = ({ data: { notifications, schedules } }: Props) => {
+const MainPage = ({ data: { notifications, schedules }, tkn }: Props) => {
+  console.log('token :', tkn);
+
   return (
     <>
       <MainHeader title={'경희대 KHUMU'} notifications={notifications} />
@@ -58,6 +62,7 @@ export const getServerSideProps = async () => {
     fetchNotifications.select(),
     fetchSchedule.select(),
   ]);
+  const tkn = webClient.defaults.headers['Authorization'];
 
   return {
     props: {
@@ -65,6 +70,7 @@ export const getServerSideProps = async () => {
         notifications: res[0].data?.data,
         schedules: res[1].data,
       },
+      tkn,
     },
   };
 };

@@ -9,6 +9,7 @@ let _window;
 if (process.browser && typeof window !== undefined) _window = window as any;
 
 const token = _window?.Android?.getToken() || devToken;
+console.log('token : ', token);
 
 const webClient = axios.create({
   baseURL: BASE_URI,

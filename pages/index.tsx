@@ -7,9 +7,11 @@ import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
 import { fetchUsers } from '@api/api-users';
+import { webClient } from 'src/module';
 
-export default function MainPage({ res }) {
+export default function MainPage({ res, tkn }) {
   console.log(res);
+  console.log('token :', tkn);
 
   const navList = [
     { title: '메인', path: '/main' },
@@ -58,10 +60,11 @@ export default function MainPage({ res }) {
 
 export const getServerSideProps = async () => {
   const res = await Promise.all([fetchUsers.select()]);
-
+  const tkn = webClient.defaults.headers['Authorization'];
   return {
     props: {
       res: res[0].data,
+      tkn,
     },
   };
 };
