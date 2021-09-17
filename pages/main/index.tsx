@@ -23,7 +23,7 @@ interface Props {
   data: Results;
 }
 
-const MainPage = ({ data: { notifications, schedules } }: Props) => {
+const MainPage = ({ data: { notifications = [], schedules = [] } }: Props) => {
   return (
     <>
       <MainHeader title={'경희대 KHUMU'} notifications={notifications} />
@@ -62,8 +62,8 @@ export const getServerSideProps = async () => {
   return {
     props: {
       data: {
-        notifications: res[0].data?.data || [],
-        schedules: res[1].data || [],
+        notifications: res[0].data?.data,
+        schedules: res[1].data,
       },
     },
   };

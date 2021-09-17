@@ -16,7 +16,7 @@ interface Props {
   qrcode: QRcode;
 }
 
-export default function QRCodePage({ qrcode }: Props) {
+export default function QRCodePage({ qrcode = initialState }: Props) {
   const [info, setInfo] = useState(qrcode);
 
   const fetchData = async () => {
@@ -51,7 +51,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      qrcode: res[0].data?.data || initialState,
+      qrcode: res[0].data?.data,
     },
   };
 };

@@ -9,13 +9,13 @@ import { AndroidToast } from '@utils/android';
 import { useRouter } from 'next/router';
 import { Department } from '@interface/Department';
 
-const initialDepartments = { name: '', id: '' };
+const initialDepartments: Department = { name: '', id: 0, organization: '' };
 
 interface Props {
   departments: Department[];
 }
 
-export default function MyEditPage({ departments }: Props) {
+export default function MyEditPage({ departments = [initialDepartments] }: Props) {
   const {
     info: { username, department, nickname, student_number },
     setUser,
@@ -95,12 +95,14 @@ export default function MyEditPage({ departments }: Props) {
 export const getServerSideProps = async () => {
   const res = await Promise.all([fetchDepartments.select()]);
 
+  const departments = res[0].data?.map((info) => ({
+    name: info.name,
+    id: info.id,
+  }));
+
   return {
     props: {
-      departments: res[0].data?.map((info) => ({
-        name: info.name,
-        id: info.id,
-      })) || [initialDepartments],
+      departments,
     },
   };
 };

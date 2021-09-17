@@ -27,7 +27,7 @@ interface Props {
   categories: string[];
 }
 
-const ClubsPage = ({ clubs, categories }: Props) => {
+const ClubsPage = ({ clubs = [initialClub], categories = ['전체'] }: Props) => {
   return (
     <>
       <ClubsHeader title={'동아리'} />
@@ -43,8 +43,8 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      clubs: res[0].data?.data || [initialClub],
-      categories: res[1].data?.data || ['전체'],
+      clubs: res[0].data?.data,
+      categories: res[1].data?.data,
     },
   };
 };
