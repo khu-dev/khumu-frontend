@@ -6,7 +6,6 @@ import React from 'react';
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
-import { fetchUsers } from '@api/api-users';
 import { webClient } from 'src/module';
 
 export default function MainPage({ res, tkn }) {
@@ -25,6 +24,7 @@ export default function MainPage({ res, tkn }) {
 
   return (
     <>
+      <p>{tkn}</p>
       <h1 style={{ margin: 18 }}>작성된 페이지 목록</h1>
       <ul>
         {navList.map(({ title, path }) => (
@@ -59,11 +59,9 @@ export default function MainPage({ res, tkn }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await Promise.all([fetchUsers.select()]);
   const tkn = webClient.defaults.headers['Authorization'];
   return {
     props: {
-      res: res[0].data,
       tkn,
     },
   };
