@@ -21,18 +21,6 @@ const refreshToken = (token: string) => {
 
 devToken && refreshToken(devToken);
 
-webClient.interceptors.request.use(
-  (config) => {
-    const token = getToken();
-    token && refreshToken(token);
-
-    return config;
-  },
-  async (error) => {
-    return Promise.reject(error);
-  },
-);
-
 webClient.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -49,4 +37,4 @@ webClient.interceptors.response.use(
   },
 );
 
-export { webClient };
+export { webClient, refreshToken };

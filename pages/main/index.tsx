@@ -11,7 +11,6 @@ import Notice from '@views/Main/Notice';
 import Shortcut from '@views/Main/Shortcut';
 import { fetchNotifications } from '@api/api-notifications';
 import { fetchSchedule } from '@api/api-schedules';
-import { webClient } from 'src/module';
 import { useToken } from '@context/Token';
 import { Notification } from '@interface/Notification';
 import { Schedule } from '@interface/Schedule';
@@ -69,21 +68,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
-export const getServerSideProps = async () => {
-  const res = await Promise.all([
-    fetchNotifications.select(),
-    fetchSchedule.select(),
-  ]);
-  const tkn = webClient.defaults.headers['Authorization'];
-
-  return {
-    props: {
-      data: {
-        notifications: res[0].data?.data,
-        schedules: res[1].data,
-      },
-      tkn,
-    },
-  };
-};
