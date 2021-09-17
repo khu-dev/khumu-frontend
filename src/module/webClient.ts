@@ -6,7 +6,7 @@ import { AndroidToast } from '@utils/android';
 const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || accesskey;
 let _window;
 
-if (process.browser) _window = window as any;
+if (process.browser && typeof window !== undefined) _window = window as any;
 
 const token = _window?.Android?.getToken() || devToken;
 
