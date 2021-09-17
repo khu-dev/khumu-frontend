@@ -1,4 +1,3 @@
-import { BASE_URI } from '@config/baseURI';
 import { webClient } from 'src/module';
 
 interface TokenParams {
