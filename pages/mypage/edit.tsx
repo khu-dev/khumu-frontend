@@ -7,39 +7,25 @@ import { fetchUsers } from '@api/api-users';
 import { fetchDepartments } from '@api/api-departments';
 import { AndroidToast } from '@utils/android';
 import { useRouter } from 'next/router';
+import { Department } from '@interface/Department';
 
-export default function MyEditPage() {
+const initialDepartments = { name: '', id: '' };
+
+interface Props {
+  departments: Department[];
+}
+
+export default function MyEditPage({ departments }: Props) {
   const {
     info: { username, department, nickname, student_number },
     setUser,
   } = useUser();
   const router = useRouter();
+
   const [state, setState] = useState({
     nickname: nickname || '',
     department,
   });
-  const [departments, setDepartments] = useState([{ name: '', id: '' }]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchDepartments.select();
-
-      if (result.status === 200) {
-        const list = result.data.map((info) => ({ name: info.name, id: info.id }));
-
-        setDepartments(list);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    setState({
-      nickname: nickname || '',
-      department,
-    });
-  }, [username, department]);
 
   const goBack = () => {
     router.back();
@@ -76,6 +62,13 @@ export default function MyEditPage() {
     }
   };
 
+  useEffect(() => {
+    setState({
+      nickname: nickname || '',
+      department,
+    });
+  }, [username, department]);
+
   return (
     <>
       <CommonHeader
@@ -98,3 +91,16 @@ export default function MyEditPage() {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const res = await Promise.all([fetchDepartments.select()]);
+
+  return {
+    props: {
+      departments: res[0].data?.map((info) => ({
+        name: info.name,
+        id: info.id,
+      })) || [initialDepartments],
+    },
+  };
+};
