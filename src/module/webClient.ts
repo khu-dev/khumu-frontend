@@ -1,21 +1,37 @@
 import axios from 'axios';
-import { accesskey } from '@config/_key';
 import { BASE_URI } from '@config/baseURI';
 import { AndroidToast } from '@utils/android';
 
-const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || accesskey;
 let _window;
 
 if (process.browser && typeof window !== undefined) _window = window as any;
 
-const token = _window?.Android?.getToken() || devToken;
-console.log('token : ', token);
-
+const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 const webClient = axios.create({
   baseURL: BASE_URI,
 });
 
-webClient.defaults.headers['Authorization'] = `Bearer ${token}`;
+const getToken = () => {
+  return _window?.Android?.getToken();
+};
+
+const refreshToken = (token: string) => {
+  webClient.defaults.headers['Authorization'] = `Bearer ${token}`;
+};
+
+devToken && refreshToken(devToken);
+
+webClient.interceptors.request.use(
+  (config) => {
+    const token = getToken();
+    token && refreshToken(token);
+
+    return config;
+  },
+  async (error) => {
+    return Promise.reject(error);
+  },
+);
 
 webClient.interceptors.response.use(
   (response) => response,
