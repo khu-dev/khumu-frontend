@@ -5,6 +5,7 @@ import React from 'react';
 
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
+import { fetchNotifications } from '@api/api-notifications';
 
 export default function MainPage() {
   const navList = [
@@ -12,6 +13,7 @@ export default function MainPage() {
     { title: 'QR코드', path: '/qrcode' },
     { title: '마이페이지', path: '/mypage' },
     { title: '마이페이지/정보수정', path: '/mypage/edit' },
+    { title: '마이페이지/알림설정', path: '/mypage/setting/notifications' },
     { title: '알림', path: '/notifications' },
     { title: '동아리', path: '/clubs' },
   ];
@@ -27,13 +29,24 @@ export default function MainPage() {
         ))}
       </ul>
       <div>
-        <h4>** 안드로이드 웹뷰 통신 예제용 **</h4>
+        <h4>Easter EGG!</h4>
         <input
           type={'button'}
           value={'showAndroidToast'}
           onClick={() => {
             AndroidToast('안드 프론트 통신!');
           }}
+          style={{ marginBottom: 8, display: 'block' }}
+        />
+        <input
+          type={'button'}
+          value={'notifications 모두 안읽음 처리하기'}
+          onClick={async () => {
+            await fetchNotifications.unread({ notiId: 'all' });
+
+            AndroidToast('모두 안읽음!');
+          }}
+          style={{ marginBottom: 8, display: 'block' }}
         />
       </div>
     </>

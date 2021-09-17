@@ -3,7 +3,7 @@ import { box, color } from '@constants/theme';
 import styled from '@emotion/styled';
 import { BsPlayFill } from 'react-icons/bs';
 
-export const MainSection = styled.div`
+export const MainSection = styled.section`
   width: ${box.marginWidth};
   margin: ${box.margin};
 `;

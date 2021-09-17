@@ -5,6 +5,9 @@ export const initialState = {
   handler: {
     handleBlur: () => {},
     handleFocus: () => {},
+    handleSubmit: (content: string) => {
+      console.log(content);
+    },
   },
 };
 

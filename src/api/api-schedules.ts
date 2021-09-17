@@ -1,4 +1,5 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
-export const fetchSchedule = () => axios.get(`${BASE_URI}/haksa-schedules`);
+export const fetchSchedule = {
+  select: () => webClient.get(`/haksa-schedules`),
+};

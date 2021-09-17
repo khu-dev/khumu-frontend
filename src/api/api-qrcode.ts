@@ -1,4 +1,5 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
-export const fetchQRCode = () => axios.get(BASE_URI + '/users/me/qr-code');
+export const fetchQRCode = {
+  select: () => webClient.get('/users/me/qr-code'),
+};

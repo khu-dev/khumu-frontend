@@ -1,33 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import CommonHeader from '@components/Header/Common';
 import SetNoti from '@views/MyPage/Setting';
 import { fetchNotifications } from '@api/api-notifications';
-import { NotificationsOptions } from '@interface/response-notifications';
+import { NotificationOptions } from '@interface/Notification';
 import { AndroidToast } from '@utils/android';
 
-const MySetNotiPage = () => {
+interface Props {
+  options: NotificationOptions;
+}
+
+const MySetNotiPage = ({ options }: Props) => {
   const router = useRouter();
-  const [data, setData] = useState<{
-    [key: string]: NotificationsOptions;
-  }>({});
 
   const goBack = () => {
     router.back();
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchNotifications.options();
-
-      console.log(result);
-      if (result.status === 200) {
-        setData(result.data.data);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const updateSetting = async (id, status, setActive) => {
     const result = await fetchNotifications.update({ id, status: !status });
@@ -56,7 +44,7 @@ const MySetNotiPage = () => {
           { subject: '쿠뮤 공지 알림', key: 'khumu_service_notification' },
           { subject: '학교 소식 알림', key: 'khumu_notification' },
         ]}
-        data={data}
+        data={options}
         updateSetting={updateSetting}
       />
     </>
@@ -64,3 +52,13 @@ const MySetNotiPage = () => {
 };
 
 export default MySetNotiPage;
+
+export const getServerSideProps = async () => {
+  const res = await Promise.all([fetchNotifications.options()]);
+
+  return {
+    props: {
+      options: res[0].data?.data,
+    },
+  };
+};

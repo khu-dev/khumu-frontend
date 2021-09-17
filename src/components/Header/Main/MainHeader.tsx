@@ -11,12 +11,28 @@ import { css } from '@emotion/react';
 import { color, font } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import styled from '@emotion/styled';
+import { Title02 } from '@components/Title';
+import { Notification } from '@interface/Notification';
 
-export default function MainHeader({ unreads }): JSX.Element {
+interface Props {
+  title: string;
+  notifications: Notification[];
+}
+
+export default function MainHeader({ title, notifications }: Props): JSX.Element {
+  const unreads = notifications.filter((item) => !item.is_read);
   const unreadsLength = unreads.length;
 
   return (
     <div className={'header header-main'}>
+      <Title02
+        css={css`
+          position: absolute;
+          left: 0;
+        `}
+      >
+        {title}
+      </Title02>
       <LinkIcon pathname={'/qrcode'}>
         <AiOutlineQrcode
           size={font.iconSize}

@@ -9,7 +9,11 @@ import { QRCodeDataProps } from './type';
 const Qrcode = ({ qrcode, profile, handleRefresh }: QRCodeDataProps) => (
   <Container>
     <QrcodeImage qrcode={qrcode} />
-    <QrcodeRefresh handleRefresh={handleRefresh} />
+    <QrcodeRefresh
+      handleRefresh={() => {
+        handleRefresh();
+      }}
+    />
     <QrcodeProfile>
       <QrcodeProfile.Row title={'이름'} description={profile.name} />
       <QrcodeProfile.Row title={'학번'} description={profile.student_number} />

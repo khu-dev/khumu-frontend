@@ -72,17 +72,23 @@ const Notifications = ({
 }: {
   notifications: any[];
   fetchIndex: number;
-  infiniteFetch: void;
-}) => (
-  <>
-    {notifications.length > 0 ? (
-      notifications.map((item, index) => (
-        <Notification key={item.id} item={item} index={index} {...rest} />
-      ))
-    ) : (
-      <Empty text={'현재 알림이 없습니다.'} />
-    )}
-  </>
-);
+  infiniteFetch: Function;
+}) => {
+  React.useEffect(() => {
+    fetchNotifications.read({ notiId: 'all' });
+  }, []);
+
+  return (
+    <>
+      {notifications.length > 0 ? (
+        notifications.map((item, index) => (
+          <Notification key={item.id} item={item} index={index} {...rest} />
+        ))
+      ) : (
+        <Empty text={'현재 알림이 없습니다.'} />
+      )}
+    </>
+  );
+};
 
 export default Notifications;

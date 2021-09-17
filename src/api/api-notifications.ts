@@ -1,5 +1,4 @@
-import { BASE_URI } from '@config/baseURI';
-import axios from 'axios';
+import { webClient } from 'src/module';
 
 interface ReadParams {
   notiId: 'all' | number;
@@ -10,16 +9,14 @@ interface DeleteParams {
 }
 
 export const fetchNotifications = {
-  select: () => axios.get(`${BASE_URI}/notifications?recipient=me`),
-  read: ({ notiId }: ReadParams) =>
-    axios.patch(`${BASE_URI}/notifications/${notiId}/read`),
+  select: () => webClient.get(`/notifications?recipient=me`),
+  read: ({ notiId }: ReadParams) => webClient.patch(`/notifications/${notiId}/read`),
   unread: ({ notiId }: ReadParams) =>
-    axios.patch(`${BASE_URI}/notifications/${notiId}/unread`),
-  delete: ({ notiId }: DeleteParams) =>
-    axios.delete(`${BASE_URI}/notifications/${notiId}`),
-  options: () => axios.get(`${BASE_URI}/push/options/jinsu`),
+    webClient.patch(`/notifications/${notiId}/unread`),
+  delete: ({ notiId }: DeleteParams) => webClient.delete(`/notifications/${notiId}`),
+  options: () => webClient.get(`/push/options/jinsu`),
   update: ({ id, status }: { id: number; status: boolean }) =>
-    axios.patch(`${BASE_URI}/push/options/${id}`, {
+    webClient.patch(`/push/options/${id}`, {
       is_activated: status,
     }),
 };

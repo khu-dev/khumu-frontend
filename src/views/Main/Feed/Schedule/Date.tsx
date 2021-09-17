@@ -24,7 +24,7 @@ const ScheduleDate = ({ isValid, isMore, start, end }) => {
 
         ${isMore &&
         css`
-          margin-bottom: 9px;
+          margin-bottom: 7px;
         `}
       `}
     >

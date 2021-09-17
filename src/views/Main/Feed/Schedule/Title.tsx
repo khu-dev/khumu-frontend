@@ -30,7 +30,7 @@ const Container = styled.div<{ isMore: boolean }>`
   ${({ isMore }) =>
     isMore &&
     css`
-      margin-top: 9px;
+      margin-top: 7px;
     `}
 `;
 
