@@ -1,5 +1,6 @@
 import { BASE_URI } from '@config/baseURI';
 import axios from 'axios';
+import { webClient } from 'src/module';
 
 interface ReadParams {
   notiId: 'all' | number;
@@ -10,7 +11,7 @@ interface DeleteParams {
 }
 
 export const fetchNotifications = {
-  select: () => axios.get(`${BASE_URI}/notifications?recipient=me`),
+  select: () => webClient.get(`/notifications?recipient=me`),
   read: ({ notiId }: ReadParams) =>
     axios.patch(`${BASE_URI}/notifications/${notiId}/read`),
   unread: ({ notiId }: ReadParams) =>

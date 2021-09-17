@@ -24,6 +24,7 @@ const MainPage = () => {
       const {
         data: { data },
       } = await fetchNotifications.select();
+      console.log(data, '!!');
 
       if (data.length > 0) {
         setList(data);
