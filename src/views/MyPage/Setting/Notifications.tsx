@@ -25,7 +25,7 @@ const Item = ({ item, data, updateSetting }) => {
 const SetNoti = ({ list, data, updateSetting }) => (
   <s.Container>
     {list.map((item) => (
-      <Item item={item} data={data} updateSetting={updateSetting} />
+      <Item key={item.key} item={item} data={data} updateSetting={updateSetting} />
     ))}
   </s.Container>
 );

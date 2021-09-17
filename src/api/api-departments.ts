@@ -1,6 +1,5 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
 export const fetchDepartments = {
-  select: () => axios.get(`${BASE_URI}/departments`),
+  select: () => webClient.get(`/departments`),
 };

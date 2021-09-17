@@ -1,7 +1,6 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
 export const fetchClubs = {
-  select: () => axios.get(`${BASE_URI}/clubs`),
-  categories: () => axios.get(`${BASE_URI}/club-categories`),
+  select: () => webClient.get(`/clubs`),
+  categories: () => webClient.get(`/club-categories`),
 };

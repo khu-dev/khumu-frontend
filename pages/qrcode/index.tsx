@@ -1,55 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Qrcode from '@views/Qrcode';
 import QrcodeHeader from '@components/Header/Qrcode';
 import { fetchQRCode } from '@api/api-qrcode';
-import { useToken } from '@context/Token';
-import { useUser } from '@context/User';
+import { QRcode } from '@interface/QRcode';
 
-const initialState = {
-  qrcode: '',
+const initialState: QRcode = {
+  qr_code_str: '',
   name: '',
+  department: '',
+  student_number: '',
 };
 
-export default function QRCodePage() {
-  const { token } = useToken();
-  const {
-    info: { student_number, department },
-  } = useUser();
-  const [info, setInfo] = useState(initialState);
+interface Props {
+  qrcode: QRcode;
+}
+
+export default function QRCodePage({ qrcode }: Props) {
+  const [info, setInfo] = useState(qrcode);
 
   const fetchData = async () => {
-    if (info.qrcode) setInfo(initialState);
-    const { data } = await fetchQRCode();
+    if (info.qr_code_str) setInfo(initialState);
+    const { data } = await fetchQRCode.select();
 
     if (data) {
-      const {
-        data: { qr_code_str, name },
-      } = data;
+      const { data: info } = data;
 
-      setInfo({
-        qrcode: qr_code_str,
-        name,
-      });
+      setInfo(info);
     }
   };
-
-  useEffect(() => {
-    token && fetchData();
-  }, [token]);
 
   return (
     <>
       <QrcodeHeader title={'모바일 이용증'} />
       <Qrcode
-        qrcode={info.qrcode}
+        qrcode={info.qr_code_str}
         profile={{
           name: info.name || '-',
-          student_number,
-          department,
+          student_number: info.student_number || '-',
+          department: info.department || '-',
         }}
         handleRefresh={fetchData}
       />
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const res = await Promise.all([fetchQRCode.select()]);
+
+  return {
+    props: {
+      qrcode: res[0].data?.data || initialState,
+    },
+  };
+};

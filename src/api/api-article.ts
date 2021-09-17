@@ -1,11 +1,10 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
 // type Board = 'following' | 'my' | 'bookmarked' | 'like' | 'commented' | 'hot' | '';
 
 export const fetchArticles = {
   list: ({ board, size, page }) =>
-    axios.get(`${BASE_URI}/articles?board=${board}&size=${size}&page=${page}`),
-  id: ({ id }: { id: number }) => axios.get(`${BASE_URI}/articles/${id}`),
-  hot: () => axios.get(`${BASE_URI}/articles?board=hot&size=10`),
+    webClient.get(`/articles?board=${board}&size=${size}&page=${page}`),
+  id: ({ id }: { id: number }) => webClient.get(`/articles/${id}`),
+  hot: () => webClient.get(`/articles?board=hot&size=10`),
 };

@@ -1,10 +1,9 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
 interface Props {
   content: string;
 }
 
 export const fetchFeedbacks = {
-  post: ({ content }: Props) => axios.post(`${BASE_URI}/feedbacks`, { content }),
+  post: ({ content }: Props) => webClient.post(`/feedbacks`, { content }),
 };

@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { BASE_URI } from '@config/baseURI';
+import { webClient } from 'src/module';
 
 interface TokenParams {
   username: string;
@@ -7,6 +6,6 @@ interface TokenParams {
 }
 
 export const fetchToken = (data: TokenParams) =>
-  axios.post(BASE_URI + '/token', {
+  webClient.post('/token', {
     ...data,
   });

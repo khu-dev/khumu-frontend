@@ -1,38 +1,29 @@
 /**
  * @description main 화면의 상단 피드
  */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // import FeedTitle from './FeedTitle';
-import { fetchSchedule } from '@api/api-schedules';
 import FeedInputProvider from '@context/Feed/Input';
 import FeedContent from './FeedContent';
 import FeedInput from './FeedInput';
+import { Schedule } from '@interface/Schedule';
 
 const initialSchedule = [
   {
     id: 1,
-    starts_at: Date.now(),
-    ends_at: Date.now(),
+    starts_at: String(Date.now()),
+    ends_at: String(Date.now()),
     title: '',
   },
 ];
 
-const Feed = () => {
+interface Props {
+  schedules: Schedule[];
+}
+
+const Feed = ({ schedules = initialSchedule }: Props) => {
   const [isMore, setMore] = useState(false);
-  const [schedules, setSchedules] = useState(initialSchedule);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await fetchSchedule();
-
-      if (data) {
-        setSchedules(data);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleMore = () => {
     setMore((prev) => !prev);
