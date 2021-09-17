@@ -19,7 +19,7 @@ interface Props {
   notifications: Notification[];
 }
 
-export default function NotificationsPage({ notifications = [] }: Props) {
+export default function NotificationsPage({ notifications }: Props) {
   const router = useRouter();
   const [length, setLength] = useState(Math.floor(windowHeight / elementHeight));
 

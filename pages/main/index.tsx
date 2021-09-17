@@ -23,7 +23,7 @@ interface Props {
   data: Results;
 }
 
-const MainPage = ({ data: { notifications = [], schedules = [] } }: Props) => {
+const MainPage = ({ data: { notifications, schedules } }: Props) => {
   return (
     <>
       <MainHeader title={'경희대 KHUMU'} notifications={notifications} />

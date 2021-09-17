@@ -9,13 +9,11 @@ import { AndroidToast } from '@utils/android';
 import { useRouter } from 'next/router';
 import { Department } from '@interface/Department';
 
-const initialDepartments: Department = { name: '', id: 0, organization: '' };
-
 interface Props {
   departments: Department[];
 }
 
-export default function MyEditPage({ departments = [initialDepartments] }: Props) {
+export default function MyEditPage({ departments }: Props) {
   const {
     info: { username, department, nickname, student_number },
     setUser,

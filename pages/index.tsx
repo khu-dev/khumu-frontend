@@ -6,8 +6,11 @@ import React from 'react';
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
+import { fetchUsers } from '@api/api-users';
 
-export default function MainPage() {
+export default function MainPage({ res }) {
+  console.log(res);
+
   const navList = [
     { title: '메인', path: '/main' },
     { title: 'QR코드', path: '/qrcode' },
@@ -52,3 +55,13 @@ export default function MainPage() {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const res = await Promise.all([fetchUsers.select()]);
+
+  return {
+    props: {
+      res: res[0].data,
+    },
+  };
+};
