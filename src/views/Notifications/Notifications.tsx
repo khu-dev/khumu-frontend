@@ -72,7 +72,7 @@ const Notifications = ({
 }: {
   notifications: any[];
   fetchIndex: number;
-  infiniteFetch: void;
+  infiniteFetch: Function;
 }) => {
   React.useEffect(() => {
     fetchNotifications.read({ notiId: 'all' });

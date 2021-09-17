@@ -13,7 +13,6 @@ export const Setting = () => (
 const Container = styled.div`
   width: ${box.paddingWidth};
   padding: ${box.padding};
-  padding-top: 0;
   border-bottom: 1px solid ${color.gray6};
 `;
 
