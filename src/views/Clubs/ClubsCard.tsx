@@ -15,14 +15,20 @@ const Tag = ({ tag }) => (
   </s.Tag>
 );
 
-const Name = ({ name, summary }) => (
+const Name = ({ name, summary, fontSize }) => (
   <s.NameWrapper>
     <s.Name>{name}</s.Name>
-    <s.Summary>{summary}</s.Summary>
+    <s.Summary fontSize={fontSize}>{summary}</s.Summary>
   </s.NameWrapper>
 );
 
-const Description = ({ description }) => <s.P>{description}</s.P>;
+const Description = ({ description }) => (
+  <s.P
+    dangerouslySetInnerHTML={{
+      __html: description,
+    }}
+  ></s.P>
+);
 
 const ClubsCard = ({ children, gap, idx, ...rest }) => (
   <s.Card gap={gap} idx={idx} {...rest}>
