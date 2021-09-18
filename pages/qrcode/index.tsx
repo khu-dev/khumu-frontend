@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Qrcode from '@views/Qrcode';
 import QrcodeHeader from '@components/Header/Qrcode';
@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function QRCodePage({ qrcode }: Props) {
-  const [info, setInfo] = useState(qrcode);
+  const [info, setInfo] = useState(qrcode || initialState);
 
   const fetchData = async () => {
     if (info.qr_code_str) setInfo(initialState);
@@ -29,6 +29,12 @@ export default function QRCodePage({ qrcode }: Props) {
       setInfo(info);
     }
   };
+
+  useEffect(() => {
+    if (qrcode) return;
+
+    fetchData();
+  }, [qrcode]);
 
   return (
     <>
@@ -47,11 +53,17 @@ export default function QRCodePage({ qrcode }: Props) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await Promise.all([fetchQRCode.select()]);
+  let res = null;
+
+  try {
+    res = await fetchQRCode.select();
+  } catch (e) {
+    console.error('fetch qrcode server side error', e);
+  }
 
   return {
     props: {
-      qrcode: res[0].data?.data,
+      qrcode: res?.data?.data || null,
     },
   };
 };

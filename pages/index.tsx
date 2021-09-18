@@ -6,12 +6,8 @@ import React from 'react';
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
-import { webClient } from 'src/module';
 
-export default function MainPage({ res, tkn }) {
-  console.log(res);
-  console.log('token :', tkn);
-
+export default function MainPage() {
   const navList = [
     { title: '메인', path: '/main' },
     { title: 'QR코드', path: '/qrcode' },
@@ -24,7 +20,6 @@ export default function MainPage({ res, tkn }) {
 
   return (
     <>
-      <p>{tkn}</p>
       <h1 style={{ margin: 18 }}>작성된 페이지 목록</h1>
       <ul>
         {navList.map(({ title, path }) => (
@@ -58,11 +53,12 @@ export default function MainPage({ res, tkn }) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const tkn = webClient.defaults.headers['Authorization'];
+export const getServerSideProps = async (ctx) => {
+  console.log('/ ssr,', ctx.req.headers);
+
   return {
     props: {
-      tkn,
+      data: null,
     },
   };
 };

@@ -19,7 +19,7 @@ const refreshToken = (token: string) => {
   webClient.defaults.headers['Authorization'] = `Bearer ${token}`;
 };
 
-devToken && refreshToken(devToken);
+typeof window !== undefined && refreshToken(devToken);
 
 webClient.interceptors.response.use(
   (response) => response,

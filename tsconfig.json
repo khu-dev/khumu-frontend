@@ -19,14 +19,16 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "@assets/*": ["assets/*"],
+      "@src/*": ["src/*"],
       "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@constants/*": ["src/constants/*"],
       "@context/*": ["src/context/*"],
+      "@enum/*": ["src/enum/*"],
       "@hooks/*": ["src/hooks/*"],
       "@interface/*": ["src/interface/*"],
+      "@module/*": ["src/module/*"],
       "@utils/*": ["src/utils/*"],
       "@views/*": ["src/views/*"]
     },

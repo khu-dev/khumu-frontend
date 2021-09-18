@@ -32,3 +32,13 @@ const App = ({ Component, pageProps }: AppProps) => (
 );
 
 export default App;
+
+export const getServerSideProps = async (ctx) => {
+  console.log('app ssr,', ctx.req.header);
+
+  return {
+    props: {
+      data: null,
+    },
+  };
+};
