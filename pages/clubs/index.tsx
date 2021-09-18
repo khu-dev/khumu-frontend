@@ -23,20 +23,20 @@ const initialClub: Club = {
   summary: '',
 };
 
-interface Props {
+interface Data {
   clubs: Club[];
   categories: string[];
 }
 
-const ClubsPage = ({ clubs: _clubs, categories: _categories }: Props) => {
+const ClubsPage = () => {
   const { token } = useToken();
-  const [data, setData] = useState<Props>({
-    clubs: _clubs || [initialClub],
-    categories: _categories || ['전체'],
+  const [data, setData] = useState<Data>({
+    clubs: [initialClub],
+    categories: ['전체'],
   });
 
   useEffect(() => {
-    if ((_clubs && _categories) || !token) return;
+    if (!token) return;
 
     const fetchData = async () => {
       const res = await Promise.all([fetchClubs.select(), fetchClubs.categories()]);
@@ -50,7 +50,7 @@ const ClubsPage = ({ clubs: _clubs, categories: _categories }: Props) => {
     };
 
     fetchData();
-  }, [_clubs, _categories, token]);
+  }, [token]);
 
   const { clubs, categories } = data;
 
@@ -63,21 +63,3 @@ const ClubsPage = ({ clubs: _clubs, categories: _categories }: Props) => {
 };
 
 export default ClubsPage;
-
-export const getServerSideProps = async (ctx) => {
-  let res = [null, null];
-  console.log(ctx.req.headers);
-
-  try {
-    res = await Promise.all([fetchClubs.select(), fetchClubs.categories()]);
-  } catch (e) {
-    console.log('fetch clubs error in server side');
-  }
-
-  return {
-    props: {
-      clubs: res[0].data?.data,
-      categories: res[1].data?.data,
-    },
-  };
-};

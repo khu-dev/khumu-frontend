@@ -10,18 +10,18 @@ import { useRouter } from 'next/router';
 import { Department } from '@interface/Department';
 import { useToken } from '@src/context/Token';
 
-interface Props {
+interface Data {
   departments: Department[];
 }
 
-export default function MyEditPage({ departments: _departments }: Props) {
+export default function MyEditPage() {
   const { token } = useToken();
   const {
     info: { username, department, nickname, student_number },
     setUser,
   } = useUser();
   const router = useRouter();
-  const [data, setData] = useState<Props>({ departments: _departments });
+  const [data, setData] = useState<Data>({ departments: [null] });
   const [state, setState] = useState({
     nickname: nickname || '',
     department,
@@ -70,7 +70,7 @@ export default function MyEditPage({ departments: _departments }: Props) {
   }, [username, department]);
 
   useEffect(() => {
-    if (_departments || !token) return;
+    if (!token) return;
 
     const fetchData = async () => {
       const res = await fetchDepartments.select();
@@ -111,24 +111,3 @@ export default function MyEditPage({ departments: _departments }: Props) {
     </>
   );
 }
-
-export const getServerSideProps = async () => {
-  let res = [null];
-
-  try {
-    res = await Promise.all([fetchDepartments.select()]);
-  } catch (e) {
-    console.error('fetch edit error in server side');
-  }
-
-  const departments = res[0].data?.map((info) => ({
-    name: info.name,
-    id: info.id,
-  }));
-
-  return {
-    props: {
-      departments,
-    },
-  };
-};
