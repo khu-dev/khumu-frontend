@@ -3,14 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Skeleton from '@components/Skeleton';
 import SkeletonMainItem from '@components/Skeleton/Main/Item';
 import { MainHeader } from '@src/components';
-import {
-  Feed,
-  Hot,
-  Club,
-  Notice,
-  Shortcut,
-  // Advertise
-} from '@views/Main';
+import { Feed, Hot, Club, Notice, Shortcut, Advertise } from '@views/Main';
 import { fetchSchedule, fetchNotifications, fetchArticles } from '@src/api';
 import { useToken } from '@context/Token';
 import { Notification, Schedule, HotArticle } from '@src/interface';
@@ -59,7 +52,7 @@ const MainPage = () => {
           <>
             <Notice />
             <Hot hots={hots} />
-            {/* <Advertise /> */}
+            <Advertise />
             <Club />
             <Shortcut />
           </>
