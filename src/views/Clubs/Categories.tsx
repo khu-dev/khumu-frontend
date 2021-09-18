@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as s from './styled';
+
+const CLUBS_CARD = 'clubs-card';
 
 export default function Categories({
   category: currentCategory,
@@ -14,15 +16,31 @@ export default function Categories({
     setIsActive(status);
   };
 
+  useEffect(() => {
+    const detectClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.id === CLUBS_CARD) return;
+
+      handleActive(false);
+    };
+
+    document.addEventListener('click', detectClick);
+
+    return () => {
+      document.removeEventListener('click', detectClick);
+    };
+  }, []);
+
   return (
     <s.Tag
       onClick={() => {
         handleActive(!isActive);
       }}
+      id={CLUBS_CARD}
     >
       {currentCategory}
       {isActive && (
-        <s.Filters>
+        <s.Filters id={CLUBS_CARD}>
           {uniqueCategories.map((category) => (
             <s.FilterItem
               isActive={category === currentCategory}
@@ -30,6 +48,7 @@ export default function Categories({
                 handleCategory(category);
                 handleActive(false);
               }}
+              id={CLUBS_CARD}
             >
               {category}
             </s.FilterItem>

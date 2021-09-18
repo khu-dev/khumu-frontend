@@ -111,6 +111,7 @@ export const Content = styled.div`
   height: 178px;
   border-top: 1px solid ${color.gray4};
   padding: 16px;
+  overflow-y: scroll;
 `;
 
 export const NameWrapper = styled.div`
@@ -124,10 +125,12 @@ export const Name = styled.h2`
   margin: 0;
   margin-right: 16px;
   color: ${color.main};
+  white-space: nowrap;
 `;
 
-export const Summary = styled.span`
+export const Summary = styled.span<{ fontSize: number }>`
   color: ${color.black};
+  font-size: ${({ fontSize }) => fontSize};
 `;
 
 export const P = styled.p`
