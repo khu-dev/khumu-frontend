@@ -8,18 +8,20 @@ import { fetchDepartments } from '@api/api-departments';
 import { AndroidToast } from '@utils/android';
 import { useRouter } from 'next/router';
 import { Department } from '@interface/Department';
+import { useToken } from '@src/context/Token';
 
 interface Props {
   departments: Department[];
 }
 
-export default function MyEditPage({ departments }: Props) {
+export default function MyEditPage({ departments: _departments }: Props) {
+  const { token } = useToken();
   const {
     info: { username, department, nickname, student_number },
     setUser,
   } = useUser();
   const router = useRouter();
-
+  const [data, setData] = useState<Props>({ departments: _departments });
   const [state, setState] = useState({
     nickname: nickname || '',
     department,
@@ -67,6 +69,26 @@ export default function MyEditPage({ departments }: Props) {
     });
   }, [username, department]);
 
+  useEffect(() => {
+    if (_departments || !token) return;
+
+    const fetchData = async () => {
+      const res = await fetchDepartments.select();
+
+      if (res.status === 200) {
+        setData(
+          res.data.map((info) => ({
+            name: info.name,
+            id: info.id,
+          })),
+        );
+      }
+    };
+    fetchData();
+  }, [token]);
+
+  const { departments } = data;
+
   return (
     <>
       <CommonHeader
@@ -91,7 +113,13 @@ export default function MyEditPage({ departments }: Props) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await Promise.all([fetchDepartments.select()]);
+  let res = [null];
+
+  try {
+    res = await Promise.all([fetchDepartments.select()]);
+  } catch (e) {
+    console.error('fetch edit error in server side');
+  }
 
   const departments = res[0].data?.map((info) => ({
     name: info.name,
