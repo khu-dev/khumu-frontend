@@ -21,7 +21,9 @@ export default function MyEditPage() {
     setUser,
   } = useUser();
   const router = useRouter();
-  const [data, setData] = useState<Data>({ departments: [null] });
+  const [data, setData] = useState<Data>({
+    departments: [{ id: 0, name: '', organization: '' }],
+  });
   const [state, setState] = useState({
     nickname: nickname || '',
     department,
@@ -76,12 +78,13 @@ export default function MyEditPage() {
       const res = await fetchDepartments.select();
 
       if (res.status === 200) {
-        setData(
-          res.data.map((info) => ({
-            name: info.name,
-            id: info.id,
-          })),
-        );
+        const newData = res.data.map((info) => ({
+          name: info.name,
+          id: info.id,
+        }));
+        setData({
+          departments: newData,
+        });
       }
     };
     fetchData();
