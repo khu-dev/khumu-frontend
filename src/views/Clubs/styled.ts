@@ -45,6 +45,7 @@ export const FilterItem = styled.div<{ isActive: boolean }>`
   display: inline-block;
   margin: 4px;
   border: 1px solid ${color.gray2};
+  white-space: nowrap;
 
   ${({ isActive }) =>
     isActive
