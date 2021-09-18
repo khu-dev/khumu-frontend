@@ -7,12 +7,12 @@ const tagStyle = css`
   max-width: 60px;
   height: 29px;
   border-radius: 15px;
-  padding: 1px 15px;
+  padding: 1px 12px;
   margin: 4px auto;
   margin-bottom: 8px;
   text-align: center;
   line-height: 29px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: ${color.white};
   background-color: ${color.main};
