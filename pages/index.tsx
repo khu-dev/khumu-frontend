@@ -52,13 +52,3 @@ export default function MainPage() {
     </>
   );
 }
-
-export const getServerSideProps = async (ctx) => {
-  console.log('/ ssr,', ctx.req.headers);
-
-  return {
-    props: {
-      data: null,
-    },
-  };
-};
