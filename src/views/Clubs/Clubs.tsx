@@ -8,9 +8,10 @@ import Categories from './Categories';
 import * as s from './styled';
 import { useRouter } from 'next/router';
 import { Club } from '@interface/Club';
+import { getFontSize } from '@src/utils/font';
 
 const threshold = {
-  x: 0,
+  x: 100,
   y: 1000,
 };
 
@@ -100,7 +101,11 @@ const Clubs = ({ categories, clubs }) => {
                   <ClubsCard.Image url={`${IMG_URI}/${club?.images[0]}`} />
                   <ClubsCard.Content>
                     <ClubsCard.Tag tag={'연행'} />
-                    <ClubsCard.Name name={club?.name} summary={'태그'} />
+                    <ClubsCard.Name
+                      name={club?.name}
+                      summary={club?.summary}
+                      fontSize={getFontSize(club?.summary?.length)}
+                    />
                     <ClubsCard.Description description={club?.description} />
                   </ClubsCard.Content>
                 </ClubsCard>

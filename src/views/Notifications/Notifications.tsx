@@ -80,7 +80,7 @@ const Notifications = ({
 
   return (
     <>
-      {notifications.length > 0 ? (
+      {notifications?.length > 0 ? (
         notifications.map((item, index) => (
           <Notification key={item.id} item={item} index={index} {...rest} />
         ))

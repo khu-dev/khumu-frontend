@@ -7,12 +7,12 @@ const tagStyle = css`
   max-width: 60px;
   height: 29px;
   border-radius: 15px;
-  padding: 1px 15px;
+  padding: 1px 12px;
   margin: 4px auto;
   margin-bottom: 8px;
   text-align: center;
   line-height: 29px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: ${color.white};
   background-color: ${color.main};
@@ -45,6 +45,7 @@ export const FilterItem = styled.div<{ isActive: boolean }>`
   display: inline-block;
   margin: 4px;
   border: 1px solid ${color.gray2};
+  white-space: nowrap;
 
   ${({ isActive }) =>
     isActive
@@ -111,6 +112,7 @@ export const Content = styled.div`
   height: 178px;
   border-top: 1px solid ${color.gray4};
   padding: 16px;
+  overflow-y: scroll;
 `;
 
 export const NameWrapper = styled.div`
@@ -124,10 +126,12 @@ export const Name = styled.h2`
   margin: 0;
   margin-right: 16px;
   color: ${color.main};
+  white-space: nowrap;
 `;
 
-export const Summary = styled.span`
+export const Summary = styled.span<{ fontSize: number }>`
   color: ${color.black};
+  font-size: ${({ fontSize }) => fontSize};
 `;
 
 export const P = styled.p`

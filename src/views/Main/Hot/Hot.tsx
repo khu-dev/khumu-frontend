@@ -2,20 +2,19 @@ import Link from 'next/link';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { MdComment } from 'react-icons/md';
 
-import { fetchArticles } from '@api/api-article';
-import { useFetchAxios } from '@hooks/fetch';
-import { HotArticle } from '@interface/response-hot';
+import { HotArticle } from '@interface/HotArticle';
 import { calculateDayDiff } from '@utils/day';
 
 import * as cs from '../common.styled';
 import * as s from './styled';
 
-const Hot = () => {
-  const { result } = useFetchAxios({
-    func: fetchArticles.hot,
-  });
+const initialHots = Array(3).fill(null);
 
-  const hots: Array<HotArticle> = result?.data?.data?.data || Array(3).fill(null);
+interface Props {
+  hots: HotArticle[];
+}
+
+const Hot = ({ hots = initialHots }: Props) => {
   const now = new Date();
   const year = now.getFullYear();
 

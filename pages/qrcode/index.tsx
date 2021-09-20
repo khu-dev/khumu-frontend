@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Qrcode from '@views/Qrcode';
 import QrcodeHeader from '@components/Header/Qrcode';
 import { fetchQRCode } from '@api/api-qrcode';
 import { QRcode } from '@interface/QRcode';
+import { useToken } from '@src/context/Token';
 
 const initialState: QRcode = {
   qr_code_str: '',
@@ -12,12 +13,14 @@ const initialState: QRcode = {
   student_number: '',
 };
 
-interface Props {
-  qrcode: QRcode;
-}
+// interface Props {
+//   qrcode: QRcode;
+// }
 
-export default function QRCodePage({ qrcode }: Props) {
-  const [info, setInfo] = useState(qrcode);
+export default function QRCodePage() {
+  // { qrcode }: Props
+  const { token } = useToken();
+  const [info, setInfo] = useState(initialState);
 
   const fetchData = async () => {
     if (info.qr_code_str) setInfo(initialState);
@@ -29,6 +32,12 @@ export default function QRCodePage({ qrcode }: Props) {
       setInfo(info);
     }
   };
+
+  useEffect(() => {
+    if (!token) return;
+
+    fetchData();
+  }, [token]);
 
   return (
     <>
@@ -46,12 +55,18 @@ export default function QRCodePage({ qrcode }: Props) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const res = await Promise.all([fetchQRCode.select()]);
+// export const getServerSideProps = async () => {
+//   let res = null;
 
-  return {
-    props: {
-      qrcode: res[0].data?.data || initialState,
-    },
-  };
-};
+//   try {
+//     res = await fetchQRCode.select();
+//   } catch (e) {
+//     console.error('fetch qrcode server side error', e);
+//   }
+
+//   return {
+//     props: {
+//       qrcode: res?.data?.data || null,
+//     },
+//   };
+// };

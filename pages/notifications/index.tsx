@@ -1,26 +1,29 @@
 /**
  * @description 제작된 페이지 목록
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CommonHeader from '@components/Header/Common';
 import { color } from '@constants/theme';
 import { fetchNotifications } from '@api/api-notifications';
 import Notifications, { Setting } from '@views/Notifications';
 import { useRouter } from 'next/router';
 import { Notification } from '@interface/Notification';
+import { useToken } from '@src/context/Token';
+import Skeleton from '@src/components/Skeleton';
+import SkeletonNotifications from '@src/components/Skeleton/Notifications';
 
 let windowHeight;
 const elementHeight = 72;
-if (process.browser) {
+if (process.browser && typeof window !== undefined) {
   windowHeight = window.innerHeight * 1.5;
 }
 
-interface Props {
-  notifications: Notification[];
-}
-
-export default function NotificationsPage({ notifications }: Props) {
+export default function NotificationsPage() {
   const router = useRouter();
+  const { token } = useToken();
+  const [data, setData] = useState<{ notifications: Notification[] }>({
+    notifications: [null],
+  });
   const [length, setLength] = useState(Math.floor(windowHeight / elementHeight));
 
   const infiniteFetch = () => {
@@ -31,6 +34,24 @@ export default function NotificationsPage({ notifications }: Props) {
     router.back();
   };
 
+  useEffect(() => {
+    if (!token) return;
+
+    const fetchData = async () => {
+      const res = await fetchNotifications.select();
+
+      if (res.status === 200) {
+        setData({
+          notifications: res.data?.data,
+        });
+      }
+    };
+
+    fetchData();
+  }, [token]);
+
+  const { notifications } = data;
+
   return (
     <>
       <CommonHeader
@@ -40,21 +61,19 @@ export default function NotificationsPage({ notifications }: Props) {
         color={color.main}
       />
       <Setting />
-      <Notifications
-        notifications={notifications?.slice(0, length)}
-        fetchIndex={length}
-        infiniteFetch={infiniteFetch}
+      <Skeleton
+        isLoading={notifications[0] === null}
+        repeat={10}
+        Skeleton={SkeletonNotifications}
+        render={(props) => (
+          <Notifications
+            notifications={notifications?.slice(0, length)}
+            fetchIndex={length}
+            infiniteFetch={infiniteFetch}
+            {...props}
+          />
+        )}
       />
     </>
   );
 }
-
-export const getServerSideProps = async () => {
-  const res = await Promise.all([fetchNotifications.select()]);
-
-  return {
-    props: {
-      notifications: res[0].data?.data || [],
-    },
-  };
-};

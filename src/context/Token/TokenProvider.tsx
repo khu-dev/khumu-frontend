@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { accesskey } from '@config/_key';
 import { TokenContext } from './TokenContext';
+import { refreshToken } from 'src/module';
 
 const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || accesskey;
 
@@ -10,9 +10,9 @@ export default function TokenProvider({ children }) {
 
   useEffect(() => {
     //@ts-ignore
-    const getTokens = window?.Android?.getToken() || devToken;
-    axios.defaults.headers.common['Authorization'] = `Bearer ${getTokens}`;
-    setToken(getTokens);
+    const token = window?.Android?.getToken() || devToken;
+    refreshToken(token);
+    setToken(token);
   }, []);
 
   return (

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { fetchClubs } from '@api/api-clubs';
 import { Club } from '@interface/Club';
 import ClubsHeader from '@components/Header/Clubs';
 import Clubs from '@views/Clubs';
+import { useToken } from '@src/context/Token';
 
 const initialClub: Club = {
   categories: '',
@@ -22,12 +23,37 @@ const initialClub: Club = {
   summary: '',
 };
 
-interface Props {
+interface Data {
   clubs: Club[];
   categories: string[];
 }
 
-const ClubsPage = ({ clubs, categories }: Props) => {
+const ClubsPage = () => {
+  const { token } = useToken();
+  const [data, setData] = useState<Data>({
+    clubs: [initialClub],
+    categories: ['전체'],
+  });
+
+  useEffect(() => {
+    if (!token) return;
+
+    const fetchData = async () => {
+      const res = await Promise.all([fetchClubs.select(), fetchClubs.categories()]);
+
+      if (res[0].status === 200) {
+        setData({
+          clubs: res[0].data?.data,
+          categories: res[1].data?.data,
+        });
+      }
+    };
+
+    fetchData();
+  }, [token]);
+
+  const { clubs, categories } = data;
+
   return (
     <>
       <ClubsHeader title={'동아리'} />
@@ -37,14 +63,3 @@ const ClubsPage = ({ clubs, categories }: Props) => {
 };
 
 export default ClubsPage;
-
-export const getServerSideProps = async () => {
-  const res = await Promise.all([fetchClubs.select(), fetchClubs.categories()]);
-
-  return {
-    props: {
-      clubs: res[0].data?.data || [initialClub],
-      categories: res[1].data?.data || ['전체'],
-    },
-  };
-};

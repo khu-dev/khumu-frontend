@@ -1,31 +1,40 @@
 import axios from 'axios';
-import { accesskey } from '@config/_key';
 import { BASE_URI } from '@config/baseURI';
 import { AndroidToast } from '@utils/android';
 
-const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || accesskey;
 let _window;
 
-if (process.browser) _window = window as any;
+if (process.browser && typeof window !== undefined) _window = window as any;
 
-const token = _window?.Android?.getToken() || devToken;
-
+const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 const webClient = axios.create({
   baseURL: BASE_URI,
 });
 
-webClient.defaults.headers['Authorization'] = `Bearer ${token}`;
+const getToken = () => {
+  return _window?.Android?.getToken();
+};
+
+const refreshToken = (token: string) => {
+  webClient.defaults.headers['Authorization'] = `Bearer ${token}`;
+};
+
+typeof window !== undefined && refreshToken(devToken);
 
 webClient.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response?.status === 401 && error.config?.url !== '/logout') {
+    if (
+      getToken() &&
+      error.response?.status === 401 &&
+      !_window.location.href.includes('logout')
+    ) {
       AndroidToast('로그인 페이지로 이동합니다');
-      window.location.href = '/logout';
+      _window.location.href = '/logout';
     }
 
     return Promise.reject(error);
   },
 );
 
-export { webClient };
+export { webClient, refreshToken };
