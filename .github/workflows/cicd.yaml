@@ -46,3 +46,13 @@ jobs:
 
     - name: Invalidate CloudFront Cache
       run: aws cloudfront create-invalidation --distribution-id ES23182J4NTX9 --paths "/*"
+    
+    - name: 슬랙 알림
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        author_name: Github Action # default: 8398a7@action-slack
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      if: always() # Pick up events even if the job fails or is canceled.
