@@ -1,0 +1,48 @@
+name: 빌드 후 S3, CloudFront에 배포
+on: 
+  push:
+    branches: [dev]
+    
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # Reference the major version of a release
+    - uses: actions/checkout@v2
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+        
+    - name: Install AWS CLI
+      run: pip3 install awscli --upgrade --user
+      
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        # battlepang-front-team IAM User 이용 중
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+        mask-aws-account-id: true
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-build-
+          ${{ runner.OS }}-
+
+    - name: Install Dependencies
+      run: yarn install
+
+    - name: Build               
+      run: yarn run build
+
+    - name: Push Contents to S3
+      run: aws s3 sync dist s3://khumu-web-dev
+
+    - name: Invalidate CloudFront Cache
+      run: aws cloudfront create-invalidation --distribution-id ES23182J4NTX9 --paths "/*"
