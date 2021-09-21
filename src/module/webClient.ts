@@ -29,7 +29,7 @@ webClient.interceptors.response.use(
       error.response?.status === 401 &&
       !_window.location.href.includes('logout')
     ) {
-      AndroidToast('로그인 페이지로 이동합니다');
+      AndroidToast(`로그인 페이지로 이동합니다.\n토큰: ${getToken()}`);
       _window.location.href = '/logout';
     }
 
