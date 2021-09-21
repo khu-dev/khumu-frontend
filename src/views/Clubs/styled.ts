@@ -72,32 +72,36 @@ export const ClubsCard = styled.div`
   margin: 0 auto;
   width: 100vw;
   position: relative;
+
+  & > .carousel-root {
+    height: calc(100vh - 150px);
+  }
+  & > .carousel-slider {
+    height: calc(100vh - 150px);
+  }
 `;
 
-export const Card = styled.div<{
-  gap: number;
-  idx: number;
-  isMoving?: boolean;
-  isEvent?: boolean;
-}>`
-  min-width: 260px;
+export const ClubsSwiper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 24px;
+`;
+
+export const Card = styled.div`
+  /* min-width: 260px; */
   width: calc(100vw - 64px);
-  height: 100%;
+  min-height: calc(100vh - 150px);
+  margin: 0 8px;
   box-shadow: -1px 1px 12px -4px rgba(0, 0, 0, 0.3);
   border: 1px solid ${color.main};
   border-radius: 24px;
   border-bottom-right-radius: 0;
   overflow: hidden;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-
-  ${({ idx }) => css`
-    position: absolute;
-    top: 0;
-    left: calc((100vw - 48px) * ${idx} + 32px);
-  `}
 `;
 
 export const Image = styled.div<{ url: string }>`
@@ -139,6 +143,7 @@ export const P = styled.p`
   font-size: 14px;
   font-weight: 300;
   color: ${color.gray1};
+  text-align: justify !important;
 `;
 
 export const Paging = styled.div`
