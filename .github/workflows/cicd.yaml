@@ -7,52 +7,71 @@ jobs:
   build_deploy:
     runs-on: ubuntu-latest
     steps:
-    # Reference the major version of a release
-    - uses: actions/checkout@v2
-    - name: Setup Python
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.x'
+      - name: 배포 환경 설정
+        run: |
+          # master 혹은 main 브랜치의 경우 prd 환경에 배포합니다.
+          environment="dev"
+          if [ ${GITHUB_REF#refs/heads/} == "master" ]; then
+          environment="prd"
+          elif [ ${GITHUB_REF#refs/heads/} == "main" ]; then
+          environment="prd"
+          fi
+          echo "현재 ref: ${GITHUB_REF#refs/heads/}"
+          echo "설정된 배포 환경 ${environment}"
+          echo "environment=${environment}" >> $GITHUB_ENV
+      # Reference the major version of a release
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+          
+      - name: Install AWS CLI
+        run: pip3 install awscli --upgrade --user
         
-    - name: Install AWS CLI
-      run: pip3 install awscli --upgrade --user
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          # battlepang-front-team IAM User 이용 중
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+          mask-aws-account-id: true
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build               
+        run: yarn run build
+
+      - name: Deploy to Dev
+        if: ${{ env.environment == 'prd' }}
+        run: |
+          aws s3 sync out s3://khumu-web-dev
+          aws cloudfront create-invalidation --distribution-id ES23182J4NTX9 --paths "/*"
       
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        # battlepang-front-team IAM User 이용 중
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-northeast-2
-        mask-aws-account-id: true
-
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-build-
-          ${{ runner.OS }}-
-
-    - name: Install Dependencies
-      run: yarn install
-
-    - name: Build               
-      run: yarn run build
-
-    - name: Push Contents to S3
-      run: aws s3 sync .next s3://khumu-web-dev
-
-    - name: Invalidate CloudFront Cache
-      run: aws cloudfront create-invalidation --distribution-id ES23182J4NTX9 --paths "/*"
-    
-    - name: 슬랙 알림
-      uses: 8398a7/action-slack@v3
-      with:
-        status: ${{ job.status }}
-        author_name: Github Action # default: 8398a7@action-slack
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-      if: always() # Pick up events even if the job fails or is canceled.
+      - name: Deploy to Prd
+        if: ${{ env.environment == 'prd' }}
+        run: |
+          aws s3 sync out s3://khumu-web-prd
+          aws cloudfront create-invalidation --distribution-id E2VQ6DDWD04SV8 --paths "/*"
+      
+      - name: 슬랙 알림
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: Github Action # default: 8398a7@action-slack
+          # fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          fields: repo,message,commit,author,ref,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        if: always() # Pick up events even if the job fails or is canceled.
