@@ -1,5 +1,8 @@
 name: 빌드 후 S3, CloudFront에 배포
-on: [push]
+
+on: 
+  push:
+    branches: [master, main, dev]
     
 jobs:
   build_deploy:
