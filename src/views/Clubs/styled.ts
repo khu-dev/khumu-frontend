@@ -117,6 +117,7 @@ export const Content = styled.div`
   border-top: 1px solid ${color.gray4};
   padding: 16px;
   overflow-y: scroll;
+  background-color: ${color.white};
 `;
 
 export const NameWrapper = styled.div`

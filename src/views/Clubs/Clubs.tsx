@@ -65,13 +65,18 @@ const Clubs = ({ categories, clubs }: Props) => {
         handleCategory={handleCategory}
       />
       <s.ClubsCard
-        css={
-          current === 0
-            ? css`
+        css={(() => {
+          switch (current) {
+            case 0:
+              return css`
                 padding-left: 6%;
-              `
-            : ''
-        }
+              `;
+            case filteredClubs.length - 1:
+              return css`
+                padding-right: 6%;
+              `;
+          }
+        })()}
       >
         <Carousel
           autoPlay={false}
