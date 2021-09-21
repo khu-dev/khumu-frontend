@@ -1,7 +1,5 @@
 name: 빌드 후 S3, CloudFront에 배포
-on: 
-  push:
-    branches: [dev]
+on: [push]
     
 jobs:
   build_deploy:
@@ -10,6 +8,7 @@ jobs:
       - name: 배포 환경 설정
         run: |
           # master 혹은 main 브랜치의 경우 prd 환경에 배포합니다.
+          # 그 외의 브랜치는 dev로
           environment="dev"
           if [ ${GITHUB_REF#refs/heads/} == "master" ]; then
           environment="prd"
