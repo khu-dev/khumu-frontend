@@ -32,14 +32,6 @@ export default function MainPage() {
         <h4>Easter EGG!</h4>
         <input
           type={'button'}
-          value={'showAndroidToast'}
-          onClick={() => {
-            AndroidToast('안드 프론트 통신!');
-          }}
-          style={{ marginBottom: 8, display: 'block' }}
-        />
-        <input
-          type={'button'}
           value={'notifications 모두 안읽음 처리하기'}
           onClick={async () => {
             await fetchNotifications.unread({ notiId: 'all' });
