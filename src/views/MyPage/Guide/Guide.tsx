@@ -11,8 +11,9 @@ const Guide = () => {
     if (!process.browser) return;
 
     const Android = (window as any)?.Android;
-    AndroidToast(Android?.getVersionInfo());
-    setVersion(Android?.getVersionInfo());
+    const version = Android?.getVersionInfo();
+    AndroidToast('version info - ' + version);
+    setVersion(version || '-');
   }, []);
 
   return (
