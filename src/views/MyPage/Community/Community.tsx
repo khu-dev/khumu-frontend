@@ -1,6 +1,6 @@
 import React from 'react';
 import { MyTitle } from '../Shared';
-import { MyButtonContainer, LinkButton, MyButton } from '../Shared/MyButton';
+import { MyButtonContainer, LinkButton } from '../Shared/MyButton';
 
 const Community = () => (
   <>
@@ -11,7 +11,9 @@ const Community = () => (
         <LinkButton pathname={'/articles?board=bookmarked'}>북마크</LinkButton>
         <LinkButton pathname={'/articles?board=commented'}>댓글</LinkButton>
       </MyButtonContainer>
-      <MyButton isSingle>내가 작성한 게시글</MyButton>
+      <LinkButton pathname={'articles?board=my'} isSingle>
+        내가 작성한 게시글
+      </LinkButton>
     </div>
   </>
 );
