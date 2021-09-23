@@ -1,15 +1,17 @@
 import { color } from '@constants/theme';
 import { css } from '@emotion/react';
-import { useLayoutEffect, useState } from 'react';
+import { AndroidToast } from '@src/utils/android';
+import { useEffect, useState } from 'react';
 import { MyBox, MyRow, MyTitle, LinkRow } from '../Shared';
 
 const Guide = () => {
   const [version, setVersion] = useState('-');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!process.browser) return;
 
     const Android = (window as any)?.Android;
+    AndroidToast(Android?.getVersionInfo());
     setVersion(Android?.getVersionInfo());
   }, []);
 
