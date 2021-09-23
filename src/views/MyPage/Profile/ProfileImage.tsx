@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { box, color } from '@constants/theme';
 
-const sample = 'https://avatars.githubusercontent.com/u/77267603?v=4';
+const sample = 'https://thispersondoesnotexist.com/image';
 
 const Image = styled.img`
   width: 67.5px;

@@ -1,6 +1,6 @@
 import { color } from '@constants/theme';
 import { css } from '@emotion/react';
-import { AndroidToast } from '@src/utils/android';
+// import { AndroidToast } from '@src/utils/android';
 import { useEffect, useState } from 'react';
 import { MyBox, MyRow, MyTitle, LinkRow } from '../Shared';
 
@@ -10,9 +10,10 @@ const Guide = () => {
   useEffect(() => {
     if (!process.browser) return;
 
-    const Android = (window as any)?.Android;
-    AndroidToast(Android?.getVersionInfo());
-    setVersion(Android?.getVersionInfo());
+    // const Android = (window as any)?.Android;
+    // const version = Android?.getVersionInfo();
+    // AndroidToast('version info - ' + version);
+    setVersion(version || '-');
   }, []);
 
   return (
