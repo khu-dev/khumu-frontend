@@ -27,7 +27,7 @@ const Clubs = ({ categories, clubs }: Props) => {
   const filteredClubs: Club[] = clubs.filter((club) => {
     if (category === '전체') return true;
 
-    return club.categories === category;
+    return club.categories.includes(category);
   });
 
   const [current, setCurrent] = useState(0);
