@@ -19,7 +19,7 @@ const Guide = () => (
           color: ${color.gray3};
         `}
       >
-        {'6.1.4(20210402)'}
+        {process.browser && (window as any).Android?.getVersionInfo()}
       </MyRow>
     </MyRow>
     <MyRow>{'문의하기'}</MyRow>
