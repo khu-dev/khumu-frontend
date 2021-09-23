@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { IMG_URI } from '@config/baseURI';
 import ClubsCard from './ClubsCard';
 import ClubsPaging from './ClubsPaging';
@@ -24,6 +24,10 @@ const Clubs = ({ categories, clubs }: Props) => {
   } = useRouter();
   const initRef = useRef(true);
   const [category, setCategory] = useState('전체');
+  const [size, setSize] = useState({
+    translateX: 0,
+    centerSlidePercentage: 100,
+  });
   const filteredClubs: Club[] = clubs.filter((club) => {
     if (category === '전체') return true;
 
@@ -57,6 +61,22 @@ const Clubs = ({ categories, clubs }: Props) => {
     currentClubIndex !== -1 && (initRef.current = false);
   }, [currentId, clubs]);
 
+  useLayoutEffect(() => {
+    if (!process.browser) return;
+
+    const _window = process.browser && (window as any);
+    const innerWidth = _window?.innerWidth || 0;
+    const centerSlidePercentage = innerWidth > 500 ? 100 : 88;
+    const translateX = (100 - centerSlidePercentage) / 2;
+
+    setSize({
+      translateX,
+      centerSlidePercentage,
+    });
+  }, []);
+
+  const { translateX, centerSlidePercentage } = size;
+
   return (
     <>
       <Categories
@@ -69,11 +89,11 @@ const Clubs = ({ categories, clubs }: Props) => {
           switch (current) {
             case 0:
               return css`
-                padding-left: 6%;
+                transform: translateX(${translateX}%);
               `;
             case filteredClubs.length - 1:
               return css`
-                padding-right: 6%;
+                transform: translateX(${-translateX}%);
               `;
           }
         })()}
@@ -84,7 +104,7 @@ const Clubs = ({ categories, clubs }: Props) => {
           showStatus={false}
           showIndicators={false}
           centerMode={true}
-          centerSlidePercentage={88}
+          centerSlidePercentage={centerSlidePercentage}
           interval={999999}
           onChange={(idx: number) => setCurrent(idx)}
           selectedItem={current}
