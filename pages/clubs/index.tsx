@@ -31,7 +31,7 @@ interface Data {
 const ClubsPage = () => {
   const { token } = useToken();
   const [data, setData] = useState<Data>({
-    clubs: [initialClub],
+    clubs: [initialClub, initialClub, initialClub, initialClub],
     categories: ['전체'],
   });
 
