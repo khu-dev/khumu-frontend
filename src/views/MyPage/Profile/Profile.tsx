@@ -5,7 +5,7 @@ import Image from './ProfileImage';
 import Info from './ProfileInfo';
 import ReleaseButton from './ProfileReleaseButton';
 
-const sample = 'https://avatars.githubusercontent.com/u/77267603?v=4';
+const sample = 'https://thispersondoesnotexist.com/image';
 
 const Profile = ({ name, department, studentNumber }) => (
   <MyBox

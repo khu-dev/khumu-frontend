@@ -22,8 +22,8 @@ export const MyButton = styled.div<{ isSingle?: boolean }>`
   margin-bottom: ${({ isSingle }) => (isSingle ? box.margin : 0)};
 `;
 
-export const LinkButton = ({ pathname, children }) => (
+export const LinkButton = ({ pathname, children, ...rest }) => (
   <Link href={pathname}>
-    <MyButton>{children}</MyButton>
+    <MyButton {...rest}>{children}</MyButton>
   </Link>
 );
