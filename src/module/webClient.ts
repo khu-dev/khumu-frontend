@@ -18,7 +18,7 @@ const getToken = () => {
 };
 
 const refreshToken = (token: string) => {
-  webClient.defaults.headers['Authorization'] = `Bearer ${token}1`;
+  webClient.defaults.headers['Authorization'] = `Bearer ${token}`;
 };
 
 isBrowser && refreshToken(devToken || getToken());
