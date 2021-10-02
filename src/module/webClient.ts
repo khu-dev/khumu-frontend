@@ -27,17 +27,15 @@ isBrowser &&
   webClient.interceptors.response.use(
     (response) => response,
     async (error) => {
-      console.log(error);
-
       if (
-        getToken() &&
+        !!getToken() &&
         error.response?.status === 401 &&
-        !_window.location.href.includes('logout')
+        !_window.location.pathname.includes('logout')
       ) {
         AndroidToast(
           `로그인 페이지로 이동합니다.\n${error.config.url} 토큰: ${getToken()}`,
         );
-        _window.location.href = '/logout';
+        _window.location.pathname = '/logout';
       }
 
       return Promise.reject(error);
