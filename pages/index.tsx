@@ -5,7 +5,10 @@ import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
 
 export default function MainPage() {
-  const [version, setVersion] = useState<string>('');
+  const [version, setVersion] = useState<{ prev: any; parsed: any }>({
+    prev: '',
+    parsed: '',
+  });
   const navList = [
     { title: '메인', path: '/main' },
     { title: 'QR코드', path: '/qrcode' },
@@ -46,13 +49,17 @@ export default function MainPage() {
             const version =
               (window as any).Android?.getVersionInfo() ||
               `{"current_version": "sample"}`;
-            console.log(version);
 
-            setVersion(JSON.parse(version)?.current_version);
+            setVersion({
+              prev: version,
+              parsed: JSON.parse(version)?.current_version,
+            });
           }}
           style={{ marginBottom: 8, display: 'block' }}
         />
-        <h5>버전정보 : {version}</h5>
+        <h5>버전정보</h5>
+        <p>파싱 전 : {version.prev}</p>
+        <p>파싱 후 : {version.parsed}</p>
       </div>
     </>
   );
