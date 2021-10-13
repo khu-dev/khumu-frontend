@@ -12,7 +12,7 @@ const Guide = () => {
 
     const Android = (window as any)?.Android;
     const version = Android?.getVersionInfo() || `{"current_version": "-"}`;
-    setVersion(JSON.parse(version).current_version);
+    setVersion(JSON.parse(version)?.current_version);
   }, []);
 
   return (
