@@ -6,7 +6,7 @@ import { MyBox, MyRow, MyTitle, LinkRow } from '../Shared';
 import { AndroidToast } from '@src/utils/android';
 
 const Guide = () => {
-  const [version, _] = useState<any>('-');
+  const [version, setVersion] = useState<any>('-');
 
   useEffect(() => {
     if (!process.browser) return;
@@ -15,6 +15,7 @@ const Guide = () => {
     const version = Android?.getVersionInfo() || `{"current_version": "-"}`;
     AndroidToast(`${version}`);
     // setVersion(JSON.parse(version)?.current_version);
+    setVersion('??');
   }, []);
 
   return (
