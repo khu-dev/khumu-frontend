@@ -44,10 +44,12 @@ export default function MainPage() {
           type={'button'}
           value={'버전정보 가져오기 Android.getVersionInfo()'}
           onClick={() => {
-            const version: Version | undefined = (
-              window as any
-            ).Android?.getVersionInfo();
-            setVersion(version?.current_version);
+            const version =
+              (window as any).Android?.getVersionInfo() ||
+              `{"current_version": "sample"}`;
+            console.log(version);
+
+            setVersion(JSON.parse(version)?.current_version);
           }}
           style={{ marginBottom: 8, display: 'block' }}
         />

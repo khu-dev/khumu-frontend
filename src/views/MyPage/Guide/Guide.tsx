@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 
 import { color } from '@constants/theme';
 import { MyBox, MyRow, MyTitle, LinkRow } from '../Shared';
-import { Version } from '@interface/Version';
 
 const Guide = () => {
   const [version, setVersion] = useState('-');
@@ -12,8 +11,8 @@ const Guide = () => {
     if (!process.browser) return;
 
     const Android = (window as any)?.Android;
-    const version: Version = Android?.getVersionInfo();
-    setVersion(version?.current_version || '-');
+    const version = Android?.getVersionInfo() || `{"current_version": "-"}`;
+    setVersion(JSON.parse(version).current_version);
   }, []);
 
   return (
