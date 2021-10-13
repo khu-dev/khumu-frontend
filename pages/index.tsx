@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
-import { Version } from '@interface/Version';
 
 export default function MainPage() {
   const [version, setVersion] = useState<string>('');
