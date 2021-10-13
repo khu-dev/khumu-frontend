@@ -5,7 +5,8 @@ import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
 
 export default function MainPage() {
-  const [version, setVersion] = useState<{ prev: any; parsed: any }>({
+  const [version, setVersion] = useState<{ raw: any; prev: any; parsed: any }>({
+    raw: '',
     prev: '',
     parsed: '',
   });
@@ -50,7 +51,11 @@ export default function MainPage() {
               (window as any).Android?.getVersionInfo() ||
               `{"current_version": "sample"}`;
 
+            AndroidToast(typeof (window as any).Android?.getVersionInfo());
+            AndroidToast((window as any).Android?.getVersionInfo());
+
             setVersion({
+              raw: (window as any).Android?.getVersionInfo(),
               prev: version,
               parsed: JSON.parse(version)?.current_version,
             });
@@ -58,6 +63,7 @@ export default function MainPage() {
           style={{ marginBottom: 8, display: 'block' }}
         />
         <h5>버전정보</h5>
+        <p>raw : {version.raw}</p>
         <p>파싱 전 : {version.prev}</p>
         <p>파싱 후 : {version.parsed}</p>
       </div>
