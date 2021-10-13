@@ -1,11 +1,9 @@
-/**
- * @description 제작된 페이지 목록
- */
 import React, { useState } from 'react';
 
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
+import { Version } from '@interface/Version';
 
 export default function MainPage() {
   const [version, setVersion] = useState<string>('');
@@ -46,7 +44,10 @@ export default function MainPage() {
           type={'button'}
           value={'버전정보 가져오기 Android.getVersionInfo()'}
           onClick={() => {
-            setVersion(`${(window as any).Android?.getVersionInfo()}`);
+            const version: Version | undefined = (
+              window as any
+            ).Android?.getVersionInfo();
+            setVersion(version?.current_version);
           }}
           style={{ marginBottom: 8, display: 'block' }}
         />

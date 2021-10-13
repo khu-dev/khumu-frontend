@@ -1,8 +1,9 @@
-import { color } from '@constants/theme';
-import { css } from '@emotion/react';
-// import { AndroidToast } from '@src/utils/android';
 import { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
+
+import { color } from '@constants/theme';
 import { MyBox, MyRow, MyTitle, LinkRow } from '../Shared';
+import { Version } from '@interface/Version';
 
 const Guide = () => {
   const [version, setVersion] = useState('-');
@@ -10,10 +11,9 @@ const Guide = () => {
   useEffect(() => {
     if (!process.browser) return;
 
-    // const Android = (window as any)?.Android;
-    // const version = Android?.getVersionInfo();
-    // AndroidToast('version info - ' + version);
-    setVersion(version || '-');
+    const Android = (window as any)?.Android;
+    const version: Version = Android?.getVersionInfo();
+    setVersion(version?.current_version || '-');
   }, []);
 
   return (
