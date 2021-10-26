@@ -13,7 +13,7 @@ export default function QrcodeHeader({ title }: { title: string }) {
 
   return (
     <div className={'header header-align-center'}>
-      <LinkIcon onClick={() => back()}>
+      <LinkIcon pathname="" onClick={() => back()}>
         <IoChevronBackOutline css={csses.icon} />
       </LinkIcon>
       <Title02 css={csses.title}>{title}</Title02>

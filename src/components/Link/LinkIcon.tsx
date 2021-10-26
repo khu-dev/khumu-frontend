@@ -3,13 +3,9 @@
  */
 
 import Link from 'next/link';
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 
-interface Props extends HTMLAttributes<HTMLAnchorElement> {
-  pathname?: string;
-}
-
-export default function LinkIcon({ pathname, children, ...rest }: Props) {
+export default function LinkIcon({ pathname, children, ...rest }) {
   const Icon: any = React.forwardRef<HTMLAnchorElement>((props, ref) => (
     <a ref={ref} {...rest} {...props}>
       {props.children}
