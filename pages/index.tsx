@@ -1,13 +1,15 @@
-/**
- * @description 제작된 페이지 목록
- */
-import React from 'react';
+import React, { useState } from 'react';
 
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
 import { fetchNotifications } from '@api/api-notifications';
 
 export default function MainPage() {
+  const [version, setVersion] = useState<{ raw: any; prev: any; parsed: any }>({
+    raw: '',
+    prev: '',
+    parsed: '',
+  });
   const navList = [
     { title: '메인', path: '/main' },
     { title: 'QR코드', path: '/qrcode' },
@@ -40,6 +42,30 @@ export default function MainPage() {
           }}
           style={{ marginBottom: 8, display: 'block' }}
         />
+
+        <input
+          type={'button'}
+          value={'버전정보 가져오기 Android.getVersionInfo()'}
+          onClick={() => {
+            const version =
+              (window as any).Android?.getVersionInfo() ||
+              `{"current_version": "sample"}`;
+
+            AndroidToast(typeof (window as any).Android?.getVersionInfo());
+            AndroidToast((window as any).Android?.getVersionInfo());
+
+            setVersion({
+              raw: (window as any).Android?.getVersionInfo(),
+              prev: version,
+              parsed: JSON.parse(version)?.current_version,
+            });
+          }}
+          style={{ marginBottom: 8, display: 'block' }}
+        />
+        <h5>버전정보</h5>
+        <p>raw : {version.raw}</p>
+        <p>파싱 전 : {version.prev}</p>
+        <p>파싱 후 : {version.parsed}</p>
       </div>
     </>
   );
