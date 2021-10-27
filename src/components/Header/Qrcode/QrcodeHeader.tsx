@@ -5,13 +5,15 @@ import { css } from '@emotion/react';
 import { color } from '@constants/theme';
 import LinkIcon from '@components/Link';
 import { Title02 } from '@components/Title';
+import { useRouter } from 'next/router';
 
 export default function QrcodeHeader({ title }: { title: string }) {
   const csses = useStyles();
+  const { back } = useRouter();
 
   return (
     <div className={'header header-align-center'}>
-      <LinkIcon pathname={'/'}>
+      <LinkIcon pathname="" onClick={() => back()}>
         <IoChevronBackOutline css={csses.icon} />
       </LinkIcon>
       <Title02 css={csses.title}>{title}</Title02>
