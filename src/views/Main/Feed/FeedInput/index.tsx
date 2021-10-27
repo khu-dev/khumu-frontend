@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { css } from '@emotion/react';
 
 import { useFeedInput } from '@context/Feed/Input';
@@ -23,6 +23,20 @@ const Title = ({ title }) => (
 const TextArea = ({ placeholder }) => {
   const contentRef = React.useRef<HTMLTextAreaElement>(null);
   const { focus, handler } = useFeedInput();
+
+  useEffect(() => {
+    const basic = window.onpopstate;
+    const back = (e: PopStateEvent) => {
+      e.preventDefault();
+      handler.handleBlur();
+    };
+
+    window.onpopstate = back;
+
+    return () => {
+      window.onpopstate = basic;
+    };
+  }, []);
 
   return (
     <>

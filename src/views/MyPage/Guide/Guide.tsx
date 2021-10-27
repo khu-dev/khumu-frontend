@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { color } from '@constants/theme';
-import { MyBox, MyRow, MyTitle, LinkRow } from '../Shared';
-import { AndroidToast } from '@src/utils/android';
+import {
+  MyBox,
+  MyRow,
+  MyTitle,
+  // LinkRow
+} from '../Shared';
+// import { AndroidToast } from '@src/utils/android';
 
 const Guide = () => {
   const [version, setVersion] = useState<any>('-');
@@ -11,9 +16,9 @@ const Guide = () => {
   useEffect(() => {
     if (!process.browser) return;
 
-    const Android = (window as any)?.Android;
-    const version = Android?.getVersionInfo() || `{"current_version": "-"}`;
-    AndroidToast(`${version}`);
+    // const Android = (window as any)?.Android;
+    // const version = Android?.getVersionInfo() || `{"current_version": "-"}`;
+    // AndroidToast(`${version}`);
     // setVersion(JSON.parse(version)?.current_version);
     setVersion('??');
   }, []);
@@ -38,11 +43,11 @@ const Guide = () => {
           {version}
         </MyRow>
       </MyRow>
-      <MyRow>{'문의하기'}</MyRow>
-      <LinkRow pathname={'/announcements'}>{'공지사항'}</LinkRow>
+      {/* <MyRow>{'문의하기'}</MyRow> */}
+      {/* <LinkRow pathname={'/announcements'}>{'공지사항'}</LinkRow> */}
       <MyRow>{'서비스 이용약관'}</MyRow>
-      <MyRow>{'개인정보 처리방침'}</MyRow>
-      <MyRow>{'오픈소스 라이선스'}</MyRow>
+      {/* <MyRow>{'개인정보 처리방침'}</MyRow> */}
+      {/* <MyRow>{'오픈소스 라이선스'}</MyRow> */}
     </MyBox>
   );
 };
