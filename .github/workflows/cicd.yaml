@@ -52,18 +52,17 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Build               
-        run: yarn build && yarn export
-
       - name: Deploy to Dev
         if: ${{ env.environment == 'dev' }}
         run: |
+          NODE_ENV=development yarn build && yarn export
           aws s3 sync out s3://khumu-web-dev
           aws cloudfront create-invalidation --distribution-id ES23182J4NTX9 --paths "/*"
       
       - name: Deploy to Prd
         if: ${{ env.environment == 'prd' }}
         run: |
+          NODE_ENV=production yarn build && yarn export
           aws s3 sync out s3://khumu-web-prd
           aws cloudfront create-invalidation --distribution-id E2VQ6DDWD04SV8 --paths "/*"
       

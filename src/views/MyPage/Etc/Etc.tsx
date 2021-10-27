@@ -1,4 +1,5 @@
 import router from 'next/router';
+import Link from 'next/link';
 import { useState } from 'react';
 import { fetchUsers } from '@src/api';
 import { MyBox, MyRow, MyTitle } from '../Shared';
@@ -34,7 +35,9 @@ const Etc = () => {
       >
         {'회원 탈퇴'}
       </MyRow>
-      <MyRow>{'로그아웃'}</MyRow>
+      <Link href="/logout">
+        <MyRow>{'로그아웃'}</MyRow>
+      </Link>
       <Modal isActive={isModal} handleCancel={() => handleModal(false)}>
         <s.ResignTitle>정말 탈퇴하시겠어요?</s.ResignTitle>
         <s.ResignSummary>
