@@ -33,7 +33,7 @@ export const iconStyle = (isRead) => css`
 `;
 
 export const NotiContent = styled.div`
-  flex-grow: 1;
+  width: calc(100vw - 150px);
   height: calc(100% - 16px);
   margin: 8px ${box.margin};
   display: flex;
@@ -69,6 +69,7 @@ export const NotiDescription = styled.p`
 `;
 
 export const NotiDay = styled.span`
+  width: 32px;
   margin-right: ${box.margin};
   margin-bottom: 4px;
   font-size: 9px;

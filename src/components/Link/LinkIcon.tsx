@@ -12,9 +12,11 @@ export default function LinkIcon({ pathname, children, ...rest }) {
     </a>
   ));
 
-  return (
+  return pathname ? (
     <Link href={pathname} passHref>
       <Icon>{children}</Icon>
     </Link>
+  ) : (
+    <Icon>{children}</Icon>
   );
 }

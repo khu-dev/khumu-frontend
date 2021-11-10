@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { IMG_URI } from '@config/baseURI';
-import { useSwipeElement } from '@hooks/useSwipeElement';
 import ClubsCard from './ClubsCard';
 import ClubsPaging from './ClubsPaging';
 import Categories from './Categories';
@@ -10,35 +9,33 @@ import { useRouter } from 'next/router';
 import { Club } from '@interface/Club';
 import { getFontSize } from '@src/utils/font';
 
-const threshold = {
-  x: 100,
-  y: 1000,
-};
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import { css } from '@emotion/react';
 
-const Clubs = ({ categories, clubs }) => {
+interface Props {
+  categories: string[];
+  clubs: Club[];
+}
+
+const Clubs = ({ categories, clubs }: Props) => {
   const {
     query: { currentId },
   } = useRouter();
   const initRef = useRef(true);
   const [category, setCategory] = useState('전체');
+  const [size, setSize] = useState({
+    translateX: 0,
+    centerSlidePercentage: 100,
+  });
   const filteredClubs: Club[] = clubs.filter((club) => {
     if (category === '전체') return true;
 
-    return club.categories === category;
+    return club.categories.includes(category);
   });
 
   const [current, setCurrent] = useState(0);
   const clubLength = filteredClubs.length;
-
-  useEffect(() => {
-    if (!currentId || clubs.length === 0 || !initRef.current) return;
-
-    const currentClubIndex = clubs.findIndex(
-      (club) => club.id === Number(currentId),
-    );
-    setCurrent(currentClubIndex > 0 ? currentClubIndex : 0);
-    currentClubIndex !== -1 && (initRef.current = false);
-  }, [currentId, clubs]);
 
   const handleIndex = {
     minus: () => {
@@ -54,24 +51,31 @@ const Clubs = ({ categories, clubs }) => {
     setCurrent(0);
   };
 
-  const {
-    gap,
-    isMoving,
-    isEvent,
-    handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
-  } = useSwipeElement({
-    threshold,
-    callback: {
-      left: handleIndex.plus,
-      right: handleIndex.minus,
-    },
-  });
+  useEffect(() => {
+    if (!currentId || clubs.length === 0 || !initRef.current) return;
 
-  const currentClub = [
-    filteredClubs[current - 1],
-    filteredClubs[current],
-    filteredClubs[current + 1],
-  ];
+    const currentClubIndex = clubs.findIndex(
+      (club) => club.id === Number(currentId),
+    );
+    setCurrent(currentClubIndex > 0 ? currentClubIndex : 0);
+    currentClubIndex !== -1 && (initRef.current = false);
+  }, [currentId, clubs]);
+
+  useLayoutEffect(() => {
+    if (!process.browser) return;
+
+    const _window = process.browser && (window as any);
+    const innerWidth = _window?.innerWidth || 0;
+    const centerSlidePercentage = innerWidth > 500 ? 100 : 88;
+    const translateX = (100 - centerSlidePercentage) / 2;
+
+    setSize({
+      translateX,
+      centerSlidePercentage,
+    });
+  }, []);
+
+  const { translateX, centerSlidePercentage } = size;
 
   return (
     <>
@@ -80,38 +84,51 @@ const Clubs = ({ categories, clubs }) => {
         category={category}
         handleCategory={handleCategory}
       />
-      <s.ClubsCard>
-        {filteredClubs.length > 0 ? (
-          currentClub.map(
-            (club, idx) =>
-              club && (
-                <ClubsCard
-                  key={club?.name + idx}
-                  onMouseDown={handleTouchStart}
-                  onTouchStart={handleTouchStart}
-                  onMouseMove={handleTouchMove}
-                  onTouchMove={handleTouchMove}
-                  onMouseUp={handleTouchEnd}
-                  onTouchEnd={handleTouchEnd}
-                  gap={gap}
-                  isMoving={isMoving}
-                  isEvent={isEvent}
-                  idx={idx - 1}
-                >
-                  <ClubsCard.Image url={`${IMG_URI}/${club?.images[0]}`} />
-                  <ClubsCard.Content>
-                    <ClubsCard.Tag tag={'연행'} />
-                    <ClubsCard.Name
-                      name={club?.name}
-                      summary={club?.summary}
-                      fontSize={getFontSize(club?.summary?.length)}
-                    />
-                    <ClubsCard.Description description={club?.description} />
-                  </ClubsCard.Content>
-                </ClubsCard>
-              ),
-          )
-        ) : (
+      <s.ClubsCard
+        css={(() => {
+          switch (current) {
+            case 0:
+              return css`
+                transform: translateX(${translateX}%);
+              `;
+            case filteredClubs.length - 1:
+              return css`
+                transform: translateX(${-translateX}%);
+              `;
+          }
+        })()}
+      >
+        <Carousel
+          autoPlay={false}
+          showArrows={false}
+          showStatus={false}
+          showIndicators={false}
+          centerMode={true}
+          centerSlidePercentage={centerSlidePercentage}
+          interval={999999}
+          onChange={(idx: number) => setCurrent(idx)}
+          selectedItem={current}
+        >
+          {filteredClubs.length > 0 &&
+            filteredClubs.map(
+              (club, idx) =>
+                club && (
+                  <ClubsCard key={club?.name + idx}>
+                    <ClubsCard.Image url={`${IMG_URI}/${club?.images[0]}`} />
+                    <ClubsCard.Content>
+                      <ClubsCard.Tag tag={'연행'} />
+                      <ClubsCard.Name
+                        name={club?.name}
+                        summary={club?.summary}
+                        fontSize={getFontSize(club?.summary?.length)}
+                      />
+                      <ClubsCard.Description description={club?.description} />
+                    </ClubsCard.Content>
+                  </ClubsCard>
+                ),
+            )}
+        </Carousel>
+        {filteredClubs.length === 0 && (
           <s.Nothing>동아리가 존재하지 않습니다</s.Nothing>
         )}
       </s.ClubsCard>
