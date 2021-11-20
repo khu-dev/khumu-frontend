@@ -35,7 +35,7 @@ const Etc = () => {
       >
         {'회원 탈퇴'}
       </MyRow>
-      <Link href="/logout" passHref>
+      <Link href="/logout">
         <a>
           <MyRow>{'로그아웃'}</MyRow>
         </a>
