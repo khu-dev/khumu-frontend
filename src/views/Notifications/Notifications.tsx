@@ -18,7 +18,6 @@ const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
     });
 
     if (data) {
-      // fail
       alert(data?.message);
     }
 
@@ -38,9 +37,9 @@ const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
       handleClick={() => handleRead(item.id)}
       handleDelete={() => handleDelete(item.id)}
     >
-      <Link href={{ pathname: `/${item.reference}` }} passHref>
+      <Link href={item.link || ''} passHref>
         <a
-          target={'_blank'}
+          target={item.link ? '_blank' : undefined}
           rel={'noreferrer'}
           css={css`
             width: 100%;
