@@ -8,7 +8,8 @@
     "type-check": "tsc",
     "export": "next export",
     "netlify-deploy": "next build",
-    "prod": "NODE_ENV=production next build && next export"
+    "export:prod": "MODE=prod NODE_ENV=production next build && MODE=prod NODE_ENV=production next export",
+    "export:dev": "MODE=dev NODE_ENV=development next build && MODE=dev NODE_ENV=development next export"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.2.0",

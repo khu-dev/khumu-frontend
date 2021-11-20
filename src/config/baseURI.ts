@@ -1,5 +1,4 @@
-const isDev = process.env.NODE_ENV === 'development';
-console.log(process.env.NODE_ENV);
+const isDev = process.env.MODE === 'dev';
 
 export const BASE_URI = isDev
   ? 'https://api.dev.khumu.me/api'
