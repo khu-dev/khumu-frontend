@@ -55,7 +55,7 @@ jobs:
       - name: Deploy to Dev
         if: ${{ env.environment == 'dev' }}
         run: |
-          yarn export:dev
+          yarn build
           aws s3 sync out s3://khumu-web-dev
           aws cloudfront create-invalidation --distribution-id ES23182J4NTX9 --paths "/*"
       
