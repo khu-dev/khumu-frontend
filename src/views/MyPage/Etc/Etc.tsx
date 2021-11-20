@@ -35,8 +35,10 @@ const Etc = () => {
       >
         {'회원 탈퇴'}
       </MyRow>
-      <Link href="/logout">
-        <MyRow>{'로그아웃'}</MyRow>
+      <Link href="/logout" passHref>
+        <a>
+          <MyRow>{'로그아웃'}</MyRow>
+        </a>
       </Link>
       <Modal isActive={isModal} handleCancel={() => handleModal(false)}>
         <s.ResignTitle>정말 탈퇴하시겠어요?</s.ResignTitle>
