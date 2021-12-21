@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { useUser } from '@context/User';
 import CommonHeader from '@components/Header/Common';
@@ -17,7 +17,7 @@ interface Data {
 export default function MyEditPage() {
   const { token } = useToken();
   const {
-    info: { username, department, nickname, student_number },
+    info: { username, department, nickname, student_number, profile_image },
     setUser,
   } = useUser();
   const router = useRouter();
@@ -27,6 +27,7 @@ export default function MyEditPage() {
   const [state, setState] = useState({
     nickname: nickname || '',
     department,
+    profile_image,
   });
 
   const goBack = () => {
@@ -39,6 +40,13 @@ export default function MyEditPage() {
     setState((prev) => ({
       ...prev,
       [target.name]: target.value,
+    }));
+  };
+
+  const handleImageName = (name: string) => {
+    setState((prev) => ({
+      ...prev,
+      profile_image: name,
     }));
   };
 
@@ -68,8 +76,9 @@ export default function MyEditPage() {
     setState({
       nickname: nickname || '',
       department,
+      profile_image,
     });
-  }, [username, department]);
+  }, [username, department, profile_image]);
 
   useEffect(() => {
     if (!token) return;
@@ -101,7 +110,7 @@ export default function MyEditPage() {
         color={'#6C6C6C'}
       />
       <Edit>
-        <Edit.Image />
+        <Edit.Image handleImageName={handleImageName} />
         <Edit.Nickname nickname={state.nickname} onChange={handleChange} />
         <Edit.StudentNumber studentNumber={student_number} />
         <Edit.Department

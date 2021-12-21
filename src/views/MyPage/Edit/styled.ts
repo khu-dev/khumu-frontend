@@ -20,6 +20,19 @@ export const Image = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+`;
+
+export const Uploader = styled.input`
+  width: 102px;
+  height: 102px;
+  border-radius: ${box.borderRadius};
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: green;
+  opacity: 0;
 `;
 
 export const Form = styled.form`

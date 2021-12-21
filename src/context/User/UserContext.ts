@@ -16,6 +16,7 @@ export const initialUser = {
     user_permissions: [],
     username: '',
     nickname: '',
+    profile_image: null,
   },
   setUser: (info) => {
     console.log(info);
