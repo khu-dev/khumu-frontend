@@ -23,7 +23,7 @@ const Hot = ({ hots = initialHots }: Props) => {
       <cs.IconTitle pathname={`/articles?board=hot`} title={'실시간 인기 글'} />
       {hots.slice(0, 3).map((hot, idx) => (
         <Link key={hot?.id || idx} href={`/articles/${hot?.id}`}>
-          <a>
+          <a css={s.colorBlack}>
             <s.HotItem>
               <s.Author>{hot?.author?.nickname}</s.Author>
               <s.TimeAgo>

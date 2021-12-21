@@ -1,4 +1,6 @@
-const isDev = process.browser && window.location.href.includes('dev');
+const isDev =
+  (process.browser && window.location.href.includes('dev')) ||
+  process.env.NODE_ENV === 'development';
 
 export const BASE_URI = isDev
   ? 'https://api.dev.khumu.me/api'
