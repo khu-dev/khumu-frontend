@@ -9,3 +9,4 @@ export * from './api-schedules';
 export * from './api-signup';
 export * from './api-token';
 export * from './api-users';
+export * from './api-image';
