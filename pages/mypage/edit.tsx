@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useUser } from '@context/User';
 import CommonHeader from '@components/Header/Common';
@@ -34,17 +34,17 @@ export default function MyEditPage() {
     router.back();
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const target = e.target;
 
-    setState((prev) => ({
+    setState(prev => ({
       ...prev,
       [target.name]: target.value,
     }));
   };
 
   const handleImageName = (name: string) => {
-    setState((prev) => ({
+    setState(prev => ({
       ...prev,
       profile_image: name,
     }));
@@ -87,7 +87,7 @@ export default function MyEditPage() {
       const res = await fetchDepartments.select();
 
       if (res.status === 200) {
-        const newData = res.data.map((info) => ({
+        const newData = res.data.map(info => ({
           name: info.name,
           id: info.id,
         }));
