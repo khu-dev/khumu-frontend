@@ -8,6 +8,9 @@ const textOverflowHiddenStyle = css`
   overflow: hidden;
   white-space: nowrap;
 `;
+export const colorBlack = css`
+  color: ${color.black};
+`;
 
 export const HotItem = styled.div`
   height: 66px;
