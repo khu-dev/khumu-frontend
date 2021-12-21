@@ -8,7 +8,7 @@ import { box } from '@constants/theme';
 
 export default function MyPagePage() {
   const {
-    info: { nickname, department, student_number },
+    info: { nickname, department, student_number, profile_image },
   } = useUser();
 
   return (
@@ -24,6 +24,7 @@ export default function MyPagePage() {
           name={nickname || '닉네임'}
           department={department}
           studentNumber={student_number}
+          profileImage={profile_image}
         />
         <Page.MyCommunity />
         {/* <Page.MyStudy /> */}

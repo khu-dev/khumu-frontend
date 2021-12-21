@@ -5,9 +5,7 @@ import Image from './ProfileImage';
 import Info from './ProfileInfo';
 import ReleaseButton from './ProfileReleaseButton';
 
-const sample = 'https://thispersondoesnotexist.com/image';
-
-const Profile = ({ name, department, studentNumber }) => (
+const Profile = ({ name, department, studentNumber, profileImage }) => (
   <MyBox
     css={css`
       display: flex;
@@ -16,7 +14,7 @@ const Profile = ({ name, department, studentNumber }) => (
     `}
     isProfile
   >
-    <Image src={sample} />
+    <Image src={profileImage} />
     <Info name={name} department={department} studentNumber={studentNumber} />
     <ReleaseButton title={'나의 정보 변경'} />
   </MyBox>
