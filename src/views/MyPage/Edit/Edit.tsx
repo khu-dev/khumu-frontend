@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from 'react';
+import React, { ChangeEvent } from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { color } from '@constants/theme';
 
