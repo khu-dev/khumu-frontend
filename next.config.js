@@ -1,6 +1,9 @@
 module.exports = {
   trailingSlash: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   env: {
-    MODE: process.env.MODE === 'dev' ? 'dev' : 'prod'
-  }
+    MODE: process.env.MODE === 'dev' ? 'dev' : 'prod',
+  },
 };
