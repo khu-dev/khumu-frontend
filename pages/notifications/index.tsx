@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '@components/Header/Common'
 import { color } from '@constants/theme'
