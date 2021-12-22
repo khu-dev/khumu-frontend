@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import CommonHeader from '@components/Header/Common';
-import * as Page from '@views/MyPage';
-import { useUser } from '@context/User';
-import styled from '@emotion/styled';
-import { box } from '@constants/theme';
+import CommonHeader from '@components/Header/Common'
+import * as Page from '@views/MyPage'
+import { useUser } from '@context/User'
+import styled from '@emotion/styled'
+import { box } from '@constants/theme'
 
 export default function MyPagePage() {
   const {
     info: { nickname, department, student_number, profile_image },
-  } = useUser();
+  } = useUser()
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function MyPagePage() {
         <Page.MyEtc />
       </Container>
     </>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -42,4 +42,4 @@ const Container = styled.div`
   padding: ${box.padding};
 
   background-color: #e4e4e4;
-`;
+`

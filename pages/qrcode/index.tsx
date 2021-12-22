@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
+//@ts-nocheck
 
-import Qrcode from '@views/Qrcode';
-import QrcodeHeader from '@components/Header/Qrcode';
-import { QrcodeApi } from '@src/api/QrcodeApi';
-import { QRcode } from '@interface/QRcode';
-import { useToken } from '@src/context/Token';
+import React, { useCallback, useEffect, useState } from 'react'
+
+import Qrcode from '@views/Qrcode'
+import QrcodeHeader from '@components/Header/Qrcode'
+import { QrcodeApi } from '@src/api/QrcodeApi'
+import { QRcode } from '@interface/QRcode'
+import { useToken } from '@src/context/Token'
 
 const initialState: QRcode = {
   qr_code_str: '',
   name: '',
   department: '',
   student_number: '',
-};
+}
 
 // interface Props {
 //   qrcode: QRcode;
@@ -19,25 +21,25 @@ const initialState: QRcode = {
 
 export default function QRCodePage() {
   // { qrcode }: Props
-  const { token } = useToken();
-  const [info, setInfo] = useState(initialState);
+  const { token } = useToken()
+  const [info, setInfo] = useState(initialState)
 
-  const fetchData = async () => {
-    if (info.qr_code_str) setInfo(initialState);
-    const { data } = await QrcodeApi.get();
+  const fetchData = useCallback(async () => {
+    if (info.qr_code_str) setInfo(initialState)
+    const { data } = await QrcodeApi.get()
 
     if (data) {
-      const { data: info } = data;
+      const { data: info } = data
 
-      setInfo(info);
+      setInfo(info)
     }
-  };
+  }, [info.qr_code_str])
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) return
 
-    fetchData();
-  }, [token]);
+    fetchData()
+  }, [token, fetchData])
 
   return (
     <>
@@ -52,5 +54,5 @@ export default function QRCodePage() {
         handleRefresh={fetchData}
       />
     </>
-  );
+  )
 }

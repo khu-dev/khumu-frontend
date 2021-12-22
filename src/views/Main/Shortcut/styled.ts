@@ -1,5 +1,5 @@
-import { box, color } from '@constants/theme';
-import styled from '@emotion/styled';
+import { box, color } from '@constants/theme'
+import styled from '@emotion/styled'
 
 export const Container = styled.div`
   width: ${box.marginWidth};
@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+`
 
 export const ShortcutItem = styled.div`
   width: 72px;
@@ -20,4 +20,4 @@ export const ShortcutItem = styled.div`
   font-size: 12px;
   text-align: center;
   color: ${color.black};
-`;
+`

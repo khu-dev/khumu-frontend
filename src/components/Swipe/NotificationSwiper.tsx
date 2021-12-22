@@ -1,31 +1,30 @@
-/**
- * @description 제작된 페이지 목록
- */
-import { color } from '@constants/theme';
-import { css } from '@emotion/react';
-import React from 'react';
-import { useState } from 'react';
-import { useSwipeElement } from '@hooks/useSwipeElement';
-import { DeleteButton, Swiper } from './styled';
+//@ts-nocheck
+
+import { color } from '@constants/theme'
+import { css } from '@emotion/react'
+import React from 'react'
+import { useState } from 'react'
+import { useSwipeElement } from '@hooks/useSwipeElement'
+import { DeleteButton, Swiper } from './styled'
 
 const threshold = {
   x: 48,
   y: 48,
-};
-const reset = 'right';
+}
+const reset = 'right'
 
 export default function NotificationSwiper({
   children,
   handleClick,
   handleDelete,
   ...rest
-}) {
+}: any) {
   const {
     isEvent,
     isMoving,
     handler: { handleTouchStart, handleTouchMove, handleTouchEnd },
-  } = useSwipeElement({ threshold, reset });
-  const [isDelete, setDelete] = useState(false);
+  } = useSwipeElement({ threshold, reset })
+  const [isDelete, setDelete] = useState(false)
 
   return (
     <div
@@ -56,12 +55,12 @@ export default function NotificationSwiper({
         isDelete={isDelete}
         isEvent={isEvent}
         onClick={() => {
-          handleDelete();
-          setDelete(true);
+          handleDelete()
+          setDelete(true)
         }}
       >
         {'삭제'}
       </DeleteButton>
     </div>
-  );
+  )
 }

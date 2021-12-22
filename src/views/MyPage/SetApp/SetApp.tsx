@@ -1,4 +1,4 @@
-import { MyBox, MyRow, MyTitle } from '../Shared';
+import { MyBox, MyRow, MyTitle } from '../Shared'
 
 const SetApp = () => (
   <MyBox>
@@ -6,6 +6,6 @@ const SetApp = () => (
     <MyRow>{'알림 설정'}</MyRow>
     <MyRow>{'암호 잠금'}</MyRow>
   </MyBox>
-);
+)
 
-export default SetApp;
+export default SetApp

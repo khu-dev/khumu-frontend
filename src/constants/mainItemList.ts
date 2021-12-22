@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/react'
 
 export const mainItemList = [
   {
@@ -91,4 +91,4 @@ export const mainItemList = [
       '2': { marginRight: '0px' },
     },
   },
-];
+]

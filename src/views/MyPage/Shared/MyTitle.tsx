@@ -1,8 +1,8 @@
-import { CustomTitle } from '@components/Title';
-import { css } from '@emotion/react';
+import { CustomTitle } from '@components/Title'
+import { css } from '@emotion/react'
 
 interface MyTitleProps {
-  title: string;
+  title: string
 }
 
 export const MyTitle = ({ title, ...rest }: MyTitleProps) => (
@@ -15,4 +15,4 @@ export const MyTitle = ({ title, ...rest }: MyTitleProps) => (
   >
     {title}
   </CustomTitle>
-);
+)

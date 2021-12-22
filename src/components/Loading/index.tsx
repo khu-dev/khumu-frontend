@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { css } from '@emotion/react';
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { css } from '@emotion/react'
 
 export default function Loading() {
-  const router = useRouter();
-  const [isLoading, setLoading] = useState(false);
+  const router = useRouter()
+  const [isLoading, setLoading] = useState(false)
 
   const handleStart = () => {
-    setLoading(true);
-  };
+    setLoading(true)
+  }
   const handleComplete = () => {
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   useEffect(() => {
-    router.events.on('routeChangeStart', handleStart);
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
 
     return () => {
-      router.events.off('routeChangeStart', handleStart);
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
-    };
-  }, []);
+      router.events.off('routeChangeStart', handleStart)
+      router.events.off('routeChangeComplete', handleComplete)
+      router.events.off('routeChangeError', handleComplete)
+    }
+  }, [router.events])
 
   return (
     isLoading && (
@@ -140,5 +140,5 @@ export default function Loading() {
         </div>
       </div>
     )
-  );
+  )
 }

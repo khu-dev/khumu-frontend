@@ -1,12 +1,14 @@
-import { color } from '@constants/theme';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+//@ts-nocheck
 
-const elementHeight = '72px';
+import { color } from '@constants/theme'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+
+const elementHeight = '72px'
 
 export const Swiper = styled.div<{
-  isDelete: boolean;
-  isEvent: boolean;
+  isDelete: boolean
+  isEvent: boolean
 }>`
   width: 100vw;
   height: ${elementHeight};
@@ -40,12 +42,12 @@ export const Swiper = styled.div<{
           transition: transform 0.8s;
         `
       : css``}
-`;
+`
 
 export const DeleteButton = styled.span<{
-  isDelete?: boolean;
-  isEvent: boolean;
-  isMoving: boolean;
+  isDelete?: boolean
+  isEvent: boolean
+  isMoving: boolean
 }>`
   width: 72px;
   height: ${elementHeight};
@@ -68,4 +70,4 @@ export const DeleteButton = styled.span<{
           transition: width 0.8s, transform 0.4s;
         `
       : css``}
-`;
+`

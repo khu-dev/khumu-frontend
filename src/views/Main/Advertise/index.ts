@@ -1,1 +1,1 @@
-export { default } from './Advertise';
+export { default } from './Advertise'

@@ -1,6 +1,8 @@
-import { box, color } from '@constants/theme';
-import styled from '@emotion/styled';
-import Link from 'next/link';
+//@ts-nocheck
+
+import { box, color } from '@constants/theme'
+import styled from '@emotion/styled'
+import Link from 'next/link'
 
 export const Setting = () => (
   <Container>
@@ -8,13 +10,13 @@ export const Setting = () => (
       <Button>알림설정</Button>
     </Link>
   </Container>
-);
+)
 
 const Container = styled.div`
   width: ${box.paddingWidth};
   padding: ${box.padding};
   border-bottom: 1px solid ${color.gray6};
-`;
+`
 
 const Button = styled.button`
   width: 75px;
@@ -26,4 +28,4 @@ const Button = styled.button`
   border: none;
   border-radius: 12px;
   float: right;
-`;
+`

@@ -1,11 +1,11 @@
-import { box, color } from '@constants/theme';
-import styled from '@emotion/styled';
+import { box, color } from '@constants/theme'
+import styled from '@emotion/styled'
 
 export const Clubs = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-`;
+`
 
 export const ClubItem = styled.div<{ url: string }>`
   width: 82px;
@@ -19,7 +19,7 @@ export const ClubItem = styled.div<{ url: string }>`
   background-size: cover;
 
   overflow: hidden;
-`;
+`
 
 export const Name = styled.span`
   width: 100%;
@@ -34,4 +34,4 @@ export const Name = styled.span`
   align-items: center;
 
   background-color: rgba(0, 0, 0, 0.6);
-`;
+`

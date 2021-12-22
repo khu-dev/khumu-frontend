@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
-import { css } from '@emotion/react';
+//@ts-nocheck
 
-import { useFeedInput } from '@context/Feed/Input';
-import { color } from '@constants/theme';
-import { Title03 } from '@components/Title';
-import * as s from './SearchArea.styled';
-import { FeedbackButton } from 'src/enum/FeedbackButton';
-import { AndroidToast } from '@utils/android';
+import React, { useEffect } from 'react'
+import { css } from '@emotion/react'
+
+import { useFeedInput } from '@context/Feed/Input'
+import { color } from '@constants/theme'
+import { Title03 } from '@components/Title'
+import * as s from './SearchArea.styled'
+import { FeedbackButton } from 'src/enum/FeedbackButton'
+import { AndroidToast } from '@utils/android'
 
 const Title = ({ title }) => (
   <Title03
@@ -18,25 +20,25 @@ const Title = ({ title }) => (
   >
     {title}
   </Title03>
-);
+)
 
 const TextArea = ({ placeholder }) => {
-  const contentRef = React.useRef<HTMLTextAreaElement>(null);
-  const { focus, handler } = useFeedInput();
+  const contentRef = React.useRef<HTMLTextAreaElement>(null)
+  const { focus, handler } = useFeedInput()
 
   useEffect(() => {
-    const basic = window.onpopstate;
+    const basic = window.onpopstate
     const back = (e: PopStateEvent) => {
-      e.preventDefault();
-      handler.handleBlur();
-    };
+      e.preventDefault()
+      handler.handleBlur()
+    }
 
-    window.onpopstate = back;
+    window.onpopstate = back
 
     return () => {
-      window.onpopstate = basic;
-    };
-  }, []);
+      window.onpopstate = basic
+    }
+  }, [])
 
   return (
     <>
@@ -68,8 +70,8 @@ const TextArea = ({ placeholder }) => {
             type={FeedbackButton.SUBMIT}
             onClick={() => {
               if (contentRef.current.value.length === 0)
-                return AndroidToast('내용을 적어주세요');
-              handler.handleSubmit(contentRef.current.value);
+                return AndroidToast('내용을 적어주세요')
+              handler.handleSubmit(contentRef.current.value)
             }}
           >
             {'전송'}
@@ -83,16 +85,16 @@ const TextArea = ({ placeholder }) => {
         </label>
       )}
     </>
-  );
-};
+  )
+}
 
 const FeedInput = ({ children }) => {
-  const { focus } = useFeedInput();
+  const { focus } = useFeedInput()
 
-  return <s.OuterContainer focus={focus}>{children}</s.OuterContainer>;
-};
+  return <s.OuterContainer focus={focus}>{children}</s.OuterContainer>
+}
 
-FeedInput.Title = Title;
-FeedInput.TextArea = TextArea;
+FeedInput.Title = Title
+FeedInput.TextArea = TextArea
 
-export default FeedInput;
+export default FeedInput

@@ -1,16 +1,16 @@
-import { color } from '@constants/theme';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { color } from '@constants/theme'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 
-const contentMarginLeft = '24px';
+const contentMarginLeft = '24px'
 const textOverflowHiddenStyle = css`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-`;
+`
 export const colorBlack = css`
   color: ${color.black};
-`;
+`
 
 export const HotItem = styled.div`
   height: 66px;
@@ -26,7 +26,7 @@ export const HotItem = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
-`;
+`
 
 export const Author = styled.p`
   font-size: 9px;
@@ -34,7 +34,7 @@ export const Author = styled.p`
   margin-left: ${contentMarginLeft};
 
   ${textOverflowHiddenStyle};
-`;
+`
 
 export const TimeAgo = styled.span`
   position: absolute;
@@ -42,7 +42,7 @@ export const TimeAgo = styled.span`
   font-weight: 300;
   top: 6px;
   right: 6px;
-`;
+`
 
 export const Title = styled.h3`
   height: 18px;
@@ -52,7 +52,7 @@ export const Title = styled.h3`
   font-weight: 400;
 
   ${textOverflowHiddenStyle};
-`;
+`
 
 export const Content = styled.p`
   height: 16px;
@@ -63,7 +63,7 @@ export const Content = styled.p`
   font-weight: 300;
 
   ${textOverflowHiddenStyle};
-`;
+`
 
 export const BoardName = styled.span`
   position: absolute;
@@ -71,7 +71,7 @@ export const BoardName = styled.span`
   bottom: 12px;
   font-size: 4px;
   font-weight: 300;
-`;
+`
 
 export const Summary = styled.div`
   width: 72px;
@@ -87,7 +87,7 @@ export const Summary = styled.div`
 
   border-radius: 9px;
   border-top-right-radius: 0;
-`;
+`
 
 export const SummaryItem = styled.span`
   font-size: 10px;
@@ -96,10 +96,10 @@ export const SummaryItem = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const iconStyle = css`
   color: ${color.white};
   font-size: 9px;
   margin-right: 4px;
-`;
+`

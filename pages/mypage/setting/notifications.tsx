@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import CommonHeader from '@components/Header/Common';
-import SetNoti from '@views/MyPage/Setting';
-import { NotificationApi } from '@src/api/NotificationApi';
-import { NotificationOptions } from '@interface/Notification';
-import { AndroidToast } from '@utils/android';
-import { useToken } from '@src/context/Token';
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import CommonHeader from '@components/Header/Common'
+import SetNoti from '@views/MyPage/Setting'
+import { NotificationApi } from '@src/api/NotificationApi'
+import { NotificationOptions } from '@interface/Notification'
+import { AndroidToast } from '@utils/android'
+import { useToken } from '@src/context/Token'
 
 // interface Props {
 //   options: NotificationOptions;
@@ -14,36 +14,36 @@ import { useToken } from '@src/context/Token';
 const MySetNotiPage = () =>
   // { options }: Props
   {
-    const router = useRouter();
-    const { token } = useToken();
-    const [options, setOptions] = useState<NotificationOptions[]>([]);
+    const router = useRouter()
+    const { token } = useToken()
+    const [options, setOptions] = useState<NotificationOptions[]>([])
 
     const goBack = () => {
-      router.back();
-    };
+      router.back()
+    }
 
     const updateSetting = async (id, status, setActive) => {
-      const result = await NotificationApi.update({ id, status: !status });
+      const result = await NotificationApi.update({ id, status: !status })
 
-      console.log(result);
+      console.log(result)
 
-      AndroidToast('푸시알림 설정 수정');
-      setActive(!status);
-    };
+      AndroidToast('푸시알림 설정 수정')
+      setActive(!status)
+    }
 
     useEffect(() => {
-      if (!token) return;
+      if (!token) return
 
       const fetchData = async () => {
-        const res = await NotificationApi.options();
+        const res = await NotificationApi.options()
 
         if (res.status === 200) {
-          setOptions(res.data?.data);
+          setOptions(res.data?.data)
         }
-      };
+      }
 
-      fetchData();
-    }, [token]);
+      fetchData()
+    }, [token])
 
     return (
       <>
@@ -67,10 +67,10 @@ const MySetNotiPage = () =>
           updateSetting={updateSetting}
         />
       </>
-    );
-  };
+    )
+  }
 
-export default MySetNotiPage;
+export default MySetNotiPage
 
 // export const getServerSideProps = async () => {
 //   const res = await Promise.all([NotificationApi.options()]);

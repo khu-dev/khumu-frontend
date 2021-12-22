@@ -1,6 +1,8 @@
-import { BsCaretRightFill } from 'react-icons/bs';
+//@ts-nocheck
 
-import { color, font } from '@constants/theme';
+import { BsCaretRightFill } from 'react-icons/bs'
+
+import { color, font } from '@constants/theme'
 
 export default function FeedTitle({ title }: { title: string }) {
   return (
@@ -8,5 +10,5 @@ export default function FeedTitle({ title }: { title: string }) {
       <div className={'main-feed-title'}>{title}</div>
       <BsCaretRightFill color={color.white} size={font.iconSize} />
     </div>
-  );
+  )
 }

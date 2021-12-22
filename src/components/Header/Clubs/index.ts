@@ -1,1 +1,3 @@
-export { default } from './ClubsHeader';
+//@ts-nocheck
+
+export { default } from './ClubsHeader'

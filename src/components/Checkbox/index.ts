@@ -1,1 +1,3 @@
-export { default } from './Checkbox';
+//@ts-nocheck
+
+export { default } from './Checkbox'

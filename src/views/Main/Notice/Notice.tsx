@@ -1,16 +1,20 @@
-import { useState } from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { Notice as NoticeType } from '@interface/Notice';
-import * as cs from '../common.styled';
-import * as s from './styled';
+import { useState } from 'react'
+import { MdKeyboardArrowDown } from 'react-icons/md'
+import { Notice as NoticeType } from '@interface/Notice'
+import * as cs from '../common.styled'
+import * as s from './styled'
 
 const initialState = [
   { title: '총학생회', body: '2021-1 기말시험 안내', id: 0 },
-  { title: '총학생회', body: '2021-1 코로나 관련 특별 장학금 지금 안내', id: 1 },
-];
+  {
+    title: '총학생회',
+    body: '2021-1 코로나 관련 특별 장학금 지금 안내',
+    id: 1,
+  },
+]
 
 const Notice = () => {
-  const [notices] = useState<NoticeType[]>(initialState);
+  const [notices] = useState<NoticeType[]>(initialState)
 
   return (
     <cs.MainSection>
@@ -28,7 +32,7 @@ const Notice = () => {
         </s.NoticeItem>
       ))}
     </cs.MainSection>
-  );
-};
+  )
+}
 
-export default Notice;
+export default Notice

@@ -1,1 +1,3 @@
-export { default } from './Skeleton';
+//@ts-nocheck
+
+export { default } from './Skeleton'

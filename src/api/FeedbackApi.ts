@@ -1,9 +1,10 @@
-import { webClient } from 'src/module';
+import { webClient } from 'src/module'
 
 interface CreateRequest {
-  content: string;
+  content: string
 }
 
 export const FeedbackApi = {
-  create: ({ content }: CreateRequest) => webClient.post(`/feedbacks`, { content }),
-};
+  create: ({ content }: CreateRequest) =>
+    webClient.post(`/feedbacks`, { content }),
+}

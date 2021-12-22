@@ -1,4 +1,5 @@
 module.exports = {
+  reactStrictMode: true,
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
@@ -6,4 +7,4 @@ module.exports = {
   env: {
     MODE: process.env.MODE === 'dev' ? 'dev' : 'prod',
   },
-};
+}

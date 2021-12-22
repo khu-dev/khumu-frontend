@@ -1,56 +1,56 @@
-import { useToken } from '@context/Token';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useToken } from '@context/Token'
+import axios from 'axios'
+import { useState, useEffect, useCallback } from 'react'
 
-interface UseFetchURL {
-  method?: 'get' | 'post' | 'patch' | 'delete';
-  url: string;
-  option?: any;
+interface Props {
+  method?: 'get' | 'post' | 'patch' | 'delete'
+  url: string
+  option?: any
 }
 
-export const useFetchURL = ({ method = 'get', url, option }: UseFetchURL) => {
-  const { token } = useToken();
+export const useFetchURL = ({ method = 'get', url, option }: Props) => {
+  const { token } = useToken()
   const [result, setResult] = useState({
     data: null,
     loading: true,
     error: false,
-  });
+  })
 
-  const initRefresh = () => {
+  const initRefresh = useCallback(() => {
     result.loading &&
       setResult((prev) => ({
         ...prev,
         loading: true,
-      }));
-  };
+      }))
+  }, [result.loading])
 
-  const refreshData = async () => {
-    initRefresh();
+  const refreshData = useCallback(async () => {
+    initRefresh()
 
-    let result = null;
-    let error = false;
+    let result = null
+    let error = false
 
     try {
-      console.log(method);
+      console.log(method)
 
-      result = await axios.get(url, option);
+      result = await axios.get(url, option)
     } catch (err) {
-      error = true;
+      error = true
     } finally {
       setResult({
-        data: result,
+        data: result as any,
         error,
         loading: false,
-      });
+      })
     }
-  };
+  }, [initRefresh, method, option, url])
 
   useEffect(() => {
-    token && refreshData();
-  }, [token]);
+    token && refreshData()
+  }, [token, refreshData])
 
   return {
     result,
     refresh: refreshData,
-  };
-};
+  }
+}

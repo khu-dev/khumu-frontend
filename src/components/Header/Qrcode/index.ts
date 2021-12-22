@@ -1,1 +1,3 @@
-export { default } from './QrcodeHeader';
+//@ts-nocheck
+
+export { default } from './QrcodeHeader'

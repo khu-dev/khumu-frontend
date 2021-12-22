@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { box, color } from '@constants/theme';
+import styled from '@emotion/styled'
+import { box, color } from '@constants/theme'
 
 export const Container = styled.div`
   width: ${box.paddingWidth};
@@ -8,7 +8,7 @@ export const Container = styled.div`
   padding: ${box.padding};
 
   background-color: #e4e4e4;
-`;
+`
 
 export const SetItem = styled.div`
   width: ${box.marginWidth};
@@ -19,14 +19,14 @@ export const SetItem = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: ${box.borderRadius};
-`;
+`
 
 export const Subject = styled.span`
   font-size: 17px;
   font-weight: 500;
   color: ${color.white};
   margin-left: ${box.margin};
-`;
+`
 
 export const Button = styled.button<{ isOn: boolean }>`
   width: 90px;
@@ -37,4 +37,4 @@ export const Button = styled.button<{ isOn: boolean }>`
   font-weight: 500;
   border-radius: 17px;
   margin-right: ${box.margin};
-`;
+`

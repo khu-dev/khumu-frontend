@@ -1,11 +1,13 @@
-import styled from '@emotion/styled';
-import { box, color } from '@constants/theme';
-import { css } from '@emotion/react';
-import { FeedbackButton } from 'src/enum/FeedbackButton';
+//@ts-nocheck
+
+import styled from '@emotion/styled'
+import { box, color } from '@constants/theme'
+import { css } from '@emotion/react'
+import { FeedbackButton } from 'src/enum/FeedbackButton'
 
 interface ContainerProps {
-  focus: boolean;
-  top?: number;
+  focus: boolean
+  top?: number
 }
 
 export const OuterContainer = styled.div<ContainerProps>`
@@ -22,7 +24,7 @@ export const OuterContainer = styled.div<ContainerProps>`
       z-index: 19;
       background-color: ${color.white};
     `}
-`;
+`
 
 export const SearchLabel = styled.div<ContainerProps>`
   height: 48px;
@@ -40,20 +42,20 @@ export const SearchLabel = styled.div<ContainerProps>`
       margin-top: ${box.margin};
       height: auto;
     `}
-`;
+`
 
 export const SearchForm = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-`;
+`
 
 export const DecorationSpan = styled.span`
   width: 4px;
   height: 22px;
   background-color: ${color.gray5};
-`;
+`
 
 const inputStyle = css`
   flex-grow: 1;
@@ -70,20 +72,20 @@ const inputStyle = css`
   &::placeholder {
     color: ${color.gray5};
   }
-`;
+`
 
 export const TextInput = styled.input`
   ${inputStyle};
-`;
+`
 
 export const TextArea = styled.textarea`
   ${inputStyle};
   padding: 8px;
   height: 300px;
-`;
+`
 
 interface FButtonProps {
-  type: FeedbackButton;
+  type: FeedbackButton
 }
 
 export const FButton = styled.a<FButtonProps>`
@@ -102,4 +104,4 @@ export const FButton = styled.a<FButtonProps>`
   border-radius: ${box.borderRadius02};
   background-color: ${({ type }) =>
     type === FeedbackButton.SUBMIT ? color.main : color.white};
-`;
+`

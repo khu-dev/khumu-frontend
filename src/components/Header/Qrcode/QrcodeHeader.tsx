@@ -1,15 +1,17 @@
-import React from 'react';
-import { IoChevronBackOutline } from 'react-icons/io5';
-import { css } from '@emotion/react';
+//@ts-nocheck
 
-import { color } from '@constants/theme';
-import LinkIcon from '@components/Link';
-import { Title02 } from '@components/Title';
-import { useRouter } from 'next/router';
+import React from 'react'
+import { IoChevronBackOutline } from 'react-icons/io5'
+import { css } from '@emotion/react'
+
+import { color } from '@constants/theme'
+import LinkIcon from '@components/Link'
+import { Title02 } from '@components/Title'
+import { useRouter } from 'next/router'
 
 export default function QrcodeHeader({ title }: { title: string }) {
-  const csses = useStyles();
-  const { back } = useRouter();
+  const csses = useStyles()
+  const { back } = useRouter()
 
   return (
     <div className={'header header-align-center'}>
@@ -18,7 +20,7 @@ export default function QrcodeHeader({ title }: { title: string }) {
       </LinkIcon>
       <Title02 css={csses.title}>{title}</Title02>
     </div>
-  );
+  )
 }
 
 function useStyles() {
@@ -34,5 +36,5 @@ function useStyles() {
     title: css`
       color: ${color.main};
     `,
-  };
+  }
 }

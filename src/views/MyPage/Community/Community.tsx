@@ -1,6 +1,6 @@
-import React from 'react';
-import { MyTitle } from '../Shared';
-import { MyButtonContainer, LinkButton } from '../Shared/MyButton';
+import React from 'react'
+import { MyTitle } from '../Shared'
+import { MyButtonContainer, LinkButton } from '../Shared/MyButton'
 
 const Community = () => (
   <>
@@ -16,6 +16,6 @@ const Community = () => (
       </LinkButton>
     </div>
   </>
-);
+)
 
-export default Community;
+export default Community

@@ -1,28 +1,28 @@
-import router from 'next/router';
-import Link from 'next/link';
-import { useState } from 'react';
-import { fetchUsers } from '@src/api';
-import { MyBox, MyRow, MyTitle } from '../Shared';
-import { AndroidToast } from '@src/utils/android';
-import Modal from '@src/components/Modal';
-import * as s from './styled';
-import { ResignButton } from '@src/enum/ResignButton';
+import router from 'next/router'
+import Link from 'next/link'
+import { useState } from 'react'
+import { UserApi } from '@src/api'
+import { MyBox, MyRow, MyTitle } from '../Shared'
+import { AndroidToast } from '@src/utils/android'
+import Modal from '@src/components/Modal'
+import * as s from './styled'
+import { ResignButton } from '@src/enum/ResignButton'
 
 const Etc = () => {
-  const [isModal, setModal] = useState(false);
+  const [isModal, setModal] = useState(false)
 
   const handleModal = (nextState: boolean) => {
-    setModal((prevState) => (nextState === undefined ? !prevState : nextState));
-  };
+    setModal((prevState) => (nextState === undefined ? !prevState : nextState))
+  }
 
   const handleResign = async () => {
-    const result = await fetchUsers.delete();
+    const result = await UserApi.delete()
 
     if (result.status === 204) {
-      AndroidToast('탈퇴되었습니다');
-      router.push('/logout');
+      AndroidToast('탈퇴되었습니다')
+      router.push('/logout')
     }
-  };
+  }
 
   return (
     <MyBox>
@@ -30,7 +30,7 @@ const Etc = () => {
       <MyRow>{'정보 동의 설정'}</MyRow>
       <MyRow
         onClick={() => {
-          handleModal(true);
+          handleModal(true)
         }}
       >
         {'회원 탈퇴'}
@@ -46,7 +46,8 @@ const Etc = () => {
           더이상 학사 일정 관련 소식들을 받아볼 수 없어요
         </s.ResignSummary>
         <s.ResignSummary>
-          지금까지 활동했던 모든 기록들은 탈퇴 시점으로부터 6개월 동안 남아있어요
+          지금까지 활동했던 모든 기록들은 탈퇴 시점으로부터 6개월 동안
+          남아있어요
         </s.ResignSummary>
         <s.ResignSummary>
           탈퇴를 하신 후 언제든지 재가입을 진행하실 수 있어요 <br />
@@ -56,8 +57,8 @@ const Etc = () => {
           <s.Button
             title={'탈퇴하기'}
             onClick={() => {
-              handleModal(false);
-              handleResign();
+              handleModal(false)
+              handleResign()
             }}
             type={ResignButton.CONFIRM}
           >
@@ -73,7 +74,7 @@ const Etc = () => {
         </s.ResignButtonContainer>
       </Modal>
     </MyBox>
-  );
-};
+  )
+}
 
-export default Etc;
+export default Etc

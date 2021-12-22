@@ -1,0 +1,18 @@
+name: LINT
+on:
+  pull_request:
+    branches: [ dev, master ]
+    types: [ synchronize, opened ]
+
+jobs:
+  build:
+    name: run lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --dev
+      - name: Run Lint
+        run: yarn lint
+        env:
+          CI: true 
