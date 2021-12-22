@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Link from 'next/link';
 import { AndroidToast } from '@utils/android';
-import { fetchNotifications } from '@api/api-notifications';
+import { NotificationApi } from '@src/api/NotificationApi';
 
 export default function MainPage() {
   const [version, setVersion] = useState<{ raw: any; prev: any; parsed: any }>({
@@ -36,7 +36,7 @@ export default function MainPage() {
           type={'button'}
           value={'notifications 모두 안읽음 처리하기'}
           onClick={async () => {
-            await fetchNotifications.unread({ notiId: 'all' });
+            await NotificationApi.unread({ notiId: 'all' });
 
             AndroidToast('모두 안읽음!');
           }}

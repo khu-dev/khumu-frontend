@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 
-import { fetchNotifications } from '@api/api-notifications';
+import { NotificationApi } from '@src/api/NotificationApi';
 import { color } from '@constants/theme';
 import NotificationSwiper from '@components/Swipe';
 import { AndroidToast } from '@utils/android';
@@ -12,8 +12,8 @@ import { Empty } from './Empty';
 const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
   const [isRead, setRead] = useState(item.is_read);
 
-  const handleDelete = async (notiId) => {
-    const { data } = await fetchNotifications.delete({
+  const handleDelete = async notiId => {
+    const { data } = await NotificationApi.delete({
       notiId,
     });
 
@@ -26,7 +26,7 @@ const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
 
   const handleRead = async (notiId: number | 'all' = 'all') => {
     if (!isRead) {
-      const { data } = await fetchNotifications.read({ notiId });
+      const { data } = await NotificationApi.read({ notiId });
       setRead(true);
       console.log('read noti', data);
     }
@@ -74,7 +74,7 @@ const Notifications = ({
   infiniteFetch: Function;
 }) => {
   React.useEffect(() => {
-    fetchNotifications.read({ notiId: 'all' });
+    NotificationApi.read({ notiId: 'all' });
   }, []);
 
   return (

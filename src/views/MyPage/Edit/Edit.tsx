@@ -4,7 +4,7 @@ import { color } from '@constants/theme';
 
 import * as s from './styled';
 import { AndroidToast } from '@src/utils/android';
-import { uploadImage } from '@src/api';
+import { FileApi } from '@src/api';
 
 const MAX_SIZE = 3;
 
@@ -27,8 +27,7 @@ const Image = ({ handleImageName }) => {
 
     formData.append('data', file);
 
-    uploadImage
-      .post(formData)
+    FileApi.upload(formData)
       .then(({ data }) => {
         handleImageName(data);
       })

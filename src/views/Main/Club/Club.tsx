@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { fetchClubs } from '@api/api-clubs';
+import { ClubApi } from '@src/api/ClubApi';
 import { IMG_URI } from '@config/baseURI';
 import { useFetchAxios } from '@hooks/fetch';
 import { Club as ClubType } from '@interface/Club';
@@ -10,7 +10,7 @@ import * as s from './styled';
 
 const Club = () => {
   const { result } = useFetchAxios({
-    func: fetchClubs.select,
+    func: ClubApi.query,
   });
 
   const list: Array<ClubType> = result?.data?.data?.data || Array(3).fill(null);

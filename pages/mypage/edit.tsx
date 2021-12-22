@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useUser } from '@context/User';
 import CommonHeader from '@components/Header/Common';
 import Edit from '@views/MyPage/Edit';
-import { fetchUsers } from '@api/api-users';
-import { fetchDepartments } from '@api/api-departments';
+import { UserApi } from '@src/api/UserApi';
+import { DepartmentApi } from '@src/api/DepartmentApi';
 import { AndroidToast } from '@utils/android';
 import { useRouter } from 'next/router';
 import { Department } from '@interface/Department';
@@ -54,7 +54,7 @@ export default function MyEditPage() {
     let result = null;
 
     try {
-      result = await fetchUsers.patch(state);
+      result = await UserApi.update(state);
     } catch (e) {
       console.error(e);
     }
@@ -84,7 +84,7 @@ export default function MyEditPage() {
     if (!token) return;
 
     const fetchData = async () => {
-      const res = await fetchDepartments.select();
+      const res = await DepartmentApi.query();
 
       if (res.status === 200) {
         const newData = res.data.map(info => ({

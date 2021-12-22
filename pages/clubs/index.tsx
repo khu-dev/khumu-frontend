@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { fetchClubs } from '@api/api-clubs';
+import { ClubApi } from '@src/api/ClubApi';
 import { Club } from '@interface/Club';
 import ClubsHeader from '@components/Header/Clubs';
 import Clubs from '@views/Clubs';
@@ -39,7 +39,7 @@ const ClubsPage = () => {
     if (!token) return;
 
     const fetchData = async () => {
-      const res = await Promise.all([fetchClubs.select(), fetchClubs.categories()]);
+      const res = await Promise.all([ClubApi.query(), ClubApi.categories()]);
 
       if (res[0].status === 200) {
         setData({
