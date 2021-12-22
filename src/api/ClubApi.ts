@@ -1,6 +1,6 @@
 import { webClient } from 'src/module';
 
-export const fetchClubs = {
-  select: () => webClient.get(`/clubs`),
+export const ClubApi = {
+  query: () => webClient.get(`/clubs`),
   categories: () => webClient.get(`/club-categories`),
 };

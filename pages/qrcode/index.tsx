@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Qrcode from '@views/Qrcode';
 import QrcodeHeader from '@components/Header/Qrcode';
-import { fetchQRCode } from '@api/api-qrcode';
+import { QrcodeApi } from '@src/api/QrcodeApi';
 import { QRcode } from '@interface/QRcode';
 import { useToken } from '@src/context/Token';
 
@@ -24,7 +24,7 @@ export default function QRCodePage() {
 
   const fetchData = async () => {
     if (info.qr_code_str) setInfo(initialState);
-    const { data } = await fetchQRCode.select();
+    const { data } = await QrcodeApi.get();
 
     if (data) {
       const { data: info } = data;

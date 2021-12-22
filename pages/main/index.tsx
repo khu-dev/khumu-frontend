@@ -4,7 +4,7 @@ import Skeleton from '@components/Skeleton';
 import SkeletonMainItem from '@components/Skeleton/Main/Item';
 import { MainHeader } from '@src/components';
 import { Feed, Hot, Club, Notice, Shortcut, Advertise } from '@views/Main';
-import { fetchSchedule, fetchNotifications, fetchArticles } from '@src/api';
+import { ScheduleApi, NotificationApi, ArticleApi } from '@src/api';
 import { useToken } from '@context/Token';
 import { Notification, Schedule, HotArticle } from '@src/interface';
 
@@ -20,9 +20,9 @@ const MainPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await Promise.all([
-        fetchNotifications.select(),
-        fetchSchedule.select(),
-        fetchArticles.hot(),
+        NotificationApi.query(),
+        ScheduleApi.select(),
+        ArticleApi.hot(),
       ]);
 
       if (res[0].status === 200) {

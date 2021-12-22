@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import CommonHeader from '@components/Header/Common';
 import { color } from '@constants/theme';
-import { fetchNotifications } from '@api/api-notifications';
+import { NotificationApi } from '@src/api/NotificationApi';
 import Notifications, { Setting } from '@views/Notifications';
 import { useRouter } from 'next/router';
 import { Notification } from '@interface/Notification';
@@ -27,7 +27,7 @@ export default function NotificationsPage() {
   const [length, setLength] = useState(Math.floor(windowHeight / elementHeight));
 
   const infiniteFetch = () => {
-    setLength((prev) => prev + length);
+    setLength(prev => prev + length);
   };
 
   const goBack = () => {
@@ -38,7 +38,7 @@ export default function NotificationsPage() {
     if (!token) return;
 
     const fetchData = async () => {
-      const res = await fetchNotifications.select();
+      const res = await NotificationApi.query();
 
       if (res.status === 200) {
         setData({
@@ -65,7 +65,7 @@ export default function NotificationsPage() {
         isLoading={notifications[0] === null}
         repeat={10}
         Skeleton={SkeletonNotifications}
-        render={(props) => (
+        render={props => (
           <Notifications
             notifications={notifications?.slice(0, length)}
             fetchIndex={length}

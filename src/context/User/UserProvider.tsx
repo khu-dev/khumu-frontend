@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchUsers } from '@api/api-users';
+import { UserApi } from '@src/api/UserApi';
 import { useToken } from '@context/Token';
 import { initialUser, UserContext } from './UserContext';
 
@@ -12,12 +12,12 @@ export default function UserProvider({ children }) {
       let result = null;
 
       try {
-        result = await fetchUsers.select();
+        result = await UserApi.check();
       } catch (e) {
-        console.error('fetchUsers.select() error in user provider');
+        console.error('fetchUsers.check() error in user provider');
       } finally {
         if (result?.status === 200) {
-          setUser((prev) => ({
+          setUser(prev => ({
             ...prev,
             info: {
               ...result.data.data,
@@ -30,8 +30,8 @@ export default function UserProvider({ children }) {
     token && fetchData();
   }, [token]);
 
-  const updateUserInfo = (info) => {
-    setUser((prev) => ({
+  const updateUserInfo = info => {
+    setUser(prev => ({
       ...prev,
       info: {
         ...prev.info,

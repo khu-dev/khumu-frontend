@@ -8,8 +8,8 @@ interface DeleteParams {
   notiId: number;
 }
 
-export const fetchNotifications = {
-  select: () => webClient.get(`/notifications?recipient=me`),
+export const NotificationApi = {
+  query: () => webClient.get(`/notifications?recipient=me`),
   read: ({ notiId }: ReadParams) => webClient.patch(`/notifications/${notiId}/read`),
   unread: ({ notiId }: ReadParams) =>
     webClient.patch(`/notifications/${notiId}/unread`),

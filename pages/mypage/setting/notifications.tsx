@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import CommonHeader from '@components/Header/Common';
 import SetNoti from '@views/MyPage/Setting';
-import { fetchNotifications } from '@api/api-notifications';
+import { NotificationApi } from '@src/api/NotificationApi';
 import { NotificationOptions } from '@interface/Notification';
 import { AndroidToast } from '@utils/android';
 import { useToken } from '@src/context/Token';
@@ -23,7 +23,7 @@ const MySetNotiPage = () =>
     };
 
     const updateSetting = async (id, status, setActive) => {
-      const result = await fetchNotifications.update({ id, status: !status });
+      const result = await NotificationApi.update({ id, status: !status });
 
       console.log(result);
 
@@ -35,7 +35,7 @@ const MySetNotiPage = () =>
       if (!token) return;
 
       const fetchData = async () => {
-        const res = await fetchNotifications.options();
+        const res = await NotificationApi.options();
 
         if (res.status === 200) {
           setOptions(res.data?.data);
@@ -73,7 +73,7 @@ const MySetNotiPage = () =>
 export default MySetNotiPage;
 
 // export const getServerSideProps = async () => {
-//   const res = await Promise.all([fetchNotifications.options()]);
+//   const res = await Promise.all([NotificationApi.options()]);
 
 //   return {
 //     props: {
