@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { box } from '@constants/theme'
 import styled from '@emotion/styled'
 

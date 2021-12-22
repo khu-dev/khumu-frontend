@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React from 'react'
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai'
 import { css } from '@emotion/react'

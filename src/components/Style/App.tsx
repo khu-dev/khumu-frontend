@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { header } from '@constants/theme'
 import React from 'react'
 

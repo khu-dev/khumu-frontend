@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { color } from '@constants/theme'
 import { css } from '@emotion/react'
 

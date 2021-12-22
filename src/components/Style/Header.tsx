@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { box, color, header } from '@constants/theme'
 
 export default function HeaderStyleTag() {

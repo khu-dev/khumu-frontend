@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 export { default as ClubsHeader } from './Clubs'
 export { default as CommonHeader } from './Common'
 export { default as MainHeader } from './Main'

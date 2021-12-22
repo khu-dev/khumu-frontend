@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { box, color } from '@constants/theme'
 import React from 'react'
 

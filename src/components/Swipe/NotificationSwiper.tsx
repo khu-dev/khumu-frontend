@@ -1,6 +1,5 @@
-/**
- * @description 제작된 페이지 목록
- */
+//@ts-nocheck
+
 import { color } from '@constants/theme'
 import { css } from '@emotion/react'
 import React from 'react'

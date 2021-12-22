@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import Link from 'next/link';
-import { AndroidToast } from '@utils/android';
-import { NotificationApi } from '@src/api/NotificationApi';
+import Link from 'next/link'
+import { AndroidToast } from '@utils/android'
+import { NotificationApi } from '@src/api/NotificationApi'
 
 export default function MainPage() {
   const [version, setVersion] = useState<{ raw: any; prev: any; parsed: any }>({
     raw: '',
     prev: '',
     parsed: '',
-  });
+  })
   const navList = [
     { title: '메인', path: '/main' },
     { title: 'QR코드', path: '/qrcode' },
@@ -18,7 +18,7 @@ export default function MainPage() {
     { title: '마이페이지/알림설정', path: '/mypage/setting/notifications' },
     { title: '알림', path: '/notifications' },
     { title: '동아리', path: '/clubs' },
-  ];
+  ]
 
   return (
     <>
@@ -36,9 +36,9 @@ export default function MainPage() {
           type={'button'}
           value={'notifications 모두 안읽음 처리하기'}
           onClick={async () => {
-            await NotificationApi.unread({ notiId: 'all' });
+            await NotificationApi.unread({ notiId: 'all' })
 
-            AndroidToast('모두 안읽음!');
+            AndroidToast('모두 안읽음!')
           }}
           style={{ marginBottom: 8, display: 'block' }}
         />
@@ -49,16 +49,16 @@ export default function MainPage() {
           onClick={() => {
             const version =
               (window as any).Android?.getVersionInfo() ||
-              `{"current_version": "sample"}`;
+              `{"current_version": "sample"}`
 
-            AndroidToast(typeof (window as any).Android?.getVersionInfo());
-            AndroidToast((window as any).Android?.getVersionInfo());
+            AndroidToast(typeof (window as any).Android?.getVersionInfo())
+            AndroidToast((window as any).Android?.getVersionInfo())
 
             setVersion({
               raw: (window as any).Android?.getVersionInfo(),
               prev: version,
               parsed: JSON.parse(version)?.current_version,
-            });
+            })
           }}
           style={{ marginBottom: 8, display: 'block' }}
         />
@@ -68,5 +68,5 @@ export default function MainPage() {
         <p>파싱 후 : {version.parsed}</p>
       </div>
     </>
-  );
+  )
 }

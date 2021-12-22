@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React from 'react'
 import AppStyleTag from './App'
 import HeaderStyleTag from './Header'

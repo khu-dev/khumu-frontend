@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React from 'react'
 import { IconType } from 'react-icons'
 import { IoChevronBackOutline } from 'react-icons/io5'
