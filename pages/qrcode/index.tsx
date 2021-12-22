@@ -54,19 +54,3 @@ export default function QRCodePage() {
     </>
   );
 }
-
-// export const getServerSideProps = async () => {
-//   let res = null;
-
-//   try {
-//     res = await fetchQRCode.select();
-//   } catch (e) {
-//     console.error('fetch qrcode server side error', e);
-//   }
-
-//   return {
-//     props: {
-//       qrcode: res?.data?.data || null,
-//     },
-//   };
-// };

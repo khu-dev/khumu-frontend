@@ -21,7 +21,7 @@ const MainPage = () => {
     const fetchData = async () => {
       const res = await Promise.all([
         NotificationApi.query(),
-        ScheduleApi.select(),
+        ScheduleApi.query(),
         ArticleApi.hot(),
       ]);
 

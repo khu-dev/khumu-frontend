@@ -1,5 +1,5 @@
 import { webClient } from 'src/module';
 
 export const ScheduleApi = {
-  select: () => webClient.get(`/haksa-schedules`),
+  query: () => webClient.get(`/haksa-schedules`),
 };
