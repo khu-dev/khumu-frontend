@@ -1,1 +1,1 @@
-export { default } from './Hot';
+export { default } from './Hot'

@@ -1,17 +1,17 @@
-import { color } from '@constants/theme';
-import styled from '@emotion/styled';
+import { color } from '@constants/theme'
+import styled from '@emotion/styled'
 
-import QrcodeImage from './QrcodeImage';
-import QrcodeProfile from './QrcodeProfile';
-import QrcodeRefresh from './QrcodeRefresh';
-import { QRCodeDataProps } from './type';
+import QrcodeImage from './QrcodeImage'
+import QrcodeProfile from './QrcodeProfile'
+import QrcodeRefresh from './QrcodeRefresh'
+import { QRCodeDataProps } from './type'
 
 const Qrcode = ({ qrcode, profile, handleRefresh }: QRCodeDataProps) => (
   <Container>
     <QrcodeImage qrcode={qrcode} />
     <QrcodeRefresh
       handleRefresh={() => {
-        handleRefresh();
+        handleRefresh()
       }}
     />
     <QrcodeProfile>
@@ -20,9 +20,9 @@ const Qrcode = ({ qrcode, profile, handleRefresh }: QRCodeDataProps) => (
       <QrcodeProfile.Row title={'학과'} description={profile.department} />
     </QrcodeProfile>
   </Container>
-);
+)
 
-export default Qrcode;
+export default Qrcode
 
 const Container = styled.div`
   display: flex;
@@ -36,4 +36,4 @@ const Container = styled.div`
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   color: ${color.white};
-`;
+`

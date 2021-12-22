@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { color } from '@src/constants/theme';
+import styled from '@emotion/styled'
+import { color } from '@src/constants/theme'
 
 export const AdItem = styled.div<{ bgColor: string }>`
   width: 100%;
@@ -10,4 +10,4 @@ export const AdItem = styled.div<{ bgColor: string }>`
   align-items: center;
   color: ${color.white};
   margin-top: 24px;
-`;
+`

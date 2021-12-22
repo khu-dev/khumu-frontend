@@ -1,1 +1,1 @@
-export { default } from './Shortcut';
+export { default } from './Shortcut'

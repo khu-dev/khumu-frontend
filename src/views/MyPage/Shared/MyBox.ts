@@ -1,5 +1,5 @@
-import { box } from '@constants/theme';
-import styled from '@emotion/styled';
+import { box } from '@constants/theme'
+import styled from '@emotion/styled'
 
 export const MyBox = styled.div<{ isProfile?: boolean }>`
   width: ${box.paddingWidth};
@@ -10,4 +10,4 @@ export const MyBox = styled.div<{ isProfile?: boolean }>`
   margin-bottom: ${box.margin};
   background-color: #4d4d4d;
   border-radius: ${box.borderRadius};
-`;
+`

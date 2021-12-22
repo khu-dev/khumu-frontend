@@ -1,22 +1,24 @@
-import Link from 'next/link';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { MdComment } from 'react-icons/md';
+//@ts-nocheck
 
-import { HotArticle } from '@interface/HotArticle';
-import { calculateDayDiff } from '@utils/day';
+import Link from 'next/link'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { MdComment } from 'react-icons/md'
 
-import * as cs from '../common.styled';
-import * as s from './styled';
+import { HotArticle } from '@interface/HotArticle'
+import { calculateDayDiff } from '@utils/day'
 
-const initialHots = Array(3).fill(null);
+import * as cs from '../common.styled'
+import * as s from './styled'
+
+const initialHots = Array(3).fill(null)
 
 interface Props {
-  hots: HotArticle[];
+  hots: HotArticle[]
 }
 
 const Hot = ({ hots = initialHots }: Props) => {
-  const now = new Date();
-  const year = now.getFullYear();
+  const now = new Date()
+  const year = now.getFullYear()
 
   return (
     <cs.MainSection>
@@ -47,7 +49,7 @@ const Hot = ({ hots = initialHots }: Props) => {
         </Link>
       ))}
     </cs.MainSection>
-  );
-};
+  )
+}
 
-export default Hot;
+export default Hot

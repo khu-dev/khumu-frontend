@@ -1,2 +1,2 @@
-export * from './FeedInputContext';
-export { default } from './FeedInputProvider';
+export * from './FeedInputContext'
+export { default } from './FeedInputProvider'

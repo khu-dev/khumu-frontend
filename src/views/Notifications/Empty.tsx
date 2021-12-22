@@ -1,6 +1,8 @@
-import styled from '@emotion/styled';
+//@ts-nocheck
 
-export const Empty = ({ text }) => <Container>{text}</Container>;
+import styled from '@emotion/styled'
+
+export const Empty = ({ text }) => <Container>{text}</Container>
 
 const Container = styled.div`
   width: 100%;
@@ -9,4 +11,4 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`

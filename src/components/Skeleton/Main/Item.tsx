@@ -6,6 +6,6 @@ const SkeletonMainItem = () => (
       <div className={'skeleton skeleton-description-01'} />
     </div>
   </div>
-);
+)
 
-export default SkeletonMainItem;
+export default SkeletonMainItem

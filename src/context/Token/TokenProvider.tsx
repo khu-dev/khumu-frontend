@@ -1,19 +1,23 @@
-import { useEffect, useState } from 'react';
-import { accesskey } from '@config/_key';
-import { TokenContext } from './TokenContext';
-import { refreshToken } from 'src/module';
+import { ReactNode, useEffect, useState } from 'react'
+import { accesskey } from '@config/_key'
+import { TokenContext } from './TokenContext'
+import { refreshToken } from 'src/module'
 
-const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || accesskey;
+const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || accesskey
 
-export default function TokenProvider({ children }) {
-  const [token, setToken] = useState(null);
+interface Props {
+  children: ReactNode
+}
+
+export default function TokenProvider({ children }: Props) {
+  const [token, setToken] = useState(null)
 
   useEffect(() => {
     //@ts-ignore
-    const token = window?.Android?.getToken() || devToken;
-    refreshToken(token);
-    setToken(token);
-  }, []);
+    const token = window?.Android?.getToken() || devToken
+    refreshToken(token)
+    setToken(token)
+  }, [])
 
   return (
     <TokenContext.Provider
@@ -23,5 +27,5 @@ export default function TokenProvider({ children }) {
     >
       {children}
     </TokenContext.Provider>
-  );
+  )
 }

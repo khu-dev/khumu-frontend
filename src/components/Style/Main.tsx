@@ -1,5 +1,5 @@
-import { box, color, title } from '@constants/theme';
-import React from 'react';
+import { box, color, title } from '@constants/theme'
+import React from 'react'
 
 export default function MainStyleTag() {
   return (
@@ -76,5 +76,5 @@ export default function MainStyleTag() {
         border-radius: ${box.borderRadius};
       }
     `}</style>
-  );
+  )
 }

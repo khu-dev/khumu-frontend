@@ -1,1 +1,1 @@
-export { default } from './NotificationsHeader';
+export { default } from './NotificationsHeader'

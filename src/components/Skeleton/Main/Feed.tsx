@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const SkeletonMainFeed = () => (
   <>
@@ -6,6 +6,6 @@ const SkeletonMainFeed = () => (
     <div className={'skeleton skeleton-description-02'} />
     <div className={'skeleton skeleton-description-02 '} />
   </>
-);
+)
 
-export default SkeletonMainFeed;
+export default SkeletonMainFeed

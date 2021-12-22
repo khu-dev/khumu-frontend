@@ -1,9 +1,11 @@
-import { css } from '@emotion/react';
-import { MyBox } from '../Shared';
+//@ts-nocheck
 
-import Image from './ProfileImage';
-import Info from './ProfileInfo';
-import ReleaseButton from './ProfileReleaseButton';
+import { css } from '@emotion/react'
+import { MyBox } from '../Shared'
+
+import Image from './ProfileImage'
+import Info from './ProfileInfo'
+import ReleaseButton from './ProfileReleaseButton'
 
 const Profile = ({ name, department, studentNumber, profileImage }) => (
   <MyBox
@@ -18,6 +20,6 @@ const Profile = ({ name, department, studentNumber, profileImage }) => (
     <Info name={name} department={department} studentNumber={studentNumber} />
     <ReleaseButton title={'나의 정보 변경'} />
   </MyBox>
-);
+)
 
-export default Profile;
+export default Profile

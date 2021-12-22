@@ -1,11 +1,11 @@
-import { webClient } from 'src/module';
+import { webClient } from 'src/module'
 
 interface ReadRequest {
-  notiId: 'all' | number;
+  notiId: 'all' | number
 }
 
 interface DeleteRequest {
-  notiId: number;
+  notiId: number
 }
 
 export const NotificationApi = {
@@ -21,4 +21,4 @@ export const NotificationApi = {
     webClient.patch(`/push/options/${id}`, {
       is_activated: status,
     }),
-};
+}

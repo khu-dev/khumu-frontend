@@ -1,1 +1,1 @@
-export { default } from './Club';
+export { default } from './Club'

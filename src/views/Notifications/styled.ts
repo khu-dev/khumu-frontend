@@ -1,12 +1,14 @@
-import { box, color } from '@constants/theme';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+//@ts-nocheck
+
+import { box, color } from '@constants/theme'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 
 const textOverflowHiddenStyle = css`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-`;
+`
 
 export const NotiContainer = styled.div`
   width: 100%;
@@ -15,7 +17,7 @@ export const NotiContainer = styled.div`
   justify-content: flex-start;
   align-items: stretch;
   border-bottom: 1px solid ${color.gray6};
-`;
+`
 
 export const NotiIcon = styled.div`
   width: calc(90px - 28px);
@@ -25,12 +27,12 @@ export const NotiIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const iconStyle = (isRead) => css`
   color: ${isRead ? color.gray5 : color.main};
   font-size: 32px;
-`;
+`
 
 export const NotiContent = styled.div`
   width: calc(100vw - 150px);
@@ -41,7 +43,7 @@ export const NotiContent = styled.div`
   justify-content: space-evenly;
   align-items: stretch;
   position: relative;
-`;
+`
 
 export const NotiTitle = styled.h2`
   height: 17px;
@@ -50,7 +52,7 @@ export const NotiTitle = styled.h2`
   margin: 0;
 
   ${textOverflowHiddenStyle};
-`;
+`
 
 export const NotiKind = styled.p`
   height: 16px;
@@ -58,7 +60,7 @@ export const NotiKind = styled.p`
   color: ${color.gray4};
 
   ${textOverflowHiddenStyle};
-`;
+`
 
 export const NotiDescription = styled.p`
   height: 16px;
@@ -66,7 +68,7 @@ export const NotiDescription = styled.p`
   font-weight: 200;
 
   ${textOverflowHiddenStyle};
-`;
+`
 
 export const NotiDay = styled.span`
   width: 32px;
@@ -78,4 +80,4 @@ export const NotiDay = styled.span`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-`;
+`

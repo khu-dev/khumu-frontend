@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { box, color } from '@constants/theme';
+import styled from '@emotion/styled'
+import { css } from '@emotion/react'
+import { box, color } from '@constants/theme'
 
 export const Container = styled.div`
   width: ${box.paddingWidth};
@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: ${box.padding};
 
   background-color: #e4e4e4;
-`;
+`
 
 export const Image = styled.div`
   width: 102px;
@@ -21,7 +21,7 @@ export const Image = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-`;
+`
 
 export const Uploader = styled.input`
   width: 102px;
@@ -33,19 +33,19 @@ export const Uploader = styled.input`
   left: 0;
   background-color: green;
   opacity: 0;
-`;
+`
 
 export const Form = styled.form`
   width: 200px;
   margin: 28px auto;
-`;
+`
 
 export const FormTitle = styled.h4`
   font-weight: 500;
   font-size: 14px;
   margin-left: ${box.borderRadius};
   margin-bottom: 4px;
-`;
+`
 
 export const formStyle = css`
   width: calc(100% - 32px);
@@ -55,7 +55,7 @@ export const formStyle = css`
   color: ${color.gray4};
   padding: 9px 16px;
   font-size: 16px;
-`;
+`
 
 export const Input = styled.input`
   ${formStyle};
@@ -68,7 +68,7 @@ export const Input = styled.input`
   &:focus {
     outline: none;
   }
-`;
+`
 
 export const Select = styled.select`
   ${formStyle};
@@ -82,7 +82,7 @@ export const Select = styled.select`
   &:focus {
     outline: none;
   }
-`;
+`
 
 export const Button = styled.button`
   display: block;
@@ -94,4 +94,4 @@ export const Button = styled.button`
   font-weight: 600;
   border: none;
   border-radius: ${box.borderRadius};
-`;
+`

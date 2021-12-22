@@ -1,5 +1,5 @@
-import { header } from '@constants/theme';
-import React from 'react';
+import { header } from '@constants/theme'
+import React from 'react'
 
 export default function AppStyleTag() {
   return (
@@ -39,5 +39,5 @@ export default function AppStyleTag() {
         display: none;
       }
     `}</style>
-  );
+  )
 }

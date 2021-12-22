@@ -1,16 +1,14 @@
-/**
- * @description 피드의 오늘의 강의
- */
+//@ts-nocheck
 
-import React from 'react';
-import { css } from '@emotion/react';
-import { CustomTitle } from '@components/Title';
-import { title as titleStyle, color } from '@constants/theme';
-import { formatMonthDayDate } from '@utils/day';
+import React from 'react'
+import { css } from '@emotion/react'
+import { CustomTitle } from '@components/Title'
+import { title as titleStyle, color } from '@constants/theme'
+import { formatMonthDayDate } from '@utils/day'
 
 const ScheduleDate = ({ isValid, isMore, start, end }) => {
-  const startDate = formatMonthDayDate(start);
-  const endDate = formatMonthDayDate(end);
+  const startDate = formatMonthDayDate(start)
+  const endDate = formatMonthDayDate(end)
 
   return (
     <CustomTitle
@@ -30,7 +28,7 @@ const ScheduleDate = ({ isValid, isMore, start, end }) => {
     >
       {isValid ? `${startDate} ~ ${endDate}까지` : ''}
     </CustomTitle>
-  );
-};
+  )
+}
 
-export default ScheduleDate;
+export default ScheduleDate

@@ -1,11 +1,11 @@
-import React from 'react';
-import RepeatSkeleton from './RepeatSkeleton';
+import React from 'react'
+import RepeatSkeleton from './RepeatSkeleton'
 
-interface SkeletonContainerProps {
-  isLoading: boolean;
-  render: (props?: any) => JSX.Element;
-  Skeleton: () => JSX.Element;
-  repeat?: number;
+interface Props {
+  isLoading: boolean
+  render: (props?: any) => JSX.Element
+  Skeleton: () => JSX.Element
+  repeat?: number
 }
 
 const SkeletonContainer = ({
@@ -13,7 +13,7 @@ const SkeletonContainer = ({
   render,
   Skeleton,
   repeat = 1,
-}: SkeletonContainerProps) =>
-  isLoading ? <RepeatSkeleton repeat={repeat} Skeleton={Skeleton} /> : render();
+}: Props) =>
+  isLoading ? <RepeatSkeleton repeat={repeat} Skeleton={Skeleton} /> : render()
 
-export default SkeletonContainer;
+export default SkeletonContainer

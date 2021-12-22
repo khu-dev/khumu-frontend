@@ -1,2 +1,2 @@
-export { useMain } from './MainContext';
-export { default } from './MainProvider';
+export { useMain } from './MainContext'
+export { default } from './MainProvider'

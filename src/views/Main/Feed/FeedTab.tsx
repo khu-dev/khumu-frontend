@@ -1,14 +1,16 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import styled from '@emotion/styled';
+//@ts-nocheck
 
-import { box, color } from '@constants/theme';
-import { convertDate } from '@utils/day';
+import React from 'react'
+import dayjs from 'dayjs'
+import styled from '@emotion/styled'
+
+import { box, color } from '@constants/theme'
+import { convertDate } from '@utils/day'
 
 export default function FeedTab({ tab }) {
-  const now = Date.now();
-  const formatMonthAndDay = dayjs(now).format('M/DD');
-  const formatDate = convertDate[dayjs(now).format('ddd')] + '요일';
+  const now = Date.now()
+  const formatMonthAndDay = dayjs(now).format('M/DD')
+  const formatDate = convertDate[dayjs(now).format('ddd')] + '요일'
 
   return (
     <Container>
@@ -19,7 +21,7 @@ export default function FeedTab({ tab }) {
         [ {formatMonthAndDay} {formatDate} ]
       </Day>
     </Container>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -31,7 +33,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
+`
 
 const Tab = styled.div`
   display: flex;
@@ -50,14 +52,14 @@ const Tab = styled.div`
   border-top-left-radius: ${box.borderRadius};
   border-top-right-radius: ${box.borderRadius};
   border-bottom: none;
-`;
+`
 
 const TabContent = styled.h3`
   font-size: 15px;
   font-weight: 700;
   color: ${color.main};
-`;
+`
 
 const Day = styled.span`
   color: ${color.white};
-`;
+`

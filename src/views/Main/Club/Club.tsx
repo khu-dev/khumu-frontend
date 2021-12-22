@@ -1,22 +1,24 @@
-import Link from 'next/link';
-import { ClubApi } from '@src/api/ClubApi';
-import { IMG_URI } from '@config/baseURI';
-import { useFetchAxios } from '@hooks/fetch';
-import { Club as ClubType } from '@interface/Club';
-import { getRandomNumber } from '@utils/functions';
+//@ts-nocheck
 
-import * as cs from '../common.styled';
-import * as s from './styled';
+import Link from 'next/link'
+import { ClubApi } from '@src/api/ClubApi'
+import { IMG_URI } from '@config/baseURI'
+import { useFetchAxios } from '@hooks/fetch'
+import { Club as ClubType } from '@interface/Club'
+import { getRandomNumber } from '@utils/functions'
+
+import * as cs from '../common.styled'
+import * as s from './styled'
 
 const Club = () => {
   const { result } = useFetchAxios({
     func: ClubApi.query,
-  });
+  })
 
-  const list: Array<ClubType> = result?.data?.data?.data || Array(3).fill(null);
-  const totalLength = list.length;
-  const pickedNum = getRandomNumber(0, totalLength - 1, 3);
-  const pickedClub = pickedNum.map((num, idx) => (idx < 3 ? list[num] : null));
+  const list: Array<ClubType> = result?.data?.data?.data || Array(3).fill(null)
+  const totalLength = list.length
+  const pickedNum = getRandomNumber(0, totalLength - 1, 3)
+  const pickedClub = pickedNum.map((num, idx) => (idx < 3 ? list[num] : null))
 
   return (
     <cs.MainSection>
@@ -34,7 +36,7 @@ const Club = () => {
         )}
       </s.Clubs>
     </cs.MainSection>
-  );
-};
+  )
+}
 
-export default Club;
+export default Club

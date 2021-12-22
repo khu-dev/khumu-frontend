@@ -1,6 +1,8 @@
-import styled from '@emotion/styled';
-import { color } from '@constants/theme';
-import Link from 'next/link';
+//@ts-nocheck
+
+import styled from '@emotion/styled'
+import { color } from '@constants/theme'
+import Link from 'next/link'
 
 const Span = styled.span`
   width: 76px;
@@ -15,12 +17,12 @@ const Span = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const ReleaseButton = ({ title }) => (
   <Link href={'/mypage/edit'}>
     <Span>{title}</Span>
   </Link>
-);
+)
 
-export default ReleaseButton;
+export default ReleaseButton

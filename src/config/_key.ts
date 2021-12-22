@@ -1,1 +1,1 @@
-export const accesskey = '123123';
+export const accesskey = '123123'

@@ -1,2 +1,2 @@
-export * from './useFetchAxios';
-export * from './useFetchURL';
+export * from './useFetchAxios'
+export * from './useFetchURL'

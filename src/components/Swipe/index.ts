@@ -1,1 +1,1 @@
-export { default } from './NotificationSwiper';
+export { default } from './NotificationSwiper'

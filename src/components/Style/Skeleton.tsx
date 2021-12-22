@@ -1,5 +1,5 @@
-import { box, color } from '@constants/theme';
-import React from 'react';
+import { box, color } from '@constants/theme'
+import React from 'react'
 
 export default function SkeletonStyleTag() {
   return (
@@ -99,5 +99,5 @@ export default function SkeletonStyleTag() {
         align-items: center;
       }
     `}</style>
-  );
+  )
 }

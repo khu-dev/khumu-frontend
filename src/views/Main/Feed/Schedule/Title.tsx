@@ -1,13 +1,11 @@
-/**
- * @description 피드의 오늘의 강의
- */
+//@ts-nocheck
 
-import React from 'react';
-import { CustomTitle } from '@components/Title';
-import { title as titleStyle, color } from '@constants/theme';
-import { css } from '@emotion/react';
-import { IoTimeOutline } from 'react-icons/io5';
-import styled from '@emotion/styled';
+import React from 'react'
+import { CustomTitle } from '@components/Title'
+import { title as titleStyle, color } from '@constants/theme'
+import { css } from '@emotion/react'
+import { IoTimeOutline } from 'react-icons/io5'
+import styled from '@emotion/styled'
 
 const ScheduleTitle = ({ title, isMore }) => (
   <Container isMore={isMore}>
@@ -16,9 +14,9 @@ const ScheduleTitle = ({ title, isMore }) => (
     </Icon>
     <CustomTitle size={titleStyle.L}>{title}</CustomTitle>
   </Container>
-);
+)
 
-export default ScheduleTitle;
+export default ScheduleTitle
 
 const Container = styled.div<{ isMore: boolean }>`
   width: 100%;
@@ -32,7 +30,7 @@ const Container = styled.div<{ isMore: boolean }>`
     css`
       margin-top: 7px;
     `}
-`;
+`
 
 const Icon = styled.div`
   width: 24px;
@@ -40,10 +38,10 @@ const Icon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const iconStyle = css`
   font-size: 20px;
   color: ${color.main};
   margin-right: 7px;
-`;
+`

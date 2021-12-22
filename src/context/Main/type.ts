@@ -1,4 +1,4 @@
 export interface FeedValueProps {
-  name: string;
-  time: string;
+  name: string
+  time: string
 }
