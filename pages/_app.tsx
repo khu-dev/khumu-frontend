@@ -1,8 +1,8 @@
 import 'assets/style/index.scss'
+import { AppProps } from 'next/app'
 
 import React from 'react'
 import Head from 'next/head'
-import { AppProps } from 'next/dist/next-server/lib/router/router'
 
 import StyleTag from '@components/Style'
 
