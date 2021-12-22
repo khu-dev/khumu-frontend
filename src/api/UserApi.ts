@@ -1,6 +1,6 @@
 import { webClient } from 'src/module';
 
-interface updateRequest {
+interface UpdateRequest {
   nickname?: string;
   department?: string;
   profile_image?: string;
@@ -9,5 +9,5 @@ interface updateRequest {
 export const UserApi = {
   check: () => webClient.get(`/users/me`),
   delete: () => webClient.delete(`/users/me`),
-  update: (data: updateRequest) => webClient.patch(`/users/me`, data),
+  update: (data: UpdateRequest) => webClient.patch(`/users/me`, data),
 };
