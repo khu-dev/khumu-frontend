@@ -1,16 +1,23 @@
-import { ChangeEventHandler, FC } from 'react'
+import { FC } from 'react'
 
 import * as s from './styled'
 
 interface Props {
-  nickname: string
-  onChange: ChangeEventHandler<HTMLInputElement>
+  value: string
+  onChange(name: string, value: string): void
 }
 
-const Nickname: FC<Props> = ({ nickname, onChange }) => (
+const Nickname: FC<Props> = ({ value, onChange }) => (
   <s.Form>
     <s.FormTitle>닉네임</s.FormTitle>
-    <s.Input placeholder={nickname} onChange={onChange} name={'nickname'} />
+    <s.Input
+      placeholder={value}
+      name="nickname"
+      onChange={(e) => {
+        const { name, value } = e.target
+        onChange(name, value)
+      }}
+    />
   </s.Form>
 )
 
