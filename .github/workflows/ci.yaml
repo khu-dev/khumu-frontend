@@ -25,6 +25,16 @@ jobs:
           registry: ghcr.io
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_ACCESS_TOKEN }}
+           
+      - name: Set Tags
+        id: set_tags
+        run: |
+          if [ $GITHUB_REF == 'refs/heads/master' ]
+          then 
+            echo "::set-output name=ghcr::ghcr.io/khu-dev/khumu-frontend:production"
+          else
+            echo "::set-output name=ghcr::ghcr.io/khu-dev/khumu-frontend:test"
+          fi
       
       - name: Build and push
         uses: docker/build-push-action@v2
