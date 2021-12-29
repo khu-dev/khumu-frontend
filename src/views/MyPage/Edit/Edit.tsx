@@ -1,6 +1,6 @@
 //@ts-nocheck
 
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useRef } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import { color } from '@constants/theme'
 
@@ -11,6 +11,8 @@ import { FileApi } from '@src/api'
 const MAX_SIZE = 3
 
 const Image = ({ handleImageName }) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const beforeUpload = (file: File) => {
     const isValidSize = file.size / 1024 / 1024 < MAX_SIZE
     if (!isValidSize) {
@@ -38,10 +40,19 @@ const Image = ({ handleImageName }) => {
       })
   }
 
+  const onClickUpload = () => {
+    inputRef.current?.click()
+  }
+
   return (
-    <s.Image>
-      <AiOutlineUser color={color.white} size={60} />
-      <s.Uploader type="file" accept="image/*" onChange={upload} />
+    <s.Image onClick={onClickUpload}>
+      <AiOutlineUser onClick={onClickUpload} color={color.white} size={60} />
+      <s.Uploader
+        ref={inputRef}
+        type="file"
+        accept="image/*"
+        onChange={upload}
+      />
     </s.Image>
   )
 }
