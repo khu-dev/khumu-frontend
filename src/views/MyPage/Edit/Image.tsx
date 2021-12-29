@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useRef } from 'react'
+import React, { ChangeEvent, FC, MouseEventHandler, useRef } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 
 import { FileApi } from '@src/api'
@@ -49,7 +49,9 @@ const Image: FC<Props> = ({ handleImageName }) => {
       })
   }
 
-  const onClickUpload = () => {
+  const onClickUpload: MouseEventHandler<Element> = (e) => {
+    e.stopPropagation()
+
     inputRef.current?.click()
   }
 
