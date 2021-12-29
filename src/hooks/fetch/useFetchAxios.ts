@@ -1,5 +1,5 @@
 import { useToken } from '@context/Token'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export const useFetchAxios = ({ func }: any) => {
   const { token } = useToken()
@@ -9,15 +9,15 @@ export const useFetchAxios = ({ func }: any) => {
     error: false,
   })
 
-  const initRefresh = () => {
+  const initRefresh = useCallback(() => {
     result.loading &&
       setResult((prev) => ({
         ...prev,
         loading: true,
       }))
-  }
+  }, [result.loading])
 
-  const refreshData = async () => {
+  const refreshData = useCallback(async () => {
     initRefresh()
 
     let result = null
@@ -34,7 +34,7 @@ export const useFetchAxios = ({ func }: any) => {
         loading: false,
       })
     }
-  }
+  }, [func, initRefresh])
 
   useEffect(() => {
     token && refreshData()
