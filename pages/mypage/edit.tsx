@@ -50,11 +50,7 @@ export default function MyEditPage() {
   const handleSubmit = async () => {
     let result = null
 
-    try {
-      result = await UserApi.update(state)
-    } catch (e) {
-      AndroidToast(e)
-    }
+    result = await UserApi.update(state)
 
     switch (result?.status) {
       case 200:
