@@ -2,7 +2,7 @@ FROM node:lts-alpine
 
 COPY package.json .
 COPY .next .next
-COPY public public
+COPY assets assets
 COPY next.config.js .
 RUN yarn --production --ignore-scripts --prefer-offline
 
