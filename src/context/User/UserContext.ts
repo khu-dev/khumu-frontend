@@ -1,9 +1,11 @@
 import { createContext, useContext } from 'react'
 
-export const initialUser = {
-  info: {
-    created_at: '0',
-    date_joined: '0',
+import { Context } from '@src/interface'
+
+export const initialValue: Context = {
+  user: {
+    created_at: '',
+    date_joined: '',
     department: '',
     groups: [],
     is_active: false,
@@ -16,11 +18,9 @@ export const initialUser = {
     nickname: '',
     profile_image: null,
   },
-  setUser: (info: any) => {
-    console.log(info)
-  },
+  updateUser: () => {},
 }
 
-export const UserContext = createContext(initialUser)
+export const UserContext = createContext(initialValue)
 
 export const useUser = () => useContext(UserContext)
