@@ -1,40 +1,42 @@
-import React, { useEffect } from 'react';
-import * as s from './styled';
+//@ts-nocheck
 
-const CLUBS_CARD = 'clubs-card';
+import React, { useEffect } from 'react'
+import * as s from './styled'
+
+const CLUBS_CARD = 'clubs-card'
 
 export default function Categories({
   category: currentCategory,
   categories,
   handleCategory,
 }) {
-  const categoriesSet = new Set(categories);
-  const uniqueCategories = [...categoriesSet];
-  const [isActive, setIsActive] = React.useState(false);
+  const categoriesSet = new Set(categories)
+  const uniqueCategories = [...categoriesSet]
+  const [isActive, setIsActive] = React.useState(false)
 
   const handleActive = (status: boolean) => {
-    setIsActive(status);
-  };
+    setIsActive(status)
+  }
 
   useEffect(() => {
     const detectClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.id === CLUBS_CARD) return;
+      const target = e.target as HTMLElement
+      if (target.id === CLUBS_CARD) return
 
-      handleActive(false);
-    };
+      handleActive(false)
+    }
 
-    document.addEventListener('click', detectClick);
+    document.addEventListener('click', detectClick)
 
     return () => {
-      document.removeEventListener('click', detectClick);
-    };
-  }, []);
+      document.removeEventListener('click', detectClick)
+    }
+  }, [])
 
   return (
     <s.Tag
       onClick={() => {
-        handleActive(!isActive);
+        handleActive(!isActive)
       }}
       id={CLUBS_CARD}
     >
@@ -43,10 +45,11 @@ export default function Categories({
         <s.Filters id={CLUBS_CARD}>
           {uniqueCategories.map((category) => (
             <s.FilterItem
+              key={category}
               isActive={category === currentCategory}
               onClick={() => {
-                handleCategory(category);
-                handleActive(false);
+                handleCategory(category)
+                handleActive(false)
               }}
               id={CLUBS_CARD}
             >
@@ -56,5 +59,5 @@ export default function Categories({
         </s.Filters>
       )}
     </s.Tag>
-  );
+  )
 }

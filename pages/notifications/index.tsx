@@ -1,56 +1,55 @@
-/**
- * @description 제작된 페이지 목록
- */
-import React, { useEffect, useState } from 'react';
-import CommonHeader from '@components/Header/Common';
-import { color } from '@constants/theme';
-import { fetchNotifications } from '@api/api-notifications';
-import Notifications, { Setting } from '@views/Notifications';
-import { useRouter } from 'next/router';
-import { Notification } from '@interface/Notification';
-import { useToken } from '@src/context/Token';
-import Skeleton from '@src/components/Skeleton';
-import SkeletonNotifications from '@src/components/Skeleton/Notifications';
+//@ts-nocheck
 
-let windowHeight;
-const elementHeight = 72;
+import React, { useEffect, useState } from 'react'
+import CommonHeader from '@components/Header/Common'
+import { color } from '@constants/theme'
+import { NotificationApi } from '@src/api/NotificationApi'
+import Notifications, { Setting } from '@views/Notifications'
+import { useRouter } from 'next/router'
+import { Notification } from '@interface/Notification'
+import { useToken } from '@src/context/Token'
+import Skeleton from '@src/components/Skeleton'
+import SkeletonNotifications from '@src/components/Skeleton/Notifications'
+
+let windowHeight
+const elementHeight = 72
 if (process.browser && typeof window !== undefined) {
-  windowHeight = window.innerHeight * 1.5;
+  windowHeight = window.innerHeight * 1.5
 }
 
 export default function NotificationsPage() {
-  const router = useRouter();
-  const { token } = useToken();
+  const router = useRouter()
+  const { token } = useToken()
   const [data, setData] = useState<{ notifications: Notification[] }>({
     notifications: [null],
-  });
-  const [length, setLength] = useState(Math.floor(windowHeight / elementHeight));
+  })
+  const [length, setLength] = useState(Math.floor(windowHeight / elementHeight))
 
   const infiniteFetch = () => {
-    setLength((prev) => prev + length);
-  };
+    setLength((prev) => prev + length)
+  }
 
   const goBack = () => {
-    router.back();
-  };
+    router.back()
+  }
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) return
 
     const fetchData = async () => {
-      const res = await fetchNotifications.select();
+      const res = await NotificationApi.query()
 
       if (res.status === 200) {
         setData({
           notifications: res.data?.data,
-        });
+        })
       }
-    };
+    }
 
-    fetchData();
-  }, [token]);
+    fetchData()
+  }, [token])
 
-  const { notifications } = data;
+  const { notifications } = data
 
   return (
     <>
@@ -75,5 +74,5 @@ export default function NotificationsPage() {
         )}
       />
     </>
-  );
+  )
 }

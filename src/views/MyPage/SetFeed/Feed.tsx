@@ -1,7 +1,7 @@
-import { color, font } from '@constants/theme';
-import { css } from '@emotion/react';
-import { BsCaretRightFill } from 'react-icons/bs';
-import { MyBox, MyTitle } from '../Shared';
+import { color, font } from '@constants/theme'
+import { css } from '@emotion/react'
+import { BsCaretRightFill } from 'react-icons/bs'
+import { MyBox, MyTitle } from '../Shared'
 
 const Feed = () => (
   <MyBox
@@ -19,6 +19,6 @@ const Feed = () => (
     />
     <BsCaretRightFill style={{ fontSize: font.iconSize, color: color.white }} />
   </MyBox>
-);
+)
 
-export default Feed;
+export default Feed

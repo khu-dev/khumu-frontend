@@ -1,27 +1,26 @@
-/**
- * @description main일 때의 헤더 내용물
- *                1) QRcode 링크
- *                2) 알림 링크
- */
+//@ts-nocheck
 
-import React from 'react';
-import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai';
-import { css } from '@emotion/react';
+import React from 'react'
+import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai'
+import { css } from '@emotion/react'
 
-import { color, font } from '@constants/theme';
-import LinkIcon from '@components/Link';
-import styled from '@emotion/styled';
-import { Title02 } from '@components/Title';
-import { Notification } from '@interface/Notification';
+import { color, font } from '@constants/theme'
+import LinkIcon from '@components/Link'
+import styled from '@emotion/styled'
+import { Title02 } from '@components/Title'
+import { Notification } from '@interface/Notification'
 
 interface Props {
-  title: string;
-  notifications: Notification[];
+  title: string
+  notifications: Notification[]
 }
 
-export default function MainHeader({ title, notifications }: Props): JSX.Element {
-  const unreads = notifications.filter((item) => !item.is_read);
-  const unreadsLength = unreads.length;
+export default function MainHeader({
+  title,
+  notifications,
+}: Props): JSX.Element {
+  const unreads = notifications.filter((item) => !item.is_read)
+  const unreadsLength = unreads.length
 
   return (
     <div className={'header header-main'}>
@@ -52,7 +51,7 @@ export default function MainHeader({ title, notifications }: Props): JSX.Element
         />
       </LinkIcon>
     </div>
-  );
+  )
 }
 
 const Unreads = styled.span`
@@ -69,4 +68,4 @@ const Unreads = styled.span`
   justify-content: center;
   align-items: center;
   transform: scale(0.8);
-`;
+`

@@ -1,1 +1,1 @@
-export { default } from './SetApp';
+export { default } from './SetApp'

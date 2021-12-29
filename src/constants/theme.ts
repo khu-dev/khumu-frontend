@@ -8,7 +8,7 @@ export const color = {
   gray3: '#c0c0c0',
   gray2: '#999',
   gray1: '#7f7f7f',
-};
+}
 
 export const box = {
   padding: '14px',
@@ -20,20 +20,20 @@ export const box = {
   borderRadius: '8px',
   borderRadius02: '4px',
   borderRadius03: '2px',
-};
+}
 
 export const font = {
   iconSize: '24px',
-};
+}
 
 export const title = {
   XL: 22,
   L: 18,
   M: 15,
   S: 13,
-};
+}
 
 export const header = {
   height: '64px',
   exceptHeight: 'calc(100vh - 64px)',
-};
+}

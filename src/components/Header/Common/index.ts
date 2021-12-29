@@ -1,1 +1,3 @@
-export { default } from './CommonHeader';
+//@ts-nocheck
+
+export { default } from './CommonHeader'

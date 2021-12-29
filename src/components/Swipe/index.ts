@@ -1,1 +1,3 @@
-export { default } from './NotificationSwiper';
+//@ts-nocheck
+
+export { default } from './NotificationSwiper'

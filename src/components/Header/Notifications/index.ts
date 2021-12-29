@@ -1,1 +1,3 @@
-export { default } from './NotificationsHeader';
+//@ts-nocheck
+
+export { default } from './NotificationsHeader'

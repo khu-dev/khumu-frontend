@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { box, color } from '@src/constants/theme';
-import { ResignButton } from '@src/enum/ResignButton';
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+import { box, color } from '@src/constants/theme'
+import { ResignButton } from '@src/enum/ResignButton'
 
 export const ResignTitle = styled.h3`
   width: 70vw;
@@ -10,24 +10,24 @@ export const ResignTitle = styled.h3`
   font-size: 18px;
   color: ${color.main};
   margin-bottom: 12px;
-`;
+`
 
 export const ResignSummary = styled.p`
   font-size: 12px;
   color: ${color.gray1};
   text-align: justify;
   margin-bottom: 4px;
-`;
+`
 
 export const ResignButtonContainer = styled.div`
   margin-top: ${box.margin};
   display: flex;
   justify-content: space-around;
   align-items: stretch;
-`;
+`
 
 interface ResignButtonProps {
-  type: ResignButton;
+  type: ResignButton
 }
 
 export const Button = styled.a<ResignButtonProps>`
@@ -52,4 +52,4 @@ export const Button = styled.a<ResignButtonProps>`
           margin-right: ${box.margin};
         `
       : ''}
-`;
+`

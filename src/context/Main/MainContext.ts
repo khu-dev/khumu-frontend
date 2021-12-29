@@ -1,5 +1,5 @@
-import { FeedValueProps } from '@context/Main/type';
-import { createContext, useContext } from 'react';
+import { FeedValueProps } from '@context/Main/type'
+import { createContext, useContext } from 'react'
 
 const initialValue = {
   feed: {
@@ -7,10 +7,12 @@ const initialValue = {
     time: '1시간 45분',
   },
   dispatch: {
-    updateFeed: (_: FeedValueProps) => {},
+    updateFeed: (any: FeedValueProps) => {
+      console.log(any)
+    },
   },
-};
+}
 
-export const MainContext = createContext(initialValue);
+export const MainContext = createContext(initialValue)
 
-export const useMain = () => useContext(MainContext);
+export const useMain = () => useContext(MainContext)

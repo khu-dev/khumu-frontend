@@ -1,27 +1,23 @@
-/**
- * @description main일 때의 헤더 내용물
- *                1) QRcode 링크
- *                2) 알림 링크
- */
+//@ts-nocheck
 
-import React from 'react';
-import { IconType } from 'react-icons';
-import { IoChevronBackOutline } from 'react-icons/io5';
-import { css } from '@emotion/react';
+import React from 'react'
+import { IconType } from 'react-icons'
+import { IoChevronBackOutline } from 'react-icons/io5'
+import { css } from '@emotion/react'
 
-import { color as theme } from '@constants/theme';
-import LinkIcon from '@components/Link';
-import { Title02 } from '@components/Title';
+import { color as theme } from '@constants/theme'
+import LinkIcon from '@components/Link'
+import { Title02 } from '@components/Title'
 
 interface CommonHeaderProps {
-  title: string;
-  hasIcon?: boolean;
-  pathname?: string;
-  handleRouter?: React.MouseEventHandler<SVGElement>;
-  className?: string;
-  Icon?: IconType; // default is back button icon
-  backgroundColor?: string;
-  color?: string;
+  title: string
+  hasIcon?: boolean
+  pathname?: string
+  handleRouter?: React.MouseEventHandler<SVGElement>
+  className?: string
+  Icon?: IconType // default is back button icon
+  backgroundColor?: string
+  color?: string
 }
 
 export default function CommonHeader({
@@ -33,7 +29,7 @@ export default function CommonHeader({
   Icon = IoChevronBackOutline,
   color = theme.main,
 }: CommonHeaderProps) {
-  const csses = useStyles();
+  const csses = useStyles()
 
   return (
     <div
@@ -53,7 +49,7 @@ export default function CommonHeader({
         {title}
       </Title02>
     </div>
-  );
+  )
 }
 
 function useStyles() {
@@ -69,5 +65,5 @@ function useStyles() {
     title: css`
       color: ${theme.main};
     `,
-  };
+  }
 }

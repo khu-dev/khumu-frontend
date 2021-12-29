@@ -1,16 +1,19 @@
-/**
- * @description 아이콘 클릭시 링크를 통해 route
- */
+//@ts-nocheck
 
-import Link from 'next/link';
-import React from 'react';
+import Link from 'next/link'
+import React from 'react'
 
-export default function LinkIcon({ pathname, children, ...rest }) {
-  const Icon: any = React.forwardRef<HTMLAnchorElement>((props, ref) => (
-    <a ref={ref} {...rest} {...props}>
-      {props.children}
-    </a>
-  ));
+export default function LinkIcon({ pathname, children, ...rest }: any) {
+  const Icon: any = React.forwardRef<HTMLAnchorElement>(function Anchor(
+    props,
+    ref,
+  ) {
+    return (
+      <a ref={ref} {...rest} {...props}>
+        {props.children}
+      </a>
+    )
+  })
 
   return pathname ? (
     <Link href={pathname} passHref>
@@ -18,5 +21,5 @@ export default function LinkIcon({ pathname, children, ...rest }) {
     </Link>
   ) : (
     <Icon>{children}</Icon>
-  );
+  )
 }

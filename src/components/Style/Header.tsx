@@ -1,4 +1,6 @@
-import { box, color, header } from '@constants/theme';
+//@ts-nocheck
+
+import { box, color, header } from '@constants/theme'
 
 export default function HeaderStyleTag() {
   return (
@@ -33,5 +35,5 @@ export default function HeaderStyleTag() {
         justify-content: center;
       }
     `}</style>
-  );
+  )
 }

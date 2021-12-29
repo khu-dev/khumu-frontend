@@ -1,15 +1,15 @@
-import 'assets/style/index.scss';
+import 'assets/style/index.scss'
+import { AppProps } from 'next/app'
 
-import React from 'react';
-import Head from 'next/head';
-import { AppProps } from 'next/dist/next-server/lib/router/router';
+import React from 'react'
+import Head from 'next/head'
 
-import StyleTag from '@components/Style';
+import StyleTag from '@components/Style'
 
-import Loading from '@components/Loading';
+import Loading from '@components/Loading'
 
-import TokenProvider from '@context/Token';
-import UserProvider from '@context/User';
+import TokenProvider from '@context/Token'
+import UserProvider from '@context/User'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
@@ -29,6 +29,6 @@ const App = ({ Component, pageProps }: AppProps) => (
       </TokenProvider>
     </div>
   </>
-);
+)
 
-export default App;
+export default App

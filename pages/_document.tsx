@@ -1,7 +1,7 @@
 //@ts-nocheck
 
-import React from 'react';
-import Document, { Html, Main, NextScript, Head } from 'next/document';
+import React from 'react'
+import Document, { Html, Main, NextScript, Head } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
@@ -12,8 +12,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

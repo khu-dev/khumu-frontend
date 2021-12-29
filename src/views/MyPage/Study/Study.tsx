@@ -1,6 +1,6 @@
-import React from 'react';
-import { MyTitle } from '../Shared';
-import { MyButton, MyButtonContainer } from '../Shared/MyButton';
+import React from 'react'
+import { MyTitle } from '../Shared'
+import { MyButton, MyButtonContainer } from '../Shared/MyButton'
 
 const Study = () => (
   <>
@@ -11,6 +11,6 @@ const Study = () => (
       <MyButton>댓글</MyButton>
     </MyButtonContainer>
   </>
-);
+)
 
-export default Study;
+export default Study

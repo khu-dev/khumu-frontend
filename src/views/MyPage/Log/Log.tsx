@@ -1,5 +1,5 @@
-import React from 'react';
-import { MyBox, MyRow, MyTitle } from '../Shared';
+import React from 'react'
+import { MyBox, MyRow, MyTitle } from '../Shared'
 
 const Log = () => (
   <>
@@ -10,6 +10,6 @@ const Log = () => (
       <MyRow>{'북마크'}</MyRow>
     </MyBox>
   </>
-);
+)
 
-export default Log;
+export default Log

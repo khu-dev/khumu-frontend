@@ -1,13 +1,15 @@
-import styled from '@emotion/styled';
-import { box, color } from '@constants/theme';
-import Link from 'next/link';
+//@ts-nocheck
+
+import styled from '@emotion/styled'
+import { box, color } from '@constants/theme'
+import Link from 'next/link'
 
 export const MyButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   margin: 4px 0;
-`;
+`
 
 export const MyButton = styled.div<{ isSingle?: boolean }>`
   width: ${({ isSingle }) => (isSingle ? '100%' : '32%')};
@@ -20,10 +22,10 @@ export const MyButton = styled.div<{ isSingle?: boolean }>`
   background-color: #4d4d4d;
   border-radius: ${box.borderRadius};
   margin-bottom: ${({ isSingle }) => (isSingle ? box.margin : 0)};
-`;
+`
 
 export const LinkButton = ({ pathname, children, ...rest }) => (
   <Link href={pathname}>
     <MyButton {...rest}>{children}</MyButton>
   </Link>
-);
+)

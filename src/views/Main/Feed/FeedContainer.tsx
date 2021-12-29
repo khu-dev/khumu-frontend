@@ -1,13 +1,12 @@
-/**
- * @description main 화면의 상단 피드
- */
-import React, { useState } from 'react';
+//@ts-nocheck
+
+import React, { useState } from 'react'
 
 // import FeedTitle from './FeedTitle';
-import FeedInputProvider from '@context/Feed/Input';
-import FeedContent from './FeedContent';
-import FeedInput from './FeedInput';
-import { Schedule } from '@interface/Schedule';
+import FeedInputProvider from '@context/Feed/Input'
+import FeedContent from './FeedContent'
+import FeedInput from './FeedInput'
+import { Schedule } from '@interface/Schedule'
 
 const initialSchedule = [
   {
@@ -16,19 +15,19 @@ const initialSchedule = [
     ends_at: String(Date.now()),
     title: '',
   },
-];
+]
 
 interface Props {
-  schedules: Schedule[];
+  schedules: Schedule[]
 }
 
 const Feed = ({ schedules = initialSchedule }: Props) => {
-  const [isMore, setMore] = useState(false);
+  const [isMore, setMore] = useState(false)
 
   const handleMore = () => {
-    setMore((prev) => !prev);
-  };
-  const scheduleList = schedules.slice(0, isMore ? 3 : 1);
+    setMore((prev) => !prev)
+  }
+  const scheduleList = schedules.slice(0, isMore ? 3 : 1)
 
   return (
     <div className={'main-feed-container'}>
@@ -58,7 +57,7 @@ const Feed = ({ schedules = initialSchedule }: Props) => {
         </FeedContent.Schedule>
       </FeedContent>
     </div>
-  );
-};
+  )
+}
 
-export default Feed;
+export default Feed

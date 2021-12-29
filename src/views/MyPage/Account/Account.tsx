@@ -1,4 +1,4 @@
-import { MyBox, MyRow, MyTitle } from '../Shared';
+import { MyBox, MyRow, MyTitle } from '../Shared'
 
 const Account = () => (
   <MyBox>
@@ -6,6 +6,6 @@ const Account = () => (
     <MyRow>{'아이디 변경'}</MyRow>
     <MyRow>{'비밀번호 변경'}</MyRow>
   </MyBox>
-);
+)
 
-export default Account;
+export default Account

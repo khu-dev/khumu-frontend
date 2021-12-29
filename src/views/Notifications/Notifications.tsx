@@ -1,36 +1,38 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { css } from '@emotion/react';
+//@ts-nocheck
 
-import { fetchNotifications } from '@api/api-notifications';
-import { color } from '@constants/theme';
-import NotificationSwiper from '@components/Swipe';
-import { AndroidToast } from '@utils/android';
-import { NotiItem } from './NotiItem';
-import { Empty } from './Empty';
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { css } from '@emotion/react'
+
+import { NotificationApi } from '@src/api/NotificationApi'
+import { color } from '@constants/theme'
+import NotificationSwiper from '@components/Swipe'
+import { AndroidToast } from '@utils/android'
+import { NotiItem } from './NotiItem'
+import { Empty } from './Empty'
 
 const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
-  const [isRead, setRead] = useState(item.is_read);
+  const [isRead, setRead] = useState(item.is_read)
 
   const handleDelete = async (notiId) => {
-    const { data } = await fetchNotifications.delete({
+    const { data } = await NotificationApi.delete({
       notiId,
-    });
+    })
 
     if (data) {
-      alert(data?.message);
+      alert(data?.message)
     }
 
-    AndroidToast('삭제되었습니다');
-  };
+    AndroidToast('삭제되었습니다')
+  }
 
   const handleRead = async (notiId: number | 'all' = 'all') => {
     if (!isRead) {
-      const { data } = await fetchNotifications.read({ notiId });
-      setRead(true);
-      console.log('read noti', data);
+      const { data } = await NotificationApi.read({ notiId })
+      setRead(true)
+      console.log('read noti', data)
     }
-  };
+  }
 
   return (
     <NotificationSwiper
@@ -62,20 +64,20 @@ const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
         </a>
       </Link>
     </NotificationSwiper>
-  );
-};
+  )
+}
 
 const Notifications = ({
   notifications,
   ...rest
 }: {
-  notifications: any[];
-  fetchIndex: number;
-  infiniteFetch: Function;
+  notifications: any[]
+  fetchIndex: number
+  infiniteFetch: Function
 }) => {
   React.useEffect(() => {
-    fetchNotifications.read({ notiId: 'all' });
-  }, []);
+    NotificationApi.read({ notiId: 'all' })
+  }, [])
 
   return (
     <>
@@ -87,7 +89,7 @@ const Notifications = ({
         <Empty text={'현재 알림이 없습니다.'} />
       )}
     </>
-  );
-};
+  )
+}
 
-export default Notifications;
+export default Notifications

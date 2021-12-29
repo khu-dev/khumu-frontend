@@ -1,5 +1,7 @@
-import styled from '@emotion/styled';
-import { box, color } from '@constants/theme';
+//@ts-nocheck
+
+import styled from '@emotion/styled'
+import { box, color } from '@constants/theme'
 
 const InfoContainer = styled.div`
   height: 67.5px;
@@ -14,12 +16,12 @@ const InfoContainer = styled.div`
     color: ${color.white};
     font-size: 14px;
   }
-`;
+`
 
 interface ProfileProps {
-  name: string;
-  department: string;
-  studentNumber: string;
+  name: string
+  department: string
+  studentNumber: string
 }
 
 const ProfileInfo = ({ name, department, studentNumber }: ProfileProps) => (
@@ -28,6 +30,6 @@ const ProfileInfo = ({ name, department, studentNumber }: ProfileProps) => (
     <div>{department}</div>
     <div>{studentNumber}</div>
   </InfoContainer>
-);
+)
 
-export default ProfileInfo;
+export default ProfileInfo

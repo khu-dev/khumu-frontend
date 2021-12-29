@@ -1,23 +1,19 @@
-/**
- * @description main일 때의 헤더 내용물
- *                1) QRcode 링크
- *                2) 알림 링크
- */
+//@ts-nocheck
 
-import React from 'react';
-import { IoChevronBackOutline } from 'react-icons/io5';
-import { css } from '@emotion/react';
+import React from 'react'
+import { IoChevronBackOutline } from 'react-icons/io5'
+import { css } from '@emotion/react'
 
-import { color } from '@constants/theme';
-import LinkIcon from '@components/Link';
-import { Title02 } from '@components/Title';
+import { color } from '@constants/theme'
+import LinkIcon from '@components/Link'
+import { Title02 } from '@components/Title'
 
 export default function OtherHeader({
   // align, color,
   pathname,
   title,
 }) {
-  const csses = useStyles();
+  const csses = useStyles()
 
   return (
     <div className={'header header-align-center'}>
@@ -26,7 +22,7 @@ export default function OtherHeader({
       </LinkIcon>
       <Title02 css={csses.title}>{title}</Title02>
     </div>
-  );
+  )
 }
 
 function useStyles() {
@@ -42,5 +38,5 @@ function useStyles() {
     title: css`
       color: ${color.main};
     `,
-  };
+  }
 }

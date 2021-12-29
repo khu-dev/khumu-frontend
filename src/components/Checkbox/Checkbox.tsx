@@ -1,5 +1,7 @@
-import { forwardRef } from 'react';
-import { css } from '@emotion/react';
+//@ts-nocheck
+
+import { forwardRef } from 'react'
+import { css } from '@emotion/react'
 
 const Checkbox = forwardRef<HTMLInputElement>(function Checkbox(props, ref) {
   return (
@@ -13,7 +15,7 @@ const Checkbox = forwardRef<HTMLInputElement>(function Checkbox(props, ref) {
       ref={ref}
       {...props}
     />
-  );
-});
+  )
+})
 
-export default Checkbox;
+export default Checkbox

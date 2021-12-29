@@ -1,5 +1,5 @@
-import { color } from '@constants/theme';
-import styled from '@emotion/styled';
+import { color } from '@constants/theme'
+import styled from '@emotion/styled'
 
 export const MyRow = styled.div`
   width: 100%;
@@ -9,4 +9,4 @@ export const MyRow = styled.div`
   margin-top: 18px;
   color: ${color.white};
   font-size: 16px;
-`;
+`

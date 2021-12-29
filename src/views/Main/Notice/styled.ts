@@ -1,12 +1,12 @@
-import styled from '@emotion/styled';
-import { box, color } from '@constants/theme';
-import { css } from '@emotion/react';
+import styled from '@emotion/styled'
+import { box, color } from '@constants/theme'
+import { css } from '@emotion/react'
 
 const textOverflowHiddenStyle = css`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-`;
+`
 
 export const NoticeItem = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ export const NoticeItem = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 18px;
-`;
+`
 
 export const NoticeThumbnail = styled.div`
   display: inline-block;
@@ -23,7 +23,7 @@ export const NoticeThumbnail = styled.div`
   border-radius: 50%;
   background-color: ${color.main};
   margin-right: 6px;
-`;
+`
 
 export const NoticeBody = styled.div`
   display: inline-block;
@@ -38,19 +38,19 @@ export const NoticeBody = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-`;
+`
 
 export const Title = styled.h3`
   font-weight: 600;
   font-size: 16px;
-`;
+`
 
 export const Content = styled.p`
   font-weight: 400;
   font-size: 13px;
   width: calc(100% - 32px);
   ${textOverflowHiddenStyle};
-`;
+`
 
 export const More = styled.span`
   position: absolute;
@@ -59,4 +59,4 @@ export const More = styled.span`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-`;
+`

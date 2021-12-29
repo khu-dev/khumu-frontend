@@ -1,1 +1,3 @@
-export * from './Header';
+//@ts-nocheck
+
+export * from './Header'

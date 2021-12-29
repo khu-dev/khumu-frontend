@@ -1,25 +1,25 @@
-import styled from '@emotion/styled';
-import { box, color } from '@src/constants/theme';
+import styled from '@emotion/styled'
+import { box, color } from '@src/constants/theme'
 
-const Modal = ({ children, isActive, handleCancel }) => {
+const Modal = ({ children, isActive, handleCancel }: any) => {
   const handleHide = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation();
-    const elem = e.target as HTMLDivElement;
-    const id = elem.id;
+    e.stopPropagation()
+    const elem = e.target as HTMLDivElement
+    const id = elem.id
 
     if (id === 'modal--outer') {
-      handleCancel();
+      handleCancel()
     }
-  };
+  }
 
   return (
     <Outer id="modal--outer" onClick={handleHide} isActive={isActive}>
       <Inner id="modal--inner">{children}</Inner>
     </Outer>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal
 
 const Outer = styled.div<{ isActive: boolean }>`
   position: fixed;
@@ -33,7 +33,7 @@ const Outer = styled.div<{ isActive: boolean }>`
   opacity: ${({ isActive }) => (isActive ? '1' : '0')};
 
   transition: opacity 0.5s;
-`;
+`
 
 const Inner = styled.div`
   position: absolute;
@@ -47,4 +47,4 @@ const Inner = styled.div`
   background-color: ${color.white};
   border-radius: ${box.borderRadius};
   padding: ${box.padding};
-`;
+`

@@ -1,0 +1,30 @@
+root: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - prettier
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  - plugin:prettier/recommended
+settings:
+  react:
+    version: 'detect'
+rules:
+  no-console: warn
+  no-unused-vars: off
+  react/prop-types: off
+  react/react-in-jsx-scope: off
+  '@typescript-eslint/no-unused-vars':
+    - error
+  prettier/prettier:
+    - error
+    - semi: false
+      singleQuote: true
+      trailingComma: all
+      tabWidth: 2
+      endOfLine: auto

@@ -1,1 +1,3 @@
-export { default } from './MyPageHeader';
+//@ts-nocheck
+
+export { default } from './MyPageHeader'

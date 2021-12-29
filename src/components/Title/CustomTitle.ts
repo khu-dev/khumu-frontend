@@ -1,8 +1,10 @@
-import styled from '@emotion/styled';
+//@ts-nocheck
+
+import styled from '@emotion/styled'
 
 interface TitleType {
-  size: number;
-  weight?: number;
+  size: number
+  weight?: number
 }
 
 export const CustomTitle = styled.h1<TitleType>`
@@ -13,4 +15,4 @@ export const CustomTitle = styled.h1<TitleType>`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-`;
+`

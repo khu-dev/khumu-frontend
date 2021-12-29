@@ -1,15 +1,17 @@
-import styled from '@emotion/styled';
-import { box, color } from '@constants/theme';
+//@ts-nocheck
+
+import styled from '@emotion/styled'
+import { box, color } from '@constants/theme'
 
 const ScheduleShortCut = ({ title, handleClick }) => {
   const onClick = () => {
-    handleClick();
-  };
+    handleClick()
+  }
 
-  return <Button onClick={onClick}>{title}</Button>;
-};
+  return <Button onClick={onClick}>{title}</Button>
+}
 
-export default ScheduleShortCut;
+export default ScheduleShortCut
 
 const Button = styled.button`
   width: 52px;
@@ -23,4 +25,4 @@ const Button = styled.button`
   background-color: ${color.gray4};
   border: none;
   border-radius: ${box.borderRadius02};
-`;
+`

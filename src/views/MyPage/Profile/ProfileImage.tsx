@@ -1,25 +1,27 @@
-import { AiOutlineUser } from 'react-icons/ai';
+//@ts-nocheck
 
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import { AiOutlineUser } from 'react-icons/ai'
 
-import { box, color } from '@constants/theme';
+import styled from '@emotion/styled'
+import { css } from '@emotion/react'
+
+import { box, color } from '@constants/theme'
 
 const placeholder = css`
   width: 67.5px;
   height: 67.5px;
   border-radius: ${box.borderRadius};
   background-color: ${color.gray5};
-`;
+`
 
-const Image = styled.img(placeholder);
+const Image = styled.img(placeholder)
 
 const NoImage = styled.div`
   ${placeholder};
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export default function ProfileImage({ src }: { src: string }) {
   return src ? (
@@ -28,5 +30,5 @@ export default function ProfileImage({ src }: { src: string }) {
     <NoImage>
       <AiOutlineUser color={color.gray1} size={60} />
     </NoImage>
-  );
+  )
 }

@@ -1,14 +1,19 @@
-import { FeedInputContext } from './FeedInputContext';
-import { useSearchAreaFocus } from '@hooks/Main/useSearchAreaFocus';
+import { FeedInputContext } from './FeedInputContext'
+import { useSearchAreaFocus } from '@hooks/Main/useSearchAreaFocus'
+import { ReactNode } from 'react'
 
-const FeedInputProvider = ({ children }) => {
-  const { focus, ...handler } = useSearchAreaFocus();
+interface Props {
+  children: ReactNode
+}
+
+const FeedInputProvider = ({ children }: Props) => {
+  const { focus, ...handler } = useSearchAreaFocus()
 
   return (
     <FeedInputContext.Provider value={{ focus, handler }}>
       {children}
     </FeedInputContext.Provider>
-  );
-};
+  )
+}
 
-export default FeedInputProvider;
+export default FeedInputProvider
