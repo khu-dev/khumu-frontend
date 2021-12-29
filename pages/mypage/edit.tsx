@@ -50,7 +50,11 @@ export default function MyEditPage() {
   const handleSubmit = async () => {
     let result = null
 
-    result = await UserApi.update(state)
+    try {
+      result = await UserApi.update(state)
+    } catch (e) {
+      AndroidToast('정보 변경을 실패하였습니다')
+    }
 
     switch (result?.status) {
       case 200:
@@ -61,7 +65,6 @@ export default function MyEditPage() {
         AndroidToast('존재하는 닉네임입니다')
         break
       default:
-        AndroidToast('정보 변경을 실패하였습니다')
     }
   }
 
