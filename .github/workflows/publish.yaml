@@ -11,10 +11,6 @@ jobs:
 
       - name: Install dpependencies
         run: yarn --pure-lockfile
-
-      - name: copy env
-        if: github.ref == 'refs/heads/dev'
-        run: cp -rf .env.test .env.production
       
       - name: Build
         run: yarn build
