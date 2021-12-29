@@ -1,5 +1,6 @@
-import { webClient } from 'src/module'
+import { Department } from '@src/interface'
+import { webClient } from '@src/module'
 
 export const DepartmentApi = {
-  query: () => webClient.get(`/departments`),
+  query: () => webClient.get<Department[]>(`/departments`),
 }

@@ -3,7 +3,7 @@ import { webClient } from 'src/module'
 interface UpdateRequest {
   nickname?: string
   department?: string
-  profile_image?: string
+  profile_image?: string | null
 }
 
 export const UserApi = {

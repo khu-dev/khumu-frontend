@@ -1,20 +1,17 @@
-//@ts-nocheck
-
 import React, { useState, useEffect } from 'react'
-
-import { useUser } from '@context/User'
-import CommonHeader from '@components/Header/Common'
-import Edit from '@views/MyPage/Edit'
-import { UserApi } from '@src/api/UserApi'
-import { DepartmentApi } from '@src/api/DepartmentApi'
-import { AndroidToast } from '@utils/android'
 import { useRouter } from 'next/router'
-import { Department } from '@interface/Department'
-import { useToken } from '@src/context/Token'
 
-interface Data {
-  departments: Department[]
-}
+import { UserApi } from '@api/UserApi'
+import { DepartmentApi } from '@api/DepartmentApi'
+import { useToken } from '@context/Token'
+import { useUser } from '@context/User'
+import { AndroidToast } from '@utils/android'
+
+import { Department } from '@interface/Department'
+import { Edit as EditType } from '@interface/User'
+
+import Edit from '@views/MyPage/Edit'
+import CommonHeader from '@components/Header/Common'
 
 export default function MyEditPage() {
   const { token } = useToken()
@@ -23,10 +20,8 @@ export default function MyEditPage() {
     setUser,
   } = useUser()
   const router = useRouter()
-  const [data, setData] = useState<Data>({
-    departments: [{ id: 0, name: '', organization: '' }],
-  })
-  const [state, setState] = useState({
+  const [departments, setDepartments] = useState<Department[]>([])
+  const [state, setState] = useState<EditType>({
     nickname: nickname || '',
     department,
     profile_image,
@@ -58,10 +53,10 @@ export default function MyEditPage() {
     try {
       result = await UserApi.update(state)
     } catch (e) {
-      console.error(e)
+      AndroidToast(e)
     }
 
-    switch (result.status) {
+    switch (result?.status) {
       case 200:
         setUser(state)
         AndroidToast('변경되었습니다')
@@ -89,19 +84,15 @@ export default function MyEditPage() {
       const res = await DepartmentApi.query()
 
       if (res.status === 200) {
-        const newData = res.data.map((info) => ({
+        const newData = res.data.map((info: Department) => ({
           name: info.name,
           id: info.id,
         }))
-        setData({
-          departments: newData,
-        })
+        setDepartments(newData)
       }
     }
     fetchData()
   }, [token])
-
-  const { departments } = data
 
   return (
     <>
