@@ -8,7 +8,7 @@ import { box } from '@constants/theme'
 
 export default function MyPagePage() {
   const {
-    info: { nickname, department, student_number, profile_image },
+    user: { nickname, department, student_number, profile_image },
   } = useUser()
 
   return (
