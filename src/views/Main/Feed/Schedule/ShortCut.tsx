@@ -1,14 +1,15 @@
-//@ts-nocheck
-
+import { FC } from 'react'
 import styled from '@emotion/styled'
+
 import { box, color } from '@constants/theme'
 
-const ScheduleShortCut = ({ title, handleClick }) => {
-  const onClick = () => {
-    handleClick()
-  }
+interface Props {
+  title: string
+  handleClick(): void
+}
 
-  return <Button onClick={onClick}>{title}</Button>
+const ScheduleShortCut: FC<Props> = ({ title, handleClick }) => {
+  return <Button onClick={handleClick}>{title}</Button>
 }
 
 export default ScheduleShortCut

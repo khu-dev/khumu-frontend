@@ -20,7 +20,9 @@ export const OuterContainer = styled.div<ContainerProps>`
       position: fixed;
       top: 0;
       left: 0;
-      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
       z-index: 19;
       background-color: ${color.white};
     `}
@@ -41,6 +43,7 @@ export const SearchLabel = styled.div<ContainerProps>`
   ${({ focus }) =>
     focus &&
     css`
+      flex: 1;
       border: 1px solid ${color.main};
       margin-top: ${box.margin};
       height: auto;
@@ -48,6 +51,7 @@ export const SearchLabel = styled.div<ContainerProps>`
 `
 
 export const SearchForm = styled.div`
+  height: calc(100% - 16px);
   flex: 1;
   display: flex;
   align-items: center;
@@ -83,8 +87,8 @@ export const TextInput = styled.input`
 
 export const TextArea = styled.textarea`
   ${inputStyle};
-  padding: 8px;
-  height: 300px;
+  padding: 8px 0;
+  height: 100%;
 `
 
 interface FButtonProps {

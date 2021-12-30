@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
@@ -34,12 +32,10 @@ const Feed = ({ schedules = initialSchedule }: Props) => {
   return (
     <Container>
       <FeedInputProvider>
-        <FeedInput>
-          <FeedInput.TextArea placeholder={'자유로운 피드백 부탁드립니다'} />
-        </FeedInput>
+        <FeedInput />
       </FeedInputProvider>
       <FeedContent isMore={isMore}>
-        <FeedContent.Tab tab={{ title: '학사 일정' }} />
+        <FeedContent.Tab />
         <FeedContent.Schedule isMore={isMore}>
           {scheduleList.map((schedule) => (
             <React.Fragment key={schedule.id}>

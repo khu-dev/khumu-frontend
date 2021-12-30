@@ -1,29 +1,12 @@
-//@ts-nocheck
-
-import React, { useEffect } from 'react'
-import { css } from '@emotion/react'
+import { useEffect, useRef } from 'react'
 
 import { useFeedInput } from '@context/Feed/Input'
-import { color } from '@constants/theme'
-import { Title03 } from '@components/Title'
 import * as s from './SearchArea.styled'
 import { FeedbackButton } from 'src/enum/FeedbackButton'
 import { AndroidToast } from '@utils/android'
 
-const Title = ({ title }) => (
-  <Title03
-    css={css`
-      margin-top: 4px;
-      margin-bottom: 12px;
-      color: ${color.white};
-    `}
-  >
-    {title}
-  </Title03>
-)
-
-const TextArea = ({ placeholder }) => {
-  const contentRef = React.useRef<HTMLTextAreaElement>(null)
+const TextArea = () => {
+  const contentRef = useRef<HTMLTextAreaElement>(null)
   const { focus, handler } = useFeedInput()
 
   useEffect(() => {
@@ -41,7 +24,7 @@ const TextArea = ({ placeholder }) => {
   }, [handler])
 
   return (
-    <>
+    <s.OuterContainer focus={focus}>
       <s.SearchLabel focus={focus}>
         <s.SearchForm>
           {focus || <s.DecorationSpan />}
@@ -49,7 +32,7 @@ const TextArea = ({ placeholder }) => {
             <s.TextArea
               id="main-search-input"
               name="search"
-              placeholder={placeholder}
+              placeholder="자유로운 피드백 부탁드립니다"
               onFocus={() => handler.handleFocus()}
               ref={contentRef}
             />
@@ -58,7 +41,7 @@ const TextArea = ({ placeholder }) => {
               id="main-search-input"
               type="text"
               name="search"
-              placeholder={placeholder}
+              placeholder="자유로운 피드백 부탁드립니다"
               onFocus={() => handler.handleFocus()}
             />
           )}
@@ -69,9 +52,11 @@ const TextArea = ({ placeholder }) => {
           <s.FButton
             type={FeedbackButton.SUBMIT}
             onClick={() => {
-              if (contentRef.current.value.length === 0)
+              if (contentRef.current!.value.length === 0) {
                 return AndroidToast('내용을 적어주세요')
-              handler.handleSubmit(contentRef.current.value)
+              }
+
+              handler.handleSubmit(contentRef.current!.value)
             }}
           >
             전송
@@ -84,17 +69,8 @@ const TextArea = ({ placeholder }) => {
           </s.FButton>
         </label>
       )}
-    </>
+    </s.OuterContainer>
   )
 }
 
-const FeedInput = ({ children }) => {
-  const { focus } = useFeedInput()
-
-  return <s.OuterContainer focus={focus}>{children}</s.OuterContainer>
-}
-
-FeedInput.Title = Title
-FeedInput.TextArea = TextArea
-
-export default FeedInput
+export default TextArea
