@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import React from 'react'
 import { AiOutlineBell, AiOutlineQrcode } from 'react-icons/ai'
 import { css } from '@emotion/react'
@@ -8,20 +6,13 @@ import { color, font } from '@constants/theme'
 import LinkIcon from '@components/Link'
 import styled from '@emotion/styled'
 import { Title02 } from '@components/Title'
-import { Notification } from '@interface/Notification'
 
 interface Props {
   title: string
-  notifications: Notification[]
+  noticesNum: number
 }
 
-export default function MainHeader({
-  title,
-  notifications,
-}: Props): JSX.Element {
-  const unreads = notifications.filter((item) => !item.is_read)
-  const unreadsLength = unreads.length
-
+export default function MainHeader({ title, noticesNum }: Props): JSX.Element {
   return (
     <div className={'header header-main'}>
       <Title02
@@ -42,7 +33,7 @@ export default function MainHeader({
         />
       </LinkIcon>
       <LinkIcon pathname={'/notifications'} style={{ position: 'relative' }}>
-        {unreadsLength > 0 && <Unreads>{unreads.length}</Unreads>}
+        {noticesNum > 0 && <Unreads>{noticesNum}</Unreads>}
         <AiOutlineBell
           size={font.iconSize}
           css={css`
