@@ -1,12 +1,13 @@
-//@ts-nocheck
-
 import React, { useState } from 'react'
+import styled from '@emotion/styled'
 
-// import FeedTitle from './FeedTitle';
 import FeedInputProvider from '@context/Feed/Input'
+import { color } from '@src/constants/theme'
+import { Schedule } from '@interface/Schedule'
+
 import FeedContent from './FeedContent'
 import FeedInput from './FeedInput'
-import { Schedule } from '@interface/Schedule'
+import { css } from '@emotion/react'
 
 const initialSchedule = [
   {
@@ -27,28 +28,38 @@ const Feed = ({ schedules = initialSchedule }: Props) => {
   const handleMore = () => {
     setMore((prev) => !prev)
   }
-  const scheduleList = schedules.slice(0, isMore ? 3 : 1)
+  const scheduleList = schedules.slice(0, isMore ? 3 : 3)
 
   return (
-    <div className={'main-feed-container'}>
+    <Container isMore={isMore}>
       <FeedInputProvider>
-        <FeedInput>
-          <FeedInput.TextArea placeholder={'자유로운 피드백 부탁드립니다'} />
-        </FeedInput>
+        <FeedInput />
       </FeedInputProvider>
+      <FeedContent.Tab />
       <FeedContent isMore={isMore}>
-        <FeedContent.Tab tab={{ title: '학사 일정' }} />
         <FeedContent.Schedule isMore={isMore}>
-          {scheduleList.map((schedule) => (
-            <React.Fragment key={schedule.id}>
-              <FeedContent.Title title={schedule.title} isMore={isMore} />
+          {scheduleList.map((schedule, idx) => (
+            <div
+              key={schedule.id}
+              css={css`
+                margin-bottom: 12px;
+
+                ${!isMore &&
+                idx > 0 &&
+                css`
+                  opacity: 0;
+                `};
+                transition: opacity 0.5s;
+              `}
+            >
+              <FeedContent.Title title={schedule.title} />
               <FeedContent.Date
                 isValid={schedule.title !== ''}
                 isMore={isMore}
                 start={schedule.starts_at}
                 end={schedule.ends_at}
               />
-            </React.Fragment>
+            </div>
           ))}
           <FeedContent.Link
             title={isMore ? '숨기기' : '더보기'}
@@ -56,8 +67,25 @@ const Feed = ({ schedules = initialSchedule }: Props) => {
           />
         </FeedContent.Schedule>
       </FeedContent>
-    </div>
+    </Container>
   )
 }
 
 export default Feed
+
+const Container = styled.div<{ isMore: boolean }>`
+  width: 100%;
+  height: 204px;
+
+  position: relative;
+
+  background-color: ${color.main};
+
+  ${({ isMore }) =>
+    isMore &&
+    css`
+      height: 340px;
+    `};
+
+  transition: height 0.5s;
+`

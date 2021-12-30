@@ -8,12 +8,13 @@ import { AndroidToast } from '@src/utils/android'
 import * as s from './styled'
 
 const MAX_SIZE = 3
+const PROFILE_IMAGE_ATTRIBUTE = 'profile_image'
 
 interface Props {
-  handleImageName(name: string): void
+  onChange(name: string, value: string): void
 }
 
-const Image: FC<Props> = ({ handleImageName }) => {
+const Image: FC<Props> = ({ onChange }) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const beforeUpload = (file: File) => {
@@ -42,7 +43,7 @@ const Image: FC<Props> = ({ handleImageName }) => {
 
     FileApi.upload(formData)
       .then(({ data }) => {
-        handleImageName(data)
+        onChange(e.target.name, data)
       })
       .catch(() => {
         AndroidToast('업로드에 실패하였습니다')
@@ -56,6 +57,7 @@ const Image: FC<Props> = ({ handleImageName }) => {
         ref={inputRef}
         type="file"
         accept="image/*"
+        name={PROFILE_IMAGE_ATTRIBUTE}
         onChange={upload}
       />
     </s.Image>

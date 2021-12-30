@@ -1,29 +1,12 @@
-//@ts-nocheck
-
-import React, { useEffect } from 'react'
-import { css } from '@emotion/react'
+import { useEffect, useRef } from 'react'
 
 import { useFeedInput } from '@context/Feed/Input'
-import { color } from '@constants/theme'
-import { Title03 } from '@components/Title'
 import * as s from './SearchArea.styled'
 import { FeedbackButton } from 'src/enum/FeedbackButton'
 import { AndroidToast } from '@utils/android'
 
-const Title = ({ title }) => (
-  <Title03
-    css={css`
-      margin-top: 4px;
-      margin-bottom: 12px;
-      color: ${color.white};
-    `}
-  >
-    {title}
-  </Title03>
-)
-
-const TextArea = ({ placeholder }) => {
-  const contentRef = React.useRef<HTMLTextAreaElement>(null)
+const TextArea = () => {
+  const contentRef = useRef<HTMLTextAreaElement>(null)
   const { focus, handler } = useFeedInput()
 
   useEffect(() => {
@@ -38,63 +21,56 @@ const TextArea = ({ placeholder }) => {
     return () => {
       window.onpopstate = basic
     }
-  }, [])
+  }, [handler])
 
   return (
-    <>
-      <s.SearchLabel className={'main-feed-title-container'} focus={focus}>
+    <s.OuterContainer focus={focus}>
+      <s.SearchLabel focus={focus}>
         <s.SearchForm>
           {focus || <s.DecorationSpan />}
           {focus ? (
             <s.TextArea
-              id={'main-search-input'}
-              name={'search'}
-              placeholder={placeholder}
+              id="main-search-input"
+              name="search"
+              placeholder="자유로운 피드백 부탁드립니다"
               onFocus={() => handler.handleFocus()}
               ref={contentRef}
             />
           ) : (
             <s.TextInput
-              id={'main-search-input'}
-              type={'text'}
-              name={'search'}
-              placeholder={placeholder}
+              id="main-search-input"
+              type="text"
+              name="search"
+              placeholder="자유로운 피드백 부탁드립니다"
               onFocus={() => handler.handleFocus()}
             />
           )}
         </s.SearchForm>
       </s.SearchLabel>
       {focus && (
-        <label htmlFor={'main-search-input'}>
+        <label htmlFor="main-search-input">
           <s.FButton
             type={FeedbackButton.SUBMIT}
             onClick={() => {
-              if (contentRef.current.value.length === 0)
+              if (contentRef.current!.value.length === 0) {
                 return AndroidToast('내용을 적어주세요')
-              handler.handleSubmit(contentRef.current.value)
+              }
+
+              handler.handleSubmit(contentRef.current!.value)
             }}
           >
-            {'전송'}
+            전송
           </s.FButton>
           <s.FButton
             type={FeedbackButton.CANCEL}
             onClick={() => handler.handleBlur()}
           >
-            {'취소'}
+            취소
           </s.FButton>
         </label>
       )}
-    </>
+    </s.OuterContainer>
   )
 }
 
-const FeedInput = ({ children }) => {
-  const { focus } = useFeedInput()
-
-  return <s.OuterContainer focus={focus}>{children}</s.OuterContainer>
-}
-
-FeedInput.Title = Title
-FeedInput.TextArea = TextArea
-
-export default FeedInput
+export default TextArea

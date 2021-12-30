@@ -1,25 +1,26 @@
-import { FC } from 'react'
-
-import { AndroidToast } from '@src/utils/android'
+import { useUser } from '@context/User'
+import { AndroidToast } from '@utils/android'
 
 import * as s from './styled'
 
-interface Props {
-  studentNumber: string
-}
+const StudentNumber = () => {
+  const {
+    user: { student_number },
+  } = useUser()
 
-const StudentNumber: FC<Props> = ({ studentNumber }) => (
-  <s.Form>
-    <s.FormTitle>학번</s.FormTitle>
-    <s.Input
-      name="studentNumber"
-      onClick={() => {
-        AndroidToast('학번은 변경할 수 없습니다')
-      }}
-      placeholder={studentNumber}
-      disabled
-    />
-  </s.Form>
-)
+  return (
+    <s.Form>
+      <s.FormTitle>학번</s.FormTitle>
+      <s.Input
+        name="studentNumber"
+        onClick={() => {
+          AndroidToast('학번은 변경할 수 없습니다')
+        }}
+        placeholder={student_number}
+        disabled
+      />
+    </s.Form>
+  )
+}
 
 export default StudentNumber

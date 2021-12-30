@@ -15,17 +15,11 @@ const initialState: QRcode = {
   student_number: '',
 }
 
-// interface Props {
-//   qrcode: QRcode;
-// }
-
 export default function QRCodePage() {
-  // { qrcode }: Props
   const { token } = useToken()
   const [info, setInfo] = useState(initialState)
 
   const fetchData = useCallback(async () => {
-    if (info.qr_code_str) setInfo(initialState)
     const { data } = await QrcodeApi.get()
 
     if (data) {
@@ -33,7 +27,7 @@ export default function QRCodePage() {
 
       setInfo(info)
     }
-  }, [info.qr_code_str])
+  }, [])
 
   useEffect(() => {
     if (!token) return

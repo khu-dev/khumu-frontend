@@ -1,0 +1,36 @@
+@import './shared.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    overscroll-behavior: none;
+}
+
+#__next {
+  height: auto;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.app-outer-container {
+  width: 100%;
+  min-height: calc(100vh - 64px); // header height: ;
+
+  margin-top: 64PX;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

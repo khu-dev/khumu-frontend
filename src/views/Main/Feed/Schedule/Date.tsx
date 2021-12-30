@@ -1,14 +1,19 @@
-//@ts-nocheck
-
-import React from 'react'
+import { FC } from 'react'
 import { css } from '@emotion/react'
 import { CustomTitle } from '@components/Title'
 import { title as titleStyle, color } from '@constants/theme'
-import { formatMonthDayDate } from '@utils/day'
+import { toMDdddd } from '@utils/day'
 
-const ScheduleDate = ({ isValid, isMore, start, end }) => {
-  const startDate = formatMonthDayDate(start)
-  const endDate = formatMonthDayDate(end)
+interface Props {
+  isValid: boolean
+  isMore: boolean
+  start: string
+  end: string
+}
+
+const ScheduleDate: FC<Props> = ({ isValid, isMore, start, end }) => {
+  const startDate = toMDdddd.ko(start)
+  const endDate = toMDdddd.ko(end)
 
   return (
     <CustomTitle

@@ -1,7 +1,10 @@
 import { useState, useEffect, ReactNode } from 'react'
-import { UserApi } from '@src/api/UserApi'
+
+import { UserApi } from '@api/UserApi'
 import { useToken } from '@context/Token'
-import { initialUser, UserContext } from './UserContext'
+import { User } from '@interface/User'
+
+import { UserContext } from './UserContext'
 
 interface Props {
   children: ReactNode
@@ -9,46 +12,37 @@ interface Props {
 
 export default function UserProvider({ children }: Props) {
   const { token } = useToken()
-  const [user, setUser] = useState(initialUser)
+  const [user, setUser] = useState<User>()
 
   useEffect(() => {
-    const fetchData = async () => {
-      let result: any = null
+    if (!token) return
 
-      try {
-        result = await UserApi.check()
-      } catch (e) {
-        console.error('fetchUsers.check() error in user provider')
-      } finally {
-        if (result?.status === 200) {
+    UserApi.check()
+      .then(({ data, status }) => {
+        if (status === 200) {
           setUser((prev) => ({
             ...prev,
-            info: {
-              ...result.data.data,
-            },
+            ...data.data,
           }))
         }
-      }
-    }
-
-    token && fetchData()
+      })
+      .catch(() => {})
   }, [token])
 
-  const updateUserInfo = (info: any) => {
+  const updateUser = (info: User) => {
     setUser((prev) => ({
       ...prev,
-      info: {
-        ...prev.info,
-        ...info,
-      },
+      ...info,
     }))
   }
 
   return (
     <UserContext.Provider
       value={{
-        ...user,
-        setUser: updateUserInfo,
+        user: {
+          ...user,
+        },
+        updateUser,
       }}
     >
       {children}
