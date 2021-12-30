@@ -1,3 +1,5 @@
+import { Notification } from '@src/interface'
+import { DataObj } from '@src/interface/Response'
 import { webClient } from 'src/module'
 
 interface ReadRequest {
@@ -9,7 +11,8 @@ interface DeleteRequest {
 }
 
 export const NotificationApi = {
-  query: () => webClient.get(`/notifications?recipient=me`),
+  query: () =>
+    webClient.get<DataObj<Notification[]>>(`/notifications?recipient=me`),
   read: ({ notiId }: ReadRequest) =>
     webClient.patch(`/notifications/${notiId}/read`),
   unread: ({ notiId }: ReadRequest) =>

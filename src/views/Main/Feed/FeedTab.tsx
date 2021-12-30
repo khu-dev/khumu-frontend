@@ -1,38 +1,31 @@
-//@ts-nocheck
-
 import React from 'react'
-import dayjs from 'dayjs'
 import styled from '@emotion/styled'
 
 import { box, color } from '@constants/theme'
-import { convertDate } from '@utils/day'
+import { toMDdddd } from '@utils/day'
 
-export default function FeedTab({ tab }) {
+export default function FeedTab() {
   const now = Date.now()
-  const formatMonthAndDay = dayjs(now).format('M/DD')
-  const formatDate = convertDate[dayjs(now).format('ddd')] + '요일'
+  const formatDate = toMDdddd.slash(now)
 
   return (
     <Container>
       <Tab>
-        <TabContent>{tab.title}</TabContent>
+        <TabContent>학사 일정</TabContent>
       </Tab>
-      <Day>
-        [ {formatMonthAndDay} {formatDate} ]
-      </Day>
+      <Day>[ {formatDate} ]</Day>
     </Container>
   )
 }
 
 const Container = styled.div`
-  position: absolute;
-  top: -32px;
   padding: 0px 24px;
-  width: ${box.paddingWidth};
+  width: calc(100vw - 48px);
   height: 33px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transform: translateY(8px);
 `
 
 const Tab = styled.div`

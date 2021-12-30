@@ -19,6 +19,7 @@ export const NoticeItem = styled.div`
 export const NoticeThumbnail = styled.div`
   display: inline-block;
   width: 34px;
+  min-width: 34px;
   height: 34px;
   border-radius: 50%;
   background-color: ${color.main};
@@ -28,6 +29,7 @@ export const NoticeThumbnail = styled.div`
 export const NoticeBody = styled.div`
   display: inline-block;
   flex-grow: 1;
+  max-width: calc(100% - 58px);
   height: 40px;
   border: 1px solid ${color.main};
   border-radius: ${box.borderRadius};

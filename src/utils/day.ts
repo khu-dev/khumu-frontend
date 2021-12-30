@@ -1,6 +1,9 @@
 //@ts-nocheck
 
 import dayjs from 'dayjs'
+import 'dayjs/locale/ko'
+
+dayjs.locale('ko')
 
 export const convertDate = {
   Mon: '월',
@@ -10,6 +13,15 @@ export const convertDate = {
   Fri: '금',
   Sat: '토',
   Sun: '일',
+}
+
+export const toMDdddd = {
+  slash: (date: string | number) => {
+    return dayjs(date).format('M/D dddd')
+  },
+  ko: (date: string | number) => {
+    return dayjs(date).format('M월 D일 dddd')
+  },
 }
 
 export const getDiff = ({ day1, day2, type }: any) =>
@@ -39,11 +51,4 @@ export const calculateDayDiff = ({ day1, day2 }: any) => {
   if (minuteDiff >= 0) return minuteDiff > 0 ? `${minuteDiff}분 전` : `방금 전`
 
   return result
-}
-
-export const formatMonthDayDate = (day: any) => {
-  const MonthDay = dayjs(day).format('M월 DD일')
-  const Date = convertDate[dayjs(day).format('ddd')]
-
-  return `${MonthDay}(${Date})`
 }
