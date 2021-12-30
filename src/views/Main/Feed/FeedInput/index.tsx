@@ -38,26 +38,26 @@ const TextArea = ({ placeholder }) => {
     return () => {
       window.onpopstate = basic
     }
-  }, [])
+  }, [handler])
 
   return (
     <>
-      <s.SearchLabel className={'main-feed-title-container'} focus={focus}>
+      <s.SearchLabel focus={focus}>
         <s.SearchForm>
           {focus || <s.DecorationSpan />}
           {focus ? (
             <s.TextArea
-              id={'main-search-input'}
-              name={'search'}
+              id="main-search-input"
+              name="search"
               placeholder={placeholder}
               onFocus={() => handler.handleFocus()}
               ref={contentRef}
             />
           ) : (
             <s.TextInput
-              id={'main-search-input'}
-              type={'text'}
-              name={'search'}
+              id="main-search-input"
+              type="text"
+              name="search"
               placeholder={placeholder}
               onFocus={() => handler.handleFocus()}
             />
@@ -65,7 +65,7 @@ const TextArea = ({ placeholder }) => {
         </s.SearchForm>
       </s.SearchLabel>
       {focus && (
-        <label htmlFor={'main-search-input'}>
+        <label htmlFor="main-search-input">
           <s.FButton
             type={FeedbackButton.SUBMIT}
             onClick={() => {
@@ -74,13 +74,13 @@ const TextArea = ({ placeholder }) => {
               handler.handleSubmit(contentRef.current.value)
             }}
           >
-            {'전송'}
+            전송
           </s.FButton>
           <s.FButton
             type={FeedbackButton.CANCEL}
             onClick={() => handler.handleBlur()}
           >
-            {'취소'}
+            취소
           </s.FButton>
         </label>
       )}

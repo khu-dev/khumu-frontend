@@ -34,6 +34,9 @@ export const SearchLabel = styled.div<ContainerProps>`
   padding: 0 10px;
   background-color: ${color.white};
   border-radius: ${box.borderRadius02};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   ${({ focus }) =>
     focus &&

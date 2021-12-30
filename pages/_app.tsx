@@ -4,8 +4,6 @@ import { AppProps } from 'next/app'
 import React from 'react'
 import Head from 'next/head'
 
-import StyleTag from '@components/Style'
-
 import Loading from '@components/Loading'
 
 import TokenProvider from '@context/Token'
@@ -18,7 +16,6 @@ const App = ({ Component, pageProps }: AppProps) => (
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
       />
-      <StyleTag />
     </Head>
     <Loading />
     <div className={'app-outer-container'}>

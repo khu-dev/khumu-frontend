@@ -14,8 +14,7 @@ export const useSearchAreaFocus = () => {
   }
 
   const handleSubmit = async (content: string) => {
-    const res = await FeedbackApi.create({ content })
-    console.log(res)
+    await FeedbackApi.create({ content })
     AndroidToast('제출되었습니다')
     handleBlur()
   }
