@@ -29,21 +29,24 @@ export default FeedContent
 
 const ScheduleContainer = styled.div`
   position: absolute;
-  display: flex;
-  flex-direction: column;
+  top: 0;
   width: ${box.marginWidth};
-  height: 100%;
+  height: calc(100% - 24px);
   margin: 0px 32px;
+  padding: 12px 0;
   justify-content: center;
   background-color: ${color.white};
 
   &.more {
-    height: 220px;
+    height: 196px;
   }
+  transition: height 0.5s;
 `
 
 const ContentContainer = styled.div`
-  position: relative;
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
 
   display: flex;
   flex-direction: column;
@@ -53,7 +56,7 @@ const ContentContainer = styled.div`
   margin: ${box.margin};
 
   width: ${box.marginWidth};
-  height: 90px;
+  height: 84px;
 
   border-radius: ${box.borderRadius};
 
@@ -61,6 +64,7 @@ const ContentContainer = styled.div`
 
   &.more {
     height: 220px;
-    margin-top: 36px;
+    margin-top: 34px;
   }
+  transition: height 0.5s;
 `

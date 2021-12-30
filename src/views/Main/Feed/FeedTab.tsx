@@ -19,14 +19,13 @@ export default function FeedTab() {
 }
 
 const Container = styled.div`
-  position: absolute;
-  top: -32px;
   padding: 0px 24px;
-  width: ${box.paddingWidth};
+  width: calc(100vw - 48px);
   height: 33px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transform: translateY(8px);
 `
 
 const Tab = styled.div`

@@ -1,14 +1,18 @@
 //@ts-nocheck
 
-import React from 'react'
+import { FC } from 'react'
 import { CustomTitle } from '@components/Title'
 import { title as titleStyle, color } from '@constants/theme'
 import { css } from '@emotion/react'
 import { IoTimeOutline } from 'react-icons/io5'
 import styled from '@emotion/styled'
 
-const ScheduleTitle = ({ title, isMore }) => (
-  <Container isMore={isMore}>
+interface Props {
+  title: string
+}
+
+const ScheduleTitle: FC<Props> = ({ title }) => (
+  <Container>
     <Icon>
       <IoTimeOutline css={iconStyle} />
     </Icon>
@@ -18,18 +22,12 @@ const ScheduleTitle = ({ title, isMore }) => (
 
 export default ScheduleTitle
 
-const Container = styled.div<{ isMore: boolean }>`
+const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 4px;
-
-  ${({ isMore }) =>
-    isMore &&
-    css`
-      margin-top: 7px;
-    `}
 `
 
 const Icon = styled.div`

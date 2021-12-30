@@ -7,6 +7,7 @@ import { Schedule } from '@interface/Schedule'
 
 import FeedContent from './FeedContent'
 import FeedInput from './FeedInput'
+import { css } from '@emotion/react'
 
 const initialSchedule = [
   {
@@ -27,26 +28,38 @@ const Feed = ({ schedules = initialSchedule }: Props) => {
   const handleMore = () => {
     setMore((prev) => !prev)
   }
-  const scheduleList = schedules.slice(0, isMore ? 3 : 1)
+  const scheduleList = schedules.slice(0, isMore ? 3 : 3)
 
   return (
-    <Container>
+    <Container isMore={isMore}>
       <FeedInputProvider>
         <FeedInput />
       </FeedInputProvider>
+      <FeedContent.Tab />
       <FeedContent isMore={isMore}>
-        <FeedContent.Tab />
         <FeedContent.Schedule isMore={isMore}>
-          {scheduleList.map((schedule) => (
-            <React.Fragment key={schedule.id}>
-              <FeedContent.Title title={schedule.title} isMore={isMore} />
+          {scheduleList.map((schedule, idx) => (
+            <div
+              key={schedule.id}
+              css={css`
+                margin-bottom: 12px;
+
+                ${!isMore &&
+                idx > 0 &&
+                css`
+                  opacity: 0;
+                `};
+                transition: opacity 0.5s;
+              `}
+            >
+              <FeedContent.Title title={schedule.title} />
               <FeedContent.Date
                 isValid={schedule.title !== ''}
                 isMore={isMore}
                 start={schedule.starts_at}
                 end={schedule.ends_at}
               />
-            </React.Fragment>
+            </div>
           ))}
           <FeedContent.Link
             title={isMore ? '숨기기' : '더보기'}
@@ -60,17 +73,19 @@ const Feed = ({ schedules = initialSchedule }: Props) => {
 
 export default Feed
 
-const Container = styled.div`
+const Container = styled.div<{ isMore: boolean }>`
   width: 100%;
-  height: min-content;
-  min-height: 206px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  height: 204px;
 
   position: relative;
 
   background-color: ${color.main};
+
+  ${({ isMore }) =>
+    isMore &&
+    css`
+      height: 340px;
+    `};
+
+  transition: height 0.5s;
 `
