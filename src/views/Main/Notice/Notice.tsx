@@ -18,10 +18,10 @@ const Notice = () => {
 
   return (
     <cs.MainSection>
-      <cs.IconTitle pathname={`/notice`} title={'오늘의 공지사항'} />
+      <cs.IconTitle pathname="/notice" title={'오늘의 공지사항'} />
       {notices.map((notice) => (
         <s.NoticeItem key={notice.id}>
-          <s.NoticeThumbnail />
+          {/* <s.NoticeThumbnail /> */}
           <s.NoticeBody>
             <s.Title>{notice.title}</s.Title>
             <s.Content>{notice.body}</s.Content>

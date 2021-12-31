@@ -21,7 +21,7 @@ body {
 
 .app-outer-container {
   width: 100%;
-  min-height: calc(100vh - 64px); // header height: ;
+  min-height: calc(100vh - 64px);
 
   margin-top: 64PX;
 
@@ -29,6 +29,8 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+
+  background-color: #f9f9f9;
 }
 
 ::-webkit-scrollbar {

@@ -1,4 +1,4 @@
-import { box, color } from '@constants/theme'
+import { color, shadow } from '@constants/theme'
 import styled from '@emotion/styled'
 
 export const Clubs = styled.div`
@@ -8,10 +8,12 @@ export const Clubs = styled.div`
 `
 
 export const ClubItem = styled.div<{ url: string }>`
-  width: 82px;
-  height: 82px;
-  border: 1px solid ${color.main};
-  border-radius: ${box.borderRadius};
+  width: 22vw;
+  max-width: 180px;
+  height: 22vw;
+  max-height: 180px;
+  border-radius: 14%;
+  box-shadow: ${shadow.medium};
 
   background-color: ${color.gray3};
   background-image: url(${({ url }) => url});

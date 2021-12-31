@@ -1,8 +1,8 @@
-import { color } from '@constants/theme'
+import { box, color, shadow } from '@constants/theme'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-const contentMarginLeft = '24px'
+const contentMarginLeft = '12px'
 const textOverflowHiddenStyle = css`
   text-overflow: ellipsis;
   overflow: hidden;
@@ -16,9 +16,10 @@ export const HotItem = styled.div`
   height: 66px;
   width: 100%;
   padding: 6px 0;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  background-color: ${color.gray5};
+  border-top-left-radius: ${box.borderRadius};
+  border-bottom-left-radius: ${box.borderRadius};
+  background-color: ${color.white};
+  box-shadow: ${shadow.light};
   margin-bottom: 16px;
   position: relative;
 
