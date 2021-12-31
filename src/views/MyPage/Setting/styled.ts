@@ -29,6 +29,7 @@ export const Subject = styled.span`
 `
 
 export const Button = styled.button<{ isOn: boolean }>`
+  min-width: 90px;
   width: 90px;
   height: 34px;
   background-color: ${({ isOn }) => (isOn ? color.main : '#01A08A')};
