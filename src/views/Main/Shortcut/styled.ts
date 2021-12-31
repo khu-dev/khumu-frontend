@@ -16,6 +16,7 @@ export const ShortcutItem = styled.span`
   height: 36px;
   border-radius: ${box.borderRadius};
   box-shadow: ${shadow.medium};
+  background-color: ${color.white};
   display: flex;
   justify-content: center;
   align-items: center;
