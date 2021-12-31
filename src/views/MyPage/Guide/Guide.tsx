@@ -8,7 +8,8 @@ import {
   MyTitle,
   // LinkRow
 } from '../Shared'
-// import { AndroidToast } from '@src/utils/android';
+
+const DEFAULT_VERSION = '{"current_version":"0.0.7","latest_version":"v0.0.4"}'
 
 const Guide = () => {
   const [version, setVersion] = useState<any>('-')
@@ -16,11 +17,9 @@ const Guide = () => {
   useEffect(() => {
     if (!process.browser) return
 
-    // const Android = (window as any)?.Android;
-    // const version = Android?.getVersionInfo() || `{"current_version": "-"}`;
-    // AndroidToast(`${version}`);
-    // setVersion(JSON.parse(version)?.current_version);
-    setVersion('??')
+    const Android = (window as any)?.Android
+    const version = Android?.getVersionInfo() || DEFAULT_VERSION
+    setVersion(JSON.parse(version)?.current_version || '')
   }, [])
 
   return (

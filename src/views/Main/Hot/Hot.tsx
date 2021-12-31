@@ -18,7 +18,6 @@ interface Props {
 
 const Hot = ({ hots = initialHots }: Props) => {
   const now = new Date()
-  const year = now.getFullYear()
 
   return (
     <cs.MainSection>
@@ -29,7 +28,7 @@ const Hot = ({ hots = initialHots }: Props) => {
             <s.HotItem>
               <s.Author>{hot?.author?.nickname}</s.Author>
               <s.TimeAgo>
-                {calculateDayDiff({ day1: now, day2: year + hot?.created_at })}
+                {calculateDayDiff({ day1: now, day2: '20' + hot?.created_at })}
               </s.TimeAgo>
               <s.Title>{hot?.title}</s.Title>
               <s.Content>{hot?.content}</s.Content>
