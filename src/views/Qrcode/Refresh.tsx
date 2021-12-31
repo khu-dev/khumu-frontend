@@ -1,30 +1,35 @@
-//@ts-nocheck
-
+import { FC } from 'react'
 import { IoRefreshOutline } from 'react-icons/io5'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
+
 import { color } from '@constants/theme'
 
-const QrcodeRefresh = ({ handleRefresh }) => (
-  <Container onClick={handleRefresh}>
+interface Props {
+  onRefresh(): void
+}
+
+const Refresh: FC<Props> = ({ onRefresh }) => (
+  <Container onClick={onRefresh}>
     <IoRefreshOutline css={iconStyle} />
   </Container>
 )
 
-export default QrcodeRefresh
+export default Refresh
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90px;
-  height: 52px;
-  border-radius: 26px;
+  width: 80px;
+  height: 32px;
+  border-radius: 18px;
   background-color: ${color.white};
   color: ${color.main};
+  margin: 0 auto;
 `
 
 const iconStyle = css`
   transform: rotate(180deg);
-  font-size: 30px;
+  font-size: 20px;
 `
