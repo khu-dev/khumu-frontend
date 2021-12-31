@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MdKeyboardArrowDown } from 'react-icons/md'
+// import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Notice as NoticeType } from '@interface/Notice'
 import * as cs from '../common.styled'
 import * as s from './styled'
@@ -25,9 +25,9 @@ const Notice = () => {
           <s.NoticeBody>
             <s.Title>{notice.title}</s.Title>
             <s.Content>{notice.body}</s.Content>
-            <s.More>
+            {/* <s.More>
               <MdKeyboardArrowDown size={24} />
-            </s.More>
+            </s.More> */}
           </s.NoticeBody>
         </s.NoticeItem>
       ))}
