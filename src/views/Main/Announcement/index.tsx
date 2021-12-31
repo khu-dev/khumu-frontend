@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MdKeyboardArrowDown } from 'react-icons/md'
+// import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Announcement as AnnouncementType } from '@src/interface/Announcement'
 import * as cs from '../common.styled'
 import * as s from './styled'
@@ -25,9 +25,9 @@ const Announcement = () => {
           <s.AnnouncementBody>
             <s.Title>{announcement.title}</s.Title>
             <s.Content>{announcement.body}</s.Content>
-            <s.More>
+            {/* <s.More>
               <MdKeyboardArrowDown size={24} />
-            </s.More>
+            </s.More> */}
           </s.AnnouncementBody>
         </s.AnnouncementItem>
       ))}
