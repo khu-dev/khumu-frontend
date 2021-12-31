@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import React, { useCallback, useEffect, useState } from 'react'
 
 import Qrcode from '@views/Qrcode'

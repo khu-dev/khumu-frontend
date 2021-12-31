@@ -2,22 +2,22 @@
 
 import styled from '@emotion/styled'
 
-interface ProfileRowProps {
+interface Props {
   title: string
   description: string
 }
 
-const Row = ({ title, description }: ProfileRowProps) => (
+const Row = ({ title, description }: Props) => (
   <RowContainer>
     <Title>{title}&nbsp;&nbsp;&nbsp;|</Title>
     <Description>{description}</Description>
   </RowContainer>
 )
 
-const QrcodeProfile = ({ children }) => <Container>{children}</Container>
+const Profile = ({ children }) => <Container>{children}</Container>
 
-QrcodeProfile.Row = Row
-export default QrcodeProfile
+Profile.Row = Row
+export default Profile
 
 const Container = styled.div`
   width: 230px;
