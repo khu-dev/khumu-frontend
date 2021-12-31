@@ -8,7 +8,7 @@ const textOverflowHiddenStyle = css`
   white-space: nowrap;
 `
 
-export const NoticeItem = styled.div`
+export const AnnouncementItem = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -16,7 +16,7 @@ export const NoticeItem = styled.div`
   margin-bottom: 18px;
 `
 
-export const NoticeThumbnail = styled.div`
+export const AnnouncementThumbnail = styled.div`
   display: inline-block;
   width: 34px;
   min-width: 34px;
@@ -26,10 +26,10 @@ export const NoticeThumbnail = styled.div`
   margin-right: 6px;
 `
 
-export const NoticeBody = styled.div`
+export const AnnouncementBody = styled.div`
   display: inline-block;
   flex-grow: 1;
-  /* max-width: calc(100% - 58px); */
+  max-width: calc(100% - 24px);
   width: 100%;
   height: 42px;
   border-radius: ${box.borderRadius};
@@ -52,7 +52,8 @@ export const Title = styled.h3`
 export const Content = styled.p`
   font-weight: 400;
   font-size: 13px;
-  width: calc(100% - 32px);
+  /* width: calc(100% - 32px); */
+  width: 100%;
   ${textOverflowHiddenStyle};
 `
 

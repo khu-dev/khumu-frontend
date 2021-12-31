@@ -9,10 +9,13 @@ import { Title02 } from '@components/Title'
 
 interface Props {
   title: string
-  noticesNum: number
+  announcementsNum: number
 }
 
-export default function MainHeader({ title, noticesNum }: Props): JSX.Element {
+export default function MainHeader({
+  title,
+  announcementsNum,
+}: Props): JSX.Element {
   return (
     <div className={'header header-main'}>
       <Title02
@@ -33,7 +36,7 @@ export default function MainHeader({ title, noticesNum }: Props): JSX.Element {
         />
       </LinkIcon>
       <LinkIcon pathname={'/notifications'} style={{ position: 'relative' }}>
-        {noticesNum > 0 && <Unreads>{noticesNum}</Unreads>}
+        {announcementsNum > 0 && <Unreads>{announcementsNum}</Unreads>}
         <AiOutlineBell
           size={font.iconSize}
           css={css`

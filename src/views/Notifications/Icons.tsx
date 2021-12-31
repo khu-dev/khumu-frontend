@@ -15,7 +15,7 @@ export const Icons = ({ type, ...rest }: IconsType) => {
       return <MdComment {...rest} />
     case 'hot': // 인기글
       return <FaHeart {...rest} />
-    case 'notice': // 공지사항
+    case 'announcement': // 공지사항
       return <BiBroadcast {...rest} />
     default:
       return <HiBell {...rest} />

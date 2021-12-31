@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Skeleton from '@components/Skeleton'
 import SkeletonMainItem from '@components/Skeleton/Main/Item'
 import { MainHeader } from '@src/components'
-import { Feed, Hot, Club, Notice, Shortcut, Advertise } from '@views/Main'
+import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
 import { ScheduleApi, NotificationApi, ArticleApi } from '@src/api'
 import { useToken } from '@context/Token'
 import { Notification, Schedule, HotArticle } from '@src/interface'
@@ -52,7 +52,7 @@ const MainPage = () => {
     <>
       <MainHeader
         title="경희대 KHUMU"
-        noticesNum={notifications.filter((item) => !item.is_read).length}
+        announcementsNum={notifications.filter((item) => !item.is_read).length}
       />
       <Feed schedules={schedules} />
       <Skeleton
@@ -61,7 +61,7 @@ const MainPage = () => {
         Skeleton={SkeletonMainItem}
         render={() => (
           <>
-            <Notice />
+            <Announcement />
             <Hot hots={hots} />
             <Advertise />
             <Club />
