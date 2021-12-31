@@ -29,7 +29,7 @@ export const AnnouncementThumbnail = styled.div`
 export const AnnouncementBody = styled.div`
   display: inline-block;
   flex-grow: 1;
-  /* max-width: calc(100% - 58px); */
+  max-width: calc(100% - 24px);
   width: 100%;
   height: 42px;
   border-radius: ${box.borderRadius};
@@ -52,7 +52,8 @@ export const Title = styled.h3`
 export const Content = styled.p`
   font-weight: 400;
   font-size: 13px;
-  width: calc(100% - 32px);
+  /* width: calc(100% - 32px); */
+  width: 100%;
   ${textOverflowHiddenStyle};
 `
 

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { AndroidToast } from '@utils/android'
 import { NotificationApi } from '@src/api/NotificationApi'
 
+const v = '{"current_version":"0.0.7","latest_version":"v0.0.4"}'
+
 export default function MainPage() {
   const [version, setVersion] = useState<{ raw: any; prev: any; parsed: any }>({
     raw: '',
@@ -47,9 +49,7 @@ export default function MainPage() {
           type={'button'}
           value={'버전정보 가져오기 Android.getVersionInfo()'}
           onClick={() => {
-            const version =
-              (window as any).Android?.getVersionInfo() ||
-              `{"current_version": "sample"}`
+            const version = (window as any).Android?.getVersionInfo() || v
 
             AndroidToast(typeof (window as any).Android?.getVersionInfo())
             AndroidToast((window as any).Android?.getVersionInfo())
