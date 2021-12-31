@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import Qrcode from '@views/Qrcode'
 import QrcodeHeader from '@components/Header/Qrcode'
 import { QrcodeApi } from '@src/api/QrcodeApi'
 import { QRcode } from '@interface/QRcode'
 import { useToken } from '@src/context/Token'
+import { AndroidToast } from '@src/utils/android'
 
 const initialState: QRcode = {
   qr_code_str: '',
@@ -15,6 +16,7 @@ const initialState: QRcode = {
 
 export default function QRCodePage() {
   const { token } = useToken()
+  const initRef = useRef<boolean>(true)
   const [info, setInfo] = useState(initialState)
 
   const fetchData = useCallback(async () => {
@@ -24,6 +26,14 @@ export default function QRCodePage() {
       const { data: info } = data
 
       setInfo(info)
+
+      if (initRef.current) {
+        initRef.current = false
+      } else {
+        AndroidToast('QR 코드가 생신되었습니다')
+      }
+    } else {
+      AndroidToast('불러오는데 실패하였습니다')
     }
   }, [])
 

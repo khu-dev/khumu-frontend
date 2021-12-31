@@ -55,7 +55,7 @@ const Container = styled.div`
 
 const Empty = styled.div`
   background-color: ${color.gray5};
-  width: 190px;
-  height: 190px;
+  width: 132px;
+  height: 132px;
   border-radius: 20px;
 `
