@@ -1,15 +1,17 @@
-//@ts-nocheck
-
+import { AnchorHTMLAttributes, FC, forwardRef, ReactNode } from 'react'
 import Link from 'next/link'
-import React from 'react'
 
-export default function LinkIcon({ pathname, children, ...rest }: any) {
-  const Icon: any = React.forwardRef<HTMLAnchorElement>(function Anchor(
-    props,
-    ref,
-  ) {
+interface IconProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  children: ReactNode
+}
+interface Props extends IconProps {
+  pathname: string
+}
+
+const LinkIcon: FC<Props> = ({ pathname, children, ...rest }) => {
+  const Icon = forwardRef<HTMLAnchorElement, IconProps>(function A(props, ref) {
     return (
-      <a ref={ref} {...rest} {...props}>
+      <a ref={ref} {...props}>
         {props.children}
       </a>
     )
@@ -17,9 +19,11 @@ export default function LinkIcon({ pathname, children, ...rest }: any) {
 
   return pathname ? (
     <Link href={pathname} passHref>
-      <Icon>{children}</Icon>
+      <Icon {...rest}>{children}</Icon>
     </Link>
   ) : (
-    <Icon>{children}</Icon>
+    <Icon {...rest}>{children}</Icon>
   )
 }
+
+export default LinkIcon

@@ -1,4 +1,4 @@
-import { box, color } from '@constants/theme'
+import { box, color, shadow } from '@constants/theme'
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
@@ -9,11 +9,13 @@ export const Container = styled.div`
   align-items: center;
 `
 
-export const ShortcutItem = styled.div`
-  width: 72px;
-  height: 32px;
+export const ShortcutItem = styled.span`
+  min-width: 70px;
+  width: 22vw;
+  max-width: 220px;
+  height: 36px;
   border-radius: ${box.borderRadius};
-  border: 2px solid ${color.main};
+  box-shadow: ${shadow.medium};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -37,3 +37,8 @@ export const header = {
   height: '64px',
   exceptHeight: 'calc(100vh - 64px)',
 }
+
+export const shadow = {
+  light: 'rgba(255, 77, 64, 0.5) .9px .9px 2px -1px',
+  medium: 'rgba(255, 77, 64, 0.5) 1.9px 1.9px 3.8px -1px',
+}

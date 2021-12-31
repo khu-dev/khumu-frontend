@@ -17,7 +17,7 @@ const Shortcut = () => {
           <LinkIcon
             key={shortcut.title}
             pathname={shortcut.path}
-            target={'_blank'}
+            target="_blank"
           >
             <s.ShortcutItem>{shortcut.title}</s.ShortcutItem>
           </LinkIcon>

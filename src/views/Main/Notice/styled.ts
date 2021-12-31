@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { box, color } from '@constants/theme'
+import { box, color, shadow } from '@constants/theme'
 import { css } from '@emotion/react'
 
 const textOverflowHiddenStyle = css`
@@ -22,24 +22,26 @@ export const NoticeThumbnail = styled.div`
   min-width: 34px;
   height: 34px;
   border-radius: 50%;
-  background-color: ${color.main};
+  background-color: rgba(255, 77, 64, 0.85);
   margin-right: 6px;
 `
 
 export const NoticeBody = styled.div`
   display: inline-block;
   flex-grow: 1;
-  max-width: calc(100% - 58px);
-  height: 40px;
-  border: 1px solid ${color.main};
+  /* max-width: calc(100% - 58px); */
+  width: 100%;
+  height: 42px;
   border-radius: ${box.borderRadius};
   border-top-left-radius: 0;
   position: relative;
-  padding: 8px;
+  padding: 16px 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+  box-shadow: ${shadow.light};
+  background-color: ${color.white};
 `
 
 export const Title = styled.h3`
