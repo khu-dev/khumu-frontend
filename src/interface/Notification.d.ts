@@ -1,3 +1,5 @@
+import { SettingKind } from '@src/enum/Notification'
+
 export interface NotificationOptionsDetail {
   created_at: string
   id: number
@@ -23,3 +25,24 @@ export interface Notification {
   reference: string
   title: string
 }
+
+interface SettingItem {
+  key: SettingKind
+  label: string
+}
+
+interface Response {
+  id: number
+  is_activated: boolean
+  push_option_kind: SettingKind
+}
+
+interface SettingResponse {
+  [SettingKind.ANNOUNCEMENT_CRAWLED]: Response
+  [SettingKind.HAKSA_SCHEDULE]: Response
+  [SettingKind.KHUMU_NOTIFICATION]: Response
+  [SettingKind.KHUMU_SERVICE_NOTIFICATION]: Response
+  [SettingKind.NEW_HOT_ARTICLE]: Response
+}
+
+export { SettingItem, SettingResponse }
