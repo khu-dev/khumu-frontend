@@ -1,10 +1,9 @@
-//@ts-nocheck
+import { FC, ReactNode, useState } from 'react'
+import { css } from '@emotion/react'
 
 import { color } from '@constants/theme'
-import { css } from '@emotion/react'
-import React from 'react'
-import { useState } from 'react'
 import { useSwipeElement } from '@hooks/useSwipeElement'
+
 import { DeleteButton, Swiper } from './styled'
 
 const threshold = {
@@ -13,12 +12,17 @@ const threshold = {
 }
 const reset = 'right'
 
-export default function NotificationSwiper({
+interface Props {
+  children: ReactNode
+  handleClick: Function
+  handleDelete: Function
+}
+
+const NotificationSwiper: FC<Props> = ({
   children,
   handleClick,
   handleDelete,
-  ...rest
-}: any) {
+}) => {
   const {
     isEvent,
     isMoving,
@@ -35,12 +39,11 @@ export default function NotificationSwiper({
         background-color: ${isDelete ? color.main : color.white};
         transition: height 0.5s 0.5s;
       `}
-      {...rest}
     >
       <Swiper
         isDelete={isDelete}
         isEvent={isEvent}
-        onClick={handleClick}
+        onClick={(e) => handleClick(e)}
         onMouseDown={handleTouchStart}
         onTouchStart={handleTouchStart}
         onMouseMove={handleTouchMove}
@@ -64,3 +67,5 @@ export default function NotificationSwiper({
     </div>
   )
 }
+
+export default NotificationSwiper

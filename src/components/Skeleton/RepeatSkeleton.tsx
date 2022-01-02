@@ -1,14 +1,13 @@
-//@ts-nocheck
-
-import React from 'react'
+import React, { FC } from 'react'
 
 interface Props {
   repeat: number
   Skeleton: () => JSX.Element
 }
 
-export default function RepeatSkeleton({ repeat, Skeleton }: Props) {
+const RepeatSkeleton: FC<Props> = ({ repeat, Skeleton }) => {
   const repeatArray = Array(repeat).fill(null)
+
   return (
     <>
       {repeatArray.map((_, idx: number) => (
@@ -17,3 +16,5 @@ export default function RepeatSkeleton({ repeat, Skeleton }: Props) {
     </>
   )
 }
+
+export default RepeatSkeleton
