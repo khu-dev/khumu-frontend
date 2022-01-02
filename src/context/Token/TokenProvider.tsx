@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react'
 import { accesskey } from '@config/_key'
 import { TokenContext } from './TokenContext'
-import { refreshToken } from 'src/module'
+import { refreshToken } from '@module/webClient'
 
 const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || accesskey
 

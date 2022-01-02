@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { box, color } from '@src/constants/theme'
+import { box, color } from '@constants/theme'
 
 const Modal = ({ children, isActive, handleCancel }: any) => {
   const handleHide = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

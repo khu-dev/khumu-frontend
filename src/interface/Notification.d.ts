@@ -1,4 +1,4 @@
-import { SettingKind } from '@src/enum/Notification'
+import { SettingKind } from '@enum/Notification'
 
 export interface NotificationOptionsDetail {
   created_at: string
@@ -31,6 +31,11 @@ interface SettingItem {
   label: string
 }
 
+interface UpdateRequest {
+  id: number
+  status: boolean
+}
+
 interface Response {
   id: number
   is_activated: boolean
@@ -45,4 +50,4 @@ interface SettingResponse {
   [SettingKind.NEW_HOT_ARTICLE]: Response
 }
 
-export { SettingItem, SettingResponse }
+export { SettingItem, SettingResponse, UpdateRequest }

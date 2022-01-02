@@ -1,4 +1,4 @@
-export interface HotArticle {
+interface HotArticle {
   author: {
     username: string
     nickname: string
@@ -21,3 +21,5 @@ export interface HotArticle {
   title: string
   url: string
 }
+
+export { HotArticle }

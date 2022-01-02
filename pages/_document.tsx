@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import React from 'react'
 import Document, { Html, Main, NextScript, Head } from 'next/document'
 class MyDocument extends Document {

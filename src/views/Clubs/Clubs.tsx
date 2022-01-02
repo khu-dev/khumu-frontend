@@ -7,7 +7,7 @@ import Categories from './Categories'
 import * as s from './styled'
 import { useRouter } from 'next/router'
 import { Club } from '@interface/Club'
-import { getFontSize } from '@src/utils/font'
+import { getFontSize } from '@utils/font'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'

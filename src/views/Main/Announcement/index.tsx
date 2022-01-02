@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // import { MdKeyboardArrowDown } from 'react-icons/md'
-import { Announcement as AnnouncementType } from '@src/interface/Announcement'
+import { Announcement as AnnouncementType } from '@interface/Announcement'
 import * as cs from '../common.styled'
 import * as s from './styled'
 

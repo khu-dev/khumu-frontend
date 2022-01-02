@@ -1,12 +1,12 @@
 import router from 'next/router'
 import Link from 'next/link'
 import { useState } from 'react'
-import { UserApi } from '@src/api'
+import { UserApi } from '@api/UserApi'
 import { MyBox, MyRow, MyTitle } from '../Shared'
-import { AndroidToast } from '@src/utils/android'
-import Modal from '@src/components/Modal'
+import { AndroidToast } from '@utils/android'
+import Modal from '@components/Modal'
 import * as s from './styled'
-import { ResignButton } from '@src/enum/ResignButton'
+import { ResignButton } from '@enum/ResignButton'
 
 const Etc = () => {
   const [isModal, setModal] = useState(false)

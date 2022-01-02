@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { box, color } from '@src/constants/theme'
+import { box, color } from '@constants/theme'
 
 import FeedTab from './FeedTab'
 import ScheduleTitle from './Schedule/Title'
