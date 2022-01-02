@@ -1,15 +1,14 @@
-//@ts-nocheck
-
-import React from 'react'
+import React, { FC } from 'react'
 import { IconType } from 'react-icons'
 import { IoChevronBackOutline } from 'react-icons/io5'
 import { css } from '@emotion/react'
 
 import { color as theme } from '@constants/theme'
+
 import LinkIcon from '@components/Link'
 import { Title02 } from '@components/Title'
 
-interface CommonHeaderProps {
+interface Props {
   title: string
   hasIcon?: boolean
   pathname?: string
@@ -20,7 +19,7 @@ interface CommonHeaderProps {
   color?: string
 }
 
-export default function CommonHeader({
+const CommonHeader: FC<Props> = ({
   title,
   hasIcon = true,
   pathname,
@@ -28,7 +27,7 @@ export default function CommonHeader({
   className = '',
   Icon = IoChevronBackOutline,
   color = theme.main,
-}: CommonHeaderProps) {
+}) => {
   const csses = useStyles()
 
   return (
@@ -67,3 +66,5 @@ function useStyles() {
     `,
   }
 }
+
+export default CommonHeader
