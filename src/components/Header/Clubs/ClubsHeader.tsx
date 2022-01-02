@@ -1,15 +1,18 @@
-//@ts-nocheck
-
-import React from 'react'
+import { FC } from 'react'
 import { IoChevronBackOutline } from 'react-icons/io5'
 import { useRouter } from 'next/router'
 import { css } from '@emotion/react'
 
 import { color } from '@constants/theme'
+
 import LinkIcon from '@components/Link'
 import { Title02 } from '@components/Title'
 
-const ClubsHeader = ({ title }: { title: string }) => {
+interface Props {
+  title: string
+}
+
+const ClubsHeader: FC<Props> = ({ title }) => {
   const { back } = useRouter()
 
   return (
