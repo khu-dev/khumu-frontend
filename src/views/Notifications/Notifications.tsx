@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/react'
 
-import { NotificationApi } from '@src/api/NotificationApi'
+import { NotificationApi } from '@api/NotificationApi'
 import { color } from '@constants/theme'
 import NotificationSwiper from '@components/Swipe'
 import { AndroidToast } from '@utils/android'

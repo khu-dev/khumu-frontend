@@ -1,4 +1,4 @@
-import { SettingKind } from '@src/enum/Notification'
+import { SettingKind } from '@enum/Notification'
 
 export interface NotificationOptionsDetail {
   created_at: string

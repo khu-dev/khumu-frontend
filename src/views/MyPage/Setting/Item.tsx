@@ -1,6 +1,6 @@
 import { useState, useEffect, FC } from 'react'
 
-import { SettingItem, SettingResponse } from '@src/interface'
+import { SettingItem, SettingResponse } from '@interface/Notification'
 
 import * as s from './styled'
 

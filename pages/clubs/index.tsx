@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import { ClubApi } from '@src/api/ClubApi'
+import { ClubApi } from '@api/ClubApi'
 import { Club } from '@interface/Club'
 import ClubsHeader from '@components/Header/Clubs'
 import Clubs from '@views/Clubs'
-import { useToken } from '@src/context/Token'
+import { useToken } from '@context/Token'
 
 const initialClub: Club = {
   categories: '',

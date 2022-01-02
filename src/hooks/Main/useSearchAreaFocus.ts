@@ -1,4 +1,4 @@
-import { FeedbackApi } from '@src/api/FeedbackApi'
+import { FeedbackApi } from '@api/FeedbackApi'
 import { AndroidToast } from '@utils/android'
 import { useState } from 'react'
 

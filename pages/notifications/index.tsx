@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '@components/Header/Common'
 import { color } from '@constants/theme'
-import { NotificationApi } from '@src/api/NotificationApi'
+import { NotificationApi } from '@api/NotificationApi'
 import Notifications, { Setting } from '@views/Notifications'
 import { useRouter } from 'next/router'
 import { Notification } from '@interface/Notification'
-import { useToken } from '@src/context/Token'
-import Skeleton from '@src/components/Skeleton'
-import SkeletonNotifications from '@src/components/Skeleton/Notifications'
+import { useToken } from '@context/Token'
+import Skeleton from '@components/Skeleton'
+import SkeletonNotifications from '@components/Skeleton/Notifications'
 
 let windowHeight
 const elementHeight = 72

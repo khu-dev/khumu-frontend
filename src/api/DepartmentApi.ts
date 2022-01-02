@@ -1,4 +1,4 @@
-import { Department } from '@src/interface'
+import { Department } from '@interface/Department'
 import { webClient } from '@module/webClient'
 
 export const DepartmentApi = {

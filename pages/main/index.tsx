@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react'
 
 import Skeleton from '@components/Skeleton'
 import SkeletonMainItem from '@components/Skeleton/Main/Item'
-import { MainHeader } from '@src/components'
+import { MainHeader } from '@components/Header'
 import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
-import { ScheduleApi, NotificationApi, ArticleApi } from '@src/api'
+import { ArticleApi } from '@api/ArticleApi'
+import { ScheduleApi } from '@api/ScheduleApi'
+import { NotificationApi } from '@api/NotificationApi'
 import { useToken } from '@context/Token'
-import { Notification, Schedule, HotArticle } from '@src/interface'
+import { Notification } from '@interface/Notification'
+import { Schedule } from '@interface/Schedule'
+import { HotArticle } from '@interface/HotArticle'
 
 const SUCCESS_CODE = 200
 

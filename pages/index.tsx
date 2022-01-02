@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import Link from 'next/link'
 import { AndroidToast } from '@utils/android'
-import { NotificationApi } from '@src/api/NotificationApi'
+import { NotificationApi } from '@api/NotificationApi'
 
 const v = '{"current_version":"0.0.7","latest_version":"v0.0.4"}'
 
