@@ -1,13 +1,13 @@
 import 'assets/style/index.scss'
-import { AppProps } from 'next/app'
 
 import React from 'react'
 import Head from 'next/head'
-
-import Loading from '@components/Loading'
+import { AppProps } from 'next/app'
 
 import TokenProvider from '@context/Token'
 import UserProvider from '@context/User'
+
+import Loading from '@components/Loading'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>

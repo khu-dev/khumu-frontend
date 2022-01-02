@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import Qrcode from '@views/Qrcode'
-import QrcodeHeader from '@components/Header/Qrcode'
-import { QrcodeApi } from '@api/QrcodeApi'
 import { QRcode } from '@interface/QRcode'
+
+import { QrcodeApi } from '@api/QrcodeApi'
 import { useToken } from '@context/Token'
 import { AndroidToast } from '@utils/android'
+
+import QrcodeHeader from '@components/Header/Qrcode'
+import Qrcode from '@views/Qrcode'
 
 const initialState: QRcode = {
   qr_code_str: '',

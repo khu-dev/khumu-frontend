@@ -1,10 +1,11 @@
 import React from 'react'
+import styled from '@emotion/styled'
+
+import { box } from '@constants/theme'
+import { useUser } from '@context/User'
 
 import CommonHeader from '@components/Header/Common'
 import * as Page from '@views/MyPage'
-import { useUser } from '@context/User'
-import styled from '@emotion/styled'
-import { box } from '@constants/theme'
 
 export default function MyPagePage() {
   const {
