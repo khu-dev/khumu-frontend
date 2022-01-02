@@ -7,7 +7,7 @@ import { SettingResponse } from '@interface/Notification'
 import { AndroidToast } from '@utils/android'
 import { useToken } from '@src/context/Token'
 import { SettingKind } from '@src/enum/Notification'
-import { kindToLabel } from '@src/module/Notification'
+import { kindToLabel } from '@module/Notification'
 
 const MySetNotiPage = () => {
   const router = useRouter()

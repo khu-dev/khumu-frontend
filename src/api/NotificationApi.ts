@@ -1,26 +1,19 @@
-import { Notification } from '@src/interface'
-import { DataObj } from '@src/interface/Response'
-import { webClient } from 'src/module'
+import { Notification, UpdateRequest } from '@interface/Notification'
+import { DataObj } from '@interface/Response'
+import { webClient } from '@module/webClient'
 
-interface ReadRequest {
-  notiId: 'all' | number
-}
-
-interface DeleteRequest {
-  notiId: number
-}
+type ReadRequest = 'all' | number
 
 export const NotificationApi = {
   query: () =>
     webClient.get<DataObj<Notification[]>>(`/notifications?recipient=me`),
-  read: ({ notiId }: ReadRequest) =>
+  read: (notiId: ReadRequest) =>
     webClient.patch(`/notifications/${notiId}/read`),
-  unread: ({ notiId }: ReadRequest) =>
+  unread: (notiId: ReadRequest) =>
     webClient.patch(`/notifications/${notiId}/unread`),
-  delete: ({ notiId }: DeleteRequest) =>
-    webClient.delete(`/notifications/${notiId}`),
+  delete: (notiId: number) => webClient.delete(`/notifications/${notiId}`),
   options: () => webClient.get(`/push/options/jinsu`),
-  update: ({ id, status }: { id: number; status: boolean }) =>
+  update: ({ id, status }: UpdateRequest) =>
     webClient.patch(`/push/options/${id}`, {
       is_activated: status,
     }),

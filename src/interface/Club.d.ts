@@ -1,4 +1,4 @@
-export interface Club {
+interface Club {
   categories: string | null
   description: string
   email: string
@@ -14,3 +14,5 @@ export interface Club {
   recommended: boolean
   summary: string
 }
+
+export { Club }

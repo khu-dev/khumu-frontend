@@ -1,5 +1,5 @@
-import { CheckResponse, UpdateRequest } from '@src/interface'
-import { webClient } from '@src/module'
+import { CheckResponse, UpdateRequest } from '@interface/User'
+import { webClient } from '@module/webClient'
 
 export const UserApi = {
   check: () => webClient.get<CheckResponse>(`/users/me`),

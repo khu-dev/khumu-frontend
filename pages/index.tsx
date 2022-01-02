@@ -38,7 +38,7 @@ export default function MainPage() {
           type={'button'}
           value={'notifications 모두 안읽음 처리하기'}
           onClick={async () => {
-            await NotificationApi.unread({ notiId: 'all' })
+            await NotificationApi.unread('all')
 
             AndroidToast('모두 안읽음!')
           }}

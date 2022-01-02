@@ -15,9 +15,7 @@ const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
   const [isRead, setRead] = useState(item.is_read)
 
   const handleDelete = async (notiId) => {
-    const { data } = await NotificationApi.delete({
-      notiId,
-    })
+    const { data } = await NotificationApi.delete(notiId)
 
     if (data) {
       alert(data?.message)
@@ -76,7 +74,7 @@ const Notifications = ({
   infiniteFetch: Function
 }) => {
   React.useEffect(() => {
-    NotificationApi.read({ notiId: 'all' })
+    NotificationApi.read('all')
   }, [])
 
   return (
