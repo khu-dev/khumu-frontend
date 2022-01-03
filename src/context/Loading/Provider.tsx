@@ -14,7 +14,7 @@ const LoadingProvider: FC<Props> = ({ children }) => {
 
   const handleLoadingEnd = () => {
     setLoading(false)
-  } 
+  }
 
   return (
     <LoadingContext.Provider

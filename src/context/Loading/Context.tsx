@@ -3,9 +3,9 @@ import { createContext, useContext } from 'react'
 
 const initialState: Context = {
   isLoading: true,
-};;;;;;
+}
 
-            const LoadingContext = createContext<Context>(initialState)
+const LoadingContext = createContext<Context>(initialState)
 
 const useLoading = () => useContext(LoadingContext)
 

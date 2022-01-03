@@ -8,6 +8,7 @@ import TokenProvider from '@context/Token'
 import UserProvider from '@context/User'
 
 import Loading from '@components/Loading'
+import { LoadingProvider } from '@context/Loading'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
@@ -21,7 +22,9 @@ const App = ({ Component, pageProps }: AppProps) => (
     <div className={'app-outer-container'}>
       <TokenProvider>
         <UserProvider>
-          <Component {...pageProps} />
+          <LoadingProvider>
+            <Component {...pageProps} />
+          </LoadingProvider>
         </UserProvider>
       </TokenProvider>
     </div>

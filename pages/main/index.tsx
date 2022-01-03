@@ -13,6 +13,7 @@ import Skeleton from '@components/Skeleton'
 import SkeletonMainItem from '@components/Skeleton/Main/Item'
 import { MainHeader } from '@components/Header'
 import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
+import { useLoading } from '@context/Loading'
 
 const SUCCESS_CODE = 200
 
@@ -30,7 +31,7 @@ const initialState = {
 
 const MainPage = () => {
   const { token } = useToken()
-  const [loading, setLoading] = useState(true)
+  const { isLoading, handleLoadingEnd } = useLoading()
   const [data, setData] = useState<State>(initialState)
 
   useEffect(() => {
@@ -48,9 +49,9 @@ const MainPage = () => {
         schedules: res[1].data,
         hots: res[2].data?.data,
       })
-      setLoading(false)
+      handleLoadingEnd?.()
     })
-  }, [token])
+  }, [token, handleLoadingEnd])
 
   const { notifications, schedules, hots } = data
 
@@ -62,7 +63,7 @@ const MainPage = () => {
       />
       <Feed schedules={schedules} />
       <Skeleton
-        isLoading={loading}
+        isLoading={isLoading}
         repeat={6}
         Skeleton={SkeletonMainItem}
         render={() => (
