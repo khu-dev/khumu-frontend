@@ -1,5 +1,5 @@
 module.exports = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,
