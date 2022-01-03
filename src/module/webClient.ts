@@ -18,6 +18,8 @@ const getToken = () => {
 }
 
 const refreshToken = (token: string) => {
+  if (!webClient.defaults.headers) return
+
   webClient.defaults.headers['Authorization'] = `Bearer ${token}`
 }
 
