@@ -12,7 +12,9 @@ const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN
 const webClient = axios.create({
   baseURL: BASE_URI,
   headers: {
-    Authorization: '',
+    common: {
+      Authorization: '',
+    },
   },
 })
 
