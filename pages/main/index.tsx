@@ -10,21 +10,23 @@ import { ScheduleApi } from '@api/ScheduleApi'
 import { useLoading } from '@context/Loading'
 import { useToken } from '@context/Token'
 
-import Skeleton from '@components/Skeleton'
-import SkeletonMainItem from '@components/Skeleton/Main/Item'
 import { MainHeader } from '@components/Header'
 import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
 import withLoading from '@hoc/withLoading'
+// import AnnouncementApi from '@api/AnnouncementApi'
+// import { Announcement as AnnouncementType } from '@interface/Announcement'
 
 const SUCCESS_CODE = 200
 
 interface State {
+  // announcements: AnnouncementType[]
   notifications: Notification[]
   schedules: Schedule[]
   hots: HotArticle[]
 }
 
 const initialState = {
+  // announcements: [],
   notifications: [],
   schedules: [],
   hots: [],
@@ -32,13 +34,14 @@ const initialState = {
 
 const MainPage = () => {
   const { token } = useToken()
-  const { isLoading, handleLoadingEnd } = useLoading()
+  const { handleLoadingEnd } = useLoading()
   const [data, setData] = useState<State>(initialState)
 
   useEffect(() => {
     if (!token) return
 
     Promise.all([
+      // AnnouncementApi.query(),
       NotificationApi.query(),
       ScheduleApi.query(),
       ArticleApi.hot(),
@@ -46,6 +49,7 @@ const MainPage = () => {
       if (res[0].status !== SUCCESS_CODE) return
 
       setData({
+        // announcements: res[0].data.slice(-2),
         notifications: res[0].data?.data,
         schedules: res[1].data,
         hots: res[2].data?.data,
@@ -63,20 +67,11 @@ const MainPage = () => {
         announcementsNum={notifications.filter((item) => !item.is_read).length}
       />
       <Feed schedules={schedules} />
-      <Skeleton
-        isLoading={isLoading}
-        repeat={6}
-        Skeleton={SkeletonMainItem}
-        render={() => (
-          <>
-            <Announcement />
-            <Hot hots={hots} />
-            <Advertise />
-            <Club />
-            <Shortcut />
-          </>
-        )}
-      />
+      <Announcement />
+      <Hot hots={hots} />
+      <Advertise />
+      <Club />
+      <Shortcut />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { BASE_URI } from '@config/baseURI'
 import { AndroidToast } from '@utils/android'
+import { getToken } from '@utils/token'
 
 let _window: any
 
@@ -15,10 +16,6 @@ const webClient = axios.create({
     Authorization: '',
   },
 })
-
-const getToken = () => {
-  return _window?.Android?.getToken()
-}
 
 const refreshToken = (token: string) => {
   if (!webClient.defaults.headers) return
