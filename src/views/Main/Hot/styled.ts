@@ -83,7 +83,7 @@ export const BoardName = styled.span<LoadingProps>`
   position: absolute;
   right: 6px;
   bottom: 12px;
-  font-size: 4px;
+  font-size: 10px;
   font-weight: 300;
 
   ${({ isLoading }) => (isLoading ? style.hotBoardName : '')};
