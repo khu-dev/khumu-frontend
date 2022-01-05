@@ -8,6 +8,7 @@ export const color = {
   gray3: '#c0c0c0',
   gray2: '#999',
   gray1: '#7f7f7f',
+  transparency: 'rgba(0,0,0,0)',
 }
 
 export const box = {
