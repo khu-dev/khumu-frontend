@@ -5,12 +5,14 @@ import { Notification } from '@interface/Notification'
 
 import { NotificationApi } from '@api/NotificationApi'
 import { color } from '@constants/theme'
+import { useLoading } from '@context/Loading'
 import { useToken } from '@context/Token'
 
 import Skeleton from '@components/Skeleton'
 import SkeletonNotifications from '@components/Skeleton/Notifications'
 import CommonHeader from '@components/Header/Common'
 import Notifications, { Setting } from '@views/Notifications'
+import withLoading from '@hoc/withLoading'
 
 let WINDOW_HEIGHT: number
 const ELEMENT_HEIGHT = 72
@@ -18,9 +20,10 @@ if (process.browser && typeof window !== undefined) {
   WINDOW_HEIGHT = window.innerHeight * 1.5
 }
 
-export default function NotificationsPage() {
+const NotificationsPage = () => {
   const router = useRouter()
   const { token } = useToken()
+  const { isLoading, handleLoadingEnd } = useLoading()
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [length, setLength] = useState(
     Math.floor(WINDOW_HEIGHT / ELEMENT_HEIGHT),
@@ -42,11 +45,12 @@ export default function NotificationsPage() {
 
       if (res.status === 200) {
         setNotifications(res.data?.data)
+        handleLoadingEnd?.()
       }
     }
 
     fetchData()
-  }, [token])
+  }, [token, handleLoadingEnd])
 
   return (
     <>
@@ -58,7 +62,7 @@ export default function NotificationsPage() {
       />
       <Setting />
       <Skeleton
-        isLoading={notifications[0] === null}
+        isLoading={isLoading}
         repeat={10}
         Skeleton={SkeletonNotifications}
         render={(props) => (
@@ -73,3 +77,5 @@ export default function NotificationsPage() {
     </>
   )
 }
+
+export default withLoading(NotificationsPage)

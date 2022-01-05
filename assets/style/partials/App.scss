@@ -1,10 +1,10 @@
 @import './shared.scss';
 
 * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    overscroll-behavior: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  overscroll-behavior: none;
 }
 
 #__next {
@@ -23,16 +23,20 @@ body {
   width: 100%;
   min-height: calc(100vh - 64px);
 
-  margin-top: 64PX;
+  margin-top: 64px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
 
-  background-color: #f9f9f9;
+  background-color: white;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.bg__main {
+  background-color: #f9f9f9 !important;
 }

@@ -7,13 +7,14 @@ import { Schedule } from '@interface/Schedule'
 import { ArticleApi } from '@api/ArticleApi'
 import { NotificationApi } from '@api/NotificationApi'
 import { ScheduleApi } from '@api/ScheduleApi'
+import { useLoading } from '@context/Loading'
 import { useToken } from '@context/Token'
 
 import Skeleton from '@components/Skeleton'
 import SkeletonMainItem from '@components/Skeleton/Main/Item'
 import { MainHeader } from '@components/Header'
 import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
-import { useLoading } from '@context/Loading'
+import withLoading from '@hoc/withLoading'
 
 const SUCCESS_CODE = 200
 
@@ -80,4 +81,4 @@ const MainPage = () => {
   )
 }
 
-export default MainPage
+export default withLoading(MainPage)

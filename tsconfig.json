@@ -21,6 +21,7 @@
       "@constants/*": ["src/constants/*"],
       "@context/*": ["src/context/*"],
       "@enum/*": ["src/enum/*"],
+      "@hoc/*": ["src/hoc/*"],
       "@hooks/*": ["src/hooks/*"],
       "@interface/*": ["src/interface/*"],
       "@module/*": ["src/module/*"],
