@@ -1,4 +1,4 @@
-import { FeedbackApi } from '@src/api/FeedbackApi'
+import { FeedbackApi } from '@api/FeedbackApi'
 import { AndroidToast } from '@utils/android'
 import { useState } from 'react'
 
@@ -14,7 +14,7 @@ export const useSearchAreaFocus = () => {
   }
 
   const handleSubmit = async (content: string) => {
-    await FeedbackApi.create({ content })
+    await FeedbackApi.create(content)
     AndroidToast('제출되었습니다')
     handleBlur()
   }

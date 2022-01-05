@@ -1,6 +1,5 @@
 import { createContext, useContext } from 'react'
-
-import { Context } from '@src/interface'
+import { Context } from '@interface/User'
 
 export const initialValue: Context = {
   user: {

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { box, color } from '@src/constants/theme'
-import { ResignButton } from '@src/enum/ResignButton'
+import { box, color } from '@constants/theme'
+import { ResignButton } from '@enum/ResignButton'
 
 export const ResignTitle = styled.h3`
   width: 70vw;

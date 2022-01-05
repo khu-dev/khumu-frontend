@@ -1,6 +1,5 @@
-//@ts-nocheck
+import { FC } from 'react'
 
-import React from 'react'
 import RepeatSkeleton from './RepeatSkeleton'
 
 interface Props {
@@ -10,12 +9,12 @@ interface Props {
   repeat?: number
 }
 
-const SkeletonContainer = ({
+const SkeletonContainer: FC<Props> = ({
   isLoading,
   render,
   Skeleton,
   repeat = 1,
-}: Props) =>
+}) =>
   isLoading ? <RepeatSkeleton repeat={repeat} Skeleton={Skeleton} /> : render()
 
 export default SkeletonContainer

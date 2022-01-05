@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "target": "es5",
@@ -16,13 +15,13 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"],
       "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
       "@config/*": ["src/config/*"],
       "@constants/*": ["src/constants/*"],
       "@context/*": ["src/context/*"],
       "@enum/*": ["src/enum/*"],
+      "@hoc/*": ["src/hoc/*"],
       "@hooks/*": ["src/hooks/*"],
       "@interface/*": ["src/interface/*"],
       "@module/*": ["src/module/*"],

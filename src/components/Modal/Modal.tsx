@@ -1,7 +1,15 @@
+import { FC, ReactNode } from 'react'
 import styled from '@emotion/styled'
-import { box, color } from '@src/constants/theme'
 
-const Modal = ({ children, isActive, handleCancel }: any) => {
+import { box, color } from '@constants/theme'
+
+interface Props {
+  children: ReactNode
+  isActive: boolean
+  handleCancel: Function
+}
+
+const Modal: FC<Props> = ({ children, isActive, handleCancel }) => {
   const handleHide = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation()
     const elem = e.target as HTMLDivElement

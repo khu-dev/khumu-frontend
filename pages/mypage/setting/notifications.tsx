@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import CommonHeader from '@components/Header/Common'
-import List from '@views/MyPage/Setting'
-import { NotificationApi } from '@src/api/NotificationApi'
+
 import { SettingResponse } from '@interface/Notification'
+import { SettingKind } from '@enum/Notification'
+
+import { NotificationApi } from '@api/NotificationApi'
+import { useToken } from '@context/Token'
+import { kindToLabel } from '@module/Notification'
 import { AndroidToast } from '@utils/android'
-import { useToken } from '@src/context/Token'
-import { SettingKind } from '@src/enum/Notification'
-import { kindToLabel } from '@src/module/Notification'
+
+import List from '@views/MyPage/Setting'
+import CommonHeader from '@components/Header/Common'
 
 const MySetNotiPage = () => {
   const router = useRouter()

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import { DepartmentApi } from '@src/api'
+import { DepartmentApi } from '@api/DepartmentApi'
 import { useToken } from '@context/Token'
 import { AndroidToast } from '@utils/android'
 
-import { Department } from '@src/interface'
+import { Department } from '@interface/Department'
 
 const useDepartments = () => {
   const { token } = useToken()

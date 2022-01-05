@@ -1,7 +1,7 @@
 //@ts-nocheck
 
 import Link from 'next/link'
-import { ClubApi } from '@src/api/ClubApi'
+import { ClubApi } from '@api/ClubApi'
 import { IMG_URI } from '@config/baseURI'
 import { useFetchAxios } from '@hooks/fetch'
 import { Club as ClubType } from '@interface/Club'

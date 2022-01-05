@@ -1,29 +1,33 @@
-//@ts-nocheck
-
 import React, { useEffect, useState } from 'react'
-import CommonHeader from '@components/Header/Common'
-import { color } from '@constants/theme'
-import { NotificationApi } from '@src/api/NotificationApi'
-import Notifications, { Setting } from '@views/Notifications'
 import { useRouter } from 'next/router'
-import { Notification } from '@interface/Notification'
-import { useToken } from '@src/context/Token'
-import Skeleton from '@src/components/Skeleton'
-import SkeletonNotifications from '@src/components/Skeleton/Notifications'
 
-let windowHeight
-const elementHeight = 72
+import { Notification } from '@interface/Notification'
+
+import { NotificationApi } from '@api/NotificationApi'
+import { color } from '@constants/theme'
+import { useLoading } from '@context/Loading'
+import { useToken } from '@context/Token'
+
+import Skeleton from '@components/Skeleton'
+import SkeletonNotifications from '@components/Skeleton/Notifications'
+import CommonHeader from '@components/Header/Common'
+import Notifications, { Setting } from '@views/Notifications'
+import withLoading from '@hoc/withLoading'
+
+let WINDOW_HEIGHT: number
+const ELEMENT_HEIGHT = 72
 if (process.browser && typeof window !== undefined) {
-  windowHeight = window.innerHeight * 1.5
+  WINDOW_HEIGHT = window.innerHeight * 1.5
 }
 
-export default function NotificationsPage() {
+const NotificationsPage = () => {
   const router = useRouter()
   const { token } = useToken()
-  const [data, setData] = useState<{ notifications: Notification[] }>({
-    notifications: [null],
-  })
-  const [length, setLength] = useState(Math.floor(windowHeight / elementHeight))
+  const { isLoading, handleLoadingEnd } = useLoading()
+  const [notifications, setNotifications] = useState<Notification[]>([])
+  const [length, setLength] = useState(
+    Math.floor(WINDOW_HEIGHT / ELEMENT_HEIGHT),
+  )
 
   const infiniteFetch = () => {
     setLength((prev) => prev + length)
@@ -40,16 +44,13 @@ export default function NotificationsPage() {
       const res = await NotificationApi.query()
 
       if (res.status === 200) {
-        setData({
-          notifications: res.data?.data,
-        })
+        setNotifications(res.data?.data)
+        handleLoadingEnd?.()
       }
     }
 
     fetchData()
-  }, [token])
-
-  const { notifications } = data
+  }, [token, handleLoadingEnd])
 
   return (
     <>
@@ -61,7 +62,7 @@ export default function NotificationsPage() {
       />
       <Setting />
       <Skeleton
-        isLoading={notifications[0] === null}
+        isLoading={isLoading}
         repeat={10}
         Skeleton={SkeletonNotifications}
         render={(props) => (
@@ -76,3 +77,5 @@ export default function NotificationsPage() {
     </>
   )
 }
+
+export default withLoading(NotificationsPage)

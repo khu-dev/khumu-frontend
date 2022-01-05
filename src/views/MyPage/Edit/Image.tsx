@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FC, useRef } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 
-import { FileApi } from '@src/api'
+import { FileApi } from '@api/FileApi'
 import { color } from '@constants/theme'
-import { AndroidToast } from '@src/utils/android'
+import { AndroidToast } from '@utils/android'
 
 import * as s from './styled'
 

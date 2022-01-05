@@ -1,13 +1,11 @@
-//@ts-nocheck
-
 import styled from '@emotion/styled'
 
-interface TitleType {
+interface CustomTitleProps {
   size: number
   weight?: number
 }
 
-export const CustomTitle = styled.h1<TitleType>`
+export const CustomTitle = styled.h1<CustomTitleProps>`
   height: ${({ size }) => size + 7}px;
   line-height: ${({ size }) => size + 7}px;
   font-size: ${({ size }) => `${size}px`};

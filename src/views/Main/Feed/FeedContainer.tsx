@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
 import FeedInputProvider from '@context/Feed/Input'
-import { color } from '@src/constants/theme'
+import { color } from '@constants/theme'
 import { Schedule } from '@interface/Schedule'
 
 import FeedContent from './FeedContent'

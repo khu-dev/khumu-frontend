@@ -1,4 +1,4 @@
-import { webClient } from 'src/module'
+import { webClient } from '@module/webClient'
 
 export const FileApi = {
   upload: (formData: FormData) =>

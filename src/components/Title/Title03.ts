@@ -1,7 +1,6 @@
-//@ts-nocheck
+import styled from '@emotion/styled'
 
 import { box } from '@constants/theme'
-import styled from '@emotion/styled'
 
 export const Title03 = styled.h3`
   font-size: 18px;

@@ -1,6 +1,6 @@
-import { HotArticle } from '@src/interface'
-import { DataObj } from '@src/interface/Response'
-import { webClient } from 'src/module'
+import { HotArticle } from '@interface/HotArticle'
+import { DataObj } from '@interface/Response'
+import { webClient } from '@module/webClient'
 
 export const ArticleApi = {
   hot: () =>

@@ -1,14 +1,14 @@
 import { useState } from 'react'
 // import { MdKeyboardArrowDown } from 'react-icons/md'
-import { Announcement as AnnouncementType } from '@src/interface/Announcement'
+import { Announcement as AnnouncementType } from '@interface/Announcement'
 import * as cs from '../common.styled'
 import * as s from './styled'
 
 const initialState = [
-  { title: '총학생회', body: '2021-1 기말시험 안내', id: 0 },
+  { author: { author_name: '총학생회' }, title: '2021-1 기말시험 안내', id: 0 },
   {
-    title: '총학생회',
-    body: '2021-1 코로나 관련 특별 장학금 지금 안내',
+    author: { author_name: '총학생회' },
+    title: '2021-1 코로나 관련 특별 장학금 지금 안내',
     id: 1,
   },
 ]
@@ -23,8 +23,8 @@ const Announcement = () => {
         <s.AnnouncementItem key={announcement.id}>
           {/* <s.AnnouncementThumbnail /> */}
           <s.AnnouncementBody>
-            <s.Title>{announcement.title}</s.Title>
-            <s.Content>{announcement.body}</s.Content>
+            <s.Title>{announcement.author.author_name}</s.Title>
+            <s.Content>{announcement.title}</s.Content>
             {/* <s.More>
               <MdKeyboardArrowDown size={24} />
             </s.More> */}
