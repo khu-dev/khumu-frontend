@@ -54,7 +54,7 @@ const MainPage = () => {
         schedules: res[1].data,
         hots: res[2].data?.data,
       })
-      // handleLoadingEnd?.()
+      handleLoadingEnd?.()
     })
   }, [token, handleLoadingEnd])
 

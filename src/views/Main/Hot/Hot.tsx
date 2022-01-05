@@ -11,13 +11,26 @@ import * as cs from '../common.styled'
 import * as s from './styled'
 import { useLoading } from '@context/Loading'
 
-const initialHots = Array(3).fill(null)
+const initialHots = Array(3).fill({
+  author: {
+    username: '',
+    nickname: '',
+    state: '',
+  },
+  board_display_name: '',
+  comment_count: 0,
+  content: '',
+  created_at: '',
+  id: 0,
+  like_article_count: 0,
+  title: '',
+})
 
 interface Props {
-  hots: HotArticle[]
+  hots?: HotArticle[]
 }
 
-const Hot = ({ hots = initialHots }: Props) => {
+const Hot = ({ hots }: Props) => {
   const { isLoading } = useLoading()
   const now = new Date()
 
@@ -28,7 +41,7 @@ const Hot = ({ hots = initialHots }: Props) => {
         title="실시간 인기 글"
         isLoading={isLoading}
       />
-      {hots.slice(0, 3).map((hot, idx) => (
+      {(isLoading ? initialHots : hots.slice(0, 3)).map((hot, idx) => (
         <Link key={hot?.id || idx} href={`/articles/${hot?.id}`}>
           <a css={s.colorBlack}>
             <s.HotItem isLoading={isLoading}>
