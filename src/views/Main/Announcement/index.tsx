@@ -1,20 +1,25 @@
+import { useState } from 'react'
 // import { MdKeyboardArrowDown } from 'react-icons/md'
-import { FC } from 'react'
 import { Announcement as AnnouncementType } from '@interface/Announcement'
 import * as cs from '../common.styled'
 import * as s from './styled'
 
-interface Props {
-  announcements?: AnnouncementType[]
-}
+const initialState = [
+  { author: { author_name: '총학생회' }, title: '2021-1 기말시험 안내', id: 0 },
+  {
+    author: { author_name: '총학생회' },
+    title: '2021-1 코로나 관련 특별 장학금 지금 안내',
+    id: 1,
+  },
+]
 
-const Announcement: FC<Props> = ({ announcements }) => {
+const Announcement = () => {
+  const [announcements] = useState<AnnouncementType[]>(initialState)
+
   return (
     <cs.MainSection>
-      {announcements && (
-        <cs.IconTitle pathname="/announcements" title={'오늘의 공지사항'} />
-      )}
-      {announcements?.map((announcement) => (
+      <cs.IconTitle pathname="/announcements" title={'오늘의 공지사항'} />
+      {announcements.map((announcement) => (
         <s.AnnouncementItem key={announcement.id}>
           {/* <s.AnnouncementThumbnail /> */}
           <s.AnnouncementBody>
