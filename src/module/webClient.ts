@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { BASE_URI } from '@config/baseURI'
 import { AndroidToast } from '@utils/android'
+import { getToken } from '@utils/token'
 
 let _window: any
 
@@ -11,13 +12,14 @@ if (isBrowser) _window = window as any
 const devToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN
 const webClient = axios.create({
   baseURL: BASE_URI,
+  headers: {
+    Authorization: '',
+  },
 })
 
-const getToken = () => {
-  return _window?.Android?.getToken()
-}
-
 const refreshToken = (token: string) => {
+  if (!webClient.defaults.headers) return
+
   webClient.defaults.headers['Authorization'] = `Bearer ${token}`
 }
 

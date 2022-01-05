@@ -1,6 +1,11 @@
+import { style } from '@components/Skeleton/Main'
 import { box, color, shadow } from '@constants/theme'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+
+interface LoadingProps {
+  isLoading?: boolean
+}
 
 const contentMarginLeft = '12px'
 const textOverflowHiddenStyle = css`
@@ -12,7 +17,7 @@ export const colorBlack = css`
   color: ${color.black};
 `
 
-export const HotItem = styled.div`
+export const HotItem = styled.div<LoadingProps>`
   height: 66px;
   width: 100%;
   padding: 6px 0;
@@ -27,25 +32,31 @@ export const HotItem = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
+
+  ${({ isLoading }) => (isLoading ? style.hotItem : '')};
 `
 
-export const Author = styled.p`
+export const Author = styled.p<LoadingProps>`
   font-size: 9px;
   font-weight: 200;
   margin-left: ${contentMarginLeft};
 
   ${textOverflowHiddenStyle};
+
+  ${({ isLoading }) => (isLoading ? style.hotAuthor : '')};
 `
 
-export const TimeAgo = styled.span`
+export const TimeAgo = styled.span<LoadingProps>`
   position: absolute;
   font-size: 11px;
   font-weight: 300;
   top: 6px;
   right: 6px;
+
+  ${({ isLoading }) => (isLoading ? style.hotTime : '')};
 `
 
-export const Title = styled.h3`
+export const Title = styled.h3<LoadingProps>`
   height: 18px;
   margin: 0;
   margin-left: ${contentMarginLeft};
@@ -53,9 +64,10 @@ export const Title = styled.h3`
   font-weight: 400;
 
   ${textOverflowHiddenStyle};
+  ${({ isLoading }) => (isLoading ? style.hotTitle : '')};
 `
 
-export const Content = styled.p`
+export const Content = styled.p<LoadingProps>`
   height: 16px;
   width: calc(100% - 88px);
   margin: 0;
@@ -64,14 +76,17 @@ export const Content = styled.p`
   font-weight: 300;
 
   ${textOverflowHiddenStyle};
+  ${({ isLoading }) => (isLoading ? style.hotContent : '')};
 `
 
-export const BoardName = styled.span`
+export const BoardName = styled.span<LoadingProps>`
   position: absolute;
   right: 6px;
   bottom: 12px;
   font-size: 4px;
   font-weight: 300;
+
+  ${({ isLoading }) => (isLoading ? style.hotBoardName : '')};
 `
 
 export const Summary = styled.div`

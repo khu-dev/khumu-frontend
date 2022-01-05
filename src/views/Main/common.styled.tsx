@@ -1,16 +1,33 @@
-//@ts-nocheck
+import { FC } from 'react'
+import { BsPlayFill } from 'react-icons/bs'
+import styled from '@emotion/styled'
+
+import { box, color } from '@constants/theme'
 
 import LinkIcon from '@components/Link'
-import { box, color } from '@constants/theme'
-import styled from '@emotion/styled'
-import { BsPlayFill } from 'react-icons/bs'
+import { style } from '@components/Skeleton/Main'
+
+interface Props {
+  pathname: string
+  title: string
+  isLoading?: boolean
+}
+
+export const IconTitle: FC<Props> = ({ title, pathname, isLoading }) => (
+  <LinkIcon pathname={pathname}>
+    <MainTitle hasIcon isLoading={isLoading}>
+      <span>{title}</span>
+      <BsPlayFill size={18} />
+    </MainTitle>
+  </LinkIcon>
+)
 
 export const MainSection = styled.section`
   width: ${box.marginWidth};
   margin: ${box.margin};
 `
 
-export const MainTitle = styled.p<{ hasIcon?: boolean }>`
+export const MainTitle = styled.p<{ hasIcon?: boolean; isLoading?: boolean }>`
   color: ${color.main};
   font-weight: 600;
 
@@ -20,13 +37,6 @@ export const MainTitle = styled.p<{ hasIcon?: boolean }>`
   align-items: center;
 
   margin-bottom: 8px;
-`
 
-export const IconTitle = ({ title, pathname }) => (
-  <LinkIcon pathname={pathname}>
-    <MainTitle hasIcon>
-      {title}
-      <BsPlayFill size={18} />
-    </MainTitle>
-  </LinkIcon>
-)
+  ${({ isLoading }) => (isLoading ? style.title : '')}
+`
