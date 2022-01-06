@@ -3,7 +3,7 @@
 import styled from '@emotion/styled'
 import { box, color } from '@constants/theme'
 import { css } from '@emotion/react'
-import { FeedbackButton } from 'src/enum/FeedbackButton'
+import { FeedbackButton } from '@enum/FeedbackButton'
 
 interface ContainerProps {
   focus: boolean
