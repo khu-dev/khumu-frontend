@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import { useFeedInput } from '@context/Feed/Input'
 import * as s from './SearchArea.styled'
-import { FeedbackButton } from 'src/enum/FeedbackButton'
+import { FeedbackButton } from '@enum/FeedbackButton'
 import { AndroidToast } from '@utils/android'
 
 const TextArea = () => {
