@@ -21,7 +21,7 @@ const style = {
     box-shadow: none;
 
     * {
-      color: ${color.transparency} !important;
+      /* color: ${color.transparency} !important; */
       background-color: ${color.transparency} !important;
     }
   `,
@@ -48,8 +48,6 @@ const style = {
     ${skeleton};
   `,
   hotBoardName: css`
-    height: 12px;
-    width: 18px;
     ${skeleton};
   `,
   noticeItem: css`
