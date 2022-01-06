@@ -13,8 +13,7 @@ export default function TokenProvider({ children }: Props) {
   const [token, setToken] = useState(null)
 
   useEffect(() => {
-    //@ts-ignore
-    const token = window?.Android?.getToken() || devToken
+    const token = ((window as any)?.Android as any)?.getToken() || devToken
     refreshToken(token)
     setToken(token)
   }, [])

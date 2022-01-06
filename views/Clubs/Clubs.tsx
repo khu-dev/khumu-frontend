@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { IMG_URI } from '@config/baseURI'
-import ClubsCard from './ClubsCard'
+import Card from './Card'
 import ClubsPaging from './ClubsPaging'
 import Categories from './Categories'
 
@@ -112,18 +112,18 @@ const Clubs = ({ categories, clubs }: Props) => {
           {filteredClubs?.map(
             (club, idx) =>
               club && (
-                <ClubsCard key={club?.name + idx}>
-                  <ClubsCard.Image url={`${IMG_URI}/${club?.images[0]}`} />
-                  <ClubsCard.Content>
-                    <ClubsCard.Tag tag={'연행'} />
-                    <ClubsCard.Name
+                <Card key={club?.name + idx}>
+                  <Card.Image url={`${IMG_URI}/${club?.images[0]}`} />
+                  <Card.Content>
+                    <Card.Tag tag={'연행'} />
+                    <Card.Name
                       name={club?.name}
                       summary={club?.summary}
                       fontSize={getFontSize(club?.summary?.length)}
                     />
-                    <ClubsCard.Description description={club?.description} />
-                  </ClubsCard.Content>
-                </ClubsCard>
+                    <Card.Description description={club?.description} />
+                  </Card.Content>
+                </Card>
               ),
           )}
         </Carousel>
