@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Announcement as AnnouncementType } from '@interface/Announcement'
 import * as cs from '../common.styled'
 import * as s from './styled'
+import { useLoading } from '@context/Loading'
 
 const initialState = [
   { author: { author_name: '총학생회' }, title: '2021-1 기말시험 안내', id: 0 },
@@ -14,17 +15,24 @@ const initialState = [
 ]
 
 const Announcement = () => {
+  const { isLoading } = useLoading()
   const [announcements] = useState<AnnouncementType[]>(initialState)
 
   return (
     <cs.MainSection>
-      <cs.IconTitle pathname="/announcements" title={'오늘의 공지사항'} />
+      <cs.IconTitle
+        pathname="/announcements"
+        title="오늘의 공지사항"
+        isLoading={isLoading}
+      />
       {announcements.map((announcement) => (
         <s.AnnouncementItem key={announcement.id}>
           {/* <s.AnnouncementThumbnail /> */}
-          <s.AnnouncementBody>
-            <s.Title>{announcement.author.author_name}</s.Title>
-            <s.Content>{announcement.title}</s.Content>
+          <s.AnnouncementBody isLoading={isLoading}>
+            <s.Title isLoading={isLoading}>
+              {announcement.author.author_name}
+            </s.Title>
+            <s.Content isLoading={isLoading}>{announcement.title}</s.Content>
             {/* <s.More>
               <MdKeyboardArrowDown size={24} />
             </s.More> */}

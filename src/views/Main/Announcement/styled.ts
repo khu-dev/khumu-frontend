@@ -1,6 +1,11 @@
 import styled from '@emotion/styled'
 import { box, color, shadow } from '@constants/theme'
 import { css } from '@emotion/react'
+import { style } from '@components/Skeleton/Main'
+
+interface LoadingProps {
+  isLoading?: boolean
+}
 
 const textOverflowHiddenStyle = css`
   text-overflow: ellipsis;
@@ -26,7 +31,7 @@ export const AnnouncementThumbnail = styled.div`
   margin-right: 6px;
 `
 
-export const AnnouncementBody = styled.div`
+export const AnnouncementBody = styled.div<LoadingProps>`
   display: inline-block;
   flex-grow: 1;
   max-width: calc(100% - 24px);
@@ -42,19 +47,25 @@ export const AnnouncementBody = styled.div`
   align-items: stretch;
   box-shadow: ${shadow.light};
   background-color: ${color.white};
+
+  ${({ isLoading }) => isLoading && style.noticeItem};
 `
 
-export const Title = styled.h3`
+export const Title = styled.h3<LoadingProps>`
   font-weight: 600;
   font-size: 16px;
+
+  ${({ isLoading }) => isLoading && style.noticeTitle};
 `
 
-export const Content = styled.p`
+export const Content = styled.p<LoadingProps>`
   font-weight: 400;
   font-size: 13px;
   /* width: calc(100% - 32px); */
   width: 100%;
   ${textOverflowHiddenStyle};
+
+  ${({ isLoading }) => isLoading && style.noticeContent};
 `
 
 export const More = styled.span`

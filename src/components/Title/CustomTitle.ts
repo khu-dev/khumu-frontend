@@ -1,8 +1,10 @@
+import { titleStyle } from '@components/Skeleton/Common'
 import styled from '@emotion/styled'
 
 interface CustomTitleProps {
   size: number
   weight?: number
+  isLoading?: boolean
 }
 
 export const CustomTitle = styled.h1<CustomTitleProps>`
@@ -13,4 +15,6 @@ export const CustomTitle = styled.h1<CustomTitleProps>`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+
+  ${({ isLoading }) => (isLoading ? titleStyle.common : '')};
 `

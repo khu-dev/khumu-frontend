@@ -3,6 +3,7 @@ import { css } from '@emotion/react'
 import { CustomTitle } from '@components/Title'
 import { title as titleStyle, color } from '@constants/theme'
 import { toMDdddd } from '@utils/day'
+import { useLoading } from '@context/Loading'
 
 interface Props {
   isValid: boolean
@@ -12,14 +13,16 @@ interface Props {
 }
 
 const ScheduleDate: FC<Props> = ({ isValid, isMore, start, end }) => {
+  const { isLoading } = useLoading()
   const startDate = toMDdddd.ko(start)
   const endDate = toMDdddd.ko(end)
 
   return (
     <CustomTitle
       size={titleStyle.M}
+      isLoading={isLoading}
       css={css`
-        margin-left: 25px;
+        margin-left: 24px;
         font-size: 14px;
         font-weight: 600;
         width: calc(100% - 25px);
@@ -28,6 +31,12 @@ const ScheduleDate: FC<Props> = ({ isValid, isMore, start, end }) => {
         ${isMore &&
         css`
           margin-bottom: 7px;
+        `};
+
+        ${isLoading &&
+        css`
+          width: 180px;
+          height: 14px;
         `}
       `}
     >

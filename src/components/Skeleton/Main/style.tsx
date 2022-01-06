@@ -1,13 +1,6 @@
 import { css } from '@emotion/react'
 import { color } from '@constants/theme'
-
-const skeletonColor = `${color.gray5} !important;`
-
-const skeleton = css`
-  border-radius: 2px;
-  color: ${color.transparency};
-  background-color: ${skeletonColor};
-`
+import { skeleton } from '../Common'
 
 const style = {
   title: css`
@@ -45,14 +38,37 @@ const style = {
   hotTitle: css`
     height: 17px;
     width: 70%;
+    max-width: 150px;
     ${skeleton};
   `,
   hotContent: css`
     height: 15px;
-    width: 48%;
+    width: 88%;
+    max-width: 270px;
     ${skeleton};
   `,
   hotBoardName: css`
+    ${skeleton};
+  `,
+  noticeItem: css`
+    background-color: ${color.transparency} !important;
+    box-shadow: none;
+
+    * {
+      color: ${color.transparency} !important;
+      background-color: ${color.transparency} !important;
+    }
+  `,
+  noticeTitle: css`
+    height: 17px;
+    width: 70%;
+    max-width: 150px;
+    ${skeleton};
+  `,
+  noticeContent: css`
+    height: 15px;
+    width: 88%;
+    max-width: 270px;
     ${skeleton};
   `,
 }

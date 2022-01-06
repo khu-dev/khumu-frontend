@@ -8,10 +8,23 @@ import { Schedule } from '@interface/Schedule'
 import FeedContent from './FeedContent'
 import FeedInput from './FeedInput'
 import { css } from '@emotion/react'
+import { useLoading } from '@context/Loading'
 
 const initialSchedule = [
   {
     id: 1,
+    starts_at: String(Date.now()),
+    ends_at: String(Date.now()),
+    title: '',
+  },
+  {
+    id: 2,
+    starts_at: String(Date.now()),
+    ends_at: String(Date.now()),
+    title: '',
+  },
+  {
+    id: 3,
     starts_at: String(Date.now()),
     ends_at: String(Date.now()),
     title: '',
@@ -22,13 +35,17 @@ interface Props {
   schedules: Schedule[]
 }
 
-const Feed = ({ schedules = initialSchedule }: Props) => {
+const Feed = ({ schedules }: Props) => {
+  const { isLoading } = useLoading()
   const [isMore, setMore] = useState(false)
 
   const handleMore = () => {
     setMore((prev) => !prev)
   }
-  const scheduleList = schedules.slice(0, isMore ? 3 : 3)
+  const scheduleList = (isLoading ? initialSchedule : schedules).slice(
+    0,
+    isMore ? 3 : 3,
+  )
 
   return (
     <Container isMore={isMore}>
