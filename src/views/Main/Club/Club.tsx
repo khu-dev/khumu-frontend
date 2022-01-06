@@ -9,8 +9,10 @@ import { getRandomNumber } from '@utils/functions'
 
 import * as cs from '../common.styled'
 import * as s from './styled'
+import { useLoading } from '@context/Loading'
 
 const Club = () => {
+  const { isLoading } = useLoading()
   const { result } = useFetchAxios({
     func: ClubApi.query,
   })
@@ -20,7 +22,7 @@ const Club = () => {
   const pickedNum = getRandomNumber(0, totalLength - 1, 3)
   const pickedClub = pickedNum.map((num, idx) => (idx < 3 ? list[num] : null))
 
-  return (
+  return !isLoading ? (
     <cs.MainSection>
       <cs.IconTitle pathname={`/clubs`} title={'동아리'} />
       <s.Clubs>
@@ -36,7 +38,7 @@ const Club = () => {
         )}
       </s.Clubs>
     </cs.MainSection>
-  )
+  ) : null
 }
 
 export default Club

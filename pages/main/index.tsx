@@ -41,18 +41,18 @@ const MainPage = () => {
     if (!token) return
 
     Promise.all([
-      // AnnouncementApi.query(),
       NotificationApi.query(),
       ScheduleApi.query(),
       ArticleApi.hot(),
+      // AnnouncementApi.query(),
     ]).then((res) => {
       if (res[0].status !== SUCCESS_CODE) return
 
       setData({
-        // announcements: res[0].data.slice(-2),
         notifications: res[0].data?.data,
         schedules: res[1].data,
         hots: res[2].data?.data,
+        // announcements: res[3].data.slice(-2),
       })
       handleLoadingEnd?.()
     })

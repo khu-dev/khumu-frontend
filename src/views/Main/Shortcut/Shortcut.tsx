@@ -1,15 +1,17 @@
 import LinkIcon from '@components/Link'
+import { useLoading } from '@context/Loading'
 import * as cs from '../common.styled'
 import * as s from './styled'
 
 const Shortcut = () => {
+  const { isLoading } = useLoading()
   const shortcuts = [
     { title: '중앙도서관', path: 'https://library.khu.ac.kr/home/' },
     { title: '인포21', path: 'https://info21.khu.ac.kr/' },
     { title: '이캠퍼스', path: 'https://e-campus.khu.ac.kr/' },
   ]
 
-  return (
+  return !isLoading ? (
     <cs.MainSection>
       <cs.MainTitle>바로가기</cs.MainTitle>
       <s.Container>
@@ -24,7 +26,7 @@ const Shortcut = () => {
         ))}{' '}
       </s.Container>
     </cs.MainSection>
-  )
+  ) : null
 }
 
 export default Shortcut
