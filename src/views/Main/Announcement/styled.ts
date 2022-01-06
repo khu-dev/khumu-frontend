@@ -48,14 +48,14 @@ export const AnnouncementBody = styled.div<LoadingProps>`
   box-shadow: ${shadow.light};
   background-color: ${color.white};
 
-  ${({ isLoading }) => isLoading && style.noticeItem};
+  ${({ isLoading }) => (isLoading ? style.noticeItem : '')};
 `
 
 export const Title = styled.h3<LoadingProps>`
   font-weight: 600;
   font-size: 16px;
 
-  ${({ isLoading }) => isLoading && style.noticeTitle};
+  ${({ isLoading }) => (isLoading ? style.noticeTitle : '')};
 `
 
 export const Content = styled.p<LoadingProps>`
@@ -65,7 +65,7 @@ export const Content = styled.p<LoadingProps>`
   width: 100%;
   ${textOverflowHiddenStyle};
 
-  ${({ isLoading }) => isLoading && style.noticeContent};
+  ${({ isLoading }) => (isLoading ? style.noticeContent : '')};
 `
 
 export const More = styled.span`
