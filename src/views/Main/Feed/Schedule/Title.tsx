@@ -1,24 +1,39 @@
-//@ts-nocheck
-
 import { FC } from 'react'
-import { CustomTitle } from '@components/Title'
-import { title as titleStyle, color } from '@constants/theme'
+import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { IoTimeOutline } from 'react-icons/io5'
-import styled from '@emotion/styled'
+import { CustomTitle } from '@components/Title'
+
+import { title as titleStyle, color } from '@constants/theme'
+import { useLoading } from '@context/Loading'
 
 interface Props {
   title: string
 }
 
-const ScheduleTitle: FC<Props> = ({ title }) => (
-  <Container>
-    <Icon>
-      <IoTimeOutline css={iconStyle} />
-    </Icon>
-    <CustomTitle size={titleStyle.L}>{title}</CustomTitle>
-  </Container>
-)
+const ScheduleTitle: FC<Props> = ({ title }) => {
+  const { isLoading } = useLoading()
+
+  return (
+    <Container>
+      <Icon>
+        <IoTimeOutline
+          css={css`
+            ${iconStyle};
+            ${isLoading
+              ? css`
+                  color: ${color.transparency};
+                `
+              : ''};
+          `}
+        />
+      </Icon>
+      <CustomTitle size={titleStyle.L} isLoading={isLoading}>
+        {title}
+      </CustomTitle>
+    </Container>
+  )
+}
 
 export default ScheduleTitle
 
