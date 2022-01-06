@@ -34,7 +34,8 @@ const Guide = () => {
         <MyRow
           css={css`
             width: auto;
-            text-align: right;
+            min-width: 60px;
+            justify-content: flex-end;
             font-size: 12px;
             color: ${color.gray3};
           `}
