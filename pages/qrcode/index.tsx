@@ -32,7 +32,7 @@ export default function QRCodePage() {
       if (initRef.current) {
         initRef.current = false
       } else {
-        AndroidToast('QR 코드가 생신되었습니다')
+        AndroidToast('QR 코드가 갱신되었습니다')
       }
     } else {
       AndroidToast('불러오는데 실패하였습니다')

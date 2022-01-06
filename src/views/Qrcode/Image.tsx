@@ -45,8 +45,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: min-content;
-  height: min-content;
+  width: 132px;
+  height: 132px;
   border-radius: 20px;
   background-color: ${color.white};
   overflow: hidden;

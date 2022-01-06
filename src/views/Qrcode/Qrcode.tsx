@@ -28,7 +28,7 @@ export default Qrcode
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   flex: 1;
   height: calc(100vh - 160px);
