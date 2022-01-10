@@ -17,7 +17,7 @@ interface User {
 interface Edit {
   nickname?: string
   department?: string
-  profile_image?: string | null
+  profile_image?: string
 }
 
 interface Context {
