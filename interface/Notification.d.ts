@@ -24,12 +24,15 @@ export interface Notification {
   recipient: string
   reference: string
   title: string
+  link?: string
 }
 
 interface SettingItem {
   key: SettingKind
   label: string
 }
+
+type ReadRequest = 'all' | number
 
 interface UpdateRequest {
   id: number
@@ -50,4 +53,4 @@ interface SettingResponse {
   [SettingKind.NEW_HOT_ARTICLE]: Response
 }
 
-export { SettingItem, SettingResponse, UpdateRequest }
+export { SettingItem, SettingResponse, ReadRequest, UpdateRequest }

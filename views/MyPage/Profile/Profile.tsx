@@ -1,5 +1,4 @@
-//@ts-nocheck
-
+import { FC } from 'react'
 import { css } from '@emotion/react'
 import { MyBox } from '../Shared'
 
@@ -7,7 +6,19 @@ import Image from './ProfileImage'
 import Info from './ProfileInfo'
 import ReleaseButton from './ProfileReleaseButton'
 
-const Profile = ({ name, department, studentNumber, profileImage }) => (
+interface Props {
+  name: string
+  department: string
+  studentNumber: string
+  profileImage: string
+}
+
+const Profile: FC<Props> = ({
+  name,
+  department,
+  studentNumber,
+  profileImage,
+}) => (
   <MyBox
     css={css`
       display: flex;

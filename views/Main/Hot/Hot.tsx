@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import Link from 'next/link'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { MdComment } from 'react-icons/md'
@@ -27,7 +25,7 @@ const initialHots = Array(3).fill({
 })
 
 interface Props {
-  hots?: HotArticle[]
+  hots: HotArticle[]
 }
 
 const Hot = ({ hots }: Props) => {

@@ -1,9 +1,14 @@
-//@ts-nocheck
-
+import { FC, ReactNode } from 'react'
 import Link from 'next/link'
+
 import { MyRow } from './MyRow'
 
-export const LinkRow = ({ pathname, children }) => (
+interface Props {
+  pathname: string
+  children: ReactNode
+}
+
+export const LinkRow: FC<Props> = ({ pathname, children }) => (
   <Link href={pathname}>
     <MyRow>{children}</MyRow>
   </Link>

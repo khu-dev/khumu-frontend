@@ -1,6 +1,5 @@
-//@ts-nocheck
-
 import styled from '@emotion/styled'
+import { ReactNode } from 'react'
 
 interface Props {
   title: string
@@ -14,7 +13,13 @@ const Row = ({ title, description }: Props) => (
   </RowContainer>
 )
 
-const Profile = ({ children }) => <Container>{children}</Container>
+interface ProfileProps {
+  children: ReactNode
+}
+
+const Profile = ({ children }: ProfileProps) => (
+  <Container>{children}</Container>
+)
 
 Profile.Row = Row
 export default Profile

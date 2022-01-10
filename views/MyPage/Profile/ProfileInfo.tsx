@@ -1,9 +1,25 @@
-//@ts-nocheck
-
+import { FC } from 'react'
 import styled from '@emotion/styled'
+
 import { box, color } from '@constants/theme'
 
-const InfoContainer = styled.div`
+interface Props {
+  name: string
+  department: string
+  studentNumber: string
+}
+
+const ProfileInfo: FC<Props> = ({ name, department, studentNumber }) => (
+  <Container>
+    <div>{name}</div>
+    <div>{department}</div>
+    <div>{studentNumber}</div>
+  </Container>
+)
+
+export default ProfileInfo
+
+const Container = styled.div`
   height: 67.5px;
   flex: 1;
   margin-left: ${box.margin};
@@ -17,19 +33,3 @@ const InfoContainer = styled.div`
     font-size: 14px;
   }
 `
-
-interface ProfileProps {
-  name: string
-  department: string
-  studentNumber: string
-}
-
-const ProfileInfo = ({ name, department, studentNumber }: ProfileProps) => (
-  <InfoContainer>
-    <div>{name}</div>
-    <div>{department}</div>
-    <div>{studentNumber}</div>
-  </InfoContainer>
-)
-
-export default ProfileInfo

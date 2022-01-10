@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import { box, color } from '@constants/theme'
 import styled from '@emotion/styled'
 import Link from 'next/link'
