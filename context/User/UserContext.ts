@@ -15,7 +15,7 @@ export const initialValue: Context = {
     student_number: '',
     username: '',
     nickname: '',
-    profile_image: null,
+    profile_image: '',
   },
   updateUser: () => {},
 }
