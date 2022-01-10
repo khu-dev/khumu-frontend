@@ -10,9 +10,9 @@ import { Title02 } from '@components/Title'
 
 interface Props {
   title: string
-  announcementsNum: number
+  notificationsNum: number
 }
-const MainHeader: FC<Props> = ({ title, announcementsNum }) => (
+const MainHeader: FC<Props> = ({ title, notificationsNum }) => (
   <div className={'header header-main'}>
     <Title02
       css={css`
@@ -32,7 +32,7 @@ const MainHeader: FC<Props> = ({ title, announcementsNum }) => (
       />
     </LinkIcon>
     <LinkIcon pathname={'/notifications'} style={{ position: 'relative' }}>
-      {announcementsNum > 0 && <Unreads>{announcementsNum}</Unreads>}
+      {notificationsNum > 0 && <Unreads>{notificationsNum}</Unreads>}
       <AiOutlineBell
         size={font.iconSize}
         css={css`
