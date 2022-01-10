@@ -7,6 +7,7 @@ import { box, color } from '@constants/theme'
 interface Props extends HTMLAttributes<HTMLDivElement> {
   pathname: string
   children: ReactNode
+  isSingle?: boolean
 }
 
 export const LinkButton: FC<Props> = ({ pathname, children, ...rest }) => (
