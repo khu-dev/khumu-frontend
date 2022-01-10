@@ -2,6 +2,7 @@ import axios from 'axios'
 import { BASE_URI } from '@config/baseURI'
 import { AndroidToast } from '@utils/android'
 import { getToken } from '@utils/token'
+import { saveCache } from './cache'
 
 let _window: any
 
@@ -27,7 +28,7 @@ isBrowser && refreshToken(devToken || getToken())
 
 isBrowser &&
   webClient.interceptors.response.use(
-    (response) => response,
+    (response) => saveCache(response),
     async (error) => {
       if (
         !!getToken() &&

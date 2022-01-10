@@ -4,11 +4,17 @@ import {
   UpdateRequest,
 } from '@interface/Notification'
 import { DataObj } from '@interface/Response'
+import { caching } from '@module/cache'
 import { webClient } from '@module/webClient'
 
 export const NotificationApi = {
-  query: () =>
-    webClient.get<DataObj<Notification[]>>(`/notifications?recipient=me`),
+  query: () => {
+    const url = '/notifications?recipient=me'
+
+    return caching<DataObj<Notification[]>>(url, () =>
+      webClient.get<DataObj<Notification[]>>(url),
+    )
+  },
   read: (notiId: ReadRequest) =>
     webClient.patch(`/notifications/${notiId}/read`),
   unread: (notiId: ReadRequest) =>
