@@ -1,9 +1,21 @@
 import { useToken } from '@context/Token'
+import { DataObj } from '@interface/Response'
+import { AxiosResponse } from 'axios'
 import { useCallback, useEffect, useState } from 'react'
 
-export const useFetchAxios = ({ func }: any) => {
+interface State<T> {
+  data: DataObj<T> | null
+  loading: boolean
+  error: boolean
+}
+
+interface Props<T> {
+  func: () => Promise<AxiosResponse<T>>
+}
+
+function useFetchAxios<T>({ func }: Props<T>) {
   const { token } = useToken()
-  const [result, setResult] = useState({
+  const [result, setResult] = useState<State<T>>({
     data: null,
     loading: true,
     error: false,
@@ -20,7 +32,7 @@ export const useFetchAxios = ({ func }: any) => {
   const refreshData = useCallback(async () => {
     initRefresh()
 
-    let result = null
+    let result: AxiosResponse<T> | null = null
     let error = false
 
     try {
@@ -45,3 +57,5 @@ export const useFetchAxios = ({ func }: any) => {
     refresh: refreshData,
   }
 }
+
+export default useFetchAxios

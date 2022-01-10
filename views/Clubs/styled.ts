@@ -83,24 +83,3 @@ export const ClubsSwiper = styled.div`
   align-items: center;
   padding: 0 24px;
 `
-
-export const Paging = styled.div`
-  padding: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-`
-
-const buttonStyle = css`
-  font-size: 18px;
-`
-
-export const disabledStyle = css`
-  ${buttonStyle};
-  color: ${color.gray4};
-`
-
-export const enabledStyle = css`
-  ${buttonStyle};
-  color: ${color.main};
-`

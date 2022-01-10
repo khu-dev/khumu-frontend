@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { IMG_URI } from '@config/baseURI'
 import Card from './Card'
-import ClubsPaging from './ClubsPaging'
+import Paging from './Paging'
 import Categories from './Categories'
 
 import * as s from './styled'
@@ -131,17 +131,14 @@ const Clubs = ({ categories, clubs }: Props) => {
           <s.Nothing>동아리가 존재하지 않습니다</s.Nothing>
         )}
       </s.ClubsCard>
-      <ClubsPaging>
-        <ClubsPaging.Minus
-          handleClick={handleIndex.minus}
-          isEnable={current > 0}
-        />
-        <ClubsPaging.Current page={`${current + 1} / ${clubLength}`} />
-        <ClubsPaging.Plus
+      <Paging>
+        <Paging.Minus handleClick={handleIndex.minus} isEnable={current > 0} />
+        <Paging.Current page={`${current + 1} / ${clubLength}`} />
+        <Paging.Plus
           handleClick={handleIndex.plus}
           isEnable={current < clubLength - 1}
         />
-      </ClubsPaging>
+      </Paging>
     </>
   )
 }
