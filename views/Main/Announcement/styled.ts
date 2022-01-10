@@ -21,16 +21,6 @@ export const AnnouncementItem = styled.div`
   margin-bottom: 18px;
 `
 
-export const AnnouncementThumbnail = styled.div`
-  display: inline-block;
-  width: 34px;
-  min-width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background-color: rgba(255, 77, 64, 0.85);
-  margin-right: 6px;
-`
-
 export const AnnouncementBody = styled.div<LoadingProps>`
   display: inline-block;
   flex-grow: 1;

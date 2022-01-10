@@ -1,22 +1,16 @@
-import { useState } from 'react'
+import { FC } from 'react'
 // import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Announcement as AnnouncementType } from '@interface/Announcement'
 import * as cs from '../common.styled'
 import * as s from './styled'
 import { useLoading } from '@context/Loading'
 
-const initialState = [
-  { author: { author_name: '총학생회' }, title: '2021-1 기말시험 안내', id: 0 },
-  {
-    author: { author_name: '총학생회' },
-    title: '2021-1 코로나 관련 특별 장학금 지금 안내',
-    id: 1,
-  },
-]
+interface Props {
+  announcements: AnnouncementType[]
+}
 
-const Announcement = () => {
+const Announcement: FC<Props> = ({ announcements }) => {
   const { isLoading } = useLoading()
-  const [announcements] = useState<AnnouncementType[]>(initialState)
 
   return (
     <cs.MainSection>
@@ -27,7 +21,6 @@ const Announcement = () => {
       />
       {announcements.map((announcement) => (
         <s.AnnouncementItem key={announcement.id}>
-          {/* <s.AnnouncementThumbnail /> */}
           <s.AnnouncementBody isLoading={isLoading}>
             <s.Title isLoading={isLoading}>
               {announcement.author.author_name}

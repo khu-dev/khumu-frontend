@@ -13,20 +13,20 @@ import { useToken } from '@context/Token'
 import { MainHeader } from '@components/Header'
 import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
 import withLoading from '@hoc/withLoading'
-// import AnnouncementApi from '@api/AnnouncementApi'
-// import { Announcement as AnnouncementType } from '@interface/Announcement'
+import AnnouncementApi from '@api/AnnouncementApi'
+import { Announcement as AnnouncementType } from '@interface/Announcement'
 
 const SUCCESS_CODE = 200
 
 interface State {
-  // announcements: AnnouncementType[]
+  announcements: AnnouncementType[]
   notifications: Notification[]
   schedules: Schedule[]
   hots: HotArticle[]
 }
 
 const initialState = {
-  // announcements: [],
+  announcements: [],
   notifications: [],
   schedules: [],
   hots: [],
@@ -44,7 +44,7 @@ const MainPage = () => {
       NotificationApi.query(),
       ScheduleApi.query(),
       ArticleApi.hot(),
-      // AnnouncementApi.query(),
+      AnnouncementApi.query(),
     ]).then((res) => {
       if (res[0].status !== SUCCESS_CODE) return
 
@@ -52,22 +52,22 @@ const MainPage = () => {
         notifications: res[0].data?.data,
         schedules: res[1].data,
         hots: res[2].data?.data,
-        // announcements: res[3].data.slice(-2),
+        announcements: res[3].data.slice(-2),
       })
       handleLoadingEnd?.()
     })
   }, [token, handleLoadingEnd])
 
-  const { notifications, schedules, hots } = data
+  const { announcements, notifications, schedules, hots } = data
 
   return (
     <>
       <MainHeader
         title="경희대 KHUMU"
-        announcementsNum={notifications.filter((item) => !item.is_read).length}
+        notificationsNum={notifications.filter((item) => !item.is_read).length}
       />
       <Feed schedules={schedules} />
-      <Announcement />
+      <Announcement announcements={announcements} />
       <Hot hots={hots} />
       <Advertise />
       <Club />
