@@ -7,7 +7,7 @@ import { box, color } from '@constants/theme'
 import { FC } from 'react'
 
 interface Props {
-  src: string
+  src?: string
 }
 
 const ProfileImage: FC<Props> = ({ src }) => {

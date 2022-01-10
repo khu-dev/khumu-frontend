@@ -4,12 +4,12 @@ import styled from '@emotion/styled'
 import { box, color } from '@constants/theme'
 
 interface Props {
-  name: string
-  department: string
-  studentNumber: string
+  name?: string
+  department?: string
+  studentNumber?: string
 }
 
-const ProfileInfo: FC<Props> = ({ name, department, studentNumber }) => (
+const Info: FC<Props> = ({ name, department, studentNumber }) => (
   <Container>
     <div>{name}</div>
     <div>{department}</div>
@@ -17,7 +17,7 @@ const ProfileInfo: FC<Props> = ({ name, department, studentNumber }) => (
   </Container>
 )
 
-export default ProfileInfo
+export default Info
 
 const Container = styled.div`
   height: 67.5px;

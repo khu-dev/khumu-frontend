@@ -2,15 +2,15 @@ import { FC } from 'react'
 import { css } from '@emotion/react'
 import { MyBox } from '../Shared'
 
-import Image from './ProfileImage'
-import Info from './ProfileInfo'
-import ReleaseButton from './ProfileReleaseButton'
+import Image from './Image'
+import Info from './Info'
+import ReleaseButton from './ReleaseButton'
 
 interface Props {
-  name: string
-  department: string
-  studentNumber: string
-  profileImage: string
+  name?: string
+  department?: string
+  studentNumber?: string
+  profileImage?: string
 }
 
 const Profile: FC<Props> = ({
@@ -29,7 +29,7 @@ const Profile: FC<Props> = ({
   >
     <Image src={profileImage} />
     <Info name={name} department={department} studentNumber={studentNumber} />
-    <ReleaseButton title={'나의 정보 변경'} />
+    <ReleaseButton title="나의 정보 변경" />
   </MyBox>
 )
 
