@@ -1,6 +1,4 @@
-//@ts-nocheck
-
-import React, { useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/react'
 
@@ -8,13 +6,29 @@ import { NotificationApi } from '@api/NotificationApi'
 import { color } from '@constants/theme'
 import NotificationSwiper from '@components/Swipe'
 import { AndroidToast } from '@utils/android'
-import { NotiItem } from './NotiItem'
+import NotiItem from './Item'
 import { Empty } from './Empty'
+import {
+  Notification as NotificationType,
+  ReadRequest,
+} from '@interface/Notification'
 
-const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
+interface Props {
+  item: NotificationType
+  index: number
+  fetchIndex: number
+  infiniteFetch(): void
+}
+
+const Notification: FC<Props> = ({
+  item,
+  index,
+  fetchIndex,
+  infiniteFetch,
+}) => {
   const [isRead, setRead] = useState(item.is_read)
 
-  const handleDelete = async (notiId) => {
+  const handleDelete = async (notiId: number) => {
     const { data } = await NotificationApi.delete(notiId)
 
     if (data) {
@@ -24,9 +38,9 @@ const Notification = ({ item, index, fetchIndex, infiniteFetch }) => {
     AndroidToast('삭제되었습니다')
   }
 
-  const handleRead = async (notiId: number | 'all' = 'all') => {
+  const handleRead = async (notiId: ReadRequest = 'all') => {
     if (!isRead) {
-      const { data } = await NotificationApi.read({ notiId })
+      const { data } = await NotificationApi.read(notiId)
       setRead(true)
       console.log('read noti', data)
     }
@@ -69,11 +83,11 @@ const Notifications = ({
   notifications,
   ...rest
 }: {
-  notifications: any[]
+  notifications: NotificationType[]
   fetchIndex: number
-  infiniteFetch: Function
+  infiniteFetch(): void
 }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     NotificationApi.read('all')
   }, [])
 

@@ -1,8 +1,20 @@
-//@ts-nocheck
-
-import styled from '@emotion/styled'
-import { color } from '@constants/theme'
+import { FC } from 'react'
 import Link from 'next/link'
+import styled from '@emotion/styled'
+
+import { color } from '@constants/theme'
+
+interface Props {
+  title: string
+}
+
+const ReleaseButton: FC<Props> = ({ title }) => (
+  <Link href={'/mypage/edit'}>
+    <Span>{title}</Span>
+  </Link>
+)
+
+export default ReleaseButton
 
 const Span = styled.span`
   width: 76px;
@@ -18,11 +30,3 @@ const Span = styled.span`
   justify-content: center;
   align-items: center;
 `
-
-const ReleaseButton = ({ title }) => (
-  <Link href={'/mypage/edit'}>
-    <Span>{title}</Span>
-  </Link>
-)
-
-export default ReleaseButton

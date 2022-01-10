@@ -1,19 +1,7 @@
-//@ts-nocheck
-
 import dayjs from 'dayjs'
 import 'dayjs/locale/ko'
 
 dayjs.locale('ko')
-
-export const convertDate = {
-  Mon: '월',
-  Tue: '화',
-  Wed: '수',
-  Thu: '목',
-  Fri: '금',
-  Sat: '토',
-  Sun: '일',
-}
 
 export const toMDdddd = {
   slash: (date: string | number) => {

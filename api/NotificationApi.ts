@@ -1,8 +1,10 @@
-import { Notification, UpdateRequest } from '@interface/Notification'
+import {
+  Notification,
+  ReadRequest,
+  UpdateRequest,
+} from '@interface/Notification'
 import { DataObj } from '@interface/Response'
 import { webClient } from '@module/webClient'
-
-type ReadRequest = 'all' | number
 
 export const NotificationApi = {
   query: () =>

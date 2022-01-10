@@ -1,8 +1,11 @@
-//@ts-nocheck
-
 import styled from '@emotion/styled'
+import { FC } from 'react'
 
-export const Empty = ({ text }) => <Container>{text}</Container>
+interface Props {
+  text: string
+}
+
+export const Empty: FC<Props> = ({ text }) => <Container>{text}</Container>
 
 const Container = styled.div`
   width: 100%;

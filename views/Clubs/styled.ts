@@ -2,7 +2,7 @@ import { box, color } from '@constants/theme'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-const tagStyle = css`
+export const tagStyle = css`
   width: auto;
   max-width: 60px;
   height: 29px;
@@ -17,10 +17,6 @@ const tagStyle = css`
   color: ${color.white};
   background-color: ${color.main};
   position: relative;
-`
-
-export const Tag = styled.div`
-  ${tagStyle};
 `
 
 export const Filters = styled.div`
@@ -86,84 +82,4 @@ export const ClubsSwiper = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 0 24px;
-`
-
-export const Card = styled.div`
-  /* min-width: 260px; */
-  width: calc(100vw - 64px);
-  min-height: calc(100vh - 150px);
-  margin: 0 8px;
-  box-shadow: -1px 1px 12px -4px rgba(0, 0, 0, 0.3);
-  border: 1px solid ${color.main};
-  border-radius: 24px;
-  border-bottom-right-radius: 0;
-  overflow: hidden;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-`
-
-export const Image = styled.div<{ url: string }>`
-  flex: 1;
-  background-color: ${color.gray4};
-  background-image: url(${({ url }) => url});
-  background-size: cover;
-  background-position: center;
-`
-
-export const Content = styled.div`
-  height: 178px;
-  border-top: 1px solid ${color.gray4};
-  padding: 16px;
-  overflow-y: scroll;
-  background-color: ${color.white};
-`
-
-export const NameWrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 6px;
-`
-
-export const Name = styled.h2`
-  margin: 0;
-  margin-right: 16px;
-  color: ${color.main};
-  white-space: nowrap;
-`
-
-export const Summary = styled.span<{ fontSize: number }>`
-  color: ${color.black};
-  font-size: ${({ fontSize }) => fontSize};
-`
-
-export const P = styled.p`
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-  color: ${color.gray1};
-  text-align: justify !important;
-`
-
-export const Paging = styled.div`
-  padding: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-`
-
-const buttonStyle = css`
-  font-size: 18px;
-`
-
-export const disabledStyle = css`
-  ${buttonStyle};
-  color: ${color.gray4};
-`
-
-export const enabledStyle = css`
-  ${buttonStyle};
-  color: ${color.main};
 `

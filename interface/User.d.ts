@@ -11,13 +11,13 @@ interface User {
   student_number?: string
   username?: string
   nickname?: string
-  profile_image?: string | null
+  profile_image?: string
 }
 
 interface Edit {
   nickname?: string
   department?: string
-  profile_image?: string | null
+  profile_image?: string
 }
 
 interface Context {

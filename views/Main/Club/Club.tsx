@@ -1,30 +1,32 @@
-//@ts-nocheck
-
 import Link from 'next/link'
+
 import { ClubApi } from '@api/ClubApi'
 import { IMG_URI } from '@config/baseURI'
+import { useLoading } from '@context/Loading'
 import { useFetchAxios } from '@hooks/fetch'
-import { Club as ClubType } from '@interface/Club'
 import { getRandomNumber } from '@utils/functions'
+
+import { Club as ClubType } from '@interface/Club'
+import { DataObj } from '@interface/Response'
 
 import * as cs from '../common.styled'
 import * as s from './styled'
-import { useLoading } from '@context/Loading'
 
 const Club = () => {
   const { isLoading } = useLoading()
-  const { result } = useFetchAxios({
+  const {
+    result: { data },
+  } = useFetchAxios<DataObj<ClubType[]>>({
     func: ClubApi.query,
   })
 
-  const list: Array<ClubType> = result?.data?.data?.data || Array(3).fill(null)
-  const totalLength = list.length
-  const pickedNum = getRandomNumber(0, totalLength - 1, 3)
+  const list: Array<ClubType> = data?.data?.data || Array(3).fill(null)
+  const pickedNum = getRandomNumber(0, list.length - 1, 3)
   const pickedClub = pickedNum.map((num, idx) => (idx < 3 ? list[num] : null))
 
   return !isLoading ? (
     <cs.MainSection>
-      <cs.IconTitle pathname={`/clubs`} title={'동아리'} />
+      <cs.IconTitle pathname="/clubs" title="동아리" />
       <s.Clubs>
         {pickedClub.map(
           (club, idx) =>

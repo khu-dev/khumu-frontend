@@ -1,18 +1,23 @@
-//@ts-nocheck
-
-import React, { useEffect } from 'react'
+import styled from '@emotion/styled'
+import { FC, useEffect, useState } from 'react'
 import * as s from './styled'
 
 const CLUBS_CARD = 'clubs-card'
 
-export default function Categories({
+interface Props {
+  category: string
+  categories: string[]
+  handleCategory(selected: string): void
+}
+
+const Categories: FC<Props> = ({
   category: currentCategory,
   categories,
   handleCategory,
-}) {
+}) => {
   const categoriesSet = new Set(categories)
   const uniqueCategories = [...categoriesSet]
-  const [isActive, setIsActive] = React.useState(false)
+  const [isActive, setIsActive] = useState(false)
 
   const handleActive = (status: boolean) => {
     setIsActive(status)
@@ -34,7 +39,7 @@ export default function Categories({
   }, [])
 
   return (
-    <s.Tag
+    <STag
       onClick={() => {
         handleActive(!isActive)
       }}
@@ -58,6 +63,12 @@ export default function Categories({
           ))}
         </s.Filters>
       )}
-    </s.Tag>
+    </STag>
   )
 }
+
+export default Categories
+
+const STag = styled.div`
+  ${s.tagStyle};
+`
