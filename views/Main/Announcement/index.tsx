@@ -20,7 +20,7 @@ const Announcement: FC<Props> = ({ announcements }) => {
         isLoading={isLoading}
       />
       {announcements.map((announcement) => (
-        <s.AnnouncementItem key={announcement.id}>
+        <s.AnnouncementItem key={announcement.id} href={announcement.sub_link}>
           <s.AnnouncementBody isLoading={isLoading}>
             <s.Title isLoading={isLoading}>
               {announcement.author.author_name}
