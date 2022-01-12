@@ -13,12 +13,16 @@ const textOverflowHiddenStyle = css`
   white-space: nowrap;
 `
 
-export const AnnouncementItem = styled.div`
+export const AnnouncementItem = styled.a`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 18px;
+
+  * {
+    color: ${color.black} !important;
+  }
 `
 
 export const AnnouncementBody = styled.div<LoadingProps>`
