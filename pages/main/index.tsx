@@ -42,12 +42,12 @@ const MainPage = () => {
   useEffect(() => {
     if (!token) return
 
-    const timer = setInterval(() => {
+    const fetchData = (refresh: boolean) => {
       Promise.all([
-        NotificationApi.query(initRef.current),
-        ScheduleApi.query(initRef.current),
-        ArticleApi.hot(initRef.current),
-        AnnouncementApi.query(initRef.current),
+        NotificationApi.query(refresh),
+        ScheduleApi.query(refresh),
+        ArticleApi.hot(refresh),
+        AnnouncementApi.query(refresh),
       ]).then((res) => {
         initRef.current = false
 
@@ -61,7 +61,13 @@ const MainPage = () => {
         })
         handleLoadingEnd?.()
       })
+    }
+
+    const timer = setInterval(() => {
+      fetchData(true)
     }, REFRESH_TIME)
+
+    initRef.current && fetchData(false)
 
     return () => {
       clearInterval(timer)
