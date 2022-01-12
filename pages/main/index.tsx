@@ -44,7 +44,7 @@ const MainPage = () => {
 
     const fetchData = (refresh: boolean) => {
       Promise.all([
-        NotificationApi.query(refresh),
+        NotificationApi.query(true),
         ScheduleApi.query(refresh),
         ArticleApi.hot(refresh),
         AnnouncementApi.query(refresh),
