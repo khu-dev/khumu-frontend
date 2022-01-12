@@ -1,6 +1,7 @@
 import {
   Notification,
   ReadRequest,
+  SettingResponse,
   UpdateRequest,
 } from '@interface/Notification'
 import { DataObj } from '@interface/Response'
@@ -22,7 +23,15 @@ export const NotificationApi = {
   unread: (notiId: ReadRequest) =>
     webClient.patch(`/notifications/${notiId}/unread`),
   delete: (notiId: number) => webClient.delete(`/notifications/${notiId}`),
-  options: () => webClient.get(`/push/options/jinsu`),
+  options: (refresh?: boolean) => {
+    const url = '/push/options/jinsu'
+
+    return caching<DataObj<SettingResponse>>(
+      url,
+      () => webClient.get<DataObj<SettingResponse>>(url),
+      refresh,
+    )
+  },
   update: ({ id, status }: UpdateRequest) =>
     webClient.patch(`/push/options/${id}`, {
       is_activated: status,
