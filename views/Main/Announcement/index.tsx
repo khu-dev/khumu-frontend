@@ -5,6 +5,16 @@ import * as cs from '../common.styled'
 import * as s from './styled'
 import { useLoading } from '@context/Loading'
 
+const initialState = [
+  { author: { author_name: ' ' }, title: ' ', id: 0, sub_link: '' },
+  {
+    author: { author_name: ' ' },
+    title: ' ',
+    id: 1,
+    sub_link: '',
+  },
+]
+
 interface Props {
   announcements: AnnouncementType[]
 }
@@ -19,7 +29,7 @@ const Announcement: FC<Props> = ({ announcements }) => {
         title="오늘의 공지사항"
         isLoading={isLoading}
       />
-      {announcements.map((announcement) => (
+      {(isLoading ? initialState : announcements).map((announcement) => (
         <s.AnnouncementItem key={announcement.id} href={announcement.sub_link}>
           <s.AnnouncementBody isLoading={isLoading}>
             <s.Title isLoading={isLoading}>
