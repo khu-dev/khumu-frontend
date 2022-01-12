@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/react'
 
@@ -40,9 +40,8 @@ const Notification: FC<Props> = ({
 
   const handleRead = async (notiId: ReadRequest = 'all') => {
     if (!isRead) {
-      const { data } = await NotificationApi.read(notiId)
+      await NotificationApi.read(notiId)
       setRead(true)
-      console.log('read noti', data)
     }
   }
 

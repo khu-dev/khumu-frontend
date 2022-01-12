@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { HotArticle } from '@interface/HotArticle'
 import { Notification } from '@interface/Notification'
@@ -17,6 +17,7 @@ import AnnouncementApi from '@api/AnnouncementApi'
 import { Announcement as AnnouncementType } from '@interface/Announcement'
 
 const SUCCESS_CODE = 200
+const REFRESH_TIME = 1000 * 60 * 10
 
 interface State {
   announcements: AnnouncementType[]
@@ -33,6 +34,7 @@ const initialState = {
 }
 
 const MainPage = () => {
+  const initRef = useRef<boolean>(true)
   const { token } = useToken()
   const { handleLoadingEnd } = useLoading()
   const [data, setData] = useState<State>(initialState)
@@ -40,22 +42,36 @@ const MainPage = () => {
   useEffect(() => {
     if (!token) return
 
-    Promise.all([
-      NotificationApi.query(),
-      ScheduleApi.query(),
-      ArticleApi.hot(),
-      AnnouncementApi.query(),
-    ]).then((res) => {
-      if (res[0].status !== SUCCESS_CODE) return
+    const fetchData = (refresh: boolean) => {
+      Promise.all([
+        NotificationApi.query(refresh),
+        ScheduleApi.query(refresh),
+        ArticleApi.hot(refresh),
+        AnnouncementApi.query(refresh),
+      ]).then((res) => {
+        initRef.current = false
 
-      setData({
-        notifications: res[0].data?.data,
-        schedules: res[1].data,
-        hots: res[2].data?.data,
-        announcements: res[3].data.slice(-2),
+        if (res[0].status !== SUCCESS_CODE) return
+
+        setData({
+          notifications: res[0].data?.data,
+          schedules: res[1].data,
+          hots: res[2].data?.data,
+          announcements: res[3].data.slice(-2),
+        })
+        handleLoadingEnd?.()
       })
-      handleLoadingEnd?.()
-    })
+    }
+
+    const timer = setInterval(() => {
+      fetchData(true)
+    }, REFRESH_TIME)
+
+    initRef.current && fetchData(false)
+
+    return () => {
+      clearInterval(timer)
+    }
   }, [token, handleLoadingEnd])
 
   const { announcements, notifications, schedules, hots } = data
