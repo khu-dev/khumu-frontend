@@ -1,6 +1,6 @@
 import { SettingKind } from '@enum/Notification'
 
-export interface NotificationOptionsDetail {
+export interface OptionDetail {
   created_at: string
   id: number
   is_activated: boolean
@@ -8,11 +8,11 @@ export interface NotificationOptionsDetail {
   username: string
 }
 
-export interface NotificationOptions {
-  khumu_notification: NotificationOptionsDetail
-  khumu_service_notification: NotificationOptionsDetail
-  new_announcement_of_following_author: NotificationOptionsDetail
-  new_hot_article: NotificationOptionsDetail
+export interface Options {
+  khumu_notification: OptionDetail
+  khumu_service_notification: OptionDetail
+  new_announcement_of_following_author: OptionDetail
+  new_hot_article: OptionDetail
 }
 
 export interface Notification {
@@ -39,18 +39,12 @@ interface UpdateRequest {
   status: boolean
 }
 
-interface Response {
-  id: number
-  is_activated: boolean
-  push_option_kind: SettingKind
-}
-
 interface SettingResponse {
-  [SettingKind.ANNOUNCEMENT_CRAWLED]: Response
-  [SettingKind.HAKSA_SCHEDULE]: Response
-  [SettingKind.KHUMU_NOTIFICATION]: Response
-  [SettingKind.KHUMU_SERVICE_NOTIFICATION]: Response
-  [SettingKind.NEW_HOT_ARTICLE]: Response
+  [SettingKind.ANNOUNCEMENT_CRAWLED]: OptionDetail
+  [SettingKind.HAKSA_SCHEDULE]: OptionDetail
+  [SettingKind.KHUMU_NOTIFICATION]: OptionDetail
+  [SettingKind.KHUMU_SERVICE_NOTIFICATION]: OptionDetail
+  [SettingKind.NEW_HOT_ARTICLE]: OptionDetail
 }
 
 export { SettingItem, SettingResponse, ReadRequest, UpdateRequest }

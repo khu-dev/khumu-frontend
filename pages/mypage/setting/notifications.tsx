@@ -32,10 +32,10 @@ const MySetNotiPage = () => {
     if (!token) return
 
     const fetchData = async () => {
-      const res = await NotificationApi.options()
+      const res = await NotificationApi.options(true)
 
       if (res.status === 200) {
-        setOptions(res.data?.data)
+        setOptions(res.data.data)
       }
     }
 
@@ -45,10 +45,10 @@ const MySetNotiPage = () => {
   return (
     <>
       <CommonHeader
-        title={'알림설정'}
+        title="알림설정"
         handleRouter={goBack}
-        className={'header-mypage-edit'}
-        color={'#6C6C6C'}
+        className="header-mypage-edit"
+        color="#6C6C6C"
       />
       <List
         list={Object.values(SettingKind).map((key) => ({
