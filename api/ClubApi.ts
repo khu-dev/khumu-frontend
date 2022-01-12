@@ -9,5 +9,9 @@ export const ClubApi = {
 
     return caching(url, () => webClient.get<DataObj<Club[]>>(url), refresh)
   },
-  categories: () => webClient.get<DataObj<string[]>>(`/club-categories`),
+  categories: (refresh?: boolean) => {
+    const url = '/club-categories'
+
+    return caching(url, () => webClient.get<DataObj<string[]>>(url), refresh)
+  },
 }
