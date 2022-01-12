@@ -8,11 +8,13 @@ import { caching } from '@module/cache'
 import { webClient } from '@module/webClient'
 
 export const NotificationApi = {
-  query: () => {
+  query: (refresh?: boolean) => {
     const url = '/notifications?recipient=me'
 
-    return caching<DataObj<Notification[]>>(url, () =>
-      webClient.get<DataObj<Notification[]>>(url),
+    return caching<DataObj<Notification[]>>(
+      url,
+      () => webClient.get<DataObj<Notification[]>>(url),
+      refresh,
     )
   },
   read: (notiId: ReadRequest) =>

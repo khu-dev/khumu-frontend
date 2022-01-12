@@ -4,11 +4,13 @@ import { caching } from '@module/cache'
 import { webClient } from '@module/webClient'
 
 export const ArticleApi = {
-  hot: () => {
+  hot: (refresh?: boolean) => {
     const url = '/articles?board=hot&size=10'
 
-    return caching<DataObj<HotArticle[]>>(url, () =>
-      webClient.get<DataObj<HotArticle[]>>(url),
+    return caching<DataObj<HotArticle[]>>(
+      url,
+      () => webClient.get<DataObj<HotArticle[]>>(url),
+      refresh,
     )
   },
 }

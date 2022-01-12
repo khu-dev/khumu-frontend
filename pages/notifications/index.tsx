@@ -41,7 +41,7 @@ const NotificationsPage = () => {
     if (!token) return
 
     const fetchData = async () => {
-      const res = await NotificationApi.query()
+      const res = await NotificationApi.query(true)
 
       if (res.status === 200) {
         setNotifications(res.data?.data)
