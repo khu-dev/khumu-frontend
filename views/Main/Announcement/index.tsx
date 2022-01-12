@@ -5,11 +5,11 @@ import * as cs from '../common.styled'
 import * as s from './styled'
 import { useLoading } from '@context/Loading'
 
-const initialState = [
-  { author: { author_name: ' ' }, title: ' ', id: 0, sub_link: '' },
+const initialState: AnnouncementType[] = [
+  { author: { author_name: '' }, title: '', id: 0, sub_link: '' },
   {
-    author: { author_name: ' ' },
-    title: ' ',
+    author: { author_name: '' },
+    title: '',
     id: 1,
     sub_link: '',
   },
