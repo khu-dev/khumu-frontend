@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import { color } from '@constants/theme'
-import { skeleton } from '../Common'
+import { skeleton } from './Common'
 
 const style = {
   title: css`

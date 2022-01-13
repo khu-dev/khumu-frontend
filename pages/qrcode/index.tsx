@@ -7,7 +7,7 @@ import { useToken } from '@context/Token'
 import { AndroidToast } from '@utils/android'
 
 import Header from '@components/Header/Common'
-import Qrcode from '@views/Qrcode'
+import Qrcode from '@components/Qrcode'
 
 const initialState: QRcode = {
   qr_code_str: '',

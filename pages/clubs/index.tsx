@@ -6,7 +6,7 @@ import { ClubApi } from '@api/ClubApi'
 import { useToken } from '@context/Token'
 
 import Header from '@components/Header/Common'
-import Clubs from '@views/Clubs'
+import Clubs from '@components/Clubs'
 
 const initialClub: Club = {
   categories: '',
