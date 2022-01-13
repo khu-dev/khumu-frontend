@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { UserApi } from '@api/UserApi'
 import { useUser } from '@context/User'
@@ -6,6 +6,7 @@ import { AndroidToast } from '@utils/android'
 
 import { Edit as EditType } from '@interface/User'
 
+import { CommonHeader } from '@components/Header'
 import Button from './Button'
 import Department from './Department'
 import Image from './Image'
@@ -47,13 +48,20 @@ const Edit = () => {
   }, [user])
 
   return (
-    <s.Container>
-      <Image onChange={handleChange} />
-      <Nickname value={value.nickname!} onChange={handleChange} />
-      <StudentNumber />
-      <Department value={value.department!} onChange={handleChange} />
-      <Button onClick={handleSubmit} />
-    </s.Container>
+    <>
+      <CommonHeader
+        center="나의 정보 변경"
+        backgroundColor="#e4e4e4"
+        color="#6C6C6C"
+      />
+      <s.Container>
+        <Image onChange={handleChange} />
+        <Nickname value={value.nickname!} onChange={handleChange} />
+        <StudentNumber />
+        <Department value={value.department!} onChange={handleChange} />
+        <Button onClick={handleSubmit} />
+      </s.Container>
+    </>
   )
 }
 

@@ -10,7 +10,7 @@ import { ScheduleApi } from '@api/ScheduleApi'
 import { useLoading } from '@context/Loading'
 import { useToken } from '@context/Token'
 
-import { MainHeader } from '@components/Header'
+import Header from '@components/Header/Main'
 import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
 import withLoading from '@hoc/withLoading'
 import AnnouncementApi from '@api/AnnouncementApi'
@@ -78,7 +78,7 @@ const MainPage = () => {
 
   return (
     <>
-      <MainHeader
+      <Header
         title="경희대 KHUMU"
         notificationsNum={notifications.filter((item) => !item.is_read).length}
       />
