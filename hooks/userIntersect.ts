@@ -1,11 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-interface Props {
-  threshold?: number
-  callback?(): void
-}
+const DEFAULT_THRESHOLD = 0.6
 
-export const useIntersect = ({ threshold = 0.6, callback }: Props) => {
+export const useIntersect = (callback?: Function) => {
   const ref = useRef(null)
   const [showed, setShowed] = useState(false)
 
@@ -13,13 +10,10 @@ export const useIntersect = ({ threshold = 0.6, callback }: Props) => {
     ([entry]) => {
       const currentRatio = entry.intersectionRatio
 
-      // Scrolling down/up
-      !showed &&
-        currentRatio > 0 &&
-        (() => {
-          setShowed(true)
-          callback?.()
-        })()
+      if (!showed && currentRatio > 0) {
+        setShowed(true)
+        callback?.()
+      }
     },
     [showed, callback],
   )
@@ -29,12 +23,14 @@ export const useIntersect = ({ threshold = 0.6, callback }: Props) => {
     let observer: any = null
 
     if (current) {
-      observer = new IntersectionObserver(handleScroll, { threshold })
+      observer = new IntersectionObserver(handleScroll, {
+        threshold: DEFAULT_THRESHOLD,
+      })
       observer.observe(current)
     }
 
     return () => observer?.disconnect()
-  }, [handleScroll, threshold])
+  }, [handleScroll])
 
   return { ref, showed }
 }

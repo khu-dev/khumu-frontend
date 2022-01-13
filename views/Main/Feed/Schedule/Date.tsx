@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { css } from '@emotion/react'
-import { CustomTitle } from '@components/Title'
+import { CustomTitle } from '@components/Common/Title'
 import { title as titleStyle, color } from '@constants/theme'
 import { toMDdddd } from '@utils/day'
 import { useLoading } from '@context/Loading'

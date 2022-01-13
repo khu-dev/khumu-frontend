@@ -1,6 +1,10 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
-import useDepartments from '@hooks/useDepartments'
+import { DepartmentApi } from '@api/DepartmentApi'
+import { useToken } from '@context/Token'
+import { AndroidToast } from '@utils/android'
+
+import { Department as DepartmentType } from '@interface/Department'
 
 import * as s from './styled'
 
@@ -10,7 +14,25 @@ interface Props {
 }
 
 const Department: FC<Props> = ({ value, onChange }) => {
-  const departments = useDepartments()
+  const { token } = useToken()
+  const [departments, setDepartments] = useState<DepartmentType[]>([])
+
+  useEffect(() => {
+    if (!token) return
+
+    DepartmentApi.query().then(({ status, data }) => {
+      if (status !== 200) {
+        AndroidToast('학과를 불러오는데 실패하였습니다')
+        return
+      }
+
+      const newData = data.map((info: DepartmentType) => ({
+        name: info.name,
+        id: info.id,
+      }))
+      setDepartments(newData)
+    })
+  }, [token])
 
   return (
     <s.Form>

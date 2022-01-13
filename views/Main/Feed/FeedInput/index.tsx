@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import { useFeedInput } from '@context/Feed/Input'
+import { useFeedInput } from '@context/Feed'
 import * as s from './SearchArea.styled'
 import { FeedbackButton } from '@enum/FeedbackButton'
 import { AndroidToast } from '@utils/android'

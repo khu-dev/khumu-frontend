@@ -19,7 +19,7 @@ interface Props {
 }
 
 const NotiItem = ({ index, children, fetchIndex, infiniteFetch }: Props) => {
-  const { ref } = useIntersect({ callback: infiniteFetch })
+  const { ref } = useIntersect(infiniteFetch)
 
   return index === fetchIndex - 3 ? (
     <NotiContainer ref={ref}>{children}</NotiContainer>

@@ -4,25 +4,18 @@ const isMouseEvent = (e: any) => {
   return e.type.includes('mouse')
 }
 
-interface SwipeElementProps {
+interface Props {
   threshold?: {
     x?: number
     y?: number
   }
-  callback?: {
-    left?: Function
-    right?: Function
-  }
-  prefix?: number
   reset?: 'left' | 'right'
 }
 
 export const useSwipeElement = ({
   threshold = { x: 80, y: 80 },
-  callback,
   reset,
-}: // prefix = 72,
-SwipeElementProps) => {
+}: Props) => {
   const [isMoving, setMoving] = React.useState(false)
   const [isEvent, setEvent] = React.useState(false)
   const [position, setPosition] = React.useState({
@@ -55,14 +48,14 @@ SwipeElementProps) => {
 
   const handleTouchMove = React.useCallback(
     (e) => {
+      if (!isMoving) return
       const isMouse = isMouseEvent(e)
 
-      isMoving &&
-        setPosition({
-          ...position,
-          endX: isMouse ? e.clientX : e.targetTouches[0].clientX,
-          endY: isMouse ? e.clientY : e.targetTouches[0].clientY,
-        })
+      setPosition({
+        ...position,
+        endX: isMouse ? e.clientX : e.targetTouches[0].clientX,
+        endY: isMouse ? e.clientY : e.targetTouches[0].clientY,
+      })
     },
     [isMoving, position],
   )
@@ -73,10 +66,8 @@ SwipeElementProps) => {
     setMoving(false)
 
     if (gapX >= threshold.x! && gapY <= threshold.y!) {
-      callback?.left?.()
       reset === 'left' ? resetPosition() : setEvent(true)
     } else if (gapX <= -threshold.x! && gapY <= threshold.y!) {
-      callback?.right?.()
       reset === 'right' ? resetPosition() : setEvent(true)
     } else {
       resetPosition()
@@ -84,16 +75,12 @@ SwipeElementProps) => {
   }
 
   return {
-    startPoint: position.startX,
-    endPoint: position.endX,
-    gap: position.startX - position.endX,
     isMoving,
     isEvent,
     handler: {
       handleTouchStart,
       handleTouchMove,
       handleTouchEnd,
-      // isEvent
     },
   }
 }

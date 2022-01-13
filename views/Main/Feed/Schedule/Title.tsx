@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { IoTimeOutline } from 'react-icons/io5'
-import { CustomTitle } from '@components/Title'
+import { CustomTitle } from '@components/Common/Title'
 
 import { title as titleStyle, color } from '@constants/theme'
 import { useLoading } from '@context/Loading'

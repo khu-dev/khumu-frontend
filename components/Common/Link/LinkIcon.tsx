@@ -4,6 +4,7 @@ import Link from 'next/link'
 interface IconProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode
 }
+
 interface Props extends IconProps {
   pathname: string
 }
