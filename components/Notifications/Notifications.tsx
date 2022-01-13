@@ -2,16 +2,18 @@ import React, { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/react'
 
-import { NotificationApi } from '@api/NotificationApi'
-import { color } from '@constants/theme'
-import NotificationSwiper from '@components/Swipe'
-import { AndroidToast } from '@utils/android'
-import NotiItem from './Item'
-import { Empty } from './Empty'
 import {
   Notification as NotificationType,
   ReadRequest,
 } from '@interface/Notification'
+
+import { NotificationApi } from '@api/NotificationApi'
+import { color } from '@constants/theme'
+import { AndroidToast } from '@utils/android'
+
+import NotiItem from './Item'
+import { Empty } from './Empty'
+import NotificationSwiper from '@components/Notifications/Swipe'
 
 interface Props {
   item: NotificationType
