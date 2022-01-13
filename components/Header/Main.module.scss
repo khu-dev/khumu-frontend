@@ -1,0 +1,8 @@
+@import '/assets/style/partials/shared.scss';
+
+.header {
+  justify-content: flex-end;
+
+  background-color: $color-main;
+  color: $color-white;
+}

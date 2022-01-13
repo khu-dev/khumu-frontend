@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 import { Club } from '@interface/Club'
 
 import { ClubApi } from '@api/ClubApi'
 import { useToken } from '@context/Token'
 
-import ClubsHeader from '@components/Header/Clubs'
+import Header from '@components/Header/Common'
 import Clubs from '@views/Clubs'
 
 const initialClub: Club = {
@@ -31,6 +32,7 @@ interface Data {
 }
 
 const ClubsPage = () => {
+  const router = useRouter()
   const { token } = useToken()
   const [data, setData] = useState<Data>({
     clubs: [initialClub, initialClub, initialClub, initialClub],
@@ -58,7 +60,7 @@ const ClubsPage = () => {
 
   return (
     <>
-      <ClubsHeader title={'동아리'} />
+      <Header center="동아리" handleRouter={router.back} />
       <Clubs categories={categories} clubs={clubs} />
     </>
   )

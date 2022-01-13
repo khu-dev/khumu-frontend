@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, HTMLAttributes } from 'react'
+import React, { CSSProperties, FC } from 'react'
 import { IoChevronBackOutline } from 'react-icons/io5'
 import { css } from '@emotion/react'
 import classnames from 'classnames'
@@ -9,7 +9,7 @@ import { Title02 } from '@components/Common/Title'
 
 import styles from './Header.module.scss'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props {
   center?: string
   left?: string
   hasIcon?: boolean
@@ -23,7 +23,6 @@ const Header: FC<Props> = ({
   left,
   hasIcon = true,
   handleRouter,
-  className = '',
   backgroundColor,
   color = theme.main,
 }) => {
@@ -33,7 +32,7 @@ const Header: FC<Props> = ({
 
   return (
     <div
-      className={classnames('header', className, {
+      className={classnames('header', {
         [styles.center]: isAlignCenter,
         [styles.left]: !isAlignCenter,
         [styles.noIcon]: !hasIcon,
