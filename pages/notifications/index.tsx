@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 
 import { Notification } from '@interface/Notification'
 
@@ -21,7 +20,6 @@ if (process.browser && typeof window !== undefined) {
 }
 
 const NotificationsPage = () => {
-  const router = useRouter()
   const { token } = useToken()
   const { isLoading, handleLoadingEnd } = useLoading()
   const [notifications, setNotifications] = useState<Notification[]>([])
@@ -31,10 +29,6 @@ const NotificationsPage = () => {
 
   const infiniteFetch = () => {
     setLength((prev) => prev + length)
-  }
-
-  const goBack = () => {
-    router.back()
   }
 
   useEffect(() => {
@@ -56,7 +50,6 @@ const NotificationsPage = () => {
     <>
       <CommonHeader
         center="알림"
-        handleRouter={goBack}
         color={color.main}
         backgroundColor={color.white}
       />

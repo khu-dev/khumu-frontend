@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 
 import { UserApi } from '@api/UserApi'
 import { useUser } from '@context/User'
@@ -17,7 +16,6 @@ import StudentNumber from './StudentNumber'
 import * as s from './styled'
 
 const Edit = () => {
-  const router = useRouter()
   const { user, updateUser } = useUser()
   const [value, setValue] = useState<EditType>(user)
 
@@ -53,7 +51,6 @@ const Edit = () => {
     <>
       <CommonHeader
         center="나의 정보 변경"
-        handleRouter={router.back}
         backgroundColor="#e4e4e4"
         color="#6C6C6C"
       />

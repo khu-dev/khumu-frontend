@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 
 import { Club } from '@interface/Club'
 
@@ -32,7 +31,6 @@ interface Data {
 }
 
 const ClubsPage = () => {
-  const router = useRouter()
   const { token } = useToken()
   const [data, setData] = useState<Data>({
     clubs: [initialClub, initialClub, initialClub, initialClub],
@@ -60,7 +58,7 @@ const ClubsPage = () => {
 
   return (
     <>
-      <Header center="동아리" handleRouter={router.back} />
+      <Header center="동아리" />
       <Clubs categories={categories} clubs={clubs} />
     </>
   )
