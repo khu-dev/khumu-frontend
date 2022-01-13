@@ -8,7 +8,7 @@ import { useToken } from '@context/Token'
 import { kindToLabel } from '@module/Notification'
 import { AndroidToast } from '@utils/android'
 
-import List from '@views/MyPage/Setting'
+import List from '@components/MyPage/Setting'
 import CommonHeader from '@components/Header/Common'
 
 const MySetNotiPage = () => {

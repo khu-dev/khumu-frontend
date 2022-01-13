@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { box, color, shadow } from '@constants/theme'
 import { css } from '@emotion/react'
-import { style } from '@components/Skeleton/Main'
+import { mainStyle as style } from '@components/Skeleton'
 
 interface LoadingProps {
   isLoading?: boolean

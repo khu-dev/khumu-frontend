@@ -5,7 +5,7 @@ import { box } from '@constants/theme'
 import { useUser } from '@context/User'
 
 import CommonHeader from '@components/Header/Common'
-import * as Page from '@views/MyPage'
+import * as Page from '@components/MyPage'
 
 export default function MyPagePage() {
   const {
