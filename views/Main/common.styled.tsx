@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 
 import { box, color } from '@constants/theme'
 
-import LinkIcon from '@components/Link'
+import LinkIcon from '@components/Common/Link'
 import { style } from '@components/Skeleton/Main'
 
 interface Props {

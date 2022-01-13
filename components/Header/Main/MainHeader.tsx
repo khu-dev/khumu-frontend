@@ -5,8 +5,8 @@ import styled from '@emotion/styled'
 
 import { color, font } from '@constants/theme'
 
-import LinkIcon from '@components/Link'
-import { Title02 } from '@components/Title'
+import LinkIcon from '@components/Common/Link'
+import { Title02 } from '@components/Common/Title'
 
 interface Props {
   title: string

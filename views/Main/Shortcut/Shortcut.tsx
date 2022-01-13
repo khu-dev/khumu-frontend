@@ -1,4 +1,4 @@
-import LinkIcon from '@components/Link'
+import LinkIcon from '@components/Common/Link'
 import { useLoading } from '@context/Loading'
 import * as cs from '../common.styled'
 import * as s from './styled'

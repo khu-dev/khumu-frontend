@@ -3,8 +3,8 @@ import { IoChevronBackOutline } from 'react-icons/io5'
 import { css } from '@emotion/react'
 
 import { color } from '@constants/theme'
-import LinkIcon from '@components/Link'
-import { Title02 } from '@components/Title'
+import LinkIcon from '@components/Common/Link'
+import { Title02 } from '@components/Common/Title'
 
 interface Props {
   pathname: string

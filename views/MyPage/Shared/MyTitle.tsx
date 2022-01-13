@@ -1,4 +1,4 @@
-import { CustomTitle } from '@components/Title'
+import { CustomTitle } from '@components/Common/Title'
 import { css } from '@emotion/react'
 
 interface MyTitleProps {
