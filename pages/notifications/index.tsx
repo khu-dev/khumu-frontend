@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 
 import { Notification } from '@interface/Notification'
 
@@ -11,7 +10,7 @@ import { useToken } from '@context/Token'
 import Skeleton from '@components/Skeleton'
 import SkeletonNotifications from '@components/Skeleton/Notifications'
 import CommonHeader from '@components/Header/Common'
-import Notifications, { Setting } from '@views/Notifications'
+import Notifications, { Setting } from '@components/Notifications'
 import withLoading from '@hoc/withLoading'
 
 let WINDOW_HEIGHT: number
@@ -21,7 +20,6 @@ if (process.browser && typeof window !== undefined) {
 }
 
 const NotificationsPage = () => {
-  const router = useRouter()
   const { token } = useToken()
   const { isLoading, handleLoadingEnd } = useLoading()
   const [notifications, setNotifications] = useState<Notification[]>([])
@@ -31,10 +29,6 @@ const NotificationsPage = () => {
 
   const infiniteFetch = () => {
     setLength((prev) => prev + length)
-  }
-
-  const goBack = () => {
-    router.back()
   }
 
   useEffect(() => {
@@ -55,10 +49,9 @@ const NotificationsPage = () => {
   return (
     <>
       <CommonHeader
-        title={'알림'}
-        handleRouter={goBack}
-        className={'header-notifications'}
+        center="알림"
         color={color.main}
+        backgroundColor={color.white}
       />
       <Setting />
       <Skeleton

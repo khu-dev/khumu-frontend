@@ -3,7 +3,7 @@ import { Announcement } from '@interface/Announcement'
 import { getToken } from '@utils/token'
 import { caching, saveCache } from '@module/cache'
 
-const AnnouncementApi = {
+export const AnnouncementApi = {
   query: (refresh?: boolean) => {
     const token = getToken()
     const url =
@@ -23,5 +23,3 @@ const AnnouncementApi = {
     )
   },
 }
-
-export default AnnouncementApi

@@ -1,20 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { Announcement as AnnouncementType } from '@interface/Announcement'
 import { HotArticle } from '@interface/HotArticle'
 import { Notification } from '@interface/Notification'
 import { Schedule } from '@interface/Schedule'
 
+import { AnnouncementApi } from '@api/AnnouncementApi'
 import { ArticleApi } from '@api/ArticleApi'
 import { NotificationApi } from '@api/NotificationApi'
 import { ScheduleApi } from '@api/ScheduleApi'
 import { useLoading } from '@context/Loading'
 import { useToken } from '@context/Token'
 
-import { MainHeader } from '@components/Header'
-import { Feed, Hot, Club, Announcement, Shortcut, Advertise } from '@views/Main'
 import withLoading from '@hoc/withLoading'
-import AnnouncementApi from '@api/AnnouncementApi'
-import { Announcement as AnnouncementType } from '@interface/Announcement'
+
+import Header from '@components/Header/Main'
+import {
+  Feed,
+  Hot,
+  Club,
+  Announcement,
+  Shortcut,
+  Advertise,
+} from '@components/Common/Main'
 
 const SUCCESS_CODE = 200
 const REFRESH_TIME = 1000 * 60 * 10
@@ -78,7 +86,7 @@ const MainPage = () => {
 
   return (
     <>
-      <MainHeader
+      <Header
         title="경희대 KHUMU"
         notificationsNum={notifications.filter((item) => !item.is_read).length}
       />

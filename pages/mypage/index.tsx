@@ -5,7 +5,7 @@ import { box } from '@constants/theme'
 import { useUser } from '@context/User'
 
 import CommonHeader from '@components/Header/Common'
-import * as Page from '@views/MyPage'
+import * as Page from '@components/MyPage'
 
 export default function MyPagePage() {
   const {
@@ -15,9 +15,9 @@ export default function MyPagePage() {
   return (
     <>
       <CommonHeader
-        title={'마이 페이지'}
-        className={'header-mypage'}
-        color={'#6C6C6C'}
+        left="마이 페이지"
+        backgroundColor="#e4e4e4"
+        color="#6C6C6C"
         hasIcon={false}
       />
       <Container>

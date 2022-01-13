@@ -5,8 +5,8 @@ import { Club } from '@interface/Club'
 import { ClubApi } from '@api/ClubApi'
 import { useToken } from '@context/Token'
 
-import ClubsHeader from '@components/Header/Clubs'
-import Clubs from '@views/Clubs'
+import Header from '@components/Header/Common'
+import Clubs from '@components/Clubs'
 
 const initialClub: Club = {
   categories: '',
@@ -58,7 +58,7 @@ const ClubsPage = () => {
 
   return (
     <>
-      <ClubsHeader title={'동아리'} />
+      <Header center="동아리" />
       <Clubs categories={categories} clubs={clubs} />
     </>
   )
