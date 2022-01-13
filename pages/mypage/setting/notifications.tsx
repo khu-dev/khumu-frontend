@@ -45,10 +45,10 @@ const MySetNotiPage = () => {
   return (
     <>
       <CommonHeader
-        title="알림설정"
+        center="알림설정"
         handleRouter={goBack}
-        className="header-mypage-edit"
         color="#6C6C6C"
+        backgroundColor="#e4e4e4"
       />
       <List
         list={Object.values(SettingKind).map((key) => ({

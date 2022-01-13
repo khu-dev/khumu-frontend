@@ -55,10 +55,10 @@ const NotificationsPage = () => {
   return (
     <>
       <CommonHeader
-        title={'알림'}
+        center="알림"
         handleRouter={goBack}
-        className={'header-notifications'}
         color={color.main}
+        backgroundColor={color.white}
       />
       <Setting />
       <Skeleton
