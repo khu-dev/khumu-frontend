@@ -1,92 +1,27 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/react'
 
-import {
-  Notification as NotificationType,
-  ReadRequest,
-} from '@interface/Notification'
+import { Notification } from '@interface/Notification'
 
 import { NotificationApi } from '@api/NotificationApi'
 import { color } from '@constants/theme'
-import { AndroidToast } from '@utils/android'
 
 import NotiItem from './Item'
 import { Empty } from './Empty'
 import NotificationSwiper from '@components/Notifications/Swipe'
+import WithRead from './WithRead'
 
 interface Props {
-  item: NotificationType
-  index: number
+  notifications: Notification[]
   fetchIndex: number
   infiniteFetch(): void
 }
 
-const Notification: FC<Props> = ({
-  item,
-  index,
+const Notifications: FC<Props> = ({
+  notifications,
   fetchIndex,
   infiniteFetch,
-}) => {
-  const [isRead, setRead] = useState(item.is_read)
-
-  const handleDelete = async (notiId: number) => {
-    const { data } = await NotificationApi.delete(notiId)
-
-    if (data) {
-      alert(data?.message)
-    }
-
-    AndroidToast('삭제되었습니다')
-  }
-
-  const handleRead = async (notiId: ReadRequest = 'all') => {
-    if (!isRead) {
-      await NotificationApi.read(notiId)
-      setRead(true)
-    }
-  }
-
-  return (
-    <NotificationSwiper
-      handleClick={() => handleRead(item.id)}
-      handleDelete={() => handleDelete(item.id)}
-    >
-      <Link href={item.link || ''} passHref>
-        <a
-          target={item.link ? '_blank' : undefined}
-          rel={'noreferrer'}
-          css={css`
-            width: 100%;
-            color: ${color.black};
-          `}
-        >
-          <NotiItem
-            index={index}
-            fetchIndex={fetchIndex}
-            infiniteFetch={infiniteFetch}
-          >
-            <NotiItem.Icon isRead={isRead} />
-            <NotiItem.Contents>
-              <NotiItem.Title title={item.title} />
-              <NotiItem.Kind kind={item.kind} />
-              <NotiItem.Description content={item.content} />
-            </NotiItem.Contents>
-            <NotiItem.Day day={item.created_at} />
-          </NotiItem>
-        </a>
-      </Link>
-    </NotificationSwiper>
-  )
-}
-
-const Notifications = ({
-  notifications,
-  ...rest
-}: {
-  notifications: NotificationType[]
-  fetchIndex: number
-  infiniteFetch(): void
 }) => {
   useEffect(() => {
     NotificationApi.read('all')
@@ -96,7 +31,39 @@ const Notifications = ({
     <>
       {notifications?.length > 0 ? (
         notifications.map((item, index) => (
-          <Notification key={item.id} item={item} index={index} {...rest} />
+          <WithRead key={item.id} is_read={item.is_read}>
+            {(isRead, handleRead, handleDelete) => (
+              <NotificationSwiper
+                handleRead={() => handleRead(item.id)}
+                handleDelete={() => handleDelete(item.id)}
+              >
+                <Link href={item.link || ''} passHref>
+                  <a
+                    target={item.link ? '_blank' : undefined}
+                    rel={'noreferrer'}
+                    css={css`
+                      width: 100%;
+                      color: ${color.black};
+                    `}
+                  >
+                    <NotiItem
+                      index={index}
+                      fetchIndex={fetchIndex}
+                      infiniteFetch={infiniteFetch}
+                    >
+                      <NotiItem.Icon isRead={isRead} />
+                      <NotiItem.Contents>
+                        <NotiItem.Title title={item.title} />
+                        <NotiItem.Kind kind={item.kind} />
+                        <NotiItem.Description content={item.content} />
+                      </NotiItem.Contents>
+                      <NotiItem.Day day={item.created_at} />
+                    </NotiItem>
+                  </a>
+                </Link>
+              </NotificationSwiper>
+            )}
+          </WithRead>
         ))
       ) : (
         <Empty text={'현재 알림이 없습니다.'} />

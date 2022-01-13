@@ -14,13 +14,13 @@ const reset = 'right'
 
 interface Props {
   children: ReactNode
-  handleClick: Function
+  handleRead: Function
   handleDelete: Function
 }
 
 const NotificationSwiper: FC<Props> = ({
   children,
-  handleClick,
+  handleRead,
   handleDelete,
 }) => {
   const {
@@ -43,7 +43,7 @@ const NotificationSwiper: FC<Props> = ({
       <Swiper
         isDelete={isDelete}
         isEvent={isEvent}
-        onClick={(e) => handleClick(e)}
+        onClick={(e) => handleRead(e)}
         onMouseDown={handleTouchStart}
         onTouchStart={handleTouchStart}
         onMouseMove={handleTouchMove}
@@ -62,7 +62,7 @@ const NotificationSwiper: FC<Props> = ({
           setDelete(true)
         }}
       >
-        {'삭제'}
+        삭제
       </DeleteButton>
     </div>
   )
