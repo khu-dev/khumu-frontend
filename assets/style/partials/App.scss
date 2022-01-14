@@ -31,6 +31,15 @@ button,
 select,
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+button:focus,
+select:focus,
+a:focus {
+  outline: none !important;
 }
 
 .app-outer-container {
