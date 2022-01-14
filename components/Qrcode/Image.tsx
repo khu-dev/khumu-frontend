@@ -22,19 +22,18 @@ const Image: FC<Props> = ({ qrcodeUrl, onRefresh }) => {
     })
   }, [qrcodeUrl])
 
-  if (!qrcodeUrl)
-    return (
-      <Container>
-        <Empty />
-      </Container>
-    )
-
   return (
     <div>
       <Container>
-        <canvas ref={canvasRef} />
+        {qrcodeUrl ? <canvas ref={canvasRef} /> : <Empty />}
       </Container>
-      <Refresh onRefresh={onRefresh} />
+      <Refresh
+        onRefresh={() => {
+          if (!qrcodeUrl) return
+
+          onRefresh()
+        }}
+      />
     </div>
   )
 }
