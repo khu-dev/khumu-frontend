@@ -28,15 +28,17 @@ export default function MainPage() {
       <ul>
         {navList.map(({ title, path }) => (
           <li style={{ margin: 12 }} key={title}>
-            <Link href={path}>{`${title} ${path}`}</Link>
+            <Link href={path}>
+              {title} {path}
+            </Link>
           </li>
         ))}
       </ul>
       <div>
         <h4>Easter EGG!</h4>
         <input
-          type={'button'}
-          value={'notifications 모두 안읽음 처리하기'}
+          type="button"
+          value="notifications 모두 안읽음 처리하기"
           onClick={async () => {
             await NotificationApi.unread('all')
 
@@ -46,8 +48,8 @@ export default function MainPage() {
         />
 
         <input
-          type={'button'}
-          value={'버전정보 가져오기 Android.getVersionInfo()'}
+          type="button"
+          value="버전정보 가져오기 Android.getVersionInfo()"
           onClick={() => {
             const version = (window as any).Android?.getVersionInfo() || v
 

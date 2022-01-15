@@ -32,7 +32,7 @@ export const Icons = ({ type, ...rest }: IconProps) => {
 
 const Icon: FC<Props> = ({ isRead }) => (
   <NotiIcon>
-    <Icons type={''} css={iconStyle(isRead)} />
+    <Icons type="" css={iconStyle(isRead)} />
   </NotiIcon>
 )
 

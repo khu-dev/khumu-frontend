@@ -40,7 +40,7 @@ const Notifications: FC<Props> = ({
                 <Link href={item.link || ''} passHref>
                   <a
                     target={item.link ? '_blank' : undefined}
-                    rel={'noreferrer'}
+                    rel="noreferrer"
                     css={css`
                       width: 100%;
                       color: ${color.black};
@@ -66,7 +66,7 @@ const Notifications: FC<Props> = ({
           </WithRead>
         ))
       ) : (
-        <Empty text={'현재 알림이 없습니다.'} />
+        <Empty text="현재 알림이 없습니다." />
       )}
     </>
   )

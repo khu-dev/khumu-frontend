@@ -23,7 +23,7 @@ const Shortcut = () => {
           >
             <s.ShortcutItem>{shortcut.title}</s.ShortcutItem>
           </LinkIcon>
-        ))}{' '}
+        ))}
       </s.Container>
     </cs.MainSection>
   ) : null
