@@ -30,7 +30,7 @@ const Guide = () => {
           margin-top: 0;
         `}
       >
-        <MyRow>"앱 버전"</MyRow>
+        <MyRow>앱 버전</MyRow>
         <MyRow
           css={css`
             width: auto;
@@ -45,7 +45,7 @@ const Guide = () => {
       </MyRow>
       {/* <MyRow>"문의하기"</MyRow> */}
       {/* <LinkRow pathname="/announcements">"공지사항"</LinkRow> */}
-      <MyRow>"서비스 이용약관"</MyRow>
+      <MyRow>서비스 이용약관</MyRow>
       {/* <MyRow>"개인정보 처리방침"</MyRow> */}
       {/* <MyRow>"오픈소스 라이선스"</MyRow> */}
     </MyBox>
