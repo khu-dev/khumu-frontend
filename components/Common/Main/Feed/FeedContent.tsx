@@ -6,15 +6,24 @@ import FeedTab from './FeedTab'
 import ScheduleTitle from './Schedule/Title'
 import ScheduleDate from './Schedule/Date'
 import ScheduleShortCut from './Schedule/ShortCut'
+import classnames from 'classnames'
 
 const Schedule = ({ children, isMore }: any) => (
-  <ScheduleContainer className={isMore ? 'more' : undefined}>
+  <ScheduleContainer
+    className={classnames({
+      more: isMore,
+    })}
+  >
     {children}
   </ScheduleContainer>
 )
 
 const FeedContent = ({ children, isMore }: any) => (
-  <ContentContainer className={isMore ? 'more' : undefined}>
+  <ContentContainer
+    className={classnames({
+      more: isMore,
+    })}
+  >
     {children}
   </ContentContainer>
 )
