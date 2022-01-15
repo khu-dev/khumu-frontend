@@ -9,6 +9,7 @@ import TokenProvider from '@context/Token'
 import UserProvider from '@context/User'
 
 import Loading from '@components/Loading'
+import classnames from 'classnames'
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter()
@@ -24,7 +25,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
       </Head>
       <Loading />
-      <div className={`app-outer-container ${isMain ? 'bg__main' : undefined}`}>
+      <div
+        className={classnames('app-outer-container', {
+          bg__main: isMain,
+        })}
+      >
         <TokenProvider>
           <UserProvider>
             <Component {...pageProps} />
