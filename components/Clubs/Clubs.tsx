@@ -115,7 +115,7 @@ const Clubs = ({ categories, clubs }: Props) => {
                 <Card key={club?.name + idx}>
                   <Card.Image url={`${IMG_URI}/${club?.images[0]}`} />
                   <Card.Content>
-                    <Card.Tag tag={'연행'} />
+                    <Card.Tag tag="연행" />
                     <Card.Name
                       name={club?.name}
                       summary={club?.summary}

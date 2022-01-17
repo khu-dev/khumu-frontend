@@ -12,7 +12,7 @@ interface Props {
 
 const ProfileImage: FC<Props> = ({ src }) => {
   return src ? (
-    <Image src={src} alt={'profile-image'} width={'100%'} height={'100%'} />
+    <Image src={src} alt="profile-image" width="100%" height="100%" />
   ) : (
     <NoImage>
       <AiOutlineUser color={color.gray1} size={60} />

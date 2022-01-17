@@ -12,7 +12,7 @@ const Feed = () => (
     `}
   >
     <MyTitle
-      title={'피드 설정'}
+      title="피드 설정"
       css={css`
         color: ${color.white};
       `}

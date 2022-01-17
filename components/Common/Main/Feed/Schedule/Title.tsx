@@ -24,7 +24,7 @@ const ScheduleTitle: FC<Props> = ({ title }) => {
               ? css`
                   color: ${color.transparency};
                 `
-              : ''};
+              : undefined};
           `}
         />
       </Icon>

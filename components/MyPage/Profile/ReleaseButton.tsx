@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ReleaseButton: FC<Props> = ({ title }) => (
-  <Link href={'/mypage/edit'}>
+  <Link href="/mypage/edit">
     <Span>{title}</Span>
   </Link>
 )

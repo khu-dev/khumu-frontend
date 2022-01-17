@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const Setting = () => (
   <Container>
-    <Link href={`/mypage/setting/notifications`}>
+    <Link href="/mypage/setting/notifications">
       <Button>알림설정</Button>
     </Link>
   </Container>
