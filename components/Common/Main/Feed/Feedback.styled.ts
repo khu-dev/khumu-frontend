@@ -5,14 +5,9 @@ interface ContainerProps {
   top?: number
 }
 
-export const OuterContainer = styled.div<ContainerProps>`
-  width: 100vw;
-  height: auto;
-`
-
-export const SearchLabel = styled.div<ContainerProps>`
+export const Container = styled.div<ContainerProps>`
   height: 48px;
-  width: calc(100% - 48px);
+  width: calc(100vw - 48px);
   margin: 14px auto;
   margin-top: 4px;
   padding: 0 10px;
@@ -23,33 +18,31 @@ export const SearchLabel = styled.div<ContainerProps>`
   align-items: center;
 `
 
-export const SearchForm = styled.div`
+export const Label = styled.label`
   height: calc(100% - 16px);
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
 `
 
-export const DecorationSpan = styled.span`
-  width: 4px;
-  height: 22px;
-  background-color: ${color.gray5};
-`
-
-export const TextInput = styled.input`
+export const Input = styled.span`
   flex-grow: 1;
   width: 70%;
-  height: 40px;
+  color: ${color.gray4};
   padding: 0 8px;
   margin-left: 4px;
-  font-size: 15px;
   border: none;
   border-radius: ${box.borderRadius};
-  &:focus {
-    outline: none;
-  }
-  &::placeholder {
-    color: ${color.gray5};
+  &::before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 22px;
+    background-color: ${color.gray4};
   }
 `

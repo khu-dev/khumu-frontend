@@ -1,24 +1,8 @@
-import React from 'react'
 import styled from '@emotion/styled'
 
 import { box, color } from '@constants/theme'
-import { toMDdddd } from '@utils/day'
 
-export default function FeedTab() {
-  const now = Date.now()
-  const formatDate = toMDdddd.slash(now)
-
-  return (
-    <Container>
-      <Tab>
-        <TabContent>학사 일정</TabContent>
-      </Tab>
-      <Day>[ {formatDate} ]</Day>
-    </Container>
-  )
-}
-
-const Container = styled.div`
+export const Container = styled.div`
   padding: 0px 24px;
   width: calc(100vw - 48px);
   height: 33px;
@@ -28,7 +12,7 @@ const Container = styled.div`
   transform: translateY(8px);
 `
 
-const Tab = styled.div`
+export const Tab = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,12 +31,12 @@ const Tab = styled.div`
   border-bottom: none;
 `
 
-const TabContent = styled.h3`
+export const TabContent = styled.h3`
   font-size: 15px;
   font-weight: 700;
   color: ${color.main};
 `
 
-const Day = styled.span`
+export const Day = styled.span`
   color: ${color.white};
 `
