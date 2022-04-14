@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
-import InputProvider from '@context/Feed'
 import { color } from '@constants/theme'
 import { Schedule } from '@interface/Schedule'
 
@@ -42,16 +41,11 @@ const Feed = ({ schedules }: Props) => {
   const handleMore = () => {
     setMore((prev) => !prev)
   }
-  const scheduleList = (isLoading ? initialSchedule : schedules).slice(
-    0,
-    isMore ? 3 : 3,
-  )
+  const scheduleList = (isLoading ? initialSchedule : schedules).slice(0, 3)
 
   return (
     <Container isMore={isMore}>
-      <InputProvider>
-        <FeedInput />
-      </InputProvider>
+      <FeedInput />
       <FeedContent.Tab />
       <FeedContent isMore={isMore}>
         <FeedContent.Schedule isMore={isMore}>
