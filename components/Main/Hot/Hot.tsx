@@ -32,6 +32,8 @@ const Hot = ({ hots }: Props) => {
   const { isLoading } = useLoading()
   const now = new Date()
 
+  const _hotArticles = isLoading ? initialHots : hots.slice(0, 3)
+
   return (
     <cs.MainSection>
       <cs.IconTitle
@@ -39,9 +41,12 @@ const Hot = ({ hots }: Props) => {
         title="실시간 인기 글"
         isLoading={isLoading}
       />
-      {(isLoading ? initialHots : hots.slice(0, 3)).map((hot, idx) => (
-        <Link key={hot?.id || idx} href={`/articles/${hot?.id}`}>
-          <a css={s.colorBlack}>
+      {_hotArticles.map((hot, idx) => (
+        <Link
+          key={hot?.id || idx}
+          href={isLoading ? '#' : `/articles/${hot?.id}`}
+        >
+          <s.Anchor>
             <s.HotItem isLoading={isLoading}>
               <s.Author isLoading={isLoading}>{hot?.author?.nickname}</s.Author>
               <s.TimeAgo isLoading={isLoading}>
@@ -63,7 +68,7 @@ const Hot = ({ hots }: Props) => {
                 </s.SummaryItem>
               </s.Summary>
             </s.HotItem>
-          </a>
+          </s.Anchor>
         </Link>
       ))}
     </cs.MainSection>

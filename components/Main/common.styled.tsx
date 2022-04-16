@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const IconTitle: FC<Props> = ({ title, pathname, isLoading }) => (
-  <LinkIcon pathname={pathname}>
+  <LinkIcon pathname={isLoading ? '#' : pathname}>
     <MainTitle hasIcon isLoading={isLoading}>
       <span>{title}</span>
       <BsPlayFill size={18} />

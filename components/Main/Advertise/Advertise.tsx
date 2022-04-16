@@ -1,17 +1,16 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+
+import { css } from '@emotion/react'
 import { Carousel } from 'react-responsive-carousel'
 
 import AD_01 from 'assets/images/khumu_ads_01.png'
 import AD_02 from 'assets/images/khumu_ads_02.png'
 import AD_03 from 'assets/images/khumu_ads_03.png'
-import { css } from '@emotion/react'
-import { useLoading } from '@context/Loading'
 
 const Advertise = () => {
-  const { isLoading } = useLoading()
   const imgs = [AD_01, AD_02, AD_03]
 
-  return !isLoading ? (
+  return (
     <Carousel
       showArrows={false}
       showStatus={false}
@@ -40,7 +39,7 @@ const Advertise = () => {
         />
       ))}
     </Carousel>
-  ) : null
+  )
 }
 
 export default Advertise

@@ -13,8 +13,9 @@ const textOverflowHiddenStyle = css`
   overflow: hidden;
   white-space: nowrap;
 `
-export const colorBlack = css`
+export const Anchor = styled.a`
   color: ${color.black};
+  cursor: pointer;
 `
 
 export const HotItem = styled.div<LoadingProps>`

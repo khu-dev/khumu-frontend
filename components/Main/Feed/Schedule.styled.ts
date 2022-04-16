@@ -46,36 +46,9 @@ export const Container = styled.ul<{ scheduleLength: number }>`
   }
 `
 
-export const Schedule = styled.li`
-  margin: 16px 30px;
-  list-style: none;
-
-  p {
-    font-size: 18px;
-    font-weight: 600;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    margin-bottom: 4px;
-
-    &.loading {
-      background-color: ${color.gray4};
-    }
-  }
-
-  i {
-    font-style: normal;
-    font-size: 14px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    display: block;
-  }
-`
-
 export const MoreButton = styled.button`
   position: absolute;
-  bottom: 16px;
+  bottom: 12px;
   right: 14px;
   padding: 3px 6px;
   border: none;

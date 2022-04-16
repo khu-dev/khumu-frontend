@@ -1,4 +1,6 @@
+import { mainStyle } from '@components/Skeleton'
 import { color, shadow } from '@constants/theme'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 export const Clubs = styled.div`
@@ -7,7 +9,7 @@ export const Clubs = styled.div`
   align-items: center;
 `
 
-export const ClubItem = styled.div<{ url: string }>`
+export const ClubItem = styled.a<{ url: string; isLoading: boolean }>`
   width: 22vw;
   max-width: 180px;
   height: 22vw;
@@ -21,9 +23,12 @@ export const ClubItem = styled.div<{ url: string }>`
   background-size: cover;
 
   overflow: hidden;
+  cursor: pointer;
+
+  ${({ isLoading }) => (isLoading ? mainStyle.club : '')};
 `
 
-export const Name = styled.span`
+export const Name = styled.span<{ isLoading: boolean }>`
   width: 100%;
   height: 100%;
   font-size: 17px;
@@ -36,4 +41,11 @@ export const Name = styled.span`
   align-items: center;
 
   background-color: rgba(0, 0, 0, 0.6);
+
+  ${({ isLoading }) =>
+    isLoading
+      ? css`
+          display: none;
+        `
+      : ''};
 `

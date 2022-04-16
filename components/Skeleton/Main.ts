@@ -71,6 +71,15 @@ const style = {
     max-width: 270px;
     ${skeleton};
   `,
+  club: css`
+    width: 22vw;
+    max-width: 180px;
+    height: 22vw;
+    max-height: 180px;
+    background-image: none;
+    box-shadow: none;
+    ${skeleton};
+  `,
 }
 
 export default style

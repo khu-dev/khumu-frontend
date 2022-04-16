@@ -13,7 +13,7 @@ const textOverflowHiddenStyle = css`
   white-space: nowrap;
 `
 
-export const AnnouncementItem = styled.a`
+export const Announcement = styled.a`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -25,7 +25,7 @@ export const AnnouncementItem = styled.a`
   }
 `
 
-export const AnnouncementBody = styled.div<LoadingProps>`
+export const Body = styled.div<LoadingProps>`
   display: inline-block;
   flex-grow: 1;
   max-width: calc(100% - 24px);

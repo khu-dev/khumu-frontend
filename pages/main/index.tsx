@@ -22,7 +22,9 @@ import {
   Announcement,
   Shortcut,
   Advertise,
-} from '@components/Common/Main'
+} from '@components/Main'
+import { ClubApi } from '@api/ClubApi'
+import { Club as ClubType } from '@interface/Club'
 
 const SUCCESS_CODE = 200
 const REFRESH_TIME = 1000 * 60 * 10
@@ -32,6 +34,7 @@ interface State {
   notifications: Notification[]
   schedules: Schedule[]
   hots: HotArticle[]
+  clubs: ClubType[]
 }
 
 const initialState = {
@@ -39,6 +42,7 @@ const initialState = {
   notifications: [],
   schedules: [],
   hots: [],
+  clubs: [],
 }
 
 const MainPage = () => {
@@ -56,6 +60,7 @@ const MainPage = () => {
         ScheduleApi.query(refresh),
         ArticleApi.hot(refresh),
         AnnouncementApi.query(refresh),
+        ClubApi.query(refresh),
       ]).then((res) => {
         initRef.current = false
 
@@ -66,6 +71,7 @@ const MainPage = () => {
           schedules: res[1].data,
           hots: res[2].data?.data,
           announcements: res[3].data.slice(-2),
+          clubs: res[4].data.data,
         })
         handleLoadingEnd?.()
       })
@@ -82,7 +88,7 @@ const MainPage = () => {
     }
   }, [token, handleLoadingEnd])
 
-  const { announcements, notifications, schedules, hots } = data
+  const { announcements, notifications, schedules, hots, clubs } = data
 
   return (
     <>
@@ -94,7 +100,7 @@ const MainPage = () => {
       <Announcement announcements={announcements} />
       <Hot hots={hots} />
       <Advertise />
-      <Club />
+      <Club clubs={clubs} />
       <Shortcut />
     </>
   )
