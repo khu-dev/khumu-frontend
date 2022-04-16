@@ -23,10 +23,8 @@ ClubsCard.Description = Description
 export default ClubsCard
 
 const Container = styled.div`
-  /* min-width: 260px; */
-  width: calc(100vw - 64px);
+  width: 100%;
   min-height: calc(100vh - 150px);
-  margin: 0 8px;
   box-shadow: -1px 1px 12px -4px rgba(0, 0, 0, 0.3);
   border: 1px solid ${color.main};
   border-radius: 24px;

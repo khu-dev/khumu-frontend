@@ -27,7 +27,7 @@ export default function Loading() {
 
   return isLoading ? (
     <div
-      id={'app-loader'}
+      id="app-loader"
       css={css`
         width: 100vw;
         height: 100vh;

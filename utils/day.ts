@@ -12,6 +12,12 @@ export const toMDdddd = {
   },
 }
 
+export const toTime = {
+  colon: (timestame: string | number) => {
+    return dayjs(timestame).format('HH:mm')
+  },
+}
+
 export const getDiff = ({ day1, day2, type }: any) =>
   Math.abs(
     dayjs(dayjs(day1).format('YYYY-MM-DD')).diff(

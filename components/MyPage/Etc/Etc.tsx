@@ -26,18 +26,18 @@ const Etc = () => {
 
   return (
     <MyBox>
-      <MyTitle title={'기타'} />
-      <MyRow>{'정보 동의 설정'}</MyRow>
+      <MyTitle title="기타" />
+      <MyRow>정보 동의 설정</MyRow>
       <MyRow
         onClick={() => {
           handleModal(true)
         }}
       >
-        {'회원 탈퇴'}
+        회원 탈퇴
       </MyRow>
       <Link href="/logout">
         <a>
-          <MyRow>{'로그아웃'}</MyRow>
+          <MyRow>로그아웃</MyRow>
         </a>
       </Link>
       <Modal isActive={isModal} handleCancel={() => handleModal(false)}>
@@ -55,7 +55,7 @@ const Etc = () => {
         </s.ResignSummary>
         <s.ResignButtonContainer>
           <s.Button
-            title={'탈퇴하기'}
+            title="탈퇴하기"
             onClick={() => {
               handleModal(false)
               handleResign()
@@ -65,7 +65,7 @@ const Etc = () => {
             탈퇴하기
           </s.Button>
           <s.Button
-            title={'취소하기'}
+            title="취소하기"
             onClick={() => handleModal(false)}
             type={ResignButton.CANCEL}
           >
