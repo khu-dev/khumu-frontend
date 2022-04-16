@@ -1,27 +1,55 @@
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import styled from '@emotion/styled'
-import { FC, useEffect, useState } from 'react'
+
+import { makeQueryString } from '@utils/qs'
+
 import * as s from './styled'
+import { useToken } from '@context/Token'
+import { ClubApi } from '@api/ClubApi'
 
 const CLUBS_CARD = 'clubs-card'
 
-interface Props {
-  category: string
-  categories: string[]
-  handleCategory(selected: string): void
-}
-
-const Categories: FC<Props> = ({
-  category: currentCategory,
-  categories,
-  handleCategory,
-}) => {
-  const categoriesSet = new Set(categories)
-  const uniqueCategories = [...categoriesSet]
+const Categories = () => {
+  const {
+    replace,
+    query: { category },
+  } = useRouter()
+  const { token } = useToken()
   const [isActive, setIsActive] = useState(false)
+
+  const [categories, setCategories] = useState<string[]>(['전체'])
+
+  const uniqueCategories = [...new Set(categories)]
+  const currentCategory = category || '전체'
 
   const handleActive = (status: boolean) => {
     setIsActive(status)
   }
+
+  const handleFilter = (category: string) => {
+    replace(
+      `/clubs?${makeQueryString({
+        clubId: undefined,
+        category,
+      })}`,
+    )
+    handleActive(false)
+  }
+
+  useEffect(() => {
+    if (!token) return
+
+    const fetchData = async () => {
+      const res = await ClubApi.categories()
+
+      if (res.status === 200) {
+        setCategories(['전체', ...res.data.data])
+      }
+    }
+
+    fetchData()
+  }, [token])
 
   useEffect(() => {
     const detectClick = (e: MouseEvent) => {
@@ -45,22 +73,27 @@ const Categories: FC<Props> = ({
       }}
       id={CLUBS_CARD}
     >
-      {currentCategory}
+      {currentCategory || '전체'}
       {isActive && (
         <s.Filters id={CLUBS_CARD}>
-          {uniqueCategories.map((category) => (
-            <s.FilterItem
-              key={category}
-              isActive={category === currentCategory}
-              onClick={() => {
-                handleCategory(category)
-                handleActive(false)
-              }}
-              id={CLUBS_CARD}
-            >
-              {category}
-            </s.FilterItem>
-          ))}
+          {uniqueCategories.map((category) => {
+            const isActive = category === currentCategory
+
+            return (
+              <s.FilterItem
+                key={category}
+                isActive={isActive}
+                onClick={() => {
+                  if (isActive) return
+
+                  handleFilter(category)
+                }}
+                id={CLUBS_CARD}
+              >
+                {category}
+              </s.FilterItem>
+            )
+          })}
         </s.Filters>
       )}
     </STag>

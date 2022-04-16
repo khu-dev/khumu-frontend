@@ -33,7 +33,7 @@ const Club: FC<Props> = ({ clubs }) => {
       <s.Clubs>
         {pickedClub.map((club, idx) => (
           <Link
-            href={isLoading ? '#' : `/clubs?currentId=${club.id}`}
+            href={isLoading ? '#' : `/clubs?clubId=${club.id}`}
             key={club.name || idx}
           >
             <s.ClubItem
