@@ -1,0 +1,41 @@
+@import '/assets/style/partials/shared.scss';
+
+.schedule {
+  margin: 16px 30px;
+  list-style: none;
+
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 7px;
+  }
+
+  i {
+    font-style: normal;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    color: $color-main;
+  }
+}
+
+.loading {
+  p {
+    background-color: $color-lightgray2;
+    height: 22px;
+    width: 60%;
+    border-radius: 2px;
+    text-indent: -9999px;
+  }
+
+  i {
+    background-color: $color-lightgray2;
+    border-radius: 2px;
+    text-indent: -9999px;
+  }
+}

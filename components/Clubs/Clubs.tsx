@@ -1,145 +1,117 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import 'swiper/css'
+
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import { ClubApi } from '@api/ClubApi'
 import { IMG_URI } from '@config/baseURI'
+import { getFontSize } from '@utils/font'
+import { useToken } from '@context/Token'
+
+import { Club } from '@interface/Club'
+
 import Card from './Card'
 import Paging from './Paging'
-import Categories from './Categories'
 
 import * as s from './styled'
-import { useRouter } from 'next/router'
-import { Club } from '@interface/Club'
-import { getFontSize } from '@utils/font'
+import styles from './Clubs.module.scss'
+import { makeQueryString } from '@utils/qs'
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { Carousel } from 'react-responsive-carousel'
-import { css } from '@emotion/react'
-
-interface Props {
-  categories: string[]
-  clubs: Club[]
-}
-
-const Clubs = ({ categories, clubs }: Props) => {
+const Clubs = () => {
   const {
-    query: { currentId },
+    query: { clubId, category },
+    replace,
   } = useRouter()
-  const initRef = useRef(true)
-  const [category, setCategory] = useState('전체')
-  const [size, setSize] = useState({
-    translateX: 0,
-    centerSlidePercentage: 100,
-  })
+
+  const { token } = useToken()
+  const [isLoading, setLoading] = useState<boolean>(true)
+  const [clubs, setClubs] = useState<Club[]>([])
+
   const filteredClubs: Club[] = clubs.filter((club) => {
-    if (category === '전체') return true
+    if (category === '전체' || !category) return true
 
-    return club.categories!.includes(category)
+    return club.categories!.includes(category as string)
   })
-
-  const [current, setCurrent] = useState(0)
+  const initialIndex = filteredClubs.findIndex(
+    (club) => String(club.id) === clubId,
+  )
   const clubLength = filteredClubs.length
 
-  const handleIndex = {
-    minus: () => {
-      current > 0 && setCurrent((prev) => (prev - 1) % clubLength)
-    },
-    plus: () => {
-      current < clubLength - 1 && setCurrent((prev) => (prev + 1) % clubLength)
-    },
-  }
-
-  const handleCategory = (selected: any) => {
-    setCategory(selected)
-    setCurrent(0)
-  }
-
   useEffect(() => {
-    if (!currentId || clubs.length === 0 || !initRef.current) return
+    if (!token) return
 
-    const currentClubIndex = clubs.findIndex(
-      (club) => club.id === Number(currentId),
-    )
-    setCurrent(currentClubIndex > 0 ? currentClubIndex : 0)
-    currentClubIndex !== -1 && (initRef.current = false)
-  }, [currentId, clubs])
+    const fetchData = async () => {
+      const res = await ClubApi.query()
 
-  useLayoutEffect(() => {
-    if (!process.browser) return
+      if (res.status === 200) {
+        setClubs(res.data.data)
+      }
 
-    const _window = process.browser && (window as any)
-    const innerWidth = _window?.innerWidth || 0
-    const centerSlidePercentage = innerWidth > 500 ? 100 : 88
-    const translateX = (100 - centerSlidePercentage) / 2
+      setLoading(false)
+    }
 
-    setSize({
-      translateX,
-      centerSlidePercentage,
-    })
-  }, [])
+    fetchData()
+  }, [token])
 
-  const { translateX, centerSlidePercentage } = size
+  return isLoading ? null : (
+    <Swiper
+      spaceBetween={15}
+      slidesPerView={1.2}
+      className={styles.swiper}
+      initialSlide={initialIndex}
+      allowTouchMove
+      centeredSlides
+      autoplay={false}
+      onSlideChange={(e) => {
+        replace(
+          `/clubs?${makeQueryString({
+            clubId: filteredClubs[e.realIndex].id,
+            category,
+          })}`,
+        )
+      }}
+    >
+      {filteredClubs?.map(
+        (club, idx) =>
+          club && (
+            <SwiperSlide key={club?.name + idx}>
+              <Card>
+                <Card.Image url={`${IMG_URI}/${club?.images[0]}`} />
+                <Card.Content>
+                  <Card.Tag tag="연행" />
+                  <Card.Name
+                    name={club?.name}
+                    summary={club?.summary}
+                    fontSize={getFontSize(club?.summary?.length)}
+                  />
+                  <Card.Description description={club?.description} />
+                </Card.Content>
+              </Card>
+            </SwiperSlide>
+          ),
+      )}
 
-  return (
-    <>
-      <Categories
-        categories={['전체', ...categories]}
-        category={category}
-        handleCategory={handleCategory}
-      />
-      <s.ClubsCard
-        css={(() => {
-          switch (current) {
-            case 0:
-              return css`
-                transform: translateX(${translateX}%);
-              `
-            case filteredClubs.length - 1:
-              return css`
-                transform: translateX(${-translateX}%);
-              `
-          }
-        })()}
-      >
-        <Carousel
-          autoPlay={false}
-          showArrows={false}
-          showStatus={false}
-          showIndicators={false}
-          centerMode={true}
-          centerSlidePercentage={centerSlidePercentage}
-          interval={999999}
-          onChange={(idx: number) => setCurrent(idx)}
-          selectedItem={current}
-        >
-          {filteredClubs?.map(
-            (club, idx) =>
-              club && (
-                <Card key={club?.name + idx}>
-                  <Card.Image url={`${IMG_URI}/${club?.images[0]}`} />
-                  <Card.Content>
-                    <Card.Tag tag="연행" />
-                    <Card.Name
-                      name={club?.name}
-                      summary={club?.summary}
-                      fontSize={getFontSize(club?.summary?.length)}
-                    />
-                    <Card.Description description={club?.description} />
-                  </Card.Content>
-                </Card>
-              ),
+      {filteredClubs.length === 0 ? (
+        <s.Nothing>동아리가 존재하지 않습니다</s.Nothing>
+      ) : (
+        <Paging initialIndex={initialIndex} clubLength={clubLength}>
+          {({ currentIndex, handleNext, handlePrev }) => (
+            <>
+              <Paging.Minus
+                handleClick={handlePrev}
+                isEnable={currentIndex > 0}
+              />
+              <Paging.Current page={`${currentIndex + 1} / ${clubLength}`} />
+              <Paging.Plus
+                handleClick={handleNext}
+                isEnable={currentIndex < clubLength - 1}
+              />
+            </>
           )}
-        </Carousel>
-        {filteredClubs.length === 0 && (
-          <s.Nothing>동아리가 존재하지 않습니다</s.Nothing>
-        )}
-      </s.ClubsCard>
-      <Paging>
-        <Paging.Minus handleClick={handleIndex.minus} isEnable={current > 0} />
-        <Paging.Current page={`${current + 1} / ${clubLength}`} />
-        <Paging.Plus
-          handleClick={handleIndex.plus}
-          isEnable={current < clubLength - 1}
-        />
-      </Paging>
-    </>
+        </Paging>
+      )}
+    </Swiper>
   )
 }
 

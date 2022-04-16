@@ -63,11 +63,11 @@ export const Nothing = styled.div`
   color: ${color.gray4};
 `
 
-export const ClubsCard = styled.div`
-  flex-grow: 1;
-  margin: 0 auto;
+export const ClubsCard = styled.section`
   width: 100vw;
+  height: calc(100vh - 160px);
   position: relative;
+  background-color: yellow;
 
   & > .carousel-root {
     height: calc(100vh - 150px);
