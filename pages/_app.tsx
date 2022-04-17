@@ -8,7 +8,7 @@ import { AppProps } from 'next/app'
 import TokenProvider from '@context/Token'
 import UserProvider from '@context/User'
 
-import Loading from '@components/Loading'
+import Loading from '@components/Common/Loading'
 import classnames from 'classnames'
 
 const App = ({ Component, pageProps }: AppProps) => {

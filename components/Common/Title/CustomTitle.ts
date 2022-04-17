@@ -1,4 +1,4 @@
-import { titleStyle } from '@components/Skeleton/Common'
+import { titleStyle } from '@components/Common/Skeleton'
 import styled from '@emotion/styled'
 
 interface CustomTitleProps {
