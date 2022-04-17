@@ -6,7 +6,7 @@ import { AndroidToast } from '@utils/android'
 
 import { Edit as EditType } from '@interface/User'
 
-import { CommonHeader } from '@components/Header'
+import { CommonHeader } from '@components/Common/Header'
 import Button from './Button'
 import Department from './Department'
 import Image from './Image'

@@ -9,7 +9,7 @@ import { useToken } from '@context/Token'
 
 import Skeleton from '@components/Skeleton'
 import SkeletonNotifications from '@components/Skeleton/Notifications'
-import CommonHeader from '@components/Header/Common'
+import { CommonHeader } from '@components/Common/Header'
 import Notifications, { Setting } from '@components/Notifications'
 import withLoading from '@hoc/withLoading'
 

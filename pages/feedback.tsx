@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Header from '@components/Header/Common'
+import { CommonHeader } from '@components/Common/Header'
 import Chat from '@components/Feedback'
 
 const Feedback = () => {
   return (
     <>
-      <Header center="KHUMU" />
+      <CommonHeader center="KHUMU" />
       <Chat />
     </>
   )

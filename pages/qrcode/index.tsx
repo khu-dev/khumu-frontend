@@ -6,7 +6,7 @@ import { QrcodeApi } from '@api/QrcodeApi'
 import { useToken } from '@context/Token'
 import { AndroidToast } from '@utils/android'
 
-import Header from '@components/Header/Common'
+import { CommonHeader } from '@components/Common/Header'
 import Qrcode from '@components/Qrcode'
 
 const initialState: QRcode = {
@@ -47,7 +47,7 @@ export default function QRCodePage() {
 
   return (
     <>
-      <Header center="모바일 이용증" />
+      <CommonHeader center="모바일 이용증" />
       <Qrcode
         qrcode={info.qr_code_str}
         profile={{
