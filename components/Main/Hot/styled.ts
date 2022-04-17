@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { mainStyle as style } from '@components/Skeleton'
+import { mainStyle as style } from '@components/Common/Skeleton'
 import { box, color, shadow } from '@constants/theme'
 
 interface LoadingProps {
