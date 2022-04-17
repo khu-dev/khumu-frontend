@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from 'react'
+import { useState, useEffect, ReactNode, useCallback } from 'react'
 
 import { UserApi } from '@api/UserApi'
 import { useToken } from '@context/Token'
@@ -14,6 +14,13 @@ export default function UserProvider({ children }: Props) {
   const { token } = useToken()
   const [user, setUser] = useState<User>()
 
+  const updateUser = useCallback((info: User) => {
+    setUser((prev) => ({
+      ...prev,
+      ...info,
+    }))
+  }, [])
+
   useEffect(() => {
     if (!token) return
 
@@ -28,13 +35,6 @@ export default function UserProvider({ children }: Props) {
       })
       .catch(() => {})
   }, [token])
-
-  const updateUser = (info: User) => {
-    setUser((prev) => ({
-      ...prev,
-      ...info,
-    }))
-  }
 
   return (
     <UserContext.Provider

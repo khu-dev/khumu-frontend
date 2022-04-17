@@ -9,12 +9,12 @@ import Profile from './Profile'
 interface Props {
   qrcode: string
   profile: ProfileType
-  handleRefresh(): void
+  handleRefresh(refresh?: boolean): void
 }
 
 const Qrcode = ({ qrcode, profile, handleRefresh }: Props) => (
   <Container>
-    <Image qrcodeUrl={qrcode} onRefresh={handleRefresh} />
+    <Image qrcodeUrl={qrcode} handleRefresh={handleRefresh} />
     <Profile>
       <Profile.Row title="이름" description={profile.name} />
       <Profile.Row title="학번" description={profile.student_number} />
