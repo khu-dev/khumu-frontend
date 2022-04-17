@@ -4,12 +4,13 @@ import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { AppProps } from 'next/app'
+import classnames from 'classnames'
 
 import TokenProvider from '@context/Token'
 import UserProvider from '@context/User'
+import { PopupProvider } from '@context/Popup'
 
 import Loading from '@components/Common/Loading'
-import classnames from 'classnames'
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter()
@@ -32,7 +33,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       >
         <TokenProvider>
           <UserProvider>
-            <Component {...pageProps} />
+            <PopupProvider>
+              <Component {...pageProps} />
+            </PopupProvider>
           </UserProvider>
         </TokenProvider>
       </div>

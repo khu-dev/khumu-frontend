@@ -8,10 +8,10 @@ import Refresh from './Refresh'
 
 interface Props {
   qrcodeUrl: string
-  onRefresh(): void
+  handleRefresh(refresh?: boolean): void
 }
 
-const Image: FC<Props> = ({ qrcodeUrl, onRefresh }) => {
+const Image: FC<Props> = ({ qrcodeUrl, handleRefresh }) => {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Image: FC<Props> = ({ qrcodeUrl, onRefresh }) => {
         onRefresh={() => {
           if (!qrcodeUrl) return
 
-          onRefresh()
+          handleRefresh(true)
         }}
       />
     </div>
