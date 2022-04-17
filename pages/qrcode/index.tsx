@@ -1,46 +1,41 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import { QRcode } from '@interface/QRcode'
-
 import { QrcodeApi } from '@api/QrcodeApi'
 import { useToken } from '@context/Token'
 import { AndroidToast } from '@utils/android'
 
 import { CommonHeader } from '@components/Common/Header'
+import { QRcode as QRcodeType } from '@interface/QRcode'
 import Qrcode from '@components/Qrcode'
+import WithPopup from '@components/Qrcode/WithPopup'
 
-const initialState: QRcode = {
-  qr_code_str: '',
-  name: '',
-  department: '',
-  student_number: '',
-}
-
-export default function QRCodePage() {
+function QRCodePage() {
   const { token } = useToken()
+
   const initRef = useRef<boolean>(true)
-  const [info, setInfo] = useState(initialState)
+  const [info, setInfo] = useState<QRcodeType | null>(null)
+  const [isError, setError] = useState(false)
 
-  const fetchData = useCallback(async () => {
-    const { data } = await QrcodeApi.get()
+  const fetchData = useCallback((refresh?: boolean) => {
+    QrcodeApi.get()
+      .then(({ data }) => {
+        if (!data) return
 
-    if (data) {
-      const { data: info } = data
+        const { data: info } = data
 
-      setInfo(info)
+        setInfo(info)
 
-      if (initRef.current) {
+        refresh && AndroidToast('QR 코드가 갱신되었습니다')
+
         initRef.current = false
-      } else {
-        AndroidToast('QR 코드가 갱신되었습니다')
-      }
-    } else {
-      AndroidToast('불러오는데 실패하였습니다')
-    }
+      })
+      .catch(() => {
+        setError(true)
+      })
   }, [])
 
   useEffect(() => {
-    if (!token) return
+    if (!token || !initRef.current) return
 
     fetchData()
   }, [token, fetchData])
@@ -48,15 +43,19 @@ export default function QRCodePage() {
   return (
     <>
       <CommonHeader center="모바일 이용증" />
-      <Qrcode
-        qrcode={info.qr_code_str}
-        profile={{
-          name: info.name || '-',
-          student_number: info.student_number || '-',
-          department: info.department || '-',
-        }}
-        handleRefresh={fetchData}
-      />
+      <WithPopup isError={isError}>
+        <Qrcode
+          qrcode={info?.qr_code_str || ''}
+          profile={{
+            name: info?.name || '-',
+            student_number: info?.student_number || '-',
+            department: info?.department || '-',
+          }}
+          handleRefresh={fetchData}
+        />
+      </WithPopup>
     </>
   )
 }
+
+export default QRCodePage
