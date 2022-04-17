@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
+
 import { useToken } from '@context/Token'
 import { useUser } from '@context/User'
-import { useRouter } from 'next/router'
 
-import ReactJson from 'react-json-view'
+const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false })
 
 const EasterEgg = () => {
   const router = useRouter()
@@ -13,9 +15,9 @@ const EasterEgg = () => {
     <section>
       <div>
         <h3>유저</h3>
-        <ReactJson src={user} sortKeys />
+        <DynamicReactJson src={user} sortKeys />
         <h3>토큰</h3>
-        <ReactJson src={{ token }} sortKeys />
+        <DynamicReactJson src={{ token }} sortKeys />
 
         <button
           onClick={() => {
