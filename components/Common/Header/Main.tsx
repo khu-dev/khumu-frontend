@@ -10,6 +10,7 @@ import LinkIcon from '@components/Common/Link'
 import { Title02 } from '@components/Common/Title'
 
 import styles from './Main.module.scss'
+import WithEasterEgg from '../Title/WithEasterEgg'
 
 interface Props {
   title: string
@@ -17,14 +18,16 @@ interface Props {
 }
 const Main: FC<Props> = ({ title, notificationsNum }) => (
   <div className={classnames('header', styles.header)}>
-    <Title02
-      css={css`
-        position: absolute;
-        left: 0;
-      `}
-    >
-      {title}
-    </Title02>
+    <WithEasterEgg>
+      <Title02
+        css={css`
+          position: absolute;
+          left: 0;
+        `}
+      >
+        {title}
+      </Title02>
+    </WithEasterEgg>
     <LinkIcon pathname="/qrcode">
       <AiOutlineQrcode
         size={font.iconSize}

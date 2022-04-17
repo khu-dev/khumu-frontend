@@ -14,7 +14,7 @@ import { useToken } from '@context/Token'
 
 import withLoading from '@hoc/withLoading'
 
-import Header from '@components/Header/Main'
+import { MainHeader } from '@components/Common/Header'
 import {
   Feed,
   Hot,
@@ -92,7 +92,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Header
+      <MainHeader
         title="경희대 KHUMU"
         notificationsNum={notifications.filter((item) => !item.is_read).length}
       />

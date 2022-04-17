@@ -1,4 +1,4 @@
-import { mainStyle } from '@components/Skeleton'
+import { mainStyle } from '@components/Common/Skeleton'
 import { color, shadow } from '@constants/theme'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'

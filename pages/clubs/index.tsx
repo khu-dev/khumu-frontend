@@ -1,13 +1,13 @@
 import React from 'react'
 
-import Header from '@components/Header/Common'
+import { CommonHeader } from '@components/Common/Header'
 import Clubs from '@components/Clubs'
 import Categories from '@components/Clubs/Categories'
 
 const ClubsPage = () => {
   return (
     <>
-      <Header center="동아리" />
+      <CommonHeader center="동아리" />
       <Categories />
       <Clubs />
     </>
